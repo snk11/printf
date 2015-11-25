@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2015/11/25 03:08:40 by syusof           ###   ########.fr       */
+/*   Created: 2014/11/06 12:50:22 by syusof            #+#    #+#             */
+/*   Updated: 2015/11/25 02:41:56 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef PRINTF_H
-# define PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
+void	ft_putstr(char const *s)
+{
+	int		i;
 
-
-void	ft_printf(char *str, ...);
-void	ft_putnbr(int n);
-void	ft_putstr(char const *s);
-void	ft_putchar(char c);
-
-#endif
+	i = 0;
+	while (s[i])
+	{
+		ft_putchar(s[i]);
+		i++;
+	}
+}

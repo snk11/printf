@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2015/11/25 03:08:40 by syusof           ###   ########.fr       */
+/*   Created: 2014/11/06 12:45:11 by syusof            #+#    #+#             */
+/*   Updated: 2015/11/25 02:43:23 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef PRINTF_H
-# define PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-
-
-void	ft_printf(char *str, ...);
-void	ft_putnbr(int n);
-void	ft_putstr(char const *s);
-void	ft_putchar(char c);
-
-#endif
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
