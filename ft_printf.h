@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2015/11/25 03:08:40 by syusof           ###   ########.fr       */
+/*   Updated: 2015/11/26 06:18:28 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 
 
-void	ft_printf(char *str, ...);
+int		ft_printf(char *str, ...);
 void	ft_putnbr(int n);
 void	ft_putstr(char const *s);
 void	ft_putchar(char c);
