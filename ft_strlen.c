@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/01 13:40:58 by syusof           ###   ########.fr       */
+/*   Created: 2014/11/03 16:37:22 by syusof            #+#    #+#             */
+/*   Updated: 2015/12/01 13:34:25 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef PRINTF_H
-# define PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
+size_t		ft_strlen(const char *str)
+{
+	size_t		i;
 
-
-int		ft_printf(char *str, ...);
-void	ft_putnbr(int n);
-void	ft_putstr(char const *s);
-void	ft_putchar(char c);
-size_t		ft_strlen(const char *str);
-
-#endif
+	if (str)
+	{
+		i = 0;
+		while (str[i])
+			i++;
+		return (i);
+	}
+	return (0);
+}
