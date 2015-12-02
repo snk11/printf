@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/02 12:56:54 by syusof           ###   ########.fr       */
+/*   Updated: 2015/12/02 16:12:09 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	ft_printf(char *str, ...)
 	char		c;
 	int			cnt;
 	int			i;
+	wchar_t		*ss;
 
 	
 	cnt = 0;
@@ -59,6 +60,20 @@ int	ft_printf(char *str, ...)
 				}
 				cnt--;
 			}
+			else if (*str == 'S')
+			{
+				ss = va_arg(ap, wchar_t*);
+				if (ss)
+				{
+					return (-1);
+				}
+				else
+				{
+					ft_putstr("(null)");
+					cnt = cnt + 6;
+				}
+				cnt--;
+			}
 			else if (*str == 'p')
 			{
 				l = va_arg(ap, long);
@@ -67,11 +82,19 @@ int	ft_printf(char *str, ...)
 				cnt = cnt + printf("%p",l);
 				cnt--;
 			}
-			else if (*str == 'd')
+			else if (*str == 'd' || *str == 'i')
 			{
 				d = va_arg(ap, int);
 				ft_putnbr(d);
 				cnt = cnt + ft_countd(d);
+				cnt--;
+			}
+			else if (*str == 'D')
+			{
+				l = va_arg(ap, long);
+//				ft_putnbr(d);
+//				cnt = cnt + ft_countd(d);
+				cnt = cnt + printf("%D",l);
 				cnt--;
 			}
 			cnt++;

@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/02 09:32:26 by syusof           ###   ########.fr       */
+/*   Updated: 2015/12/02 15:52:41 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stdarg.h>
 # include <unistd.h>
+# include <wchar.h>
+# include <limits.h>
 
 
 int		ft_printf(char *str, ...);
