@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_countd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/06 12:38:21 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/02 09:58:22 by syusof           ###   ########.fr       */
+/*   Created: 2015/12/02 08:29:33 by syusof            #+#    #+#             */
+/*   Updated: 2015/12/02 09:58:56 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+# include "ft_printf.h"
 
-void	ft_putnbr(int n)
+
+int	ft_countd(int n)
 {
+	int i;
+
+	i = 0;
 	if (n == -2147483648)
-		ft_putstr("-2147483648");
+		return (11);
 	else
 	{
 		if (n < 0)
 		{
-			ft_putchar('-');
+			i++;
 			n = -n;
 		}
 		if (n >= 10)
 		{
-			ft_putnbr(n / 10);
-			ft_putnbr(n % 10);
+			while (n >= 10)
+			{
+				n = n / 10;
+				i++;
+			}
 		}
-		else
-			ft_putchar(n + '0');
+		i++;
 	}
+	return (i);
 }

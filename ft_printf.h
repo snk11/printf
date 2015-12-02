@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/01 13:40:58 by syusof           ###   ########.fr       */
+/*   Updated: 2015/12/02 09:32:26 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ void	ft_putnbr(int n);
 void	ft_putstr(char const *s);
 void	ft_putchar(char c);
 size_t		ft_strlen(const char *str);
+int		ft_countd(int n);
 
 #endif
