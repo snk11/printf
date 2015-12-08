@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/02 16:12:09 by syusof           ###   ########.fr       */
+/*   Updated: 2015/12/08 14:22:28 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,22 @@ int	ft_printf(char *str, ...)
 	char		c;
 	int			cnt;
 	int			i;
+	int			ind1;
 	wchar_t		*ss;
 
 	
 	cnt = 0;
+	ind1 = 0;
 	va_start(ap, str);
 	while (*str != 0)
 	{
-		if ( *str == '%')
+		if ( *str == '%' && ind1 == 0)
 		{
 			str++;
 			if (*str == '%')
 				ft_putstr("%");
+			else if (*str == 0)
+				cnt--;
 			else if (*str == 'c')
 			{
 				c = va_arg(ap, int);
@@ -97,6 +101,16 @@ int	ft_printf(char *str, ...)
 				cnt = cnt + printf("%D",l);
 				cnt--;
 			}
+			else
+			{
+				str--;
+				cnt--;
+			}
+			cnt++;
+		}
+		else if (*str == '%' && ind1 != 0)
+		{
+			ft_putchar(*str);
 			cnt++;
 		}
 		else
@@ -104,7 +118,17 @@ int	ft_printf(char *str, ...)
 			ft_putchar(*str);
 			cnt++;
 		}
-		str++;
+		if (*str == '%')
+		{
+			str++;
+			while (*str == ' ')
+			{
+				str++;
+				ind1 = 1;
+			}
+		}
+		else if (*str != 0)
+			str++;
 	}
 	 va_end(ap);
 	return (cnt);
