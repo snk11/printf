@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/08 14:22:28 by syusof           ###   ########.fr       */
+/*   Updated: 2015/12/08 16:35:50 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	ft_printf(char *str, ...)
 				ss = va_arg(ap, wchar_t*);
 				if (ss)
 				{
+					ft_putwstr(ss);
 					return (-1);
 				}
 				else

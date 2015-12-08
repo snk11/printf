@@ -1,18 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putwstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/06 12:45:11 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/08 15:36:50 by syusof           ###   ########.fr       */
+/*   Created: 2015/12/08 14:55:06 by syusof            #+#    #+#             */
+/*   Updated: 2015/12/08 17:30:08 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(char c)
+void	ft_putwstr(wchar_t *s)
 {
-	write(1, &c, 1);
+	int		i;
+
+	wchar_t c1;
+	
+	int i1 = 206;
+	int i2 = 177;
+	i = 0;
+//	while (s[i])
+	{
+//		ft_putchar(s[i]);
+		write(1,&i1,1);
+		write(1,&i2,1);
+//		i++;
+	}
+	c1 = *s;
+	printf("%d",c1);
+//	printf("%d\n",L'米');
+//	printf("%d\n",'a');
+	if (s <= 0x7F)
+		printf("UU");
 }
