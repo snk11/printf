@@ -6,26 +6,26 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 14:55:06 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/08 17:30:08 by syusof           ###   ########.fr       */
+/*   Updated: 2015/12/08 19:20:50 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putwstr(wchar_t *s)
+int			ft_putwstr(wchar_t *s)
 {
-	int		i;
+//	int		i;
 
 	wchar_t c1;
 	
-	int i1 = 206;
-	int i2 = 177;
-	i = 0;
+//	int i1 = 206;
+//	int i2 = 177;
+//	i = 0;
 //	while (s[i])
 	{
 //		ft_putchar(s[i]);
-		write(1,&i1,1);
-		write(1,&i2,1);
+//		write(1,&i1,1);
+//		write(1,&i2,1);
 //		i++;
 	}
 	c1 = *s;
