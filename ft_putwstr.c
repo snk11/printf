@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 14:55:06 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/08 19:20:50 by syusof           ###   ########.fr       */
+/*   Updated: 2015/12/16 06:41:20 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int			ft_putwstr(wchar_t *s)
 	printf("%d",c1);
 //	printf("%d\n",L'米');
 //	printf("%d\n",'a');
-	if (s <= 0x7F)
-		printf("UU");
+
+//	if (s <= 0x7F)
+//		printf("UU");
+	return 0;
 }

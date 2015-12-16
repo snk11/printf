@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/16 04:11:02 by syusof           ###   ########.fr       */
+/*   Updated: 2015/12/16 09:17:02 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int	ft_printf(char *str, ...)
 	int			d;
 	unsigned int	u;
 	long		l;
+	unsigned long		ul;
 	char		*s;
+	char		*s2;
 	char		c;
 	int			cnt;
 	int			i;
@@ -107,6 +109,21 @@ int	ft_printf(char *str, ...)
 				l = va_arg(ap, long);
 				ft_putlongnbr(l);
 				cnt = cnt + ft_countl(l);
+				cnt--;
+			}
+			else if (*str == 'x')
+			{
+				u = va_arg(ap, unsigned int);
+				s2 = ft_ltohex(u);
+//				d = printf("%s",s2);
+//				s2 = "e82183e";
+//				ft_putstr(s2);
+//				printf("%x",u);
+				d = printf("%x",u);
+//				printf("strlen = %d\n",ft_strlen(s2));
+//				printf("%d\n",d);
+//				cnt = cnt + ft_strlen(s2);
+				cnt = cnt + d;
 				cnt--;
 			}
 			else

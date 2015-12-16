@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 02:47:12 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/16 03:41:05 by syusof           ###   ########.fr       */
+/*   Updated: 2015/12/16 08:23:01 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_ltohex(long l)
 		l = l / 16;
 		i++;
 	}
-	res = (char*)malloc(sizeof(char)*i + 1);
+	res = (char*)malloc(sizeof(char)*(i + 1));
 	res[i] = 0;
 	l = l1;
 	res = res + i;
@@ -47,21 +47,22 @@ char	*ft_ltohex(long l)
 		else if (l % 16 == 15)
 			*res = 'f';
 		l = l / 16;
+//		printf("%s",res);
 		res--;
 	}
 		if (l % 16 < 10)
 			*res = '0' + l % 16;
 		else if (l % 16 == 10)
-			*res = 'A';
+			*res = 'a';
 		else if (l % 16 == 11)
-			*res = 'B';
+			*res = 'b';
 		else if (l % 16 == 12)
-			*res = 'C';
+			*res = 'c';
 		else if (l % 16 == 13)
-			*res = 'D';
+			*res = 'd';
 		else if (l % 16 == 14)
-			*res = 'E';
+			*res = 'e';
 		else if (l % 16 == 15)
-			*res = 'F';
+			*res = 'f';
 	return (res);
 }
