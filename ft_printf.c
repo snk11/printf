@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/16 03:55:01 by syusof           ###   ########.fr       */
+/*   Updated: 2015/12/16 04:11:02 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ int	ft_printf(char *str, ...)
 				ft_putstr("0x");
 				ft_putstr(ft_ltohex(l));
 				cnt = cnt + ft_strlen(ft_ltohex(l)) + 2;
-//				cnt = cnt + printf("%p",l);
 				cnt--;
 			}
 			else if (*str == 'u')
@@ -94,7 +93,6 @@ int	ft_printf(char *str, ...)
 				u = va_arg(ap, unsigned int);
 				ft_putlongnbr(u);
 				cnt = cnt + ft_countl(u);
-//				cnt = cnt + printf("%u",u);
 				cnt--;
 			}
 			else if (*str == 'd' || *str == 'i')
@@ -107,9 +105,8 @@ int	ft_printf(char *str, ...)
 			else if (*str == 'D')
 			{
 				l = va_arg(ap, long);
-//				ft_putnbr(d);
-//				cnt = cnt + ft_countd(d);
-				cnt = cnt + printf("%D",l);
+				ft_putlongnbr(l);
+				cnt = cnt + ft_countl(l);
 				cnt--;
 			}
 			else
