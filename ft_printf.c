@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/16 09:17:02 by syusof           ###   ########.fr       */
+/*   Updated: 2015/12/16 10:21:25 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,13 +117,14 @@ int	ft_printf(char *str, ...)
 				s2 = ft_ltohex(u);
 //				d = printf("%s",s2);
 //				s2 = "e82183e";
-//				ft_putstr(s2);
+				ft_putstr(s2);
 //				printf("%x",u);
-				d = printf("%x",u);
+//				d = printf("%x",u);
 //				printf("strlen = %d\n",ft_strlen(s2));
 //				printf("%d\n",d);
-//				cnt = cnt + ft_strlen(s2);
-				cnt = cnt + d;
+				cnt = cnt + ft_strlen(s2);
+//				cnt = cnt + d;
+//				cnt = 9;
 				cnt--;
 			}
 			else
