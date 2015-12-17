@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/17 15:28:17 by syusof           ###   ########.fr       */
+/*   Updated: 2015/12/17 16:31:09 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,19 @@ int	ft_printf(char *str, ...)
 			{
 				l = va_arg(ap, long);
 				ft_putstr("0x");
-				ft_putstr(ft_ltohex(l));
+				ft_putstrad(ft_ltohex(l));
 				cnt = cnt + ft_strlen(ft_ltohex(l)) + 2;
+				int g;
+				g =(ft_strlen(ft_ltohex(l)));
+				int o = 0;
+				if (g < 9 && g > 1)
+				{
+					while (o < 9 - g)
+					{
+						cnt++;
+						o++;
+					}
+				}
 				cnt--;
 			}
 			else if (*str == 'u')

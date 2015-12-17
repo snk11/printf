@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/17 15:15:34 by syusof           ###   ########.fr       */
+/*   Updated: 2015/12/17 16:08:54 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 int		ft_printf(char *str, ...);
 void	ft_putnbr(int n);
 void	ft_putstr(char const *s);
+void	ft_putstrad(char const *s);
 void	ft_putchar(char c);
 size_t		ft_strlen(const char *str);
 int		ft_countd(int n);
