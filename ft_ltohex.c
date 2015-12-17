@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 02:47:12 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/17 13:32:11 by syusof           ###   ########.fr       */
+/*   Updated: 2015/12/17 13:51:01 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_ltohex(long l)
 	res[i] = 0;
 	bigi  = res;
 	l = l1;
-//	res = res + i;
+	res = res + i - 1;
 	while (l > 16)
 	{
 		if (l % 16 < 10)
@@ -52,7 +52,7 @@ char	*ft_ltohex(long l)
 			*res = 'f';
 		l = l / 16;
 //		printf("%s\n",res);
-		res++;
+		res--;
 	}
 		if (l % 16 < 10)
 			*res = '0' + l % 16;
@@ -70,7 +70,7 @@ char	*ft_ltohex(long l)
 			*res = 'f';
 		
 //		printf("%s\n",res);
-
+/*
 		int j = 0;
 		tab[j] = *res;
 		while (j < i-1)
@@ -87,7 +87,7 @@ char	*ft_ltohex(long l)
 			j++;
 			*res = tab[j];
 		}
-		j = 0;
+		j = 0;*/
 //		printf("der = %s\n",res);
 	return (bigi);
 }
