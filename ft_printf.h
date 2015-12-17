@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/16 06:55:27 by syusof           ###   ########.fr       */
+/*   Updated: 2015/12/17 15:15:34 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,12 @@ size_t		ft_strlen(const char *str);
 int		ft_countd(int n);
 int	ft_putwstr(wchar_t *s);
 void	ft_putlongnbr(long n);
+void	ft_putulongnbr(unsigned long n);
 int	ft_countl(long n);
+int	ft_countul(unsigned long n);
 char	*ft_ltohex(long l);
+char	*ft_ltohex2(unsigned long l);
+char	*ft_ltooct(long l);
+char	*ft_ltooct2(long l);
 
 #endif

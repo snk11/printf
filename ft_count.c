@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 08:29:33 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/16 04:23:41 by syusof           ###   ########.fr       */
+/*   Updated: 2015/12/17 15:36:00 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,35 @@ int	ft_countl(long n)
 	else
 	{
 		if (n < 0)
+		{
+			i++;
+			n = -n;
+		}
+		if (n >= 10)
+		{
+			while (n >= 10)
+			{
+				n = n / 10;
+				i++;
+			}
+		}
+		i++;
+	}
+	return (i);
+}
+
+int	ft_countul(unsigned long n)
+{
+	int i;
+	unsigned long c;
+
+	c = 0;
+	i = 0;
+	if (n == ULONG_MAX)
+		return (20);
+	else
+	{
+		if (n < c)
 		{
 			i++;
 			n = -n;

@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/16 10:21:25 by syusof           ###   ########.fr       */
+/*   Updated: 2015/12/17 15:28:17 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ int	ft_printf(char *str, ...)
 			else if (*str == 'p')
 			{
 				l = va_arg(ap, long);
-//				ft_putlongnbr(l);
 				ft_putstr("0x");
 				ft_putstr(ft_ltohex(l));
 				cnt = cnt + ft_strlen(ft_ltohex(l)) + 2;
@@ -92,9 +91,16 @@ int	ft_printf(char *str, ...)
 			}
 			else if (*str == 'u')
 			{
-				u = va_arg(ap, unsigned int);
-				ft_putlongnbr(u);
-				cnt = cnt + ft_countl(u);
+				ul = va_arg(ap, unsigned long);
+				ft_putlongnbr(ul);
+				cnt = cnt + ft_countl(ul);
+				cnt--;
+			}
+			else if (*str == 'U')
+			{
+				ul = va_arg(ap, unsigned long);
+				ft_putulongnbr(ul);
+				cnt = cnt + ft_countul(ul);
 				cnt--;
 			}
 			else if (*str == 'd' || *str == 'i')
@@ -125,6 +131,38 @@ int	ft_printf(char *str, ...)
 				cnt = cnt + ft_strlen(s2);
 //				cnt = cnt + d;
 //				cnt = 9;
+				cnt--;
+			}
+			else if (*str == 'X')
+			{
+				u = va_arg(ap, unsigned int);
+				s2 = ft_ltohex2(u);
+//				d = printf("%s",s2);
+//				s2 = "e82183e";
+				ft_putstr(s2);
+//				printf("%x",u);
+//				d = printf("%x",u);
+//				printf("strlen = %d\n",ft_strlen(s2));
+//				printf("%d\n",d);
+				cnt = cnt + ft_strlen(s2);
+//				cnt = cnt + d;
+//				cnt = 9;
+				cnt--;
+			}
+			else if (*str == 'o')
+			{
+				u = va_arg(ap, unsigned int);
+				s2 = ft_ltooct(u);
+				ft_putstr(s2);
+				cnt = cnt + ft_strlen(s2);
+				cnt--;
+			}
+			else if (*str == 'O')
+			{
+				ul = va_arg(ap,  unsigned long);
+				s2 = ft_ltooct2(ul);
+				ft_putstr(s2);
+				cnt = cnt + ft_strlen(s2);
 				cnt--;
 			}
 			else
