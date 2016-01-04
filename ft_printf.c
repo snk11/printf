@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/17 16:31:09 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/04 13:16:16 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ int	ft_printf(char *str, ...)
 			else if (*str == 0)
 				cnt--;
 			else if (*str == 'c')
+			{
+				c = va_arg(ap, int);
+				ft_putchar(c);
+			}
+			else if (*str == 'C')
 			{
 				c = va_arg(ap, int);
 				ft_putchar(c);
