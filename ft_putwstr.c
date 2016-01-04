@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 14:55:06 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/04 13:15:47 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/04 15:02:35 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int			ft_putwstr(wchar_t *s)
 	}
 	c1 = *s;
 	c2 = (int)c1;
+	c2 = 945;
 	c3 = c2;
 	n = 0;
 	while(c2 > 0)
@@ -42,14 +43,13 @@ int			ft_putwstr(wchar_t *s)
 		c2 = c2 / 2;
 		n++;
 	}
-	n++;
 	str = (char*)malloc(sizeof(char)* n + 1);
 	bigi = str;
 	c2 = c3;
 	while(c2 > 0)
 	{
-		c2 = c2 / 2;
 		*str = '0' + c2 % 2;
+		c2 = c2 / 2;
 		str++;
 	}
 	*str = 0;
