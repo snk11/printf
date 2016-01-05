@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 14:55:06 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/05 04:55:22 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/05 08:21:11 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int			ft_putwstr(wchar_t *s)
 		c1 = *s;
 		c2 = (int)c1;
 		c3 = c2;
+//		printf("c3 = %d\n",c3);
 		n = 0;
 		while(c2 > 0)
 		{
@@ -55,8 +56,11 @@ int			ft_putwstr(wchar_t *s)
 			str2[7] = '0';
 			str2[8] = 0;
 			n2 = 7;
+			printf("str2[7] = %c\n",str2[7]);
+		printf("str2 len = %d\n",ft_strlen(str2) );
+
 		}
-			else if (n <= 11)
+		else if (n > 7 && n <= 11)
 		{
 			str2 = (char*)malloc(sizeof(char)* 16 + 1);
 			str2[15] = '1';
@@ -101,6 +105,7 @@ int			ft_putwstr(wchar_t *s)
 		str = (char*)malloc(sizeof(char)* n + 1);
 		bigi = str;
 		c2 = c3;
+		bigi2 = str2;
 		while(c2 > 0)
 		{
 			*str = '0' + c2 % 2;
@@ -108,9 +113,11 @@ int			ft_putwstr(wchar_t *s)
 			str++;
 		}
 		*str = 0;
-		bigi2 = str2;
 		str = bigi;
-		while (*str != 0)
+		
+		printf("str2o len = %d\n",ft_strlen(str2) );
+		int i = 0;
+		while (i < 8)
 		{
 			if (*str2 == '1' || *str2 == '0')
 				str2++;
@@ -120,9 +127,13 @@ int			ft_putwstr(wchar_t *s)
 				str2++;
 				str++;
 			}
+			i++;
 		}
+		str = bigi;
 		str2 = bigi2;
-		int i = 0;
+
+		printf("str2p len = %d\n",ft_strlen(str2) );
+		i = 0;
 		while (i <= n2)
 		{
 			if (*str2 == 0)
@@ -130,16 +141,19 @@ int			ft_putwstr(wchar_t *s)
 			str2++;
 			i++;
 		}
+
 		i = 0;
 		int j;
 		int *r;
 		str2--;
 		r = (int*)malloc(sizeof(int)*(n2+1)/8 + 1);
 		r[(n2+1)/8] = 0;
+		
+		printf("str2 len = %d\n",ft_strlen(str2) );
 		while (i < (n2 + 1) / 8)
 		{
 			j = 7;
-//			r = 0;
+	//		r = 0;
 			while ( j >= 0 )
 			{
 				r[i] = r[i] + (*str2 - '0') * pow(2,j);
@@ -148,20 +162,32 @@ int			ft_putwstr(wchar_t *s)
 			}
 			i++;
 		}
+		str2 = bigi2;
+		printf("str2 len = %d\n",ft_strlen(str2) );
+		printf("n2= %d,str2:%s\n",n2,str2);
 		i = 0;
 		while(i < (n2 + 1)/8)
 		{
 			write(1,&r[i],1);
 			i++;
 		}
-	//	printf("%s",bigi2);
-	//	printf("%d\n",L'米');
-	//	printf("%d\n",'a');
+	//		printf("%d\n", n2);
+	//		printf("%s",bigi2);
+		//	printf("%d\n",L'米');
+		//	printf("%d\n",'a');
 
-	//	if (s <= 0x7F)
-	//		printf("UU");
-	s++;
-	ret = ret + (n2 + 1) / 8;
+		//	if (s <= 0x7F)
+		//		printf("UU");
+		s++;
+		ret = ret + (n2 + 1) / 8;
+		free(str2);
+		str2 = NULL;
+		bigi2 = NULL;
+		free(str);
+		str = NULL;
+		bigi = NULL;
 	}
+
+
 	return ret;
 }
