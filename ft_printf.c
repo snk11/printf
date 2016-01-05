@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/04 13:16:16 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/05 03:40:48 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 int	ft_printf(char *str, ...)
 {
+	
 	va_list		ap;
 	int			d;
 	unsigned int	u;
@@ -77,7 +78,7 @@ int	ft_printf(char *str, ...)
 				ss = va_arg(ap, wchar_t*);
 				if (ss)
 				{
-					cnt = ft_putwstr(ss);
+					cnt = cnt + ft_putwstr(ss);
 				}
 				else
 				{

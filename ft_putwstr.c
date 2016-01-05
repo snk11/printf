@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 14:55:06 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/05 03:10:57 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/05 04:55:22 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,20 +132,27 @@ int			ft_putwstr(wchar_t *s)
 		}
 		i = 0;
 		int j;
-		int r;
+		int *r;
 		str2--;
+		r = (int*)malloc(sizeof(int)*(n2+1)/8 + 1);
+		r[(n2+1)/8] = 0;
 		while (i < (n2 + 1) / 8)
 		{
 			j = 7;
-			r = 0;
+//			r = 0;
 			while ( j >= 0 )
 			{
-				r = r + (*str2 - '0') * pow(2,j);
+				r[i] = r[i] + (*str2 - '0') * pow(2,j);
 				j--;
 				str2--;
 			}
 			i++;
-			write(1,&r,1);
+		}
+		i = 0;
+		while(i < (n2 + 1)/8)
+		{
+			write(1,&r[i],1);
+			i++;
 		}
 	//	printf("%s",bigi2);
 	//	printf("%d\n",L'米');
