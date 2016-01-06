@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/06 01:19:12 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/06 06:12:33 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,68 @@ int	ft_printf(char *str, ...)
 	char		c;
 	int			cnt;
 	int			i;
+	int			p;
+	int bl;
 	int			ind1;
+	int			max;
+	int			ind2;
+	int			ind3;
 	wchar_t		*ss;
 	wchar_t		wc;
 
 	
 	cnt = 0;
 	ind1 = 0;
+	ind2 = 0;
+	ind3 = 0;
+	p = 0;
 	va_start(ap, str);
 	while (*str != 0)
 	{
-		if ( *str == '%' && ind1 == 0)
+		if ( *str == '%')
 		{
 			str++;
-			if (*str == '%')
-				ft_putstr("%");
-			else if (*str == 0)
+//			p = ft_check_perc(str);
+//			printf("p1 = %d\n", p);
+			/*
+			if ((p != 1) && ((p % 2) != 0))
+			{
+				bl = 1;
+				while(*str == '%' || *str == ' ')
+				{
+					if (*str == '%')
+						bl++;
+					if (bl == 2)
+					{
+						ft_putchar('%');
+						cnt++;
+						bl = 0;
+					}
+					if (*str == ' ')
+					{
+						ft_putchar(' ');
+						cnt++;
+					}
+					str++;
+				}
+				str--;
+			}
+			else if ((p != 1) && ((p % 2) == 0))
+			{
+				while(*str == '%' || *str == ' ')
+				{
+					p--;
+					str++;
+					if (*str == ' ')
+					{
+						ft_putchar(' ');
+						cnt++;
+					}
+				}
+				str--;
+			}
+			*/
+			 if (*str == 0)
 				cnt--;
 			else if (*str == 'c')
 			{
@@ -184,33 +230,59 @@ int	ft_printf(char *str, ...)
 				cnt = cnt + ft_strlen(s2);
 				cnt--;
 			}
+			else if (*str == '%' && str[1] != '%')
+			{
+				ft_putchar('%');
+				cnt++;
+			}
 			else
 			{
-				str--;
-				cnt--;
+				ft_putchar(*str);
+				cnt++;
 			}
 			cnt++;
 		}
+		/*
 		else if (*str == '%' && ind1 != 0)
 		{
-			ft_putchar(*str);
-			cnt++;
-		}
+			while(ind1 > 0)
+			{
+				str--;
+				ind1--;
+			}
+			ind1 = max;
+			while(ind1 > 0)
+			{
+				ft_putchar(*str);
+				str++;
+				cnt++;
+				ind1--;
+			}
+			if (ind2 == 1)
+				ind3 = 1;
+		}*/
 		else
 		{
 			ft_putchar(*str);
 			cnt++;
 		}
-		if (*str == '%')
-		{
-			str++;
-			while (*str == ' ')
-			{
-				str++;
-				ind1 = 1;
-			}
-		}
-		else if (*str != 0)
+//		if (*str == '%')
+//		{
+//			str--;
+//			if (*str == '%' && str[1] == ' ')
+//			{
+//				ind2 = 1;
+//				str++;
+//			}
+//			while (*str == ' ')
+//			{
+//				str++;
+//				ind1++;
+//			}
+//			max = ind1;
+//			printf("max = %d\n", max);
+//		}
+		if (*str != 0)
 			str++;
 	}
 	 va_end(ap);
