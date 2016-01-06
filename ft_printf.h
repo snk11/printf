@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/05 03:34:33 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/06 01:01:39 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ char	*ft_ltohex(long l);
 char	*ft_ltohex2(unsigned long l);
 char	*ft_ltooct(long l);
 char	*ft_ltooct2(long l);
+int	ft_putwchar(wchar_t c);
 
 #endif
