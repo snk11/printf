@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/11 16:51:39 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/11 20:41:40 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,25 @@ int	ft_printf(char *str, ...)
 	int			i;
 	char		*p;
 	int bl;
-	int			ind1;
 	int			max;
-	int			ind2;
-	int			ind3;
 	wchar_t		*ss;
 	wchar_t		wc;
 	char		*bigi;
 	int		cnt1;
 	int c2;
+	char	*p3;
+	int		ind1;
 
 	
 	cnt = 0;
 	ind1 = 0;
-	ind2 = 0;
-	ind3 = 0;
 	va_start(ap, str);
 	bigi = &(str[0]);
-	p = ft_check_perc(bigi);
 
-
-	while (*str != 0 && str != p)
+	while(*str !=0)
+	{
+		p = ft_check_perc(bigi);
+	while (*str != 0 && *str !=p && ind1 % 2 == 0)
 	{
 		if ( *str == '%')
 		{
@@ -217,27 +215,29 @@ int	ft_printf(char *str, ...)
 		if (*str != 0)
 			str++;
 	}
-	if (str == p)
+	if (str == p && ind1 % 2 == 1)
 	{
 		bigi = &(str[0]);
 		cnt1 = 0;
 		c2 = 0;
-//		p = ft_check_perc(bigi);
-/*
+		p = ft_check_perc(bigi);
+		p3 = p;
 		p = NULL;
 			while((*str != 0) && (*str == '%' || *str == ' ') && p == NULL)
 	{
 		if (*str == '%')
-			cnt1++;
-		if ((cnt1 % 2 == 1) && (str[1] == ' '))
+			c2++;
+		if ((c2 % 2 == 1) && (str[1] == ' '))
 		{
-			p = str;
+			if (str != p3)
+				p = str;
+			else
+				c2--;
 		}
 		str++;
 	}
-	*/
 		str = bigi;
-		while (*str != 0)
+		while (*str != 0 && str != p)
 		{
 			if (*str != ' ')
 			{
@@ -256,8 +256,11 @@ int	ft_printf(char *str, ...)
 			if (*str != 0)
 				str++;
 		}
+		bigi = str;
 	}
-
+	ind1++;
+	
+	}
 
 
 	 va_end(ap);
