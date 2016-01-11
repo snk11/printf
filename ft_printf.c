@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/06 06:12:33 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/11 16:51:39 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_printf(char *str, ...)
 	char		c;
 	int			cnt;
 	int			i;
-	int			p;
+	char		*p;
 	int bl;
 	int			ind1;
 	int			max;
@@ -35,59 +35,26 @@ int	ft_printf(char *str, ...)
 	int			ind3;
 	wchar_t		*ss;
 	wchar_t		wc;
+	char		*bigi;
+	int		cnt1;
+	int c2;
 
 	
 	cnt = 0;
 	ind1 = 0;
 	ind2 = 0;
 	ind3 = 0;
-	p = 0;
 	va_start(ap, str);
-	while (*str != 0)
+	bigi = &(str[0]);
+	p = ft_check_perc(bigi);
+
+
+	while (*str != 0 && str != p)
 	{
 		if ( *str == '%')
 		{
 			str++;
-//			p = ft_check_perc(str);
 //			printf("p1 = %d\n", p);
-			/*
-			if ((p != 1) && ((p % 2) != 0))
-			{
-				bl = 1;
-				while(*str == '%' || *str == ' ')
-				{
-					if (*str == '%')
-						bl++;
-					if (bl == 2)
-					{
-						ft_putchar('%');
-						cnt++;
-						bl = 0;
-					}
-					if (*str == ' ')
-					{
-						ft_putchar(' ');
-						cnt++;
-					}
-					str++;
-				}
-				str--;
-			}
-			else if ((p != 1) && ((p % 2) == 0))
-			{
-				while(*str == '%' || *str == ' ')
-				{
-					p--;
-					str++;
-					if (*str == ' ')
-					{
-						ft_putchar(' ');
-						cnt++;
-					}
-				}
-				str--;
-			}
-			*/
 			 if (*str == 0)
 				cnt--;
 			else if (*str == 'c')
@@ -242,49 +209,57 @@ int	ft_printf(char *str, ...)
 			}
 			cnt++;
 		}
-		/*
-		else if (*str == '%' && ind1 != 0)
-		{
-			while(ind1 > 0)
-			{
-				str--;
-				ind1--;
-			}
-			ind1 = max;
-			while(ind1 > 0)
-			{
-				ft_putchar(*str);
-				str++;
-				cnt++;
-				ind1--;
-			}
-			if (ind2 == 1)
-				ind3 = 1;
-		}*/
 		else
 		{
 			ft_putchar(*str);
 			cnt++;
 		}
-//		if (*str == '%')
-//		{
-//			str--;
-//			if (*str == '%' && str[1] == ' ')
-//			{
-//				ind2 = 1;
-//				str++;
-//			}
-//			while (*str == ' ')
-//			{
-//				str++;
-//				ind1++;
-//			}
-//			max = ind1;
-//			printf("max = %d\n", max);
-//		}
 		if (*str != 0)
 			str++;
 	}
+	if (str == p)
+	{
+		bigi = &(str[0]);
+		cnt1 = 0;
+		c2 = 0;
+//		p = ft_check_perc(bigi);
+/*
+		p = NULL;
+			while((*str != 0) && (*str == '%' || *str == ' ') && p == NULL)
+	{
+		if (*str == '%')
+			cnt1++;
+		if ((cnt1 % 2 == 1) && (str[1] == ' '))
+		{
+			p = str;
+		}
+		str++;
+	}
+	*/
+		str = bigi;
+		while (*str != 0)
+		{
+			if (*str != ' ')
+			{
+				if (*str == '%')
+					cnt1++;
+				if (*str == '%' && str[1] == ' ')
+				{
+				}
+				if (*str == '%' && cnt1 % 2 == 1)
+				{
+				}
+				else
+					ft_putchar(*str);
+				cnt++;
+			}
+			if (*str != 0)
+				str++;
+		}
+	}
+
+
+
 	 va_end(ap);
 	return (cnt);
 }
