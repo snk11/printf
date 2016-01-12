@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/11 20:41:40 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/12 12:58:48 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,19 @@ int	ft_printf(char *str, ...)
 	va_start(ap, str);
 	bigi = &(str[0]);
 
+	p = ft_check_perc0(str);
+	if (p != NULL)
+		ind1++;
+	
 	while(*str !=0)
 	{
-		p = ft_check_perc(bigi);
-	while (*str != 0 && *str !=p && ind1 % 2 == 0)
+
+	
+	if (ind1 % 2 == 0)
+	{
+		p = ft_check_perc(str);
+
+	while (*str != 0 && str !=p)
 	{
 		if ( *str == '%')
 		{
@@ -215,14 +224,20 @@ int	ft_printf(char *str, ...)
 		if (*str != 0)
 			str++;
 	}
-	if (str == p && ind1 % 2 == 1)
+	ind1++;
+
+	}
+
+
+
+	if (ind1 % 2 == 1)
 	{
-		bigi = &(str[0]);
+//		bigi = &(str[0]);
 		cnt1 = 0;
 		c2 = 0;
-		p = ft_check_perc(bigi);
+		p = ft_check_perc(str);
 		p3 = p;
-		p = NULL;
+		/*
 			while((*str != 0) && (*str == '%' || *str == ' ') && p == NULL)
 	{
 		if (*str == '%')
@@ -236,7 +251,8 @@ int	ft_printf(char *str, ...)
 		}
 		str++;
 	}
-		str = bigi;
+	*/
+//		str = bigi;
 		while (*str != 0 && str != p)
 		{
 			if (*str != ' ')
@@ -256,8 +272,10 @@ int	ft_printf(char *str, ...)
 			if (*str != 0)
 				str++;
 		}
-		bigi = str;
+//		bigi = str;
 	}
+	if(*str == '%')
+		ft_putchar(*str);
 	ind1++;
 	
 	}
