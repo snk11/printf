@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/12 12:58:48 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/12 16:56:08 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,24 @@ int	ft_printf(char *str, ...)
 	{
 		if ( *str == '%')
 		{
+			cnt1 = 1;
 			str++;
+			if (*str == '%')
+				cnt1++;
 //			printf("p1 = %d\n", p);
 			 if (*str == 0)
-				cnt--;
+			{
+			}
 			else if (*str == 'c')
 			{
 				c = va_arg(ap, int);
 				ft_putchar(c);
+				cnt++;
 			}
 			else if (*str == 'C')
 			{
 				wc = va_arg(ap, wchar_t);
 				cnt = cnt + ft_putwchar(wc);
-				cnt--;
 			}
 			else if (*str == 's')
 			{
@@ -93,7 +97,6 @@ int	ft_printf(char *str, ...)
 					ft_putstr("(null)");
 					cnt = cnt + 6;
 				}
-				cnt--;
 			}
 			else if (*str == 'S')
 			{
@@ -107,7 +110,6 @@ int	ft_printf(char *str, ...)
 					ft_putstr("(null)");
 					cnt = cnt + 6;
 				}
-				cnt--;
 			}
 			else if (*str == 'p')
 			{
@@ -126,35 +128,30 @@ int	ft_printf(char *str, ...)
 						o++;
 					}
 				}
-				cnt--;
 			}
 			else if (*str == 'u')
 			{
 				ul = va_arg(ap, unsigned long);
 				ft_putlongnbr(ul);
 				cnt = cnt + ft_countl(ul);
-				cnt--;
 			}
 			else if (*str == 'U')
 			{
 				ul = va_arg(ap, unsigned long);
 				ft_putulongnbr(ul);
 				cnt = cnt + ft_countul(ul);
-				cnt--;
 			}
 			else if (*str == 'd' || *str == 'i')
 			{
 				d = va_arg(ap, int);
 				ft_putnbr(d);
 				cnt = cnt + ft_countd(d);
-				cnt--;
 			}
 			else if (*str == 'D')
 			{
 				l = va_arg(ap, long);
 				ft_putlongnbr(l);
 				cnt = cnt + ft_countl(l);
-				cnt--;
 			}
 			else if (*str == 'x')
 			{
@@ -170,7 +167,6 @@ int	ft_printf(char *str, ...)
 				cnt = cnt + ft_strlen(s2);
 //				cnt = cnt + d;
 //				cnt = 9;
-				cnt--;
 			}
 			else if (*str == 'X')
 			{
@@ -186,7 +182,6 @@ int	ft_printf(char *str, ...)
 				cnt = cnt + ft_strlen(s2);
 //				cnt = cnt + d;
 //				cnt = 9;
-				cnt--;
 			}
 			else if (*str == 'o')
 			{
@@ -194,7 +189,6 @@ int	ft_printf(char *str, ...)
 				s2 = ft_ltooct(u);
 				ft_putstr(s2);
 				cnt = cnt + ft_strlen(s2);
-				cnt--;
 			}
 			else if (*str == 'O')
 			{
@@ -202,19 +196,15 @@ int	ft_printf(char *str, ...)
 				s2 = ft_ltooct2(ul);
 				ft_putstr(s2);
 				cnt = cnt + ft_strlen(s2);
-				cnt--;
 			}
-			else if (*str == '%' && str[1] != '%')
+			else if (*str == '%' && cnt1 % 2 == 1)
 			{
-				ft_putchar('%');
-				cnt++;
 			}
 			else
 			{
 				ft_putchar(*str);
 				cnt++;
 			}
-			cnt++;
 		}
 		else
 		{
@@ -266,8 +256,10 @@ int	ft_printf(char *str, ...)
 				{
 				}
 				else
+				{
 					ft_putchar(*str);
-				cnt++;
+					cnt++;
+				}
 			}
 			if (*str != 0)
 				str++;
@@ -275,7 +267,9 @@ int	ft_printf(char *str, ...)
 //		bigi = str;
 	}
 	if(*str == '%')
+	{
 		ft_putchar(*str);
+	}
 	ind1++;
 	
 	}
