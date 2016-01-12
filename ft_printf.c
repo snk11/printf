@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/12 16:56:08 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/12 18:26:44 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,9 +131,9 @@ int	ft_printf(char *str, ...)
 			}
 			else if (*str == 'u')
 			{
-				ul = va_arg(ap, unsigned long);
-				ft_putlongnbr(ul);
-				cnt = cnt + ft_countl(ul);
+				u = va_arg(ap, unsigned int);
+				ft_putunbr(u);
+				cnt = cnt + ft_countu(u);
 			}
 			else if (*str == 'U')
 			{
