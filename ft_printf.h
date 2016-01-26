@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/26 18:04:55 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/26 19:05:47 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_putlongnbr(long n);
 void	ft_putulongnbr(unsigned long n);
 void	ft_putushortnbr(unsigned short n);
 void	ft_putllnbr(long long n);
-void	ft_putulonglongnbr(long long n);
+void	ft_putulonglongnbr(unsigned long long n);
 void	ft_putsdnbr(short int n);
 int	ft_countl(long n);
 int	ft_countu(unsigned int n);

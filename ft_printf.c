@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/26 18:21:37 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/26 19:25:19 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,6 +209,13 @@ int	ft_printf(char *str, ...)
 				cnt = cnt + ft_countsd(sd);
 				str++;
 			}
+			else if (*str == 'j' && (str[1] == 'd' || str[1] == 'i'))
+			{
+				ll = va_arg(ap,long long);
+				ft_putllnbr(ll);
+				cnt = cnt + ft_countlld(ll);
+				str++;
+			}
 			else if (*str == 'l' && str[1] == 'l' && (str[2] == 'd' || str[2] == 'i'))
 			{
 				ll = va_arg(ap, long long);
@@ -239,6 +246,13 @@ int	ft_printf(char *str, ...)
 				cnt = cnt + ft_countus(us);
 				str++;
 			}
+			else if (*str == 'j' && str[1] == 'u')
+			{
+				ull = va_arg(ap, unsigned long long);
+				ft_putulonglongnbr(ull);
+				cnt = cnt + ft_countull(ull);
+				str++;
+			}
 			else if (*str == 'l' && str[1] == 'l' && str[2] == 'u')
 			{
 				ull = va_arg(ap, unsigned long long);
@@ -267,6 +281,14 @@ int	ft_printf(char *str, ...)
 			{
 				us = va_arg(ap, unsigned short);
 				s2 = ft_ltooct5(us);
+				ft_putstr(s2);
+				cnt = cnt + ft_strlen(s2);
+				str++;
+			}
+			else if (*str == 'j' && str[1] == 'o')
+			{
+				ull = va_arg(ap, unsigned long long);
+				s2 = ft_ltooct4(ull);
 				ft_putstr(s2);
 				cnt = cnt + ft_strlen(s2);
 				str++;
@@ -305,6 +327,14 @@ int	ft_printf(char *str, ...)
 				cnt = cnt + ft_strlen(s2);
 				str++;
 			}
+			else if (*str == 'j' && str[1] == 'x')
+			{
+				ull = va_arg(ap, unsigned long long);
+				s2 = ft_ltohex3(ull);
+				ft_putstr(s2);
+				cnt = cnt + ft_strlen(s2);
+				str++;
+			}
 			else if (*str == 'l' && str[1] == 'l' && str[2] == 'x')
 			{
 				ull = va_arg(ap, unsigned long long);
@@ -335,6 +365,14 @@ int	ft_printf(char *str, ...)
 			{
 				us = va_arg(ap, unsigned short);
 				s2 = ft_ltohex7(us);
+				ft_putstr(s2);
+				cnt = cnt + ft_strlen(s2);
+				str++;
+			}
+			else if (*str == 'j' && str[1] == 'X')
+			{
+				ull = va_arg(ap, unsigned long long);
+				s2 = ft_ltohex5(ull);
 				ft_putstr(s2);
 				cnt = cnt + ft_strlen(s2);
 				str++;
@@ -399,7 +437,7 @@ int	ft_printf(char *str, ...)
 				str++;
 				str++;
 			}
-			else if ((*str == 'l' || *str == 'h') && str[1] == 'O')
+			else if ((*str == 'l' || *str == 'h' || *str == 'j') && str[1] == 'O')
 			{
 				us = va_arg(ap, unsigned short);
 				s2 = ft_ltooct3(us);
@@ -425,7 +463,7 @@ int	ft_printf(char *str, ...)
 				str++;
 				str++;
 			}
-			else if ((*str == 'l' || *str == 'h') && (str[1] == 'U' || str[1] == 'D'))
+			else if ((*str == 'l' || *str == 'h' || *str == 'j') && (str[1] == 'U' || str[1] == 'D'))
 			{
 				us = va_arg(ap, unsigned short);
 				ft_putushortnbr(us);

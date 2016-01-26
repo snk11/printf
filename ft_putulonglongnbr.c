@@ -6,14 +6,14 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 15:45:16 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/26 15:53:07 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/26 19:05:31 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ft_printf.h"
 
-void	ft_putulonglongnbr(long long n)
+void	ft_putulonglongnbr(unsigned long long n)
 {
 	if (n == ULLONG_MAX)
 		ft_putstr("18446744073709551615");
