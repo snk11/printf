@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/26 19:34:13 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/26 19:54:48 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -476,6 +476,14 @@ int	ft_printf(char *str, ...)
 				ft_putushortnbr(us);
 				cnt = cnt + ft_countus(us);
 				str++;
+				str++;
+			}
+			else if (*str == 'l' && str[1] == 'p')
+			{
+				l = va_arg(ap, long);
+				ft_putstr("0x");
+				ft_putstr(ft_ltohex(l));
+				cnt = cnt + ft_strlen(ft_ltohex(l)) + 2;
 				str++;
 			}
 			else if (*str == '%' && cnt1 % 2 == 1)
