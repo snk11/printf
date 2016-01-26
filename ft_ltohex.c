@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 02:47:12 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/17 15:59:07 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/26 12:53:44 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,5 +146,63 @@ char	*ft_ltohex2(unsigned long l)
 			*res = 'E';
 		else if (l % 16 == 15)
 			*res = 'F';
+	return (bigi);
+}
+
+
+char	*ft_ltohex3( unsigned long l)
+{
+	char	*res;
+	char	*bigi;
+	int i;
+	unsigned long l1;
+	int tab[100];
+
+	bigi = NULL;
+	l1 = l;
+	i = 1;
+	while(l > 16)
+	{
+		l = l / 16;
+		i++;
+	}
+	res = (char*)malloc(sizeof(char)*(i + 1));
+	res[i] = 0;
+	bigi  = res;
+	l = l1;
+	res = res + i - 1;
+	while (l > 16)
+	{
+		if (l % 16 < 10)
+			*res = '0' + l % 16;
+		else if (l % 16 == 10)
+			*res = 'a';
+		else if (l % 16 == 11)
+			*res = 'b';
+		else if (l % 16 == 12)
+			*res = 'c';
+		else if (l % 16 == 13)
+			*res = 'd';
+		else if (l % 16 == 14)
+			*res = 'e';
+		else if (l % 16 == 15)
+			*res = 'f';
+		l = l / 16;
+		res--;
+	}
+		if (l % 16 < 10)
+			*res = '0' + l % 16;
+		else if (l % 16 == 10)
+			*res = 'a';
+		else if (l % 16 == 11)
+			*res = 'b';
+		else if (l % 16 == 12)
+			*res = 'c';
+		else if (l % 16 == 13)
+			*res = 'd';
+		else if (l % 16 == 14)
+			*res = 'e';
+		else if (l % 16 == 15)
+			*res = 'f';
 	return (bigi);
 }

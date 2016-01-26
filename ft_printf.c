@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/12 18:26:44 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/26 13:47:43 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int	ft_printf(char *str, ...)
 	va_list		ap;
 	int			d;
 	unsigned int	u;
+	unsigned short	us;
 	long		l;
+	long int	ld;
 	unsigned long		ul;
 	char		*s;
 	char		*s2;
@@ -157,16 +159,8 @@ int	ft_printf(char *str, ...)
 			{
 				u = va_arg(ap, unsigned int);
 				s2 = ft_ltohex(u);
-//				d = printf("%s",s2);
-//				s2 = "e82183e";
 				ft_putstr(s2);
-//				printf("%x",u);
-//				d = printf("%x",u);
-//				printf("strlen = %d\n",ft_strlen(s2));
-//				printf("%d\n",d);
 				cnt = cnt + ft_strlen(s2);
-//				cnt = cnt + d;
-//				cnt = 9;
 			}
 			else if (*str == 'X')
 			{
@@ -196,6 +190,79 @@ int	ft_printf(char *str, ...)
 				s2 = ft_ltooct2(ul);
 				ft_putstr(s2);
 				cnt = cnt + ft_strlen(s2);
+			}
+			else if (*str == 'l' && (str[1] == 'd' || str[1] == 'i'))
+			{
+				ld = va_arg(ap, long);
+				ft_putldnbr(ld);
+				cnt = cnt + ft_countld(ld);
+				str++;
+			}
+			else if (*str == 'l' && str[1] == 'u')
+			{
+				ul = va_arg(ap, unsigned long);
+				ft_putulongnbr(ul);
+				cnt = cnt + ft_countul(ul);
+				str++;
+			}
+			else if (*str == 'l' && str[1] == 'o')
+			{
+				ul = va_arg(ap, unsigned long);
+				s2 = ft_ltooct2(ul);
+				ft_putstr(s2);
+				cnt = cnt + ft_strlen(s2);
+				str++;
+			}
+			else if (*str == 'l' && str[1] == 'x')
+			{
+				ul = va_arg(ap, unsigned long);
+				s2 = ft_ltohex3(ul);
+				ft_putstr(s2);
+				cnt = cnt + ft_strlen(s2);
+				str++;
+			}
+			else if (*str == 'l' && str[1] == 'X')
+			{
+				ul = va_arg(ap, unsigned long);
+				s2 = ft_ltohex2(ul);
+				ft_putstr(s2);
+				cnt = cnt + ft_strlen(s2);
+				str++;
+			}
+			else if (*str == 'l' && str[1] == 'c')
+			{
+				wc = va_arg(ap, wchar_t);
+				cnt = cnt + ft_putwchar(wc);
+				str++;
+			}
+			else if (*str == 'l' && str[1] == 's')
+			{
+				ss = va_arg(ap, wchar_t*);
+				if (ss)
+				{
+					cnt = cnt + ft_putwstr(ss);
+				}
+				else
+				{
+					ft_putstr("(null)");
+					cnt = cnt + 6;
+				}
+				str++;
+			}
+			else if (*str == 'l' && str[1] == 'O')
+			{
+				us = va_arg(ap, unsigned short);
+				s2 = ft_ltooct3(us);
+				ft_putstr(s2);
+				cnt = cnt + ft_strlen(s2);
+				str++;
+			}
+			else if (*str == 'l' && (str[1] == 'U' || str[1] == 'D'))
+			{
+				us = va_arg(ap, unsigned short);
+				ft_putushortnbr(us);
+				cnt = cnt + ft_countus(us);
+				str++;
 			}
 			else if (*str == '%' && cnt1 % 2 == 1)
 			{
