@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/26 17:21:46 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/26 18:21:37 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	ft_printf(char *str, ...)
 	char		*s;
 	char		*s2;
 	char		c;
+	unsigned char		uc;
 	int			cnt;
 	int			i;
 	char		*p;
@@ -216,6 +217,14 @@ int	ft_printf(char *str, ...)
 				str++;
 				str++;
 			}
+			else if (*str == 'h' && str[1] == 'h' && (str[2] == 'd' || str[2] == 'i'))
+			{
+				c = va_arg(ap, char);
+				ft_putnbr(c);
+				cnt = cnt + ft_countd(c);
+				str++;
+				str++;
+			}
 			else if (*str == 'l' && str[1] == 'u')
 			{
 				ul = va_arg(ap, unsigned long);
@@ -235,6 +244,14 @@ int	ft_printf(char *str, ...)
 				ull = va_arg(ap, unsigned long long);
 				ft_putulonglongnbr(ull);
 				cnt = cnt + ft_countul(ull);
+				str++;
+				str++;
+			}
+			else if (*str == 'h' && str[1] == 'h' && str[2] == 'u')
+			{
+				uc = va_arg(ap, unsigned char);
+				ft_putnbr(uc);
+				cnt = cnt + ft_countd(uc);
 				str++;
 				str++;
 			}
@@ -258,6 +275,15 @@ int	ft_printf(char *str, ...)
 			{
 				ull = va_arg(ap, unsigned long long);
 				s2 = ft_ltooct4(ull);
+				ft_putstr(s2);
+				cnt = cnt + ft_strlen(s2);
+				str++;
+				str++;
+			}
+			else if (*str == 'h' && str[1] == 'h' && str[2] == 'o')
+			{
+				uc = va_arg(ap, unsigned char);
+				s2 = ft_ltooct6(uc);
 				ft_putstr(s2);
 				cnt = cnt + ft_strlen(s2);
 				str++;
@@ -288,6 +314,15 @@ int	ft_printf(char *str, ...)
 				str++;
 				str++;
 			}
+			else if (*str == 'h' && str[1] == 'h' && str[2] == 'x')
+			{
+				uc = va_arg(ap, unsigned char);
+				s2 = ft_ltohex8(uc);
+				ft_putstr(s2);
+				cnt = cnt + ft_strlen(s2);
+				str++;
+				str++;
+			}
 			else if (*str == 'l' && str[1] == 'X')
 			{
 				ul = va_arg(ap, unsigned long);
@@ -313,10 +348,26 @@ int	ft_printf(char *str, ...)
 				str++;
 				str++;
 			}
+			else if (*str == 'h' && str[1] == 'h' && str[2] == 'X')
+			{
+				uc = va_arg(ap, unsigned char);
+				s2 = ft_ltohex9(uc);
+				ft_putstr(s2);
+				cnt = cnt + ft_strlen(s2);
+				str++;
+				str++;
+			}
 			else if (*str == 'l' && str[1] == 'c')
 			{
 				wc = va_arg(ap, wchar_t);
 				cnt = cnt + ft_putwchar(wc);
+				str++;
+			}
+			else if (*str == 'h' && str[1] == 'h' && str[2] == 'C')
+			{
+				wc = va_arg(ap, wchar_t);
+				cnt = cnt + ft_putwchar(wc);
+				str++;
 				str++;
 			}
 			else if (*str == 'l' && str[1] == 's')
@@ -331,6 +382,21 @@ int	ft_printf(char *str, ...)
 					ft_putstr("(null)");
 					cnt = cnt + 6;
 				}
+				str++;
+			}
+			else if (*str == 'h' && str[1] == 'h' && str[2] == 'S')
+			{
+				ss = va_arg(ap, wchar_t*);
+				if (ss)
+				{
+					cnt = cnt + ft_putwstr(ss);
+				}
+				else
+				{
+					ft_putstr("(null)");
+					cnt = cnt + 6;
+				}
+				str++;
 				str++;
 			}
 			else if ((*str == 'l' || *str == 'h') && str[1] == 'O')
@@ -350,6 +416,15 @@ int	ft_printf(char *str, ...)
 				str++;
 				str++;
 			}
+			else if (*str == 'h' && str[1] == 'h' && str[2] == 'O')
+			{
+				us = va_arg(ap, unsigned short);
+				s2 = ft_ltooct3(us);
+				ft_putstr(s2);
+				cnt = cnt + ft_strlen(s2);
+				str++;
+				str++;
+			}
 			else if ((*str == 'l' || *str == 'h') && (str[1] == 'U' || str[1] == 'D'))
 			{
 				us = va_arg(ap, unsigned short);
@@ -358,6 +433,14 @@ int	ft_printf(char *str, ...)
 				str++;
 			}
 			else if (*str == 'l' && str[1] == 'l' && (str[2] == 'U' || str[2] == 'D'))
+			{
+				us = va_arg(ap, unsigned short);
+				ft_putushortnbr(us);
+				cnt = cnt + ft_countus(us);
+				str++;
+				str++;
+			}
+			else if (*str == 'h' && str[1] == 'h' && (str[2] == 'U' || str[2] == 'D'))
 			{
 				us = va_arg(ap, unsigned short);
 				ft_putushortnbr(us);

@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/26 17:17:46 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/26 18:04:55 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,14 @@ char	*ft_ltohex4(unsigned long long l);
 char	*ft_ltohex5(unsigned long long l);
 char	*ft_ltohex6(unsigned short l);
 char	*ft_ltohex7(unsigned short l);
+char	*ft_ltohex8( unsigned char l);
+char	*ft_ltohex9(unsigned char l);
 char	*ft_ltooct(long l);
 char	*ft_ltooct2(unsigned long l);
 char	*ft_ltooct3(unsigned short l);
 char	*ft_ltooct4(unsigned long long l);
 char	*ft_ltooct5(unsigned short int l);
+char	*ft_ltooct6(unsigned char l);
 int	ft_putwchar(wchar_t c);
 char	*ft_check_perc0(char *str);
 char	*ft_check_perc(char *str);

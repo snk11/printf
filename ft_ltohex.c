@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 02:47:12 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/26 17:17:22 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/26 18:04:30 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -381,6 +381,118 @@ char	*ft_ltohex7(unsigned short l)
 	char	*bigi;
 	int i;
 	unsigned short l1;
+
+	bigi = NULL;
+	l1 = l;
+	i = 1;
+	while(l > 16)
+	{
+		l = l / 16;
+		i++;
+	}
+	res = (char*)malloc(sizeof(char)*(i + 1));
+	res[i] = 0;
+	bigi  = res;
+	l = l1;
+	res = res + i - 1;
+	while (l > 16)
+	{
+		if (l % 16 < 10)
+			*res = '0' + l % 16;
+		else if (l % 16 == 10)
+			*res = 'A';
+		else if (l % 16 == 11)
+			*res = 'B';
+		else if (l % 16 == 12)
+			*res = 'C';
+		else if (l % 16 == 13)
+			*res = 'D';
+		else if (l % 16 == 14)
+			*res = 'E';
+		else if (l % 16 == 15)
+			*res = 'F';
+		l = l / 16;
+		res--;
+	}
+		if (l % 16 < 10)
+			*res = '0' + l % 16;
+		else if (l % 16 == 10)
+			*res = 'A';
+		else if (l % 16 == 11)
+			*res = 'B';
+		else if (l % 16 == 12)
+			*res = 'C';
+		else if (l % 16 == 13)
+			*res = 'D';
+		else if (l % 16 == 14)
+			*res = 'E';
+		else if (l % 16 == 15)
+			*res = 'F';
+	return (bigi);
+}
+
+char	*ft_ltohex8( unsigned char l)
+{
+	char	*res;
+	char	*bigi;
+	int i;
+	unsigned long l1;
+
+	bigi = NULL;
+	l1 = l;
+	i = 1;
+	while(l > 16)
+	{
+		l = l / 16;
+		i++;
+	}
+	res = (char*)malloc(sizeof(char)*(i + 1));
+	res[i] = 0;
+	bigi  = res;
+	l = l1;
+	res = res + i - 1;
+	while (l > 16)
+	{
+		if (l % 16 < 10)
+			*res = '0' + l % 16;
+		else if (l % 16 == 10)
+			*res = 'a';
+		else if (l % 16 == 11)
+			*res = 'b';
+		else if (l % 16 == 12)
+			*res = 'c';
+		else if (l % 16 == 13)
+			*res = 'd';
+		else if (l % 16 == 14)
+			*res = 'e';
+		else if (l % 16 == 15)
+			*res = 'f';
+		l = l / 16;
+		res--;
+	}
+		if (l % 16 < 10)
+			*res = '0' + l % 16;
+		else if (l % 16 == 10)
+			*res = 'a';
+		else if (l % 16 == 11)
+			*res = 'b';
+		else if (l % 16 == 12)
+			*res = 'c';
+		else if (l % 16 == 13)
+			*res = 'd';
+		else if (l % 16 == 14)
+			*res = 'e';
+		else if (l % 16 == 15)
+			*res = 'f';
+	return (bigi);
+}
+
+char	*ft_ltohex9(unsigned char l)
+{
+	char	*res;
+	char	*bigi;
+	int i;
+	unsigned char l1;
 
 	bigi = NULL;
 	l1 = l;
