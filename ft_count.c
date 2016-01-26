@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 08:29:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/26 13:37:14 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/26 17:00:11 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,32 @@ int	ft_countd(int n)
 }
 
 
+int	ft_countsd(short int n)
+{
+	int i;
+
+	i = 0;
+	if (n == -32768)
+		return (6);
+	else
+	{
+		if (n < 0)
+		{
+			i++;
+			n = -n;
+		}
+		if (n >= 10)
+		{
+			while (n >= 10)
+			{
+				n = n / 10;
+				i++;
+			}
+		}
+		i++;
+	}
+	return (i);
+}
 int	ft_countl(long n)
 {
 	int i;
@@ -95,6 +121,32 @@ int	ft_countld(long int n)
 	return (i);
 }
 
+int	ft_countlld(long long n)
+{
+	int i;
+
+	i = 0;
+	if (n == LLONG_MIN)
+		return (20);
+	else
+	{
+		if (n < 0)
+		{
+			i++;
+			n = -n;
+		}
+		if (n >= 10)
+		{
+			while (n >= 10)
+			{
+				n = n / 10;
+				i++;
+			}
+		}
+		i++;
+	}
+	return (i);
+}
 int	ft_countu(unsigned int n)
 {
 	int i;
