@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/26 19:54:48 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/27 18:14:43 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	ft_printf(char *str, ...)
 	unsigned long		ul;
 	char		*s;
 	char		*s2;
+	char		*s3;
 	char		c;
 	unsigned char		uc;
 	int			cnt;
@@ -39,6 +40,7 @@ int	ft_printf(char *str, ...)
 	wchar_t		*ss;
 	wchar_t		wc;
 	char		*bigi;
+	char		*bigi2;
 	int		cnt1;
 	int c2;
 	char	*p3;
@@ -488,6 +490,32 @@ int	ft_printf(char *str, ...)
 			}
 			else if (*str == '%' && cnt1 % 2 == 1)
 			{
+			}
+			else if ((*str >= '0' && *str <= '9') || *str == '-' || *str == '.' || *str == ' ')
+			{
+				i = 0;
+				while(*str != 'd' && *str != 'c' && *str != 'p')
+				{
+					i++;
+					str++;
+				}
+				str--;
+				s3 = (char*)malloc(sizeof(char)*i + 1);
+				s3[i] = 0;
+				while(i > 0)
+				{
+					s3[i - 1] = *str;
+					i--;
+					str--;
+				}
+				str++;
+				int w;
+				int pr;
+				printf("s3 = %s\n",s3);
+				w = ft_checkwidth(s3);
+				pr = ft_checkprec(s3);
+				printf("w = %d\n",w);
+				printf("pr = %d\n",pr);
 			}
 			else
 			{
