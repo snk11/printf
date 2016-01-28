@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/28 12:59:48 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/28 16:31:29 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,17 @@ int	ft_printf(char *str, ...)
 	int c2;
 	char	*p3;
 	int		ind1;
+	int		w;
+	int		pr;
+	int		ind2;
+//	int		b;
 
 	
 	cnt = 0;
 	ind1 = 0;
+	w = 0;
+	pr = 0;
+	ind2 = 0;
 	va_start(ap, str);
 	bigi = &(str[0]);
 
@@ -66,10 +73,12 @@ int	ft_printf(char *str, ...)
 
 	while (*str != 0 && str !=p)
 	{
-		if ( *str == '%')
+		if ( *str == '%' || ind2 == 1)
 		{
 			cnt1 = 1;
 			str++;
+			if (ind2 == 1)
+				str--;
 			if (*str == '%')
 				cnt1++;
 //			printf("p1 = %d\n", p);
@@ -152,8 +161,11 @@ int	ft_printf(char *str, ...)
 			else if (*str == 'd' || *str == 'i')
 			{
 				d = va_arg(ap, int);
+				cnt = cnt + ft_countd(w,pr,d);
 				ft_putnbr(d);
-				cnt = cnt + ft_countd(d);
+				ind2 = 0;
+				w = 0;
+				pr = 0;
 			}
 			else if (*str == 'D')
 			{
@@ -222,7 +234,7 @@ int	ft_printf(char *str, ...)
 			{
 				c = va_arg(ap, char);
 				ft_putnbr(c);
-				cnt = cnt + ft_countd(c);
+				cnt = cnt + ft_countd(w,pr,c);
 				str++;
 				str++;
 			}
@@ -259,7 +271,7 @@ int	ft_printf(char *str, ...)
 			{
 				uc = va_arg(ap, unsigned char);
 				ft_putnbr(uc);
-				cnt = cnt + ft_countd(uc);
+				cnt = cnt + ft_countuc(uc);
 				str++;
 				str++;
 			}
@@ -491,35 +503,57 @@ int	ft_printf(char *str, ...)
 			else if (*str == '%' && cnt1 % 2 == 1)
 			{
 			}
-			else if ((*str >= '0' && *str <= '9') || *str == '-' || *str == '.' || *str == ' ')
+			else if (((*str >= '0' && *str <= '9') || *str == '-' || *str == '.' || *str == ' '))
 			{
-				i = 0;
-				while(*str != 'd' && *str != 'c' && *str != 'p')
+				if (ind2 == 0)
 				{
-					i++;
-					str++;
-				}
-				str--;
-				s3 = (char*)malloc(sizeof(char)*i + 1);
-				s3[i] = 0;
-				while(i > 0)
-				{
-					s3[i - 1] = *str;
-					i--;
+					i = 0;
+					while(*str != 'd' && *str != 'c' && *str != 'p')
+					{
+						i++;
+						str++;
+					}
 					str--;
+					s3 = (char*)malloc(sizeof(char)*i + 1);
+					s3[i] = 0;
+					while(i > 0)
+					{
+						s3[i - 1] = *str;
+						i--;
+						str--;
+					}
+					printf("s3 = %s\n",s3);
+					if (w == 0)
+						w = ft_checkwidth(s3);
+					if (pr == 0)
+						pr = ft_checkprec(s3);
 				}
-				str++;
-				int w;
-				int pr;
-//				printf("s3 = %s\n",s3);
-				w = ft_checkwidth(s3);
-				pr = ft_checkprec(s3);
 				printf("w = %d\n",w);
 				printf("pr = %d\n",pr);
+				ind2 = 1;
+				printf("str = %c\n",*str);
 			}
 			else
 			{
+//				i = 0;
+//				b = 0;
+//				while(s3[i] != 0)
+//				{
+//					
+//					if (s3[i] != '.' && !(s3[i] >= '0' && s3[i] <= '9'))
+//						b++;
+//					i++;
+//				}
+//				printf("S3 = %s,b= %d\n",s3,b);
+				while((w - 1) > 0)
+			{
+				ft_putchar(' ');
+				w--;
+			}
 				ft_putchar(*str);
+				ind2 = 0;
+				w = 0;
+				pr = 0;
 				cnt++;
 			}
 		}

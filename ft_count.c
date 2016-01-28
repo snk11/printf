@@ -6,14 +6,14 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 08:29:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/26 19:08:51 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/28 16:04:01 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_printf.h"
 
 
-int	ft_countd(int n)
+int	ft_countd(int w,int pr,int n)
 {
 	int i;
 
@@ -36,6 +36,16 @@ int	ft_countd(int n)
 			}
 		}
 		i++;
+	}
+	while((w - pr) > 0)
+	{
+		ft_putchar(' ');
+		w--;
+	}
+	while((pr - i) > 0)
+	{
+		ft_putchar('0');
+		pr--;
 	}
 	return (i);
 }
@@ -227,6 +237,30 @@ int	ft_countull(unsigned long long n)
 	c = 0;
 	i = 0;
 	if (n == ULLONG_MAX)
+		return (20);
+	else
+	{
+		if (n >= 10)
+		{
+			while (n >= 10)
+			{
+				n = n / 10;
+				i++;
+			}
+		}
+		i++;
+	}
+	return (i);
+}
+
+int	ft_countuc(unsigned char n)
+{
+	int i;
+	unsigned char c;
+
+	c = 0;
+	i = 0;
+	if (n == ULONG_MAX)
 		return (20);
 	else
 	{
