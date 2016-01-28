@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/27 18:14:43 by syusof           ###   ########.fr       */
+/*   Updated: 2016/01/28 12:59:48 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -511,7 +511,7 @@ int	ft_printf(char *str, ...)
 				str++;
 				int w;
 				int pr;
-				printf("s3 = %s\n",s3);
+//				printf("s3 = %s\n",s3);
 				w = ft_checkwidth(s3);
 				pr = ft_checkprec(s3);
 				printf("w = %d\n",w);
