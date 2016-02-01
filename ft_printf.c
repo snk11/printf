@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/28 16:31:29 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/01 14:13:53 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	ft_printf(char *str, ...)
 	int		w;
 	int		pr;
 	int		ind2;
+	int		g;
 //	int		b;
 
 	
@@ -79,6 +80,7 @@ int	ft_printf(char *str, ...)
 			str++;
 			if (ind2 == 1)
 				str--;
+//			printf("ind2 = %d,str1 =%c\n",ind2,*str);
 			if (*str == '%')
 				cnt1++;
 //			printf("p1 = %d\n", p);
@@ -88,8 +90,17 @@ int	ft_printf(char *str, ...)
 			else if (*str == 'c')
 			{
 				c = va_arg(ap, int);
+				while((w - 1) > 0)
+				{
+					cnt++;
+					ft_putchar(' ');
+					w--;
+				}
 				ft_putchar(c);
 				cnt++;
+				ind2 = 0;
+				w = 0;
+				pr = 0;
 			}
 			else if (*str == 'C')
 			{
@@ -118,6 +129,7 @@ int	ft_printf(char *str, ...)
 			else if (*str == 'S')
 			{
 				ss = va_arg(ap, wchar_t*);
+				g =
 				if (ss)
 				{
 					cnt = cnt + ft_putwstr(ss);
@@ -127,15 +139,23 @@ int	ft_printf(char *str, ...)
 					ft_putstr("(null)");
 					cnt = cnt + 6;
 				}
+				ind2 = 0;
+				w = 0;
+				pr = 0;
 			}
 			else if (*str == 'p')
 			{
 				l = va_arg(ap, long);
+				g =(ft_strlen(ft_ltohex(l)));
+				while((w - (g + 2)) > 0)
+				{
+					cnt++;
+					ft_putchar(' ');
+					w--;
+				}
 				ft_putstr("0x");
 				ft_putstrad(ft_ltohex(l));
-				cnt = cnt + ft_strlen(ft_ltohex(l)) + 2;
-				int g;
-				g =(ft_strlen(ft_ltohex(l)));
+				cnt = cnt + g + 2;
 				int o = 0;
 				if (g < 9 && g > 1)
 				{
@@ -145,6 +165,9 @@ int	ft_printf(char *str, ...)
 						o++;
 					}
 				}
+				ind2 = 0;
+				w = 0;
+				pr = 0;
 			}
 			else if (*str == 'u')
 			{
@@ -522,16 +545,15 @@ int	ft_printf(char *str, ...)
 						i--;
 						str--;
 					}
-					printf("s3 = %s\n",s3);
+//					printf("s3 = %s\n",s3);
 					if (w == 0)
 						w = ft_checkwidth(s3);
 					if (pr == 0)
 						pr = ft_checkprec(s3);
 				}
-				printf("w = %d\n",w);
-				printf("pr = %d\n",pr);
+//				printf("w = %d\n",w);
+//				printf("pr = %d\n",pr);
 				ind2 = 1;
-				printf("str = %c\n",*str);
 			}
 			else
 			{
@@ -548,6 +570,7 @@ int	ft_printf(char *str, ...)
 				while((w - 1) > 0)
 			{
 				ft_putchar(' ');
+				cnt++;
 				w--;
 			}
 				ft_putchar(*str);
@@ -564,6 +587,7 @@ int	ft_printf(char *str, ...)
 		}
 		if (*str != 0)
 			str++;
+//		printf("str = %c\n",*str);
 	}
 	ind1++;
 
