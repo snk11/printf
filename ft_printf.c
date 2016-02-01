@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/01 14:13:53 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/01 14:30:05 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,15 @@ int	ft_printf(char *str, ...)
 			else if (*str == 'S')
 			{
 				ss = va_arg(ap, wchar_t*);
-				g =
+				g = ft_strlen2(ss);
+				if (!ss)
+					g = 6;
+				while((w - g) > 0)
+				{
+					cnt++;
+					ft_putchar(' ');
+					w--;
+				}
 				if (ss)
 				{
 					cnt = cnt + ft_putwstr(ss);
