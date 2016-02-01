@@ -6,19 +6,21 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 08:29:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/01 14:32:50 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/01 15:57:43 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_printf.h"
 
 
-int	ft_countd(int w,int pr,int n)
+int	ft_countd(int w,int pr,int zero,int n)
 {
 	int i;
 	int v;
+	int u;
 
 	i = 0;
+	u = pr;
 	v = w;
 	if (n == -2147483648)
 		i = 11;
@@ -39,15 +41,34 @@ int	ft_countd(int w,int pr,int n)
 		}
 		i++;
 	}
-	while(w - abs(pr - i) > 0)
+//	printf("zero =%d \n",zero);
+	if (zero == 1)
 	{
-		ft_putchar(' ');
-		w--;
+		while(w - abs(pr - i) > 0)
+		{
+			ft_putchar('0');
+			w--;
+		}
 	}
-	while((pr - i) > 0)
+	else
 	{
-		ft_putchar('0');
-		pr--;
+		while(w - abs(pr - i) > 0)
+		{
+			ft_putchar(' ');
+			w--;
+		}
+		
+		while((pr - i) > 0)
+		{
+			ft_putchar('0');
+			pr--;
+		}
+	}
+	if (u > i)
+	{
+		if (v > u)
+			return (v);
+		return (u);
 	}
 	if (v > i)
 		return (v);

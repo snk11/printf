@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/01 14:38:30 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/01 15:59:48 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ int	ft_printf(char *str, ...)
 	int		w;
 	int		pr;
 	int		ind2;
+	int		ind0;
+	int		indl;
+	int		zero;
 	int		g;
 //	int		b;
 
@@ -57,6 +60,8 @@ int	ft_printf(char *str, ...)
 	w = 0;
 	pr = 0;
 	ind2 = 0;
+	indl = 0;
+	zero = 0;
 	va_start(ap, str);
 	bigi = &(str[0]);
 
@@ -151,6 +156,7 @@ int	ft_printf(char *str, ...)
 				ind2 = 0;
 				w = 0;
 				pr = 0;
+				indl = 1;
 			}
 			else if (*str == 'p')
 			{
@@ -177,6 +183,7 @@ int	ft_printf(char *str, ...)
 				ind2 = 0;
 				w = 0;
 				pr = 0;
+				indl = 1;
 			}
 			else if (*str == 'u')
 			{
@@ -193,11 +200,13 @@ int	ft_printf(char *str, ...)
 			else if (*str == 'd' || *str == 'i')
 			{
 				d = va_arg(ap, int);
-				cnt = cnt + ft_countd(w,pr,d);
+				cnt = cnt + ft_countd(w,pr,zero,d);
 				ft_putnbr(d);
 				ind2 = 0;
 				w = 0;
 				pr = 0;
+				indl = 1;
+				zero = 0;
 			}
 			else if (*str == 'D')
 			{
@@ -266,7 +275,7 @@ int	ft_printf(char *str, ...)
 			{
 				c = va_arg(ap, char);
 				ft_putnbr(c);
-				cnt = cnt + ft_countd(w,pr,c);
+				cnt = cnt + ft_countd(w,pr,zero,c);
 				str++;
 				str++;
 			}
@@ -559,6 +568,8 @@ int	ft_printf(char *str, ...)
 						w = ft_checkwidth(s3);
 					if (pr == 0)
 						pr = ft_checkprec(s3);
+					if (str[1] == '0')
+						zero = 1;
 				}
 //				printf("w = %d\n",w);
 //				printf("pr = %d\n",pr);
@@ -576,17 +587,21 @@ int	ft_printf(char *str, ...)
 //					i++;
 //				}
 //				printf("S3 = %s,b= %d\n",s3,b);
-				while((w - 1) > 0)
-			{
-				ft_putchar(' ');
-				cnt++;
-				w--;
-			}
+				if (indl == 1)
+				{
+					while((w - 1) > 0)
+					{
+						ft_putchar(' ');
+						cnt++;
+						w--;
+					}
+				}
 				ft_putchar(*str);
 				ind2 = 0;
 				w = 0;
 				pr = 0;
 				cnt++;
+				indl = 0;
 			}
 		}
 		else
