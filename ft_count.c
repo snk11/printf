@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 08:29:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/01 15:57:43 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/01 17:57:27 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,26 @@ int	ft_countd(int w,int pr,int zero,int n)
 	int i;
 	int v;
 	int u;
+	int neg;
 
+	if (w < 0)
+		w = -w;
 	i = 0;
+	neg = 0;
 	u = pr;
 	v = w;
 	if (n == -2147483648)
+	{
 		i = 11;
+		neg = 1;
+	}
 	else
 	{
 		if (n < 0)
 		{
 			i++;
 			n = -n;
+			neg = 1;
 		}
 		if (n >= 10)
 		{
@@ -44,6 +52,8 @@ int	ft_countd(int w,int pr,int zero,int n)
 //	printf("zero =%d \n",zero);
 	if (zero == 1)
 	{
+		if (neg == 1)
+			ft_putchar('-');
 		while(w - abs(pr - i) > 0)
 		{
 			ft_putchar('0');
@@ -63,6 +73,8 @@ int	ft_countd(int w,int pr,int zero,int n)
 			ft_putchar('0');
 			pr--;
 		}
+		if (neg == 1)
+			ft_putchar('-');
 	}
 	if (u > i)
 	{
