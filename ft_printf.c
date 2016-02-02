@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/01 20:26:09 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/02 20:06:47 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_printf(char *str, ...)
 	int			max;
 	wchar_t		*ss;
 	wchar_t		wc;
-	char		*bigi;
+	char		*begi;
 	char		*bigi2;
 	int		cnt1;
 	int c2;
@@ -52,10 +52,15 @@ int	ft_printf(char *str, ...)
 	int		indletter;
 	int		zero;
 	int		g;
+	char	*beg1;
+	char	*p2;
+	int		cnt2;
+	int		indlast;
 //	int		b;
 
 	
 	cnt = 0;
+	cnt1 = 0;
 	ind1 = 0;
 	w = 0;
 	pr = 0;
@@ -63,7 +68,7 @@ int	ft_printf(char *str, ...)
 	indletter = 0;
 	zero = 0;
 	va_start(ap, str);
-	bigi = &(str[0]);
+	begi = &(str[0]);
 
 	p = ft_check_perc0(str);
 	if (p != NULL)
@@ -76,12 +81,14 @@ int	ft_printf(char *str, ...)
 	if (ind1 % 2 == 0)
 	{
 		p = ft_check_perc(str);
+		p2 = p;
+//		printf("p= %s\n",p);
 
 	while (*str != 0 && str !=p)
 	{
 		if ( *str == '%' || ind2 == 1)
 		{
-			cnt1 = 1;
+			cnt1++;
 			str++;
 			if (ind2 == 1)
 				str--;
@@ -119,6 +126,7 @@ int	ft_printf(char *str, ...)
 				w = 0;
 				pr = 0;
 				zero = 0;
+				indletter = 1;
 			}
 			else if (*str == 'C')
 			{
@@ -166,6 +174,7 @@ int	ft_printf(char *str, ...)
 				w = 0;
 				pr = 0;
 				zero = 0;
+				indletter = 1;
 			}
 			else if (*str == 'S')
 			{
@@ -861,9 +870,12 @@ int	ft_printf(char *str, ...)
 	{
 //		bigi = &(str[0]);
 		cnt1 = 0;
+		cnt2 = 0;
 		c2 = 0;
 		p = ft_check_perc(str);
 		p3 = p;
+		indlast = 0;
+//		printf("p3 = %s\n",p3);
 		/*
 			while((*str != 0) && (*str == '%' || *str == ' ') && p == NULL)
 	{
@@ -882,30 +894,35 @@ int	ft_printf(char *str, ...)
 //		str = bigi;
 		while (*str != 0 && str != p)
 		{
-			if (*str != ' ')
+//			printf("cnt1 = %d,str = %c begi = %c \n",cnt1,*str,begi[ft_strlen(begi)-2]);
+			if (cnt1 % 2 == 0 && ft_checkstrlast(str) && *str == '%')
 			{
-				if (*str == '%')
-					cnt1++;
-				if (*str == '%' && str[1] == ' ')
+				indlast = 1;
+				cnt1--;
+			}
+			else if (cnt1 % 2 == 0)
+			{
+				ft_putchar(*str);
+				cnt++;
+			}
+			if(*str == '%')
+			{
+				if (str[1] == '%')
 				{
+					str++;
 				}
-				if (*str == '%' && cnt1 % 2 == 1)
-				{
-				}
-				else
-				{
-					ft_putchar(*str);
-					cnt++;
-				}
+				cnt1++;
 			}
 			if (*str != 0)
 				str++;
+//			printf("indlast= %d\n",indlast);
 		}
-//		bigi = str;
-	}
-	if(*str == '%')
-	{
-		ft_putchar(*str);
+//		if (indlast == 1)
+//		{
+//			str--;
+//			ft_putchar(*str);
+//			str++;
+//		}
 	}
 	ind1++;
 	

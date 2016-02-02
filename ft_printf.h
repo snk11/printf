@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/01 15:41:39 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/02 19:58:39 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 
 int		ft_printf(char *str, ...);
 int		ft_atoi(const char *nptr);
+int		ft_checkletter(char *str);
+int		ft_checkstrlast(char *str);
 int		ft_checkprec(char *s);
 int		ft_checkwidth(char *str);
 void	ft_putnbr(int n);
