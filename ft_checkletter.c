@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 18:44:55 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/02 18:50:34 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/03 10:00:25 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 int		ft_checkletter(char *str)
 {
-	if (*str == 'd' && *str == 'c' && *str == 'p' && *str == 's'  && *str == 'S' && *str == 'R' && *str == 'x' && *str == 'X')
-		return (1);
+	while (*str != 0)
+	{
+		if (*str == 'd' || *str == 'D' || *str == 'i'|| *str == 'o' || *str == 'O' || *str == 'u' || *str == 'U' || *str == 'c' || *str == 'C'|| *str == 'p' || *str == 's'  || *str == 'S' || *str == 'R' || *str == 'x' || *str == 'X')
+			return (1);
+		str++;
+	}
 	return (0);
 }
