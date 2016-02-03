@@ -6,12 +6,40 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 08:29:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/01 17:57:27 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/03 15:24:08 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_printf.h"
 
+int	ft_count(int n)
+{
+	int i;
+
+	i = 0;
+	if (n == -2147483648)
+	{
+		i = 11;
+	}
+	else
+	{
+		if (n < 0)
+		{
+			i++;
+			n = -n;
+		}
+		if (n >= 10)
+		{
+			while (n >= 10)
+			{
+				n = n / 10;
+				i++;
+			}
+		}
+		i++;
+	}
+	return (i);
+}
 
 int	ft_countd(int w,int pr,int zero,int n)
 {
@@ -49,37 +77,81 @@ int	ft_countd(int w,int pr,int zero,int n)
 		}
 		i++;
 	}
-//	printf("zero =%d \n",zero);
-	if (zero == 1)
+	//	printf("zero =%d \n",zero);
+	if (zero == 1 && pr == 0)
 	{
-		if (neg == 1)
-			ft_putchar('-');
-		while(w - abs(pr - i) > 0)
+//		if (neg == 1)
+//			ft_putchar('-');
+		if (w > i)
 		{
-			ft_putchar('0');
-			w--;
+		if (neg == 1)
+		{
+			ft_putchar('-');
+			while((w - i) > 0)
+			{
+				ft_putchar('0');
+				w--;
+			}
+		}
+		else
+		{
+			while(w - i > 0)
+			{
+				ft_putchar('0');
+				w--;
+			}
+		}
 		}
 	}
 	else
 	{
-		while(w - abs(pr - i) > 0)
+//		if (neg == 1)
+//			ft_putchar('-');
+		if (pr >= i)
 		{
-			ft_putchar(' ');
-			w--;
+			if (neg == 1)
+			{
+				while(w - pr - 1 > 0)
+				{
+					ft_putchar(' ');
+					w--;
+				}
+				ft_putchar('-');
+				while((pr - i + 1) > 0)
+				{
+					ft_putchar('0');
+					pr--;
+				}
+			}
+			else
+			{
+				while(w - pr > 0)
+				{
+					ft_putchar(' ');
+					w--;
+				}
+				while((pr - i + 1) > 0)
+				{
+					ft_putchar('0');
+					pr--;
+				}
+			}
 		}
-		
-		while((pr - i) > 0)
+		else
 		{
-			ft_putchar('0');
-			pr--;
+			while(w - i > 0)
+			{
+				ft_putchar(' ');
+				w--;
+			}
 		}
-		if (neg == 1)
-			ft_putchar('-');
 	}
 	if (u > i)
 	{
 		if (v > u)
 			return (v);
+		if (neg == 1)
+			return (u + 1);
 		return (u);
 	}
 	if (v > i)

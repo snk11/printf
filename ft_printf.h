@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/03 13:27:59 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/03 14:54:38 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ int		ft_checkletter(char *str);
 int		ft_checkstrlast(char *str);
 int		ft_checkprec(char *s);
 int		ft_checkwidth(char *str);
-void	ft_putnbr(int n);
+void	ft_putnbr(int w, int pr,int zero,int n);
 void	ft_putstr(char const *s);
 void	ft_putstrad(char const *s);
 void	ft_putchar(char c);
 size_t		ft_strlen(const char *str);
 size_t		ft_strlen2(wchar_t *str);
+int	ft_count(int n);
 int	ft_countd(int w,int pr,int zero,int n);
 int	ft_countld(long int n);
 int	ft_countus(unsigned short n);
