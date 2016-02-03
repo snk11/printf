@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/02 19:58:39 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/03 13:27:59 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	*ft_ltooct5(unsigned short int l);
 char	*ft_ltooct6(unsigned char l);
 int	ft_putwchar(wchar_t c);
 char	*ft_check_perc0(char *str);
-char	*ft_check_perc(char *str);
+char	*ft_check_perc8(char *str);
 int	ft_countul(unsigned long n);
 void	ft_putunbr(unsigned int n);
 void	ft_putldnbr(long int n);
