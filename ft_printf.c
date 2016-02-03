@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/03 17:14:16 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/03 18:04:48 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,24 +109,56 @@ int	ft_printf(char *str, ...)
 					c = va_arg(ap, int);
 					if (zero == 0)
 					{
-						while((w - 1) > 0)
+						if(w < 0)
 						{
+							w = -w;
+							ft_putchar(c);
 							cnt++;
-							ft_putchar(' ');
-							w--;
+							while((w - 1) > 0)
+							{
+								cnt++;
+								ft_putchar(' ');
+								w--;
+							}
+						}
+						else
+						{
+							while((w - 1) > 0)
+							{
+								cnt++;
+								ft_putchar(' ');
+								w--;
+							}
+							ft_putchar(c);
+							cnt++;
 						}
 					}
 					else
 					{
-						while((w - 1) > 0)
+						if(w < 0)
 						{
+							w = -w;
+							ft_putchar(c);
 							cnt++;
-							ft_putchar('0');
-							w--;
+							while((w - 1) > 0)
+							{
+								cnt++;
+								ft_putchar('0');
+								w--;
+							}
+						}
+						else
+						{
+							while((w - 1) > 0)
+							{
+								cnt++;
+								ft_putchar('0');
+								w--;
+							}
+							ft_putchar(c);
+							cnt++;
 						}
 					}
-					ft_putchar(c);
-					cnt++;
 					ind2 = 0;
 					w = 0;
 					pr = 0;
@@ -968,6 +1000,38 @@ int	ft_printf(char *str, ...)
 		{
 			//				printf("cnt1 = %d,str = %c begi = %c \n",cnt1,*str,begi[ft_strlen(begi)-2]);
 //				printf("check = %d\n",ft_checkstrlast(str));
+				if (*str == '%')
+				{
+					str++;
+						i = 0;
+						while (((*str >= '0' && *str <= '9') || *str == '-' || *str == '.' || *str == ' '))
+						{
+							i++;
+							str++;
+						}
+						begi = str;
+//						printf("begi =%c\n",*begi);
+						str--;
+						s3 = (char*)malloc(sizeof(char)*i + 1);
+						s3[i] = 0;
+						while(i > 0)
+						{
+							s3[i - 1] = *str;
+							i--;
+							str--;
+						}
+						//					printf("s3 = %s\n",s3);
+						if (w == 0)
+							w = ft_checkwidth(s3);
+						if (pr == 0)
+							pr = ft_checkprec(s3);
+						if (str[1] == '0')
+							zero = 1;
+//				printf("w = %d\n",w);
+//				printf("pr = %d\n",pr);
+				if (w != 0 || pr != 0 || zero != 0)
+					str = begi;
+				}
 			if (ft_checkstrlast(str) && *str == '%')
 			{
 				indlast = 1;
@@ -980,8 +1044,61 @@ int	ft_printf(char *str, ...)
 				}
 				else
 				{
-					ft_putchar(*str);
-					cnt++;
+					if (zero == 0)
+					{
+						if(w < 0)
+						{
+							w = -w;
+							ft_putchar(*str);
+							cnt++;
+							while((w - 1) > 0)
+							{
+								cnt++;
+								ft_putchar(' ');
+								w--;
+							}
+						}
+						else
+						{
+							while((w - 1) > 0)
+							{
+								cnt++;
+								ft_putchar(' ');
+								w--;
+							}
+							ft_putchar(*str);
+							cnt++;
+						}
+					}
+					else if (zero == 1)
+					{
+						if(w < 0)
+						{
+							w = -w;
+							ft_putchar(*str);
+							cnt++;
+							while((w - 1) > 0)
+							{
+								cnt++;
+								ft_putchar('0');
+								w--;
+							}
+						}
+						else
+						{
+							while((w - 1) > 0)
+							{
+								cnt++;
+								ft_putchar('0');
+								w--;
+							}
+							ft_putchar(*str);
+							cnt++;
+						}
+					}
+					w = 0;
+					pr = 0;
+					zero = 0;
 				}
 			}
 			if (*str == '%')
