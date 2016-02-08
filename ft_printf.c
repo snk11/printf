@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/08 15:39:17 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/08 19:47:36 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	ft_printf(char *str, ...)
 	char	*p2;
 	int		cnt2;
 	int		indlast;
-	int		indsharp;
 	int		indpr;
 	t_numb	e;
 	//	int		b;
@@ -71,7 +70,7 @@ int	ft_printf(char *str, ...)
 	indletter = 0;
 	zero = 0;
 	indpr = 0;
-	indsharp = 0;
+	e.indsharp = 0;
 	e.indplus = 0;
 	e.indspace = 0;
 	va_start(ap, str);
@@ -107,7 +106,7 @@ int	ft_printf(char *str, ...)
 				if (*str == '#')
 				{
 					str++;
-					indsharp = 1;
+					e.indsharp = 1;
 				}
 				if (*str == '+')
 				{
@@ -389,8 +388,32 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'u')
 				{
 					u = va_arg(ap, unsigned int);
-					ft_putunbr(u);
-					cnt = cnt + ft_countu(u);
+//					ft_putunbr(u);
+//					cnt = cnt + ft_countu(u);
+					if (pr == 0 && w == 0 && indpr == 1)
+					{
+					}
+					else
+					{
+						if(w < 0)
+						{
+							ft_putunbr(w,pr,zero,u);
+							cnt = cnt + ft_countu(w,pr,zero,e,u);
+						}
+						else
+						{
+							cnt = cnt + ft_countu(w,pr,zero,e,u);
+							ft_putunbr(w,pr,zero,u);
+						}
+					}
+					ind2 = 0;
+					w = 0;
+					pr = 0;
+					indletter = 1;
+					zero = 0;
+					indpr = 0;
+					e.indplus = 0;
+					e.indspace = 0;
 				}
 				else if (*str == 'U')
 				{
@@ -440,8 +463,20 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'x')
 				{
 					u = va_arg(ap, unsigned int);
+					if (u == 0 && pr == 0 & indpr == 1)
+					{
+					}
+					else
+					{
 					s2 = ft_ltohex(u);
 					g = ft_strlen(s2);
+					if (e.indsharp == 1 && u != 0)
+					{
+						ft_putchar('0');
+						ft_putchar('x');
+						cnt++;
+						cnt++;
+					}
 					if (zero == 1 && pr == 0)
 					{
 						while(w - g > 0)
@@ -481,6 +516,7 @@ int	ft_printf(char *str, ...)
 					}
 					ft_putstr(s2);
 					cnt = cnt + g;
+					}
 					ind2 = 0;
 					w = 0;
 					pr = 0;
@@ -492,8 +528,20 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'X')
 				{
 					u = va_arg(ap, unsigned int);
+					if (u == 0 && pr == 0 & indpr == 1)
+					{
+					}
+					else
+					{
 					s2 = ft_ltohex2(u);
 					g = ft_strlen(s2);
+					if (e.indsharp == 1 && u != 0)
+					{
+						ft_putchar('0');
+						ft_putchar('X');
+						cnt++;
+						cnt++;
+					}
 					if (zero == 1 && pr == 0)
 					{
 						while(w - g > 0)
@@ -533,6 +581,7 @@ int	ft_printf(char *str, ...)
 					}
 					ft_putstr(s2);
 					cnt = cnt + ft_strlen(s2);
+					}
 					ind2 = 0;
 					w = 0;
 					pr = 0;
@@ -543,9 +592,14 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'o')
 				{
 					u = va_arg(ap, unsigned int);
+					if (u == 0 && pr == 0 && indpr == 1)
+					{
+					}
+					else
+					{
 					s2 = ft_ltooct(u);
 					g = ft_strlen(s2);
-					if (indsharp == 1 && u != 0)
+					if (e.indsharp == 1 && u != 0)
 					{
 						ft_putchar('0');
 						cnt++;
@@ -589,20 +643,77 @@ int	ft_printf(char *str, ...)
 					}
 					ft_putstr(s2);
 					cnt = cnt + g;
+					}
 					ind2 = 0;
 					w = 0;
 					pr = 0;
 					indletter = 1;
 					zero = 0;
 					indpr = 0;
-					indsharp = 0;
+					e.indsharp = 0;
 				}
 				else if (*str == 'O')
 				{
 					ul = va_arg(ap,  unsigned long);
-					s2 = ft_ltooct2(ul);
-					ft_putstr(s2);
-					cnt = cnt + ft_strlen(s2);
+					if (ul == 0 && pr == 0 && indpr == 1 && e.indsharp == 0)
+					{
+					}
+					else
+					{
+						s2 = ft_ltooct2(ul);
+						g = ft_strlen(s2);
+						if (e.indsharp == 1 && ul != 0)
+						{
+							ft_putchar('0');
+							cnt++;
+						}
+						if (zero == 1 && pr == 0)
+						{
+							while(w - g > 0)
+							{
+								ft_putchar('0');
+								cnt++;
+								w--;
+							}
+						}
+						else
+						{
+							if (pr >= g)
+							{
+								while(w - pr > 0)
+								{
+									ft_putchar(' ');
+									cnt++;
+									w--;
+								}
+
+								while((pr - g) > 0)
+								{
+									ft_putchar('0');
+									cnt++;
+									pr--;
+								}
+							}
+							else
+							{
+								while(w - g > 0)
+								{
+									ft_putchar(' ');
+									cnt++;
+									w--;
+								}
+							}
+						}
+						ft_putstr(s2);
+						cnt = cnt + g;
+					}
+					ind2 = 0;
+					w = 0;
+					pr = 0;
+					indletter = 1;
+					zero = 0;
+					indpr = 0;
+					e.indsharp = 0;
 				}
 				else if (*str == 'l' && (str[1] == 'd' || str[1] == 'i'))
 				{
@@ -905,11 +1016,11 @@ int	ft_printf(char *str, ...)
 				}
 				else if ((*str >= '0' && *str <= '9') || *str == '-' || *str == '.' || *str == ' ')
 				{
+					if (*str == '.')
+						indpr = 1;
 					if (ind2 == 0)
 					{
 						i = 0;
-						if (*str == '.')
-							indpr = 1;
 						while (ft_checkletter(str) == 0)
 						{
 							i++;

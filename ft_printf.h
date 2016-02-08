@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/08 14:17:35 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/08 19:31:51 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct			s_numb
 {
 	int					indplus;
 	int					indspace;
+	int					indsharp;
 }						t_numb;
 
 
@@ -53,7 +54,7 @@ void	ft_putllnbr(long long n);
 void	ft_putulonglongnbr(unsigned long long n);
 void	ft_putsdnbr(short int n);
 int	ft_countl(long n);
-int	ft_countu(unsigned int n);
+int	ft_countu(int w,int pr,int zero,t_numb e,unsigned int n);
 int	ft_countuc(unsigned char n);
 int	ft_countul(unsigned long n);
 int	ft_countlld(long long n);
@@ -76,7 +77,7 @@ int	ft_putwchar(wchar_t c);
 char	*ft_check_perc0(char *str);
 char	*ft_check_perc8(char *str);
 int	ft_countul(unsigned long n);
-void	ft_putunbr(unsigned int n);
+void	ft_putunbr(int w,int pr,int zero,unsigned int n);
 void	ft_putldnbr(long int n);
 
 #endif
