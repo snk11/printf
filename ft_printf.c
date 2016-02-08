@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/08 19:47:36 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/08 21:22:25 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	ft_printf(char *str, ...)
 	int		cnt2;
 	int		indlast;
 	int		indpr;
+	int		prbegi;
 	t_numb	e;
 	//	int		b;
 
@@ -70,6 +71,7 @@ int	ft_printf(char *str, ...)
 	indletter = 0;
 	zero = 0;
 	indpr = 0;
+	prbegi = 0;
 	e.indsharp = 0;
 	e.indplus = 0;
 	e.indspace = 0;
@@ -191,40 +193,162 @@ int	ft_printf(char *str, ...)
 				}
 				else if (*str == 's')
 				{
+					prbegi = pr;
 					s = va_arg(ap, char*);
 					g = ft_strlen(s);
-					if (zero == 0)
+					if (indpr == 1)
 					{
-						while((w - g) > 0)
+						if (pr > w)
 						{
-							cnt++;
-							ft_putchar(' ');
-							w--;
+							if (zero == 0)
+							{
+								while((w - g) > 0 && pr > 0)
+								{
+									cnt++;
+									ft_putchar(' ');
+									w--;
+									pr--;
+								}
+							}
+							else
+							{
+								while((w - g) > 0 && pr > 0)
+								{
+									cnt++;
+									ft_putchar('0');
+									w--;
+									pr--;
+								}
+							}
+							if (s)
+							{
+								ft_putstr2(pr,s);
+								i = 0;
+								pr =prbegi;
+								while (i < g && pr > 0)
+								{
+									cnt++;
+									i++;
+									pr--;
+								}
+							}
+							else
+							{
+								ft_putstr("(null)");
+								cnt = cnt + 6;
+							}
+						}
+						else if(w > pr)
+						{
+							if (g > pr)
+							{
+								if (zero == 0)
+								{
+									while((w - pr) > 0)
+									{
+										cnt++;
+										ft_putchar(' ');
+										w--;
+									}
+								}
+								else
+								{
+									while((w - pr) > 0)
+									{
+										cnt++;
+										ft_putchar('0');
+										w--;
+									}
+								}
+								if (s)
+								{
+									ft_putstr2(pr,s);
+									i = 0;
+									while (pr > 0)
+									{
+										cnt++;
+										pr--;
+									}
+								}
+								else
+								{
+									ft_putstr("(null)");
+									cnt = cnt + 6;
+								}
+							}
+							else if (g < pr)
+							{
+								if (zero == 0)
+								{
+									while((w - g) > 0)
+									{
+										cnt++;
+										ft_putchar(' ');
+										w--;
+									}
+								}
+								else
+								{
+									while((w - g) > 0)
+									{
+										cnt++;
+										ft_putchar('0');
+										w--;
+									}
+								}
+								if (s)
+								{
+									ft_putstr(s);
+									i = 0;
+									while (i < g)
+									{
+										cnt++;
+										i++;
+									}
+								}
+								else
+								{
+									ft_putstr("(null)");
+									cnt = cnt + 6;
+								}
+							}
 						}
 					}
 					else
 					{
-						while((w - g) > 0)
+						if (zero == 0)
 						{
-							cnt++;
-							ft_putchar('0');
-							w--;
+							while((w - g) > 0)
+							{
+								cnt++;
+								ft_putchar(' ');
+								w--;
+							}
 						}
-					}
-					if (s)
-					{
-						ft_putstr(s);
-						i = 0;
-						while (i < g)
+						else
 						{
-							cnt++;
-							i++;
+							while((w - g) > 0)
+							{
+								cnt++;
+								ft_putchar('0');
+								w--;
+							}
 						}
-					}
-					else
-					{
-						ft_putstr("(null)");
-						cnt = cnt + 6;
+						if (s)
+						{
+							ft_putstr(s);
+							i = 0;
+							while (i < g)
+							{
+								cnt++;
+								i++;
+							}
+						}
+						else
+						{
+							ft_putstr("(null)");
+							cnt = cnt + 6;
+						}
 					}
 					ind2 = 0;
 					w = 0;

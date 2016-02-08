@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 12:50:22 by syusof            #+#    #+#             */
-/*   Updated: 2015/12/17 16:24:25 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/08 20:33:24 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,19 @@ void	ft_putstr(char const *s)
 	{
 		ft_putchar(s[i]);
 		i++;
+	}
+}
+
+void	ft_putstr2(int pr,char const *s)
+{
+	int		i;
+
+	i = 0;
+	while (s[i] && pr > 0)
+	{
+		ft_putchar(s[i]);
+		i++;
+		pr--;
 	}
 }
 
