@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 03:43:40 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/03 13:25:57 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/08 12:58:09 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	*ft_check_perc8(char *str)
 			{
 				if(ft_checkletter(str))
 					return (begi);
+				else if (ft_checkletter(str) == 0 && ((*str >= 'a' && *str <= 'z')||(*str >= 'A' && *str <= 'Z')))
+					return (0);
 				str++;
 			}
 			str = begi;

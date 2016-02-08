@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/03 18:04:48 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/08 13:04:51 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ int	ft_printf(char *str, ...)
 	int		cnt2;
 	int		indlast;
 	int		indsharp;
+	int		indplus;
+	int		indspace;
+	int		indpr;
 	//	int		b;
 
 
@@ -68,12 +71,15 @@ int	ft_printf(char *str, ...)
 	ind2 = 0;
 	indletter = 0;
 	zero = 0;
+	indpr = 0;
 	indsharp = 0;
+	indplus = 0;
+	indspace = 0;
 	va_start(ap, str);
 	begi = &(str[0]);
 	//	printf("str = %s\n",str);
 	p = ft_check_perc0(str);
-	//		printf("p= %s\n",p);
+//			printf("p= %s\n",p);
 	if (p == NULL)
 		ind1++;
 
@@ -94,6 +100,21 @@ int	ft_printf(char *str, ...)
 				str++;
 				if (ind2 == 1)
 					str--;
+				if (*str == ' ')
+				{
+					str++;
+					indspace = 1;
+				}
+				if (*str == '#')
+				{
+					str++;
+					indsharp = 1;
+				}
+				if (*str == '+')
+				{
+					str++;
+					indplus = 1;
+				}
 //			printf("ind2 = %d,str1 =%c\n",ind2,*str);
 //						if (*str == '%')
 //							cnt1++;
@@ -163,11 +184,8 @@ int	ft_printf(char *str, ...)
 					w = 0;
 					pr = 0;
 					zero = 0;
+					indpr = 0;
 				}
-//			else if(*str == '#')
-//			{
-//				
-//			}
 				else if (*str == 'C')
 				{
 					wc = va_arg(ap, wchar_t);
@@ -214,6 +232,7 @@ int	ft_printf(char *str, ...)
 					w = 0;
 					pr = 0;
 					zero = 0;
+					indpr = 0;
 				}
 				else if (*str == 'S')
 				{
@@ -309,6 +328,7 @@ int	ft_printf(char *str, ...)
 					w = 0;
 					pr = 0;
 					indletter = 1;
+					indpr = 0;
 				}
 				else if (*str == 'p')
 				{
@@ -365,6 +385,7 @@ int	ft_printf(char *str, ...)
 					w = 0;
 					pr = 0;
 					indletter = 1;
+					indpr = 0;
 				}
 				else if (*str == 'u')
 				{
@@ -381,21 +402,39 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'd' || *str == 'i')
 				{
 					d = va_arg(ap, int);
-					if(w < 0)
+					if (indspace == 1 && d >= 0)
 					{
-						ft_putnbr(w,pr,zero,d);
-						cnt = cnt + ft_countd(w,pr,zero,d);
+						ft_putchar(' ');
+						cnt++;
+					}
+					if (indplus == 1 && d >= 0)
+					{
+						ft_putchar('+');
+						cnt++;
+					}
+					if (pr == 0 && w == 0 && indpr == 1)
+					{
 					}
 					else
 					{
-						cnt = cnt + ft_countd(w,pr,zero,d);
-						ft_putnbr(w,pr,zero,d);
+						if(w < 0)
+						{
+							ft_putnbr(w,pr,zero,d);
+							cnt = cnt + ft_countd(w,pr,zero,d);
+						}
+						else
+						{
+							cnt = cnt + ft_countd(w,pr,zero,d);
+							ft_putnbr(w,pr,zero,d);
+						}
 					}
 					ind2 = 0;
 					w = 0;
 					pr = 0;
 					indletter = 1;
 					zero = 0;
+					indpr = 0;
+					indplus = 0;
 				}
 				else if (*str == 'D')
 				{
@@ -452,6 +491,7 @@ int	ft_printf(char *str, ...)
 					pr = 0;
 					indletter = 1;
 					zero = 0;
+					indpr = 0;
 
 				}
 				else if (*str == 'X')
@@ -503,12 +543,18 @@ int	ft_printf(char *str, ...)
 					pr = 0;
 					indletter = 1;
 					zero = 0;
+					indpr = 0;
 				}
 				else if (*str == 'o')
 				{
 					u = va_arg(ap, unsigned int);
 					s2 = ft_ltooct(u);
 					g = ft_strlen(s2);
+					if (indsharp == 1 && u != 0)
+					{
+						ft_putchar('0');
+						cnt++;
+					}
 					if (zero == 1 && pr == 0)
 					{
 						while(w - g > 0)
@@ -553,6 +599,7 @@ int	ft_printf(char *str, ...)
 					pr = 0;
 					indletter = 1;
 					zero = 0;
+					indpr = 0;
 					indsharp = 0;
 				}
 				else if (*str == 'O')
@@ -861,12 +908,14 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_strlen(ft_ltohex(l)) + 2;
 					str++;
 				}
-				else if (((*str >= '0' && *str <= '9') || *str == '-' || *str == '.' || *str == ' '))
+				else if ((*str >= '0' && *str <= '9') || *str == '-' || *str == '.' || *str == ' ')
 				{
 					if (ind2 == 0)
 					{
 						i = 0;
-						while(*str != 'd' && *str != 'c' && *str != 'p' && *str != 's'  && *str != 'S' && *str != 'R' && *str != 'x' && *str != 'X' && *str != 'o')
+						if (*str == '.')
+							indpr = 1;
+						while (ft_checkletter(str) == 0)
 						{
 							i++;
 							str++;
