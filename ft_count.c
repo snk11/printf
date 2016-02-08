@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 08:29:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/08 14:01:21 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/08 16:09:01 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,20 @@ int	ft_count(int n)
 	return (i);
 }
 
-int	ft_countd(int w,int pr,int zero,int indplus,int n)
+int	ft_countd(int w,int pr,int zero,t_numb e,int n)
 {
 	int i;
 	int v;
 	int u;
 	int neg;
+	int minus;
 
+	minus = 0;
 	if (w < 0)
+	{
 		w = -w;
+		minus = 1;
+	}
 	i = 0;
 	neg = 0;
 	u = pr;
@@ -84,27 +89,57 @@ int	ft_countd(int w,int pr,int zero,int indplus,int n)
 //			ft_putchar('-');
 		if (w > i)
 		{
-		if (neg == 1)
-		{
-			ft_putchar('-');
-			while((w - i) > 0)
+			if (neg == 1)
 			{
-				ft_putchar('0');
-				w--;
+				ft_putchar('-');
+				while((w - i) > 0)
+				{
+					ft_putchar('0');
+					w--;
+				}
+			}
+			else
+			{
+				if(minus == 1)
+				{
+					if (e.indplus == 1)
+						w--;
+					if (e.indplus == 1)
+						ft_putchar('+');
+					if (e.indspace == 1)
+						w--;
+					if (e.indspace == 1)
+						ft_putchar(' ');
+					while(w - i > 0)
+					{
+						ft_putchar(' ');
+						w--;
+					}
+				}
+				else
+				{
+					if (e.indplus == 1)
+						w--;
+					if (e.indplus == 1)
+						ft_putchar('+');
+					if (e.indspace == 1)
+						w--;
+					if (e.indspace == 1)
+						ft_putchar(' ');
+					while(w - i > 0)
+					{
+						ft_putchar('0');
+						w--;
+					}
+				}
 			}
 		}
 		else
 		{
-			if (indplus == 1)
-				w--;
-			if (indplus == 1)
+			if (e.indplus == 1)
 				ft_putchar('+');
-			while(w - i > 0)
-			{
-				ft_putchar('0');
-				w--;
-			}
-		}
+			if (e.indspace == 1)
+				ft_putchar(' ');
 		}
 	}
 	else
@@ -143,14 +178,16 @@ int	ft_countd(int w,int pr,int zero,int indplus,int n)
 		}
 		else
 		{
-			if(indplus == 1)
+			if(e.indplus == 1)
 				w--;
+			if(e.indspace == 1 && e.indplus == 0 && neg == 0)
+				ft_putchar(' ');
 			while(w - i > 0)
 			{
 				ft_putchar(' ');
 				w--;
 			}
-			if(indplus == 1)
+			if(e.indplus == 1 && neg == 0)
 				ft_putchar('+');
 		}
 	}
@@ -163,8 +200,10 @@ int	ft_countd(int w,int pr,int zero,int indplus,int n)
 		return (u);
 	}
 	if (v > i)
+	{
 		return (v);
-	if (indplus == 1)
+	}
+	if ((e.indplus == 1 && neg == 0) || (e.indspace == 1 && neg == 0))
 		return (i + 1);
 	return (i);
 }

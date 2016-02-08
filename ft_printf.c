@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/08 13:51:31 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/08 15:39:17 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,8 @@ int	ft_printf(char *str, ...)
 	int		cnt2;
 	int		indlast;
 	int		indsharp;
-	int		indplus;
-	int		indspace;
 	int		indpr;
+	t_numb	e;
 	//	int		b;
 
 
@@ -73,8 +72,8 @@ int	ft_printf(char *str, ...)
 	zero = 0;
 	indpr = 0;
 	indsharp = 0;
-	indplus = 0;
-	indspace = 0;
+	e.indplus = 0;
+	e.indspace = 0;
 	va_start(ap, str);
 	begi = &(str[0]);
 	//	printf("str = %s\n",str);
@@ -103,7 +102,7 @@ int	ft_printf(char *str, ...)
 				if (*str == ' ')
 				{
 					str++;
-					indspace = 1;
+					e.indspace = 1;
 				}
 				if (*str == '#')
 				{
@@ -113,7 +112,7 @@ int	ft_printf(char *str, ...)
 				if (*str == '+')
 				{
 					str++;
-					indplus = 1;
+					e.indplus = 1;
 				}
 //			printf("ind2 = %d,str1 =%c\n",ind2,*str);
 //						if (*str == '%')
@@ -402,11 +401,11 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'd' || *str == 'i')
 				{
 					d = va_arg(ap, int);
-					if (indspace == 1 && d >= 0 && indplus == 0)
-					{
-						ft_putchar(' ');
-						cnt++;
-					}
+//					if (e.indspace == 1 && d >= 0 && e.indplus == 0)
+//					{
+//						ft_putchar(' ');
+//						cnt++;
+//					}
 					if (pr == 0 && w == 0 && indpr == 1)
 					{
 					}
@@ -415,11 +414,11 @@ int	ft_printf(char *str, ...)
 						if(w < 0)
 						{
 							ft_putnbr(w,pr,zero,d);
-							cnt = cnt + ft_countd(w,pr,zero,indplus,d);
+							cnt = cnt + ft_countd(w,pr,zero,e,d);
 						}
 						else
 						{
-							cnt = cnt + ft_countd(w,pr,zero,indplus,d);
+							cnt = cnt + ft_countd(w,pr,zero,e,d);
 							ft_putnbr(w,pr,zero,d);
 						}
 					}
@@ -429,7 +428,8 @@ int	ft_printf(char *str, ...)
 					indletter = 1;
 					zero = 0;
 					indpr = 0;
-					indplus = 0;
+					e.indplus = 0;
+					e.indspace = 0;
 				}
 				else if (*str == 'D')
 				{
@@ -636,7 +636,7 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'h' && str[1] == 'h' && (str[2] == 'd' || str[2] == 'i'))
 				{
 					c = va_arg(ap, char);
-					cnt = cnt + ft_countd(w,pr,zero,indplus,c);
+					cnt = cnt + ft_countd(w,pr,zero,e,c);
 					ft_putnbr(w,pr,zero,c);
 					str++;
 					str++;
@@ -924,7 +924,7 @@ int	ft_printf(char *str, ...)
 							i--;
 							str--;
 						}
-						//					printf("s3 = %s\n",s3);
+//											printf("s3 = %s\n",s3);
 						if (w == 0)
 							w = ft_checkwidth(s3);
 						if (pr == 0)
@@ -932,7 +932,7 @@ int	ft_printf(char *str, ...)
 						if (str[1] == '0')
 							zero = 1;
 					}
-					//				printf("w = %d\n",w);
+//									printf("w = %d\n",w);
 					//				printf("pr = %d\n",pr);
 					ind2 = 1;
 				}

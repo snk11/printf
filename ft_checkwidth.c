@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 14:55:14 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/03 17:02:24 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/08 15:38:45 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,18 @@ int		ft_checkwidth(char *str)
 		s = begi;
 		s2 = (char*)malloc(sizeof(char) * i + 1);
 		s2[i] = 0;
+//		printf("i= %d,s2 = %s\n",i,s);
 		i--;
-		while (i >= 0)
+		while (i >= 0 && s[i] != '-' && s[i] != '+')
 		{
 			s2[i] = s[i];
 			i--;
+		}
+		if ((i >= 0 && s[i] == '-') || (i>= 0 && s[i] == '+'))
+		{
+			s2[i] = s[i];
+			free(begi);
+			return (ft_atoi(&s2[i]));
 		}
 		free(begi);
 		return (ft_atoi(s2));
