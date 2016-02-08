@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 08:29:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/03 18:37:59 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/08 14:01:21 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_count(int n)
 	return (i);
 }
 
-int	ft_countd(int w,int pr,int zero,int n)
+int	ft_countd(int w,int pr,int zero,int indplus,int n)
 {
 	int i;
 	int v;
@@ -95,6 +95,10 @@ int	ft_countd(int w,int pr,int zero,int n)
 		}
 		else
 		{
+			if (indplus == 1)
+				w--;
+			if (indplus == 1)
+				ft_putchar('+');
 			while(w - i > 0)
 			{
 				ft_putchar('0');
@@ -139,11 +143,15 @@ int	ft_countd(int w,int pr,int zero,int n)
 		}
 		else
 		{
+			if(indplus == 1)
+				w--;
 			while(w - i > 0)
 			{
 				ft_putchar(' ');
 				w--;
 			}
+			if(indplus == 1)
+				ft_putchar('+');
 		}
 	}
 	if (u > i)
@@ -156,6 +164,8 @@ int	ft_countd(int w,int pr,int zero,int n)
 	}
 	if (v > i)
 		return (v);
+	if (indplus == 1)
+		return (i + 1);
 	return (i);
 }
 
