@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/09 17:51:52 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/09 18:12:23 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1579,6 +1579,13 @@ int	ft_printf(char *str, ...)
 				if (w != 0 || pr != 0 || zero != 0)
 					str = begi;
 				}
+			if (ft_checkstrlast(str) && cnt1 % 2 == 0 && str[1] == 0 && *str == '%')
+			{
+				ft_putchar('%');
+				cnt++;
+			}
+			else
+			{
 			if (ft_checkstrlast(str) && *str == '%')
 			{
 				indlast = 1;
@@ -1652,6 +1659,7 @@ int	ft_printf(char *str, ...)
 				cnt1++;
 			if (cnt1 % 2 == 1 && indlast == 1)
 				cnt1++;
+			}
 			str++;
 		}
 	}
