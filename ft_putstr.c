@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 12:50:22 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/08 20:33:24 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/09 17:44:00 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,83 @@ void	ft_putstrad(char const *s)
 	{
 		ft_putchar(s[i]);
 		i++;
+	}
+}
+
+void	ft_putstrad2(int pr,char const *s)
+{
+	int		i;
+	int n;
+
+	i = 0;
+	n = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	if (pr > i)
+	{
+		if (i < pr && i > 1)
+		{
+			while(n < pr - i)
+			{
+				ft_putchar('0');
+				n++;
+			}
+		}
+		i = 0;
+		while (s[i])
+		{
+			ft_putchar(s[i]);
+			i++;
+		}
+	}
+	else
+	{
+		i = 0;
+		while (s[i])
+		{
+			ft_putchar(s[i]);
+			i++;
+		}
+	}
+}
+
+void	ft_putstrad3(int pr,char const *s)
+{
+	int		i;
+	int n;
+
+	i = 0;
+	n = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	if (pr > i)
+	{
+		if (i < pr && i >= 1)
+		{
+			while(n < pr - i)
+			{
+				ft_putchar('0');
+				n++;
+			}
+		}
+		i = 0;
+		while (s[i])
+		{
+			ft_putchar(s[i]);
+			i++;
+		}
+	}
+	else
+	{
+		i = 0;
+		while (s[i])
+		{
+			ft_putchar(s[i]);
+			i++;
+		}
 	}
 }
