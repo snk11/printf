@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/09 20:57:54 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/09 21:39:54 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/09 22:15:03 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,13 @@ int ft_checkflag(t_numb *e,char *str)
 		while (i >= 0 && s[i] != '-' && s[i] != '+')
 		{
 			s2[i] = s[i];
-//		printf("i= %d,s2 = %c\n",i,s2[i]);
+		printf("i= %d,s2 = %c\n",i,s2[i]);
 			i--;
 		}
 		if ((i >= 0 && s[i] == '-') || (i>= 0 && s[i] == '+'))
 		{
 			s2[i] = s[i];
+//			printf("s[i]= %c\n",s[i]);
 			if (begi)
 				free(begi);
 //		printf("i= %d,s2 = %s\n",i,&s2[i]);
@@ -88,56 +89,70 @@ int ft_checkflag(t_numb *e,char *str)
 	}
 	if(indend1 == 1)
 	{
-		if (s2[num]== ' ')
+		i = num;
+		while(( s[i]==' ' || s[i]== '#' || s[i] == '+'))
 		{
-			e->indspace = 1;
-			ret++;
-		}
-		if (s2[num]== '#')
-		{
-			e->indsharp = 1;
-			ret++;
-		}
-		if (s2[num] == '+')
-		{
-			e->indplus = 1;
-			ret++;
+			printf("s[i]= %c\n",s[i]);
+			if (s2[i]== ' ' && ret == 0)
+			{
+				e->indspace = 1;
+				ret++;
+			}
+			if (s2[i]== '#')
+			{
+				e->indsharp = 1;
+				ret++;
+			}
+			if (s2[i] == '+')
+			{
+				e->indplus = 1;
+				ret++;
+			}
+			i++;
 		}
 	}
 	else if(indend2 == 1)
 	{
-		if ( *s2== ' ')
+		while (( *s2 == ' ' || *s2 == '#' || *s2 == '+'))
 		{
-			e->indspace = 1;
-			ret++;
-		}
-		if (*s2 == '#')
-		{
-			e->indsharp = 1;
-			ret++;
-		}
-		if (*s2 == '+')
-		{
-			e->indplus = 1;
-			ret++;
+			if ( *s2== ' ' && ret == 0)
+			{
+				e->indspace = 1;
+				ret++;
+			}
+			if (*s2 == '#')
+			{
+				e->indsharp = 1;
+				ret++;
+			}
+			if (*s2 == '+')
+			{
+				e->indplus = 1;
+				ret++;
+			}
+			s2++;
 		}
 	}
 	else if(indend3 == 1)
 	{
-		if (*s == ' ')
+		while (( *s == ' ' || *s == '#' || *s == '+'))
 		{
-			e->indspace = 1;
-			ret++;
-		}
-		if (*s == '#')
-		{
-			e->indsharp = 1;
-			ret++;
-		}
-		if (*s == '+')
-		{
-			e->indplus = 1;
-			ret++;
+			if (*s == ' ' && ret == 0)
+			{
+				e->indspace = 1;
+				ret++;
+			}
+			if (*s == '#')
+			{
+				e->indsharp = 1;
+				ret++;
+			}
+			if (*s == '+')
+			{
+				e->indplus = 1;
+				ret++;
+			}
+			s++;
 		}
 	}
 	return (ret);
