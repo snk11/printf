@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/08 21:23:10 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/09 15:19:59 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ int	ft_countd(int w,int pr,int zero,t_numb e,int n);
 int	ft_countld(long int n);
 int	ft_countus(unsigned short n);
 int	ft_countsd(short int n);
+int			ft_countwstr(int pr,wchar_t *s);
 int	ft_putwstr(wchar_t *s);
+int			ft_putwstr2(int pr,wchar_t *s);
 void	ft_putlongnbr(long n);
 void	ft_putulongnbr(unsigned long n);
 void	ft_putushortnbr(unsigned short n);

@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/08 21:22:25 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/09 15:28:55 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -363,89 +363,258 @@ int	ft_printf(char *str, ...)
 						g = ft_strlen2(ss);
 					if (!ss)
 						g = 6;
-					if (zero == 0)
+					if (indpr == 1)
 					{
-						if (w < 0)
+						if (pr > w)
 						{
-							w = -w;
-							if (ss)
+							if (zero == 0)
 							{
-								cnt = cnt + ft_putwstr(ss);
+								if (w < 0)
+								{
+									w = -w;
+									if (ss)
+									{
+										cnt = cnt + ft_putwstr(ss);
+									}
+									else
+									{
+										ft_putstr("(null)");
+										cnt = cnt + 6;
+									}
+									while((w - g) > 0)
+									{
+										cnt++;
+										ft_putchar(' ');
+										w--;
+									}
+								}
+								else
+								{
+									while((w - g) > 0)
+									{
+										cnt++;
+										ft_putchar(' ');
+										w--;
+									}
+									if (ss)
+									{
+										cnt = cnt + ft_putwstr2(pr,ss);
+									}
+									else
+									{
+										ft_putstr("(null)");
+										cnt = cnt + 6;
+									}
+								}
 							}
 							else
 							{
-								ft_putstr("(null)");
-								cnt = cnt + 6;
-							}
-							while((w - g) > 0)
-							{
-								cnt++;
-								ft_putchar(' ');
-								w--;
+								if (w < 0)
+								{
+									w = -w;
+									if (ss)
+									{
+										cnt = cnt + ft_putwstr(ss);
+									}
+									else
+									{
+										ft_putstr("(null)");
+										cnt = cnt + 6;
+									}
+									while((w - g) > 0)
+									{
+										cnt++;
+										ft_putchar('0');
+										w--;
+									}
+								}
+								else
+								{
+									while((w - g) > 0)
+									{
+										cnt++;
+										ft_putchar('0');
+										w--;
+									}
+									if (ss)
+									{
+										cnt = cnt + ft_putwstr(ss);
+									}
+									else
+									{
+										ft_putstr("(null)");
+										cnt = cnt + 6;
+									}
+								}
 							}
 						}
-						else
+						else if (w > pr)
 						{
-							while((w - g) > 0)
+							if (zero == 0)
 							{
-								cnt++;
-								ft_putchar(' ');
-								w--;
-							}
-							if (ss)
-							{
-								cnt = cnt + ft_putwstr(ss);
+								if (w < 0)
+								{
+									w = -w;
+									if (ss)
+									{
+										cnt = cnt + ft_putwstr(ss);
+									}
+									else
+									{
+										ft_putstr("(null)");
+										cnt = cnt + 6;
+									}
+									while((w - g) > 0)
+									{
+										cnt++;
+										ft_putchar(' ');
+										w--;
+									}
+								}
+								else
+								{
+									while((w - ft_countwstr(pr,ss)) > 0)
+									{
+										cnt++;
+										ft_putchar(' ');
+										w--;
+									}
+									if (ss)
+									{
+										cnt = cnt + ft_putwstr2(pr,ss);
+									}
+									else
+									{
+										ft_putstr("(null)");
+										cnt = cnt + 6;
+									}
+								}
 							}
 							else
 							{
-								ft_putstr("(null)");
-								cnt = cnt + 6;
+								if (w < 0)
+								{
+									w = -w;
+									if (ss)
+									{
+										cnt = cnt + ft_putwstr(ss);
+									}
+									else
+									{
+										ft_putstr("(null)");
+										cnt = cnt + 6;
+									}
+									while((w - g) > 0)
+									{
+										cnt++;
+										ft_putchar('0');
+										w--;
+									}
+								}
+								else
+								{
+									while((w - g) > 0)
+									{
+										cnt++;
+										ft_putchar('0');
+										w--;
+									}
+									if (ss)
+									{
+										cnt = cnt + ft_putwstr(ss);
+									}
+									else
+									{
+										ft_putstr("(null)");
+										cnt = cnt + 6;
+									}
+								}
 							}
 						}
 					}
 					else
 					{
-						if (w < 0)
+						if (zero == 0)
 						{
-							w = -w;
-							if (ss)
+							if (w < 0)
 							{
-								cnt = cnt + ft_putwstr(ss);
+								w = -w;
+								if (ss)
+								{
+									cnt = cnt + ft_putwstr(ss);
+								}
+								else
+								{
+									ft_putstr("(null)");
+									cnt = cnt + 6;
+								}
+								while((w - g) > 0)
+								{
+									cnt++;
+									ft_putchar(' ');
+									w--;
+								}
 							}
 							else
 							{
-								ft_putstr("(null)");
-								cnt = cnt + 6;
-							}
-							while((w - g) > 0)
-							{
-								cnt++;
-								ft_putchar('0');
-								w--;
+								while((w - g) > 0)
+								{
+									cnt++;
+									ft_putchar(' ');
+									w--;
+								}
+								if (ss)
+								{
+									cnt = cnt + ft_putwstr(ss);
+								}
+								else
+								{
+									ft_putstr("(null)");
+									cnt = cnt + 6;
+								}
 							}
 						}
 						else
 						{
-							while((w - g) > 0)
+							if (w < 0)
 							{
-								cnt++;
-								ft_putchar('0');
-								w--;
-							}
-							if (ss)
-							{
-								cnt = cnt + ft_putwstr(ss);
+								w = -w;
+								if (ss)
+								{
+									cnt = cnt + ft_putwstr(ss);
+								}
+								else
+								{
+									ft_putstr("(null)");
+									cnt = cnt + 6;
+								}
+								while((w - g) > 0)
+								{
+									cnt++;
+									ft_putchar('0');
+									w--;
+								}
 							}
 							else
 							{
-								ft_putstr("(null)");
-								cnt = cnt + 6;
+								while((w - g) > 0)
+								{
+									cnt++;
+									ft_putchar('0');
+									w--;
+								}
+								if (ss)
+								{
+									cnt = cnt + ft_putwstr(ss);
+								}
+								else
+								{
+									ft_putstr("(null)");
+									cnt = cnt + 6;
+								}
 							}
 						}
-
-
 					}
-
 					ind2 = 0;
 					w = 0;
 					pr = 0;
