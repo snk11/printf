@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checkwidth.c                                    :+:      :+:    :+:   */
+/*   ft_checkflag.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/27 14:55:14 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/09 20:44:04 by syusof           ###   ########.fr       */
+/*   Created: 2016/02/09 20:57:54 by syusof            #+#    #+#             */
+/*   Updated: 2016/02/09 21:39:54 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_printf.h"
 
-int		ft_checkwidth(char *str)
+int ft_checkflag(t_numb *e,char *str)
 {
+	
 	int	i;
 	char *begi;
 	char *s;
 	char *s2;
-
+	int		indend1;
+	int		indend2;
+	int		indend3;
+	int		num;
+	int		ret;
 //	printf ("str = %s\n",str);
 	
+	indend1 = 0;
+	indend2 = 0;
+	indend3 = 0;
+	ret = 0;
 	s = (char*)malloc(sizeof(char)*(ft_strlen(str)) + 1);
 	i = 0;
 	while (i < ft_strlen(str))
@@ -52,12 +61,13 @@ int		ft_checkwidth(char *str)
 		if ((i >= 0 && s[i] == '-') || (i>= 0 && s[i] == '+'))
 		{
 			s2[i] = s[i];
-			free(begi);
+			if (begi)
+				free(begi);
 //		printf("i= %d,s2 = %s\n",i,&s2[i]);
-			return (ft_atoi(&s2[i]));
+			indend1 = 1;
+			num = i;
 		}
-		free(begi);
-		return (ft_atoi(s2));
+		indend2 = 1;
 	}
 //	if (ft_checkprec(s) == 0)
 	{
@@ -74,8 +84,61 @@ int		ft_checkwidth(char *str)
 		}
 		s++;
 //		if (*s == ' ' || (*s >= '0' && *s <= '9'))
-			return ft_atoi(s);
+			indend3 = 1;
 	}
-	return 0;
+	if(indend1 == 1)
+	{
+		if (s2[num]== ' ')
+		{
+			e->indspace = 1;
+			ret++;
+		}
+		if (s2[num]== '#')
+		{
+			e->indsharp = 1;
+			ret++;
+		}
+		if (s2[num] == '+')
+		{
+			e->indplus = 1;
+			ret++;
+		}
+	}
+	else if(indend2 == 1)
+	{
+		if ( *s2== ' ')
+		{
+			e->indspace = 1;
+			ret++;
+		}
+		if (*s2 == '#')
+		{
+			e->indsharp = 1;
+			ret++;
+		}
+		if (*s2 == '+')
+		{
+			e->indplus = 1;
+			ret++;
+		}
+	}
+	else if(indend3 == 1)
+	{
+		if (*s == ' ')
+		{
+			e->indspace = 1;
+			ret++;
+		}
+		if (*s == '#')
+		{
+			e->indsharp = 1;
+			ret++;
+		}
+		if (*s == '+')
+		{
+			e->indplus = 1;
+			ret++;
+		}
+	}
+	return (ret);
 }
-
