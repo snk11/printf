@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/09 20:57:54 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/10 15:07:09 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/10 17:20:48 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int ft_checkflag(t_numb *e,char *str)
 			i++;
 		}
 		s = begi;
-	if (e->indpr == 0)
+//	if (e->indpr == 0)
 	{
 		s2 = (char*)malloc(sizeof(char) * i + 1);
 		s2[i] = 0;

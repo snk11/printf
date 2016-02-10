@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/10 17:03:39 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/10 17:22:14 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1232,6 +1232,9 @@ int	ft_printf(char *str, ...)
 							ft_putchar('0');
 							cnt++;
 						}
+						if (e->indsharp == 1 && ul == 0 && e->indpr == 1 && pr == 0)
+						{
+						}
 						if (e->indzero == 1 && pr == 0)
 						{
 							while(w - g > 0)
@@ -1742,7 +1745,7 @@ int	ft_printf(char *str, ...)
 					str++;
 					i++;
 				}
-//					ret1 = ft_checkflag(e,begi);
+					ret1 = ft_checkflag(e,begi);
 //				while(i < ret1)
 //				{
 //					str++;
