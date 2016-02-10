@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 08:29:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/09 21:09:14 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/10 15:44:50 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,22 @@ int	ft_count(int n)
 	return (i);
 }
 
-int	ft_countd(int w,int pr,int zero,t_numb *e,int n)
+int	ft_countd(int w,int pr,t_numb *e,int n)
 {
 	int i;
 	int v;
 	int u;
 	int neg;
-	int minus;
 
-	minus = 0;
-	if (w < 0)
-	{
-		w = -w;
-		minus = 1;
-	}
 	i = 0;
+/*
+					printf("indpr= %d\n",e->indpr);
+					printf("indzero= %d\n",e->indzero);
+					printf("indplus= %d\n",e->indplus);
+					printf("indspace= %d\n",e->indspace);
+					printf("indsharp= %d\n",e->indsharp);
+					printf("indminus= %d\n",e->indminus);
+*/
 	neg = 0;
 	u = pr;
 	v = w;
@@ -82,8 +83,9 @@ int	ft_countd(int w,int pr,int zero,t_numb *e,int n)
 		}
 		i++;
 	}
+	//	printf("i =%d \n",i);
 	//	printf("zero =%d \n",zero);
-	if (zero == 1 && pr == 0)
+	if (e->indzero == 1 && pr == 0)
 	{
 //		if (neg == 1)
 //			ft_putchar('-');
@@ -100,7 +102,7 @@ int	ft_countd(int w,int pr,int zero,t_numb *e,int n)
 			}
 			else
 			{
-				if(minus == 1)
+				if(e->indminus == 1)
 				{
 					if (e->indplus == 1)
 						w--;

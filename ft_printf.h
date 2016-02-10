@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/10 11:47:04 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/10 15:21:07 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_putchar(char c);
 size_t		ft_strlen(const char *str);
 size_t		ft_strlen2(wchar_t *str);
 int	ft_count(int n);
-int	ft_countd(int w,int pr,int zero,t_numb *e,int n);
+int	ft_countd(int w,int pr,t_numb *e,int n);
 int	ft_countld(long int n);
 int	ft_countus(unsigned short n);
 int	ft_countsd(short int n);

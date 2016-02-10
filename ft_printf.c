@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/10 12:23:02 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/10 15:45:57 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int	ft_printf(char *str, ...)
 //				printf("p2= %s\n",p);
 		while (*str != 0)
 		{
+//			printf("ind2 = %d,str1 =%c\n",ind2,*str);
 			if ( *str == '%' || ind2 == 1)
 			{
 //						cnt1++;
@@ -1000,11 +1001,11 @@ int	ft_printf(char *str, ...)
 						if(e->indminus == 1)
 						{
 							ft_putnbr(w,pr,e->indzero,d);
-							cnt = cnt + ft_countd(w,pr,e->indzero,e,d);
+							cnt = cnt + ft_countd(w,pr,e,d);
 						}
 						else
 						{
-							cnt = cnt + ft_countd(w,pr,e->indzero,e,d);
+							cnt = cnt + ft_countd(w,pr,e,d);
 							ft_putnbr(w,pr,e->indzero,d);
 						}
 					}
@@ -1311,7 +1312,7 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'h' && str[1] == 'h' && (str[2] == 'd' || str[2] == 'i'))
 				{
 					c = va_arg(ap, char);
-					cnt = cnt + ft_countd(w,pr,e->indzero,e,c);
+					cnt = cnt + ft_countd(w,pr,e,c);
 					ft_putnbr(w,pr,e->indzero,c);
 					str++;
 					str++;
@@ -1578,9 +1579,9 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_strlen(ft_ltohex(l)) + 2;
 					str++;
 				}
-				else if ((*str >= '0' && *str <= '9') || *str == '-' || *str == '.' || *str == ' ' || *str == '#')
+				else if ((*str >= '0' && *str <= '9') || *str == '-' ||*str == '+' || *str == '.' || *str == ' ' || *str == '#')
 				{
-						if (ind2 == 0)
+					if (ind2 == 0)
 					{
 				begi = NULL;
 //				printf ("getfield = %s\n",ft_getfield(indpr,ind2,begi));
@@ -1726,21 +1727,21 @@ int	ft_printf(char *str, ...)
 //					printf("begi = %s\n",begi);
 				if (begi)
 					ret1 = ft_checkflag(e,begi);
-//				while(i < ret1)
-//				{
-//					str++;
-//					i++;
-//				}
-//				if (begi)
-//				{
+				while(i < ret1)
+				{
+					str++;
+					i++;
+				}
+				if (begi)
+				{
 //					printf("begi = %s\n",begi);
-//					i = 0;
-//					while( i < (ft_strlen(begi) - ret1))
-//					{
-//						str++;
-//						i++;
-//					}
-//				}
+					i = 0;
+					while( i < (ft_strlen(begi) - ret1))
+					{
+						str++;
+						i++;
+					}
+				}
 //											printf("s3 = %s\n",s3);
 						if (w == 0 && begi)
 							w = ft_checkwidth(begi);
