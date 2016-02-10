@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/10 15:45:57 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/10 17:03:39 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1693,6 +1693,7 @@ int	ft_printf(char *str, ...)
 		//			p = ft_check_perc(str);
 		//			p3 = p;
 		indlast = 0;
+		ind2 = 0;
 		//			printf("p3 = %s\n",p3);
 		/*
 		   while((*str != 0) && (*str == '%' || *str == ' ') && p == NULL)
@@ -1716,9 +1717,16 @@ int	ft_printf(char *str, ...)
 		{
 			//				printf("cnt1 = %d,str = %c begi = %c \n",cnt1,*str,begi[ft_strlen(begi)-2]);
 //				printf("check = %d\n",ft_checkstrlast(str));
+				g =0;
+			ret1 = 0;
 				if (*str == '%')
 				{
 					str++;
+					if (cnt1 % 2 == 0)
+						ind2 = 1;
+					else
+						ind2 = 0;
+
 						i = 0;
 				begi = NULL;
 //				printf ("getfield = %s\n",ft_getfield(indpr,ind2,begi));
@@ -1726,22 +1734,30 @@ int	ft_printf(char *str, ...)
 //				if (begi)
 //					printf("begi = %s\n",begi);
 				if (begi)
-					ret1 = ft_checkflag(e,begi);
-				while(i < ret1)
+					g = ft_strlen(begi);
+//				printf("begilen = %d\n",g);
+
+				while (i < g)
 				{
 					str++;
 					i++;
 				}
-				if (begi)
-				{
+//					ret1 = ft_checkflag(e,begi);
+//				while(i < ret1)
+//				{
+//					str++;
+//					i++;
+//				}
+//				if (begi)
+//				{
 //					printf("begi = %s\n",begi);
-					i = 0;
-					while( i < (ft_strlen(begi) - ret1))
-					{
-						str++;
-						i++;
-					}
-				}
+//					i = 0;
+//					while( i < (ft_strlen(begi) - ret1))
+//					{
+//						str++;
+//						i++;
+//					}
+//				}
 //											printf("s3 = %s\n",s3);
 						if (w == 0 && begi)
 							w = ft_checkwidth(begi);
@@ -1757,79 +1773,79 @@ int	ft_printf(char *str, ...)
 //				printf("pr = %d\n",pr);
 //				if (w != 0 || pr != 0 || e->indzero != 0)
 //					str = begi;
-			if (ft_checkstrlast(str) && cnt1 % 2 == 0 && str[1] == 0 && *str == '%')
+			if (ft_checkstrlast(str) && cnt1 % 2 == 0 && *str == '%')
 			{
 				ft_putchar('%');
 				cnt++;
 			}
 			else
 			{
-			if (ft_checkstrlast(str) && *str == '%')
-			{
-				indlast = 1;
-				//					cntlast = cnt1;
-			}
-			if (cnt1 % 2 == 0)
-			{
-				if (*str == '%' && indlast == 1)
+				if (ft_checkstrlast(str) && *str == '%')
 				{
+					indlast = 1;
+					//					cntlast = cnt1;
 				}
-				else
+				if (cnt1 % 2 == 0)
 				{
-					if (e->indzero == 0)
+					if (*str == '%' && indlast == 1)
 					{
-						if(e->indminus == 1)
-						{
-							ft_putchar(*str);
-							cnt++;
-							while((w - 1) > 0)
-							{
-								cnt++;
-								ft_putchar(' ');
-								w--;
-							}
-						}
-						else
-						{
-							while((w - 1) > 0)
-							{
-								cnt++;
-								ft_putchar(' ');
-								w--;
-							}
-							ft_putchar(*str);
-							cnt++;
-						}
 					}
-					else if (e->indzero == 1)
+					else
 					{
-						if(e->indminus == 1)
+						if (e->indzero == 0)
 						{
-							ft_putchar(*str);
-							cnt++;
-							while((w - 1) > 0)
+							if(e->indminus == 1)
 							{
+								ft_putchar(*str);
 								cnt++;
-								ft_putchar('0');
-								w--;
+								while((w - 1) > 0)
+								{
+									cnt++;
+									ft_putchar(' ');
+									w--;
+								}
+							}
+							else
+							{
+								while((w - 1) > 0)
+								{
+									cnt++;
+									ft_putchar(' ');
+									w--;
+								}
+									ft_putchar(*str);
+									cnt++;
 							}
 						}
-						else
+						else if (e->indzero == 1)
 						{
-							while((w - 1) > 0)
+							if(e->indminus == 1)
 							{
+								ft_putchar(*str);
 								cnt++;
-								ft_putchar('0');
-								w--;
+								while((w - 1) > 0)
+								{
+									cnt++;
+									ft_putchar('0');
+									w--;
+								}
 							}
-							ft_putchar(*str);
-							cnt++;
+							else
+							{
+								while((w - 1) > 0)
+								{
+									cnt++;
+									ft_putchar('0');
+									w--;
+								}
+								ft_putchar(*str);
+								cnt++;
+							}
 						}
+						w = 0;
+						pr = 0;
+						e->indzero = 0;
 					}
-					w = 0;
-					pr = 0;
-					e->indzero = 0;
-				}
 			}
 			if (*str == '%')
 				cnt1++;
