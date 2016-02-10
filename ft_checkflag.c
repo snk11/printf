@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/09 20:57:54 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/09 22:15:03 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/10 09:44:43 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ int ft_checkflag(t_numb *e,char *str)
 	int		indend2;
 	int		indend3;
 	int		num;
-	int		ret;
-//	printf ("str = %s\n",str);
-	
+	int		ret = 0;
 	indend1 = 0;
 	indend2 = 0;
 	indend3 = 0;
@@ -43,7 +41,7 @@ int ft_checkflag(t_numb *e,char *str)
 	begi = s;
 //	if ((s[0] >= '0' && s[0] <= '9') || s[0] == ' ' || s[0] == '+' || s[0] == '-')
 	{
-		while((s[0] >= '0' && s[0] <= '9') || s[0] == ' ' || s[0] == '+' || s[0] == '-' || s[0] == '.')
+		while((s[0] >= '0' && s[0] <= '9') || s[0] == ' ' || s[0] == '+' || s[0] == '-' || s[0] == '.' || s[0] == '#')
 		{
 			s++;
 			i++;
@@ -52,13 +50,14 @@ int ft_checkflag(t_numb *e,char *str)
 		s2 = (char*)malloc(sizeof(char) * i + 1);
 		s2[i] = 0;
 		i--;
-		while (i >= 0 && s[i] != '-' && s[i] != '+')
+		while (i >= 0)
 		{
 			s2[i] = s[i];
-		printf("i= %d,s2 = %c\n",i,s2[i]);
 			i--;
 		}
-		if ((i >= 0 && s[i] == '-') || (i>= 0 && s[i] == '+'))
+		if (i < 0)
+			i++;
+		if ((i >= 0 && s[i] == '-') || (i>= 0 && s[i] == '+') || (i>= 0 && s[i] == ' ') || (i>= 0 && s[i] == '#'))
 		{
 			s2[i] = s[i];
 //			printf("s[i]= %c\n",s[i]);
@@ -78,7 +77,7 @@ int ft_checkflag(t_numb *e,char *str)
 			i++;
 		}
 		s--;
-		while ((*s == ' ' || *s == '-' || (*s >= '0' && *s <= '9')) && i > 0)
+		while ((*s == ' ' || *s == '-' || *s == ' '|| *s == '#' || (*s >= '0' && *s <= '9')) && i > 0)
 		{
 			s--;
 			i--;
@@ -87,12 +86,14 @@ int ft_checkflag(t_numb *e,char *str)
 //		if (*s == ' ' || (*s >= '0' && *s <= '9'))
 			indend3 = 1;
 	}
+
+//	printf("end1 = %d,end2 = %d, end3 = %d\n",indend1,indend2,indend3);
+
 	if(indend1 == 1)
 	{
 		i = num;
-		while(( s[i]==' ' || s[i]== '#' || s[i] == '+'))
+		while(s2[i] && ( s2[i]!=' ' || s2[i]!= '#' || s2[i] != '+'))
 		{
-			printf("s[i]= %c\n",s[i]);
 			if (s2[i]== ' ' && ret == 0)
 			{
 				e->indspace = 1;
@@ -108,8 +109,14 @@ int ft_checkflag(t_numb *e,char *str)
 				e->indplus = 1;
 				ret++;
 			}
+			if (s2[i] == '-')
+			{
+				e->indminus = 1;
+			}
 			i++;
 		}
+		if (s2[i] && s2[i] == '0')
+			e->indzero = 1;
 	}
 	else if(indend2 == 1)
 	{
@@ -130,8 +137,14 @@ int ft_checkflag(t_numb *e,char *str)
 				e->indplus = 1;
 				ret++;
 			}
+			if (*s2 == '-')
+			{
+				e->indminus = 1;
+			}
 			s2++;
 		}
+		if (*s2 && *s2 == '0')
+			e->indzero = 1;
 	}
 	else if(indend3 == 1)
 	{
@@ -152,8 +165,15 @@ int ft_checkflag(t_numb *e,char *str)
 				e->indplus = 1;
 				ret++;
 			}
+			if (*s == '-')
+			{
+				e->indminus = 1;
+			}
 			s++;
 		}
+		if (*s && *s == '0')
+			e->indzero = 1;
 	}
+//	printf("ret = %d\n",ret);
 	return (ret);
 }
