@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/10 10:09:51 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/10 12:23:02 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	ft_printf(char *str, ...)
 	char	*p2;
 	int		cnt2;
 	int		indlast;
-	int		indpr;
 	int		prbegi;
 	char	sn[]="(null)";
 	t_numb	*e;
@@ -70,7 +69,6 @@ int	ft_printf(char *str, ...)
 	pr = 0;
 	ind2 = 0;
 	indletter = 0;
-	indpr = 0;
 	prbegi = 0;
 	va_start(ap, str);
 	begi = &(str[0]);
@@ -81,6 +79,7 @@ int	ft_printf(char *str, ...)
 	e->indspace = 0;
 	e->indminus = 0;
 	e->indzero = 0;
+	e->indpr = 0;
 	p = ft_check_perc0(str);
 	ret1 = 0;
 //			printf("p= %s\n",p);
@@ -103,20 +102,10 @@ int	ft_printf(char *str, ...)
 //						cnt1++;
 				str++;
 				if (ind2 == 1)
-					str--;
-				i = 0;
-				begi = NULL;
-//				printf ("getfield = %s\n",ft_getfield(indpr,ind2,begi));
-				begi = ft_getfield(indpr,ind2,str);
-//				if (begi)
-//					printf("begi = %s\n",begi);
-				ret1 = ft_checkflag(e,begi);
-				while(i < ret1)
 				{
-					str++;
-					i++;
+					str--;
 				}
-//				printf("i = %d\n",i);
+			//				printf("i = %d\n",i);
 					
 //			printf("ind2 = %d,str1 =%c\n",ind2,*str);
 //						if (*str == '%')
@@ -187,7 +176,7 @@ int	ft_printf(char *str, ...)
 					w = 0;
 					pr = 0;
 					e->indzero = 0;
-					indpr = 0;
+					e->indpr = 0;
 				}
 				else if (*str == 'C')
 				{
@@ -203,7 +192,7 @@ int	ft_printf(char *str, ...)
 					g = ft_strlen(s);
 //									printf("w= %d, pr = %d,indpr = %d, g= %d\n",w,pr,indpr,g);
 					
-					if (indpr == 1)
+					if (e->indpr == 1)
 					{
 						if (pr > abs(w))
 						{
@@ -369,7 +358,7 @@ int	ft_printf(char *str, ...)
 							w = -w;
 							e->indminus = 1;
 						}
-						if (w == 0 && pr == 0 && indpr == 0)
+						if (w == 0 && pr == 0 && e->indpr == 0)
 						{
 							i = 0;
 							while (i < 6)
@@ -379,7 +368,7 @@ int	ft_printf(char *str, ...)
 								i++;
 							}
 						}
-						else if (indpr == 1)
+						else if (e->indpr == 1)
 						{
 							if (e->indminus == 1)
 							{
@@ -456,7 +445,7 @@ int	ft_printf(char *str, ...)
 								}
 							}
 						}
-						else if (indpr == 0)
+						else if (e->indpr == 0)
 						{
 							if (e->indminus == 1)
 							{
@@ -534,7 +523,7 @@ int	ft_printf(char *str, ...)
 					w = 0;
 					pr = 0;
 					e->indzero = 0;
-					indpr = 0;
+					e->indpr = 0;
 					e->indminus = 0;
 				}
 				else if (*str == 'S')
@@ -544,15 +533,14 @@ int	ft_printf(char *str, ...)
 						g = ft_strlen2(ss);
 					if (!ss)
 						g = 6;
-					if (indpr == 1)
+					if (e->indpr == 1)
 					{
 						if (pr > abs(w))
 						{
 							if (e->indzero == 0)
 							{
-								if (w < 0)
+								if (e->indminus == 1)
 								{
-									w = -w;
 									if (ss)
 									{
 										cnt = cnt + ft_putwstr(ss);
@@ -590,9 +578,8 @@ int	ft_printf(char *str, ...)
 							}
 							else
 							{
-								if (w < 0)
+								if (e->indminus == 1)
 								{
-									w = -w;
 									if (ss)
 									{
 										cnt = cnt + ft_putwstr(ss);
@@ -633,9 +620,8 @@ int	ft_printf(char *str, ...)
 						{
 							if (e->indzero == 0)
 							{
-								if (w < 0)
+								if (e->indminus == 1)
 								{
-									w = -w;
 									if (ss)
 									{
 										cnt = cnt + ft_putwstr(ss);
@@ -673,9 +659,8 @@ int	ft_printf(char *str, ...)
 							}
 							else
 							{
-								if (w < 0)
+								if (e->indminus == 1)
 								{
-									w = -w;
 									if (ss)
 									{
 										cnt = cnt + ft_putwstr(ss);
@@ -717,9 +702,8 @@ int	ft_printf(char *str, ...)
 					{
 						if (e->indzero == 0)
 						{
-							if (w < 0)
+							if (e->indminus == 1)
 							{
-								w = -w;
 								if (ss)
 								{
 									cnt = cnt + ft_putwstr(ss);
@@ -757,7 +741,7 @@ int	ft_printf(char *str, ...)
 						}
 						else
 						{
-							if (w < 0)
+							if (e->indminus == 1)
 							{
 								w = -w;
 								if (ss)
@@ -800,13 +784,19 @@ int	ft_printf(char *str, ...)
 					w = 0;
 					pr = 0;
 					indletter = 1;
-					indpr = 0;
+					e->indpr = 0;
 				}
 				else if (*str == 'p')
 				{
 					l = va_arg(ap, long);
 					g =(ft_strlen(ft_ltohex(l)));
-					if (indpr == 1)
+//					printf("indpr= %d\n",e->indpr);
+//					printf("indzero= %d\n",e->indzero);
+//					printf("indplus= %d\n",e->indplus);
+//					printf("indspace= %d\n",e->indspace);
+//					printf("indsharp= %d\n",e->indsharp);
+//					printf("indminus= %d\n",e->indminus);
+					if (e->indpr == 1)
 					{
 						if (pr == 0 && w == 0)
 						{
@@ -902,7 +892,7 @@ int	ft_printf(char *str, ...)
 								cnt = cnt + ft_strlen(ft_ltohex(l)) + 2;
 						}
 					}
-					else if (indpr == 0)
+					else if (e->indpr == 0)
 					{
 						if (e->indzero == 1)
 						{
@@ -917,9 +907,8 @@ int	ft_printf(char *str, ...)
 						}
 						else
 						{
-							if (w < 0)
+							if (e->indminus == 1)
 							{
-								w = -w;
 								ft_putstr("0x");
 								ft_putstrad(ft_ltohex(l));
 								while((w - (g + 2)) > 0)
@@ -956,14 +945,15 @@ int	ft_printf(char *str, ...)
 					w = 0;
 					pr = 0;
 					indletter = 1;
-					indpr = 0;
+					e->indpr = 0;
+					e->indminus = 0;
 				}
 				else if (*str == 'u')
 				{
 					u = va_arg(ap, unsigned int);
 //					ft_putunbr(u);
 //					cnt = cnt + ft_countu(u);
-					if (pr == 0 && w == 0 && indpr == 1)
+					if (pr == 0 && w == 0 && e->indpr == 1)
 					{
 					}
 					else
@@ -984,7 +974,7 @@ int	ft_printf(char *str, ...)
 					pr = 0;
 					indletter = 1;
 					e->indzero = 0;
-					indpr = 0;
+					e->indpr = 0;
 					e->indplus = 0;
 					e->indspace = 0;
 				}
@@ -1002,12 +992,12 @@ int	ft_printf(char *str, ...)
 //						ft_putchar(' ');
 //						cnt++;
 //					}
-					if (pr == 0 && w == 0 && indpr == 1)
+					if (pr == 0 && w == 0 && e->indpr == 1)
 					{
 					}
 					else
 					{
-						if(w < 0)
+						if(e->indminus == 1)
 						{
 							ft_putnbr(w,pr,e->indzero,d);
 							cnt = cnt + ft_countd(w,pr,e->indzero,e,d);
@@ -1023,9 +1013,10 @@ int	ft_printf(char *str, ...)
 					pr = 0;
 					indletter = 1;
 					e->indzero = 0;
-					indpr = 0;
+					e->indpr = 0;
 					e->indplus = 0;
 					e->indspace = 0;
+					e->indminus = 0;
 				}
 				else if (*str == 'D')
 				{
@@ -1036,7 +1027,7 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'x')
 				{
 					u = va_arg(ap, unsigned int);
-					if (u == 0 && pr == 0 & indpr == 1)
+					if (u == 0 && pr == 0 & e->indpr == 1)
 					{
 					}
 					else
@@ -1095,13 +1086,13 @@ int	ft_printf(char *str, ...)
 					pr = 0;
 					indletter = 1;
 					e->indzero = 0;
-					indpr = 0;
+					e->indpr = 0;
 
 				}
 				else if (*str == 'X')
 				{
 					u = va_arg(ap, unsigned int);
-					if (u == 0 && pr == 0 & indpr == 1)
+					if (u == 0 && pr == 0 & e->indpr == 1)
 					{
 					}
 					else
@@ -1160,12 +1151,12 @@ int	ft_printf(char *str, ...)
 					pr = 0;
 					indletter = 1;
 					e->indzero = 0;
-					indpr = 0;
+					e->indpr = 0;
 				}
 				else if (*str == 'o')
 				{
 					u = va_arg(ap, unsigned int);
-					if (u == 0 && pr == 0 && indpr == 1 && e->indsharp == 0)
+					if (u == 0 && pr == 0 && e->indpr == 1 && e->indsharp == 0)
 					{
 					}
 					else
@@ -1222,13 +1213,13 @@ int	ft_printf(char *str, ...)
 					pr = 0;
 					indletter = 1;
 					e->indzero = 0;
-					indpr = 0;
+					e->indpr = 0;
 					e->indsharp = 0;
 				}
 				else if (*str == 'O')
 				{
 					ul = va_arg(ap,  unsigned long);
-					if (ul == 0 && pr == 0 && indpr == 1 && e->indsharp == 0)
+					if (ul == 0 && pr == 0 && e->indpr == 1 && e->indsharp == 0)
 					{
 					}
 					else
@@ -1285,7 +1276,7 @@ int	ft_printf(char *str, ...)
 					pr = 0;
 					indletter = 1;
 					e->indzero = 0;
-					indpr = 0;
+					e->indpr = 0;
 					e->indsharp = 0;
 				}
 				else if (*str == 'l' && (str[1] == 'd' || str[1] == 'i'))
@@ -1589,32 +1580,27 @@ int	ft_printf(char *str, ...)
 				}
 				else if ((*str >= '0' && *str <= '9') || *str == '-' || *str == '.' || *str == ' ' || *str == '#')
 				{
-					if (*str == '.')
-						indpr = 1;
-					if (ind2 == 0)
+						if (ind2 == 0)
 					{
-						i = 0;
-						while (ft_checkletter(str) == 0)
-						{
-							i++;
-							str++;
-						}
-						str--;
-						s3 = (char*)malloc(sizeof(char)*i + 1);
-						s3[i] = 0;
-						while(i > 0)
-						{
-							s3[i - 1] = *str;
-							i--;
-							str--;
-						}
+				begi = NULL;
+//				printf ("getfield = %s\n",ft_getfield(indpr,ind2,begi));
+				begi = ft_getfield(e->indpr,str);
+//				if (begi)
+//					printf("begi = %s\n",begi);
+				if (begi)
+					ret1 = ft_checkflag(e,begi);
+//				while(i < ret1)
+//				{
+//					str++;
+//					i++;
+//				}
 //											printf("s3 = %s\n",s3);
-						if (w == 0)
-							w = ft_checkwidth(s3);
-						if (pr == 0)
-							pr = ft_checkprec(s3);
-						if (str[1] == '0')
-							e->indzero = 1;
+						if (w == 0 && begi)
+							w = ft_checkwidth(begi);
+						if (pr == 0 && begi)
+							pr = ft_checkprec(begi);
+//						if (str[1] == '0')
+//							e->indzero = 1;
 					}
 
 //									printf("w = %d\n",w);
@@ -1733,34 +1719,43 @@ int	ft_printf(char *str, ...)
 				{
 					str++;
 						i = 0;
-						while (((*str >= '0' && *str <= '9') || *str == '-' || *str == '.' || *str == ' '))
-						{
-							i++;
-							str++;
-						}
-						begi = str;
-//						printf("begi =%c\n",*begi);
-						str--;
-						s3 = (char*)malloc(sizeof(char)*i + 1);
-						s3[i] = 0;
-						while(i > 0)
-						{
-							s3[i - 1] = *str;
-							i--;
-							str--;
-						}
-						//					printf("s3 = %s\n",s3);
-						if (w == 0)
-							w = ft_checkwidth(s3);
-						if (pr == 0)
-							pr = ft_checkprec(s3);
-						if (str[1] == '0')
-							e->indzero = 1;
-//				printf("w = %d\n",w);
-//				printf("pr = %d\n",pr);
-				if (w != 0 || pr != 0 || e->indzero != 0)
-					str = begi;
+				begi = NULL;
+//				printf ("getfield = %s\n",ft_getfield(indpr,ind2,begi));
+				begi = ft_getfield(e->indpr,str);
+//				if (begi)
+//					printf("begi = %s\n",begi);
+				if (begi)
+					ret1 = ft_checkflag(e,begi);
+//				while(i < ret1)
+//				{
+//					str++;
+//					i++;
+//				}
+//				if (begi)
+//				{
+//					printf("begi = %s\n",begi);
+//					i = 0;
+//					while( i < (ft_strlen(begi) - ret1))
+//					{
+//						str++;
+//						i++;
+//					}
+//				}
+//											printf("s3 = %s\n",s3);
+						if (w == 0 && begi)
+							w = ft_checkwidth(begi);
+						if (pr == 0 && begi)
+							pr = ft_checkprec(begi);
+//						if (str[1] == '0')
+//							e->indzero = 1;
 				}
+
+//									printf("w = %d\n",w);
+//									printf("pr = %d\n",pr);
+				//				printf("w = %d\n",w);
+//				printf("pr = %d\n",pr);
+//				if (w != 0 || pr != 0 || e->indzero != 0)
+//					str = begi;
 			if (ft_checkstrlast(str) && cnt1 % 2 == 0 && str[1] == 0 && *str == '%')
 			{
 				ft_putchar('%');
@@ -1782,9 +1777,8 @@ int	ft_printf(char *str, ...)
 				{
 					if (e->indzero == 0)
 					{
-						if(w < 0)
+						if(e->indminus == 1)
 						{
-							w = -w;
 							ft_putchar(*str);
 							cnt++;
 							while((w - 1) > 0)
@@ -1808,9 +1802,8 @@ int	ft_printf(char *str, ...)
 					}
 					else if (e->indzero == 1)
 					{
-						if(w < 0)
+						if(e->indminus == 1)
 						{
-							w = -w;
 							ft_putchar(*str);
 							cnt++;
 							while((w - 1) > 0)

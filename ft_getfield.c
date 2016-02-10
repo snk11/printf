@@ -6,24 +6,23 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/10 08:16:18 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/10 09:25:54 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/10 11:46:57 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_printf.h"
 
-char *ft_getfield(int indpr,int ind2,char *str)
+
+char *ft_getfield(int indpr,char *str)
 {
 	int	i;
 	char *s3;
+
+	s3 = NULL;
 				if ((*str >= '0' && *str <= '9') || *str == '-' || *str == '.' || *str == ' ' || *str == '#')
 				{
-					if (*str == '.')
-						indpr = 1;
-					if (ind2 == 0)
-					{
 						i = 0;
-						while (ft_checkletter(str) == 0)
+				while((*str >= '0' && *str <= '9') || *str == '-' || *str == '.' || *str == ' ' || *str == '#')
 						{
 							i++;
 							str++;
@@ -38,13 +37,10 @@ char *ft_getfield(int indpr,int ind2,char *str)
 							str--;
 						}
 //											printf("s3 =%s\n",s3);
-					}
 
 //									printf("w = %d\n",w);
 //									printf("pr = %d\n",pr);
-					ind2 = 1;
 				}
 	return (s3);
 
 }
-

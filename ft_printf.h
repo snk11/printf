@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/10 09:47:16 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/10 11:47:04 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct			s_numb
 	int					indsharp;
 	int					indzero;
 	int					indminus;
+	int					indpr;
 }						t_numb;
 
 
@@ -87,6 +88,6 @@ int	ft_countul(unsigned long n);
 void	ft_putunbr(int w,int pr,int zero,unsigned int n);
 void	ft_putldnbr(long int n);
 int ft_checkflag(t_numb *e,char *str);
-char	*ft_getfield(int indpr,int ind2,char *str);
+char	*ft_getfield(int indpr,char *str);
 
 #endif
