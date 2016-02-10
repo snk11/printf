@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/10 17:22:14 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/10 17:55:09 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -529,6 +529,12 @@ int	ft_printf(char *str, ...)
 				}
 				else if (*str == 'S')
 				{
+//					printf("indpr= %d\n",e->indpr);
+//					printf("indzero= %d\n",e->indzero);
+//					printf("indplus= %d\n",e->indplus);
+//					printf("indspace= %d\n",e->indspace);
+//					printf("indsharp= %d\n",e->indsharp);
+//					printf("indminus= %d\n",e->indminus);
 					ss = va_arg(ap, wchar_t*);
 					if (ss)
 						g = ft_strlen2(ss);
@@ -536,7 +542,7 @@ int	ft_printf(char *str, ...)
 						g = 6;
 					if (e->indpr == 1)
 					{
-						if (pr > abs(w))
+						if (pr > w)
 						{
 							if (e->indzero == 0)
 							{
@@ -617,7 +623,7 @@ int	ft_printf(char *str, ...)
 								}
 							}
 						}
-						else if (abs(w) > pr)
+						else if (w > pr)
 						{
 							if (e->indzero == 0)
 							{
@@ -680,20 +686,32 @@ int	ft_printf(char *str, ...)
 								}
 								else
 								{
-									while((w - g) > 0)
+									if (w > g)
 									{
-										cnt++;
-										ft_putchar('0');
-										w--;
-									}
-									if (ss)
-									{
-										cnt = cnt + ft_putwstr(ss);
+										while((w - g) > 0)
+										{
+											cnt++;
+											ft_putchar('0');
+											w--;
+										}
+										if (ss)
+										{
+											cnt = cnt + ft_putwstr(ss);
+										}
+										else
+										{
+											ft_putstr("(null)");
+											cnt = cnt + 6;
+										}
 									}
 									else
 									{
-										ft_putstr("(null)");
-										cnt = cnt + 6;
+										while(w > 0)
+										{
+											cnt++;
+											ft_putchar('0');
+											w--;
+										}
 									}
 								}
 							}
@@ -1164,7 +1182,7 @@ int	ft_printf(char *str, ...)
 					{
 					s2 = ft_ltooct(u);
 					g = ft_strlen(s2);
-					if (e->indsharp == 1 && u != 0)
+					if (e->indsharp == 1 && u != 0 && e->indpr == 0)
 					{
 						ft_putchar('0');
 						cnt++;
@@ -1232,9 +1250,6 @@ int	ft_printf(char *str, ...)
 							ft_putchar('0');
 							cnt++;
 						}
-						if (e->indsharp == 1 && ul == 0 && e->indpr == 1 && pr == 0)
-						{
-						}
 						if (e->indzero == 1 && pr == 0)
 						{
 							while(w - g > 0)
@@ -1254,7 +1269,6 @@ int	ft_printf(char *str, ...)
 									cnt++;
 									w--;
 								}
-
 								while((pr - g) > 0)
 								{
 									ft_putchar('0');
