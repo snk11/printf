@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/10 17:55:09 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/19 07:43:43 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -939,19 +939,33 @@ int	ft_printf(char *str, ...)
 							}
 							else
 							{
-								while((w - (g + 2)) > 0)
+								if (e->indspace == 1 || e->indplus == 1)
 								{
-									cnt++;
-									ft_putchar(' ');
-									w--;
+									while((w - (g + 2)) > 0)
+									{
+										cnt++;
+										ft_putchar(' ');
+										w--;
+									}
+									ft_putstr("0x");
+									ft_putstr(ft_ltohex(l));
 								}
-								ft_putstr("0x");
-								ft_putstrad(ft_ltohex(l));
+								else
+								{
+									while((w - (g + 2)) > 0)
+									{
+										cnt++;
+										ft_putchar(' ');
+										w--;
+									}
+									ft_putstr("0x");
+									ft_putstrad(ft_ltohex(l));
+								}
 							}
 						}
 						cnt = cnt + g + 2;
 						int o = 0;
-						if (g < 9 && g > 1)
+						if (g < 9 && g > 1 && e->indspace == 0 && e->indplus == 0)
 						{
 							while (o < 9 - g)
 							{
@@ -966,6 +980,10 @@ int	ft_printf(char *str, ...)
 					indletter = 1;
 					e->indpr = 0;
 					e->indminus = 0;
+					e->indplus = 0;
+					e->indzero = 0;
+					e->indspace = 0;
+					e->indsharp = 0;
 				}
 				else if (*str == 'u')
 				{
@@ -1182,7 +1200,7 @@ int	ft_printf(char *str, ...)
 					{
 					s2 = ft_ltooct(u);
 					g = ft_strlen(s2);
-					if (e->indsharp == 1 && u != 0 && e->indpr == 0)
+					if (e->indsharp == 1 && u != 0 && pr == 0)
 					{
 						ft_putchar('0');
 						cnt++;

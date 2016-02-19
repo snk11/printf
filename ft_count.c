@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 08:29:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/10 15:44:50 by syusof           ###   ########.fr       */
+/*   Updated: 2016/02/19 07:28:38 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,10 @@ int	ft_countd(int w,int pr,t_numb *e,int n)
 				w--;
 			}
 			if(e->indplus == 1 && neg == 0)
+			{
 				ft_putchar('+');
+				w--;
+			}
 		}
 	}
 	if (u > i)
@@ -446,8 +449,8 @@ int	ft_countu(int w,int pr, int zero,t_numb *e,unsigned int n)
 		}
 		else
 		{
-			if(e->indplus == 1)
-				w--;
+//			if(e->indplus == 1)
+//				w--;
 //			if(e.indspace == 1 && e.indplus == 0 && neg == 0)
 //				ft_putchar(' ');
 			while(w - i > 0)
@@ -455,8 +458,8 @@ int	ft_countu(int w,int pr, int zero,t_numb *e,unsigned int n)
 				ft_putchar(' ');
 				w--;
 			}
-			if(e->indplus == 1 && neg == 0)
-				ft_putchar('+');
+//			if(e->indplus == 1 && neg == 0)
+//				ft_putchar('+');
 		}
 	}
 	if (u > i)
