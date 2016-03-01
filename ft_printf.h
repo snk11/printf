@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/10 15:21:07 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/02 00:42:17 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,23 @@ typedef struct			s_numb
 	int					indzero;
 	int					indminus;
 	int					indpr;
+	int					w;
+	int					pr;
+	int					d;
+	int					ind2;
 }						t_numb;
 
 
 int		ft_printf(char *str, ...);
+void	ft_initialize(t_numb **e);
+int ft_onelettercase(char *str,t_numb *e);
+int ft_checkc(char *str,t_numb *e);
+int	ft_checkc1(char *str,t_numb *e);
+int		ft_checkc1a(char *str,t_numb *e);
+int		ft_checkc1b(char *str,t_numb *e);
+int	ft_checkc2(char *str,t_numb *e);
+int		ft_checkc2a(char *str,t_numb *e);
+int		ft_checkc2b(char *str,t_numb *e);
 int		ft_atoi(const char *nptr);
 int		ft_checkletter(char *str);
 int		ft_checkstrlast(char *str);

@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/19 07:43:43 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/02 00:48:37 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@ int	ft_printf(char *str, ...)
 	int c2;
 	char	*p3;
 	int		ind1;
-	int		w;
-	int		pr;
-	int		ind2;
+	int		d2;
 	int		ind0;
 	int		indletter;
 	int		g;
@@ -62,18 +60,18 @@ int	ft_printf(char *str, ...)
 	//	int		b;
 
 
+	e = (t_numb*)malloc(sizeof(t_numb));
 	cnt = 0;
 	cnt1 = 0;
 	ind1 = 0;
-	w = 0;
-	pr = 0;
-	ind2 = 0;
+	e->w = 0;
+	e->pr = 0;
+	e->ind2 = 0;
 	indletter = 0;
 	prbegi = 0;
 	va_start(ap, str);
 	begi = &(str[0]);
 	//	printf("str = %s\n",str);
-	e = (t_numb*)malloc(sizeof(t_numb));
 	e->indsharp = 0;
 	e->indplus = 0;
 	e->indspace = 0;
@@ -98,11 +96,11 @@ int	ft_printf(char *str, ...)
 		while (*str != 0)
 		{
 //			printf("ind2 = %d,str1 =%c\n",ind2,*str);
-			if ( *str == '%' || ind2 == 1)
+			if ( *str == '%' || e->ind2 == 1)
 			{
 //						cnt1++;
 				str++;
-				if (ind2 == 1)
+				if (e->ind2 == 1)
 				{
 					str--;
 				}
@@ -120,64 +118,9 @@ int	ft_printf(char *str, ...)
 //						}
 				else if (*str == 'c')
 				{
-					c = va_arg(ap, int);
-					if (e->indzero == 0)
-					{
-						if(w < 0)
-						{
-							w = -w;
-							ft_putchar(c);
-							cnt++;
-							while((w - 1) > 0)
-							{
-								cnt++;
-								ft_putchar(' ');
-								w--;
-							}
-						}
-						else
-						{
-							while((w - 1) > 0)
-							{
-								cnt++;
-								ft_putchar(' ');
-								w--;
-							}
-							ft_putchar(c);
-							cnt++;
-						}
-					}
-					else
-					{
-						if(w < 0)
-						{
-							w = -w;
-							ft_putchar(c);
-							cnt++;
-							while((w - 1) > 0)
-							{
-								cnt++;
-								ft_putchar('0');
-								w--;
-							}
-						}
-						else
-						{
-							while((w - 1) > 0)
-							{
-								cnt++;
-								ft_putchar('0');
-								w--;
-							}
-							ft_putchar(c);
-							cnt++;
-						}
-					}
-					ind2 = 0;
-					w = 0;
-					pr = 0;
-					e->indzero = 0;
-					e->indpr = 0;
+					e->d = va_arg(ap, int);
+					cnt = cnt + ft_onelettercase(str,e);
+					ft_initialize(&e);
 				}
 				else if (*str == 'C')
 				{
@@ -186,47 +129,46 @@ int	ft_printf(char *str, ...)
 				}
 				else if (*str == 's')
 				{
-					prbegi = pr;
+					prbegi = e->pr;
 					s = va_arg(ap, char*);
 					if (s)
 					{
 					g = ft_strlen(s);
 //									printf("w= %d, pr = %d,indpr = %d, g= %d\n",w,pr,indpr,g);
-					
 					if (e->indpr == 1)
 					{
-						if (pr > abs(w))
+						if (e->pr > abs(e->w))
 						{
 							if (e->indzero == 0)
 							{
-								while((w - g) > 0 && pr > 0)
+								while((e->w - g) > 0 && e->pr > 0)
 								{
 									cnt++;
 									ft_putchar(' ');
-									w--;
-									pr--;
+									(e->w)--;
+									(e->pr)--;
 								}
 							}
 							else
 							{
-								while((w - g) > 0 && pr > 0)
+								while((e->w - g) > 0 && e->pr > 0)
 								{
 									cnt++;
 									ft_putchar('0');
-									w--;
-									pr--;
+									(e->w)--;
+									(e->pr)--;
 								}
 							}
 							if (s)
 							{
-								ft_putstr2(pr,s);
+								ft_putstr2(e->pr,s);
 								i = 0;
-								pr =prbegi;
-								while (i < g && pr > 0)
+								e->pr =prbegi;
+								while (i < g && e->pr > 0)
 								{
 									cnt++;
 									i++;
-									pr--;
+									(e->pr)--;
 								}
 							}
 							else
@@ -235,38 +177,38 @@ int	ft_printf(char *str, ...)
 								cnt = cnt + 6;
 							}
 						}
-						else if(abs(w) > pr)
+						else if(abs(e->w) > e->pr)
 						{
-							if (g > pr)
+							if (g > e->pr)
 							{
 //									printf("w= %d, pr = %d\n",w,pr);
 								if (e->indzero == 0)
 								{
-									while((w - pr) > 0)
+									while((e->w - e->pr) > 0)
 									{
 										cnt++;
 										ft_putchar(' ');
-										w--;
+										(e->w)--;
 									}
 								}
 								else
 								{
 //									printf("w= %d, pr = %d\n",w,pr);
-									while((w - pr) > 0)
+									while((e->w - e->pr) > 0)
 									{
 										cnt++;
 										ft_putchar('0');
-										w--;
+										(e->w)--;
 									}
 								}
 								if (s)
 								{
-									ft_putstr2(pr,s);
+									ft_putstr2(e->pr,s);
 									i = 0;
-									while (pr > 0)
+									while (e->pr > 0)
 									{
 										cnt++;
-										pr--;
+										(e->pr)--;
 									}
 								}
 								else
@@ -275,24 +217,24 @@ int	ft_printf(char *str, ...)
 									cnt = cnt + 6;
 								}
 							}
-							else if (g < pr)
+							else if (g < e->pr)
 							{
 								if (e->indzero == 0)
 								{
-									while((w - g) > 0)
+									while((e->w - g) > 0)
 									{
 										cnt++;
 										ft_putchar(' ');
-										w--;
+										(e->w)--;
 									}
 								}
 								else
 								{
-									while((w - g) > 0)
+									while((e->w - g) > 0)
 									{
 										cnt++;
 										ft_putchar('0');
-										w--;
+										(e->w)--;
 									}
 								}
 								if (s)
@@ -317,20 +259,20 @@ int	ft_printf(char *str, ...)
 					{
 						if (e->indzero == 0)
 						{
-							while((w - g) > 0)
+							while((e->w - g) > 0)
 							{
 								cnt++;
 								ft_putchar(' ');
-								w--;
+								(e->w)--;
 							}
 						}
 						else
 						{
-							while((w - g) > 0)
+							while((e->w - g) > 0)
 							{
 								cnt++;
 								ft_putchar('0');
-								w--;
+								(e->w)--;
 							}
 						}
 						if (s)
@@ -352,14 +294,14 @@ int	ft_printf(char *str, ...)
 					}
 					else
 					{
-						if (pr > 6)
-							pr = 6;
-						if (w < 0)
+						if (e->pr > 6)
+							e->pr = 6;
+						if (e->w < 0)
 						{
-							w = -w;
+							e->w = -(e->w);
 							e->indminus = 1;
 						}
-						if (w == 0 && pr == 0 && e->indpr == 0)
+						if (e->w == 0 && e->pr == 0 && e->indpr == 0)
 						{
 							i = 0;
 							while (i < 6)
@@ -373,37 +315,37 @@ int	ft_printf(char *str, ...)
 						{
 							if (e->indminus == 1)
 							{
-								if (pr > 0)
+								if (e->pr > 0)
 								{
-									prbegi = pr;
+									prbegi = e->pr;
 									i = 0;
-									while (i < 6 && pr > 0)
+									while (i < 6 && e->pr > 0)
 									{
 										ft_putchar(sn[i]);
 										cnt++;
 										i++;
-										pr--;
+										(e->pr)--;
 									}
-									pr = prbegi;
+									e->pr = prbegi;
 								}
-								if (w > 6)
+								if (e->w > 6)
 								{
 									if (e->indzero == 1)
 									{
-										while((w - pr) > 0)
+										while((e->w - e->pr) > 0)
 										{
 											cnt++;
 											ft_putchar('0');
-											w--;
+											(e->w)--;
 										}
 									}
 									else
 									{
-										while((w - pr) > 0)
+										while((e->w - e->pr) > 0)
 										{
 											cnt++;
 											ft_putchar(' ');
-											w--;
+											(e->w)--;
 										}
 									}
 								}
@@ -412,36 +354,36 @@ int	ft_printf(char *str, ...)
 							{
 								if (e->indzero == 1)
 								{
-									while((w - pr) > 0)
+									while((e->w - e->pr) > 0)
 									{
 										cnt++;
 										ft_putchar('0');
-										w--;
+										(e->w)--;
 									}
 									i = 0;
-									while (pr > 0)
+									while (e->pr > 0)
 									{
 										ft_putchar(sn[i]);
 										cnt++;
 										i++;
-										pr--;
+										(e->pr)--;
 									}
 								}
 								else
 								{
-									while((w - pr) > 0)
+									while((e->w - e->pr) > 0)
 									{
 										cnt++;
 										ft_putchar(' ');
-										w--;
+										(e->w)--;
 									}
 									i = 0;
-									while (pr > 0)
+									while (e->pr > 0)
 									{
 										ft_putchar(sn[i]);
 										cnt++;
 										i++;
-										pr--;
+										(e->pr)--;
 									}
 								}
 							}
@@ -457,24 +399,24 @@ int	ft_printf(char *str, ...)
 									cnt++;
 									i++;
 								}
-								if (w > 6)
+								if (e->w > 6)
 								{
 									if (e->indzero == 1)
 									{
-										while((w - pr) > 0)
+										while((e->w - e->pr) > 0)
 										{
 											cnt++;
 											ft_putchar('0');
-											w--;
+											(e->w)--;
 										}
 									}
 									else
 									{
-										while((w - pr) > 0)
+										while((e->w - e->pr) > 0)
 										{
 											cnt++;
 											ft_putchar(' ');
-											w--;
+											(e->w)--;
 										}
 									}
 								}
@@ -483,36 +425,36 @@ int	ft_printf(char *str, ...)
 							{
 								if (e->indzero == 1)
 								{
-									while((w - pr) > 0)
+									while((e->w - e->pr) > 0)
 									{
 										cnt++;
 										ft_putchar('0');
-										w--;
+										(e->w)--;
 									}
 									i = 0;
-									while (pr > 0)
+									while (e->pr > 0)
 									{
 										ft_putchar(sn[i]);
 										cnt++;
 										i++;
-										pr--;
+										(e->pr)--;
 									}
 								}
 								else
 								{
-									while((w - pr) > 0)
+									while((e->w - e->pr) > 0)
 									{
 										cnt++;
 										ft_putchar(' ');
-										w--;
+										(e->w)--;
 									}
-									i = 0;
-									while (pr > 0)
+										i = 0;
+										while (e->pr > 0)
 									{
 										ft_putchar(sn[i]);
 										cnt++;
 										i++;
-										pr--;
+										(e->pr)--;
 									}
 								}
 							}
@@ -520,9 +462,9 @@ int	ft_printf(char *str, ...)
 //						ft_putstr("(null)");
 //						cnt = cnt + 6;
 					}
-					ind2 = 0;
-					w = 0;
-					pr = 0;
+					e->ind2 = 0;
+					e->w = 0;
+					e->pr = 0;
 					e->indzero = 0;
 					e->indpr = 0;
 					e->indminus = 0;
@@ -542,7 +484,7 @@ int	ft_printf(char *str, ...)
 						g = 6;
 					if (e->indpr == 1)
 					{
-						if (pr > w)
+						if (e->pr > e->w)
 						{
 							if (e->indzero == 0)
 							{
@@ -557,24 +499,24 @@ int	ft_printf(char *str, ...)
 										ft_putstr("(null)");
 										cnt = cnt + 6;
 									}
-									while((w - g) > 0)
+									while((e->w - g) > 0)
 									{
 										cnt++;
 										ft_putchar(' ');
-										w--;
+										(e->w)--;
 									}
 								}
 								else
 								{
-									while((w - g) > 0)
+									while((e->w - g) > 0)
 									{
 										cnt++;
 										ft_putchar(' ');
-										w--;
+										(e->w)--;
 									}
 									if (ss)
 									{
-										cnt = cnt + ft_putwstr2(pr,ss);
+										cnt = cnt + ft_putwstr2(e->pr,ss);
 									}
 									else
 									{
@@ -596,20 +538,20 @@ int	ft_printf(char *str, ...)
 										ft_putstr("(null)");
 										cnt = cnt + 6;
 									}
-									while((w - g) > 0)
+									while((e->w - g) > 0)
 									{
 										cnt++;
 										ft_putchar('0');
-										w--;
+										(e->w)--;
 									}
 								}
 								else
 								{
-									while((w - g) > 0)
+									while((e->w - g) > 0)
 									{
 										cnt++;
 										ft_putchar('0');
-										w--;
+										(e->w)--;
 									}
 									if (ss)
 									{
@@ -623,7 +565,7 @@ int	ft_printf(char *str, ...)
 								}
 							}
 						}
-						else if (w > pr)
+						else if (e->w > e->pr)
 						{
 							if (e->indzero == 0)
 							{
@@ -638,24 +580,24 @@ int	ft_printf(char *str, ...)
 										ft_putstr("(null)");
 										cnt = cnt + 6;
 									}
-									while((w - g) > 0)
+									while((e->w - g) > 0)
 									{
 										cnt++;
 										ft_putchar(' ');
-										w--;
+										(e->w)--;
 									}
 								}
 								else
 								{
-									while((w - ft_countwstr(pr,ss)) > 0)
+									while((e->w - ft_countwstr(e->pr,ss)) > 0)
 									{
 										cnt++;
 										ft_putchar(' ');
-										w--;
+										(e->w)--;
 									}
 									if (ss)
 									{
-										cnt = cnt + ft_putwstr2(pr,ss);
+										cnt = cnt + ft_putwstr2(e->pr,ss);
 									}
 									else
 									{
@@ -677,22 +619,22 @@ int	ft_printf(char *str, ...)
 										ft_putstr("(null)");
 										cnt = cnt + 6;
 									}
-									while((w - g) > 0)
+									while((e->w - g) > 0)
 									{
 										cnt++;
 										ft_putchar('0');
-										w--;
+										(e->w)--;
 									}
 								}
 								else
 								{
-									if (w > g)
+									if (e->w > g)
 									{
-										while((w - g) > 0)
+										while((e->w - g) > 0)
 										{
 											cnt++;
 											ft_putchar('0');
-											w--;
+											e->w--;
 										}
 										if (ss)
 										{
@@ -706,11 +648,11 @@ int	ft_printf(char *str, ...)
 									}
 									else
 									{
-										while(w > 0)
+										while(e->w > 0)
 										{
 											cnt++;
 											ft_putchar('0');
-											w--;
+											(e->w)--;
 										}
 									}
 								}
@@ -732,20 +674,20 @@ int	ft_printf(char *str, ...)
 									ft_putstr("(null)");
 									cnt = cnt + 6;
 								}
-								while((w - g) > 0)
+								while((e->w - g) > 0)
 								{
 									cnt++;
 									ft_putchar(' ');
-									w--;
+									(e->w)--;
 								}
 							}
 							else
 							{
-								while((w - g) > 0)
+								while((e->w - g) > 0)
 								{
 									cnt++;
 									ft_putchar(' ');
-									w--;
+									(e->w)--;
 								}
 								if (ss)
 								{
@@ -762,7 +704,7 @@ int	ft_printf(char *str, ...)
 						{
 							if (e->indminus == 1)
 							{
-								w = -w;
+								e->w = -(e->w);
 								if (ss)
 								{
 									cnt = cnt + ft_putwstr(ss);
@@ -772,20 +714,20 @@ int	ft_printf(char *str, ...)
 									ft_putstr("(null)");
 									cnt = cnt + 6;
 								}
-								while((w - g) > 0)
+								while((e->w - g) > 0)
 								{
 									cnt++;
 									ft_putchar('0');
-									w--;
+									(e->w)--;
 								}
 							}
 							else
 							{
-								while((w - g) > 0)
+								while((e->w - g) > 0)
 								{
 									cnt++;
 									ft_putchar('0');
-									w--;
+									(e->w)--;
 								}
 								if (ss)
 								{
@@ -799,9 +741,9 @@ int	ft_printf(char *str, ...)
 							}
 						}
 					}
-					ind2 = 0;
-					w = 0;
-					pr = 0;
+					e->ind2 = 0;
+					e->w = 0;
+					e->pr = 0;
 					indletter = 1;
 					e->indpr = 0;
 				}
@@ -817,52 +759,52 @@ int	ft_printf(char *str, ...)
 //					printf("indminus= %d\n",e->indminus);
 					if (e->indpr == 1)
 					{
-						if (pr == 0 && w == 0)
+						if (e->pr == 0 && e->w == 0)
 						{
 							ft_putstr("0x");
 							cnt = cnt + 2;
 						}
-						else if(w == 0)
+						else if(e->w == 0)
 						{
 							if (e->indzero == 1)
 							{
 								ft_putstr("0x");
-								ft_putstrad2(pr,ft_ltohex(l));
-								while((w - (g + 2)) > 0)
+								ft_putstrad2(e->pr,ft_ltohex(l));
+								while((e->w - (g + 2)) > 0)
 								{
 									cnt++;
 									ft_putchar('0');
-									w--;
+									(e->w)--;
 								}
 							}
 							else
 							{
-									if (w < 0)
-										w = -w;
+									if (e->w < 0)
+										e->w = -(e->w);
 									g = ft_strlen(ft_ltohex(l));
-									if (pr > ft_strlen(ft_ltohex(l)))
+									if (e->pr > ft_strlen(ft_ltohex(l)))
 									{
-										while((w - (pr + 2)) > 0)
+										while((e->w - (e->pr + 2)) > 0)
 										{
 											cnt++;
 											ft_putchar(' ');
-											w--;
+											(e->w)--;
 										}
 									}
 									else
 									{
-										while((w - (g + 2)) > 0)
+										while((e->w - (g + 2)) > 0)
 										{
 											cnt++;
 											ft_putchar('p');
-											w--;
+											(e->w)--;
 										}
 									}
 									ft_putstr("0x");
-									ft_putstrad3(pr,ft_ltohex(l));
+									ft_putstrad3(e->pr,ft_ltohex(l));
 							}
-							if (pr > ft_strlen(ft_ltohex(l)))
-								cnt = cnt + pr + 2;
+							if (e->pr > ft_strlen(ft_ltohex(l)))
+								cnt = cnt + e->pr + 2;
 							else
 								cnt = cnt + ft_strlen(ft_ltohex(l)) + 2;
 						}
@@ -871,42 +813,42 @@ int	ft_printf(char *str, ...)
 							if (e->indzero == 1)
 							{
 								ft_putstr("0x");
-								ft_putstrad2(pr,ft_ltohex(l));
-								while((w - (g + 2)) > 0)
+								ft_putstrad2(e->pr,ft_ltohex(l));
+								while((e->w - (g + 2)) > 0)
 								{
 									cnt++;
 									ft_putchar('0');
-									w--;
+									(e->w)--;
 								}
 							}
 							else
 							{
-									if (w < 0)
-										w = -w;
+									if (e->w < 0)
+										e->w = -(e->w);
 									g = ft_strlen(ft_ltohex(l));
-									if (pr > ft_strlen(ft_ltohex(l)))
+									if (e->pr > ft_strlen(ft_ltohex(l)))
 									{
-										while((w - (pr + 2)) > 0)
+										while((e->w - (e->pr + 2)) > 0)
 										{
 											cnt++;
 											ft_putchar(' ');
-											w--;
+											(e->w)--;
 										}
 									}
 									else
 									{
-										while((w - (g + 2)) > 0)
+										while((e->w - (g + 2)) > 0)
 										{
 											cnt++;
 											ft_putchar(' ');
-											w--;
+											(e->w)--;
 										}
 									}
 									ft_putstr("0x");
-									ft_putstrad2(pr,ft_ltohex(l));
+									ft_putstrad2(e->pr,ft_ltohex(l));
 							}
-							if (pr > ft_strlen(ft_ltohex(l)))
-								cnt = cnt + pr + 2;
+							if (e->pr > ft_strlen(ft_ltohex(l)))
+								cnt = cnt + e->pr + 2;
 							else
 								cnt = cnt + ft_strlen(ft_ltohex(l)) + 2;
 						}
@@ -917,11 +859,11 @@ int	ft_printf(char *str, ...)
 						{
 							ft_putstr("0x");
 							ft_putstrad(ft_ltohex(l));
-							while((w - (g + 2)) > 0)
+							while((e->w - (g + 2)) > 0)
 							{
 								cnt++;
 								ft_putchar('0');
-								w--;
+								(e->w)--;
 							}
 						}
 						else
@@ -930,33 +872,33 @@ int	ft_printf(char *str, ...)
 							{
 								ft_putstr("0x");
 								ft_putstrad(ft_ltohex(l));
-								while((w - (g + 2)) > 0)
+								while((e->w - (g + 2)) > 0)
 								{
 									cnt++;
 									ft_putchar(' ');
-									w--;
+									(e->w)--;
 								}
 							}
 							else
 							{
 								if (e->indspace == 1 || e->indplus == 1)
 								{
-									while((w - (g + 2)) > 0)
+									while((e->w - (g + 2)) > 0)
 									{
 										cnt++;
 										ft_putchar(' ');
-										w--;
+										(e->w)--;
 									}
 									ft_putstr("0x");
 									ft_putstr(ft_ltohex(l));
 								}
 								else
 								{
-									while((w - (g + 2)) > 0)
+									while((e->w - (g + 2)) > 0)
 									{
 										cnt++;
 										ft_putchar(' ');
-										w--;
+										(e->w)--;
 									}
 									ft_putstr("0x");
 									ft_putstrad(ft_ltohex(l));
@@ -974,9 +916,9 @@ int	ft_printf(char *str, ...)
 							}
 						}
 					}
-					ind2 = 0;
-					w = 0;
-					pr = 0;
+					e->ind2 = 0;
+					e->w = 0;
+					e->pr = 0;
 					indletter = 1;
 					e->indpr = 0;
 					e->indminus = 0;
@@ -990,25 +932,25 @@ int	ft_printf(char *str, ...)
 					u = va_arg(ap, unsigned int);
 //					ft_putunbr(u);
 //					cnt = cnt + ft_countu(u);
-					if (pr == 0 && w == 0 && e->indpr == 1)
+					if (e->pr == 0 && e->w == 0 && e->indpr == 1)
 					{
 					}
 					else
 					{
-						if(w < 0)
+						if(e->w < 0)
 						{
-							ft_putunbr(w,pr,e->indzero,u);
-							cnt = cnt + ft_countu(w,pr,e->indzero,e,u);
+							ft_putunbr(e->w,e->pr,e->indzero,u);
+							cnt = cnt + ft_countu(e->w,e->pr,e->indzero,e,u);
 						}
 						else
 						{
-							cnt = cnt + ft_countu(w,pr,e->indzero,e,u);
-							ft_putunbr(w,pr,e->indzero,u);
+							cnt = cnt + ft_countu(e->w,e->pr,e->indzero,e,u);
+							ft_putunbr(e->w,e->pr,e->indzero,u);
 						}
 					}
-					ind2 = 0;
-					w = 0;
-					pr = 0;
+					e->ind2 = 0;
+					e->w = 0;
+					e->pr = 0;
 					indletter = 1;
 					e->indzero = 0;
 					e->indpr = 0;
@@ -1029,25 +971,25 @@ int	ft_printf(char *str, ...)
 //						ft_putchar(' ');
 //						cnt++;
 //					}
-					if (pr == 0 && w == 0 && e->indpr == 1)
+					if (e->pr == 0 && e->w == 0 && e->indpr == 1)
 					{
 					}
 					else
 					{
 						if(e->indminus == 1)
 						{
-							ft_putnbr(w,pr,e->indzero,d);
-							cnt = cnt + ft_countd(w,pr,e,d);
+							ft_putnbr(e->w,e->pr,e->indzero,d);
+							cnt = cnt + ft_countd(e->w,e->pr,e,d);
 						}
 						else
 						{
-							cnt = cnt + ft_countd(w,pr,e,d);
-							ft_putnbr(w,pr,e->indzero,d);
+							cnt = cnt + ft_countd(e->w,e->pr,e,d);
+							ft_putnbr(e->w,e->pr,e->indzero,d);
 						}
 					}
-					ind2 = 0;
-					w = 0;
-					pr = 0;
+					e->ind2 = 0;
+					e->w = 0;
+					e->pr = 0;
 					indletter = 1;
 					e->indzero = 0;
 					e->indpr = 0;
@@ -1064,7 +1006,7 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'x')
 				{
 					u = va_arg(ap, unsigned int);
-					if (u == 0 && pr == 0 & e->indpr == 1)
+					if (u == 0 && e->pr == 0 & e->indpr == 1)
 					{
 					}
 					else
@@ -1078,49 +1020,49 @@ int	ft_printf(char *str, ...)
 						cnt++;
 						cnt++;
 					}
-					if (e->indzero == 1 && pr == 0)
+					if (e->indzero == 1 && e->pr == 0)
 					{
-						while(w - g > 0)
+						while(e->w - g > 0)
 						{
 							ft_putchar('0');
 							cnt++;
-							w--;
+							(e->w)--;
 						}
 					}
 					else
 					{
-						if (pr >= g)
+						if (e->pr >= g)
 						{
-							while(w - pr > 0)
+							while(e->w - e->pr > 0)
 							{
 								ft_putchar(' ');
 								cnt++;
-								w--;
+								(e->w)--;
 							}
 
-							while((pr - g) > 0)
+							while((e->pr - g) > 0)
 							{
 								ft_putchar('0');
 								cnt++;
-								pr--;
+								(e->pr)--;
 							}
 						}
 						else
 						{
-							while(w - g > 0)
+							while(e->w - g > 0)
 							{
 								ft_putchar(' ');
 								cnt++;
-								w--;
+								(e->w)--;
 							}
 						}
 					}
 					ft_putstr(s2);
 					cnt = cnt + g;
 					}
-					ind2 = 0;
-					w = 0;
-					pr = 0;
+					e->ind2 = 0;
+					e->w = 0;
+					e->pr = 0;
 					indletter = 1;
 					e->indzero = 0;
 					e->indpr = 0;
@@ -1129,7 +1071,7 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'X')
 				{
 					u = va_arg(ap, unsigned int);
-					if (u == 0 && pr == 0 & e->indpr == 1)
+					if (u == 0 && e->pr == 0 & e->indpr == 1)
 					{
 					}
 					else
@@ -1143,49 +1085,49 @@ int	ft_printf(char *str, ...)
 						cnt++;
 						cnt++;
 					}
-					if (e->indzero == 1 && pr == 0)
+					if (e->indzero == 1 && e->pr == 0)
 					{
-						while(w - g > 0)
+						while(e->w - g > 0)
 						{
 							ft_putchar('0');
 							cnt++;
-							w--;
+							(e->w)--;
 						}
 					}
 					else
 					{
-						if (pr >= g)
+						if (e->pr >= g)
 						{
-							while(w - pr > 0)
+							while(e->w - e->pr > 0)
 							{
 								ft_putchar(' ');
 								cnt++;
-								w--;
+								(e->w)--;
 							}
 
-							while((pr - g) > 0)
+							while((e->pr - g) > 0)
 							{
 								ft_putchar('0');
 								cnt++;
-								pr--;
+								(e->pr)--;
 							}
 						}
 						else
 						{
-							while(w - g > 0)
+							while(e->w - g > 0)
 							{
 								ft_putchar(' ');
 								cnt++;
-								w--;
+								(e->w)--;
 							}
 						}
 					}
 					ft_putstr(s2);
 					cnt = cnt + ft_strlen(s2);
 					}
-					ind2 = 0;
-					w = 0;
-					pr = 0;
+					e->ind2 = 0;
+					e->w = 0;
+					e->pr = 0;
 					indletter = 1;
 					e->indzero = 0;
 					e->indpr = 0;
@@ -1193,61 +1135,61 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'o')
 				{
 					u = va_arg(ap, unsigned int);
-					if (u == 0 && pr == 0 && e->indpr == 1 && e->indsharp == 0)
+					if (u == 0 && e->pr == 0 && e->indpr == 1 && e->indsharp == 0)
 					{
 					}
 					else
 					{
 					s2 = ft_ltooct(u);
 					g = ft_strlen(s2);
-					if (e->indsharp == 1 && u != 0 && pr == 0)
+					if (e->indsharp == 1 && u != 0 && e->pr == 0)
 					{
 						ft_putchar('0');
 						cnt++;
 					}
-					if (e->indzero == 1 && pr == 0)
+					if (e->indzero == 1 && e->pr == 0)
 					{
-						while(w - g > 0)
+						while(e->w - g > 0)
 						{
 							ft_putchar('0');
 							cnt++;
-							w--;
+							e->w--;
 						}
 					}
 					else
 					{
-						if (pr >= g)
+						if (e->pr >= g)
 						{
-							while(w - pr > 0)
+							while(e->w - e->pr > 0)
 							{
 								ft_putchar(' ');
 								cnt++;
-								w--;
+								e->w--;
 							}
 
-							while((pr - g) > 0)
+							while((e->pr - g) > 0)
 							{
 								ft_putchar('0');
 								cnt++;
-								pr--;
+								(e->pr)--;
 							}
 						}
 						else
 						{
-							while(w - g > 0)
+							while(e->w - g > 0)
 							{
 								ft_putchar(' ');
 								cnt++;
-								w--;
+								(e->w)--;
 							}
 						}
 					}
 					ft_putstr(s2);
 					cnt = cnt + g;
 					}
-					ind2 = 0;
-					w = 0;
-					pr = 0;
+					e->ind2 = 0;
+					e->w = 0;
+					e->pr = 0;
 					indletter = 1;
 					e->indzero = 0;
 					e->indpr = 0;
@@ -1256,7 +1198,7 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'O')
 				{
 					ul = va_arg(ap,  unsigned long);
-					if (ul == 0 && pr == 0 && e->indpr == 1 && e->indsharp == 0)
+					if (ul == 0 && e->pr == 0 && e->indpr == 1 && e->indsharp == 0)
 					{
 					}
 					else
@@ -1268,48 +1210,48 @@ int	ft_printf(char *str, ...)
 							ft_putchar('0');
 							cnt++;
 						}
-						if (e->indzero == 1 && pr == 0)
+						if (e->indzero == 1 && e->pr == 0)
 						{
-							while(w - g > 0)
+							while(e->w - g > 0)
 							{
 								ft_putchar('0');
 								cnt++;
-								w--;
+								(e->w)--;
 							}
 						}
 						else
 						{
-							if (pr >= g)
+							if (e->pr >= g)
 							{
-								while(w - pr > 0)
+								while(e->w - e->pr > 0)
 								{
 									ft_putchar(' ');
 									cnt++;
-									w--;
+									e->w--;
 								}
-								while((pr - g) > 0)
+								while((e->pr - g) > 0)
 								{
 									ft_putchar('0');
 									cnt++;
-									pr--;
+									(e->pr)--;
 								}
 							}
 							else
 							{
-								while(w - g > 0)
+								while(e->w - g > 0)
 								{
 									ft_putchar(' ');
 									cnt++;
-									w--;
+									(e->w)--;
 								}
 							}
 						}
 						ft_putstr(s2);
 						cnt = cnt + g;
 					}
-					ind2 = 0;
-					w = 0;
-					pr = 0;
+					e->ind2 = 0;
+					e->w = 0;
+					e->pr = 0;
 					indletter = 1;
 					e->indzero = 0;
 					e->indpr = 0;
@@ -1347,8 +1289,8 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'h' && str[1] == 'h' && (str[2] == 'd' || str[2] == 'i'))
 				{
 					c = va_arg(ap, char);
-					cnt = cnt + ft_countd(w,pr,e,c);
-					ft_putnbr(w,pr,e->indzero,c);
+					cnt = cnt + ft_countd(e->w,e->pr,e,c);
+					ft_putnbr(e->w,e->pr,e->indzero,c);
 					str++;
 					str++;
 				}
@@ -1384,7 +1326,7 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'h' && str[1] == 'h' && str[2] == 'u')
 				{
 					uc = va_arg(ap, unsigned char);
-					ft_putnbr(w,pr,e->indzero,uc);
+					ft_putnbr(e->w,e->pr,e->indzero,uc);
 					cnt = cnt + ft_countuc(uc);
 					str++;
 					str++;
@@ -1616,7 +1558,7 @@ int	ft_printf(char *str, ...)
 				}
 				else if ((*str >= '0' && *str <= '9') || *str == '-' ||*str == '+' || *str == '.' || *str == ' ' || *str == '#')
 				{
-					if (ind2 == 0)
+					if (e->ind2 == 0)
 					{
 				begi = NULL;
 //				printf ("getfield = %s\n",ft_getfield(indpr,ind2,begi));
@@ -1631,17 +1573,17 @@ int	ft_printf(char *str, ...)
 //					i++;
 //				}
 //											printf("s3 = %s\n",s3);
-						if (w == 0 && begi)
-							w = ft_checkwidth(begi);
-						if (pr == 0 && begi)
-							pr = ft_checkprec(begi);
+						if (e->w == 0 && begi)
+							e->w = ft_checkwidth(begi);
+						if (e->pr == 0 && begi)
+							e->pr = ft_checkprec(begi);
 //						if (str[1] == '0')
 //							e->indzero = 1;
 					}
 
 //									printf("w = %d\n",w);
 //									printf("pr = %d\n",pr);
-					ind2 = 1;
+					e->ind2 = 1;
 				}
 				else
 				{
@@ -1657,50 +1599,50 @@ int	ft_printf(char *str, ...)
 					//				printf("S3 = %s,b= %d\n",s3,b);
 					if (indletter == 1)
 					{
-						while((w - 1) > 0)
+						while((e->w - 1) > 0)
 						{
 							ft_putchar(' ');
 							cnt++;
-							w--;
+							(e->w)--;
 						}
 					}
 					if (e->indzero == 1)
 					{
-						while((w - 1) > 0)
+						while(((e->w) - 1) > 0)
 						{
 							cnt++;
 							ft_putchar('0');
-							w--;
+							(e->w)--;
 						}
 						ft_putchar(*str);
 					}
 					else
 					{
-						if (w < 0)
+						if (e->w < 0)
 						{
-							w = -w;
+							e->w = -(e->w);
 							ft_putchar(*str);
-							while((w - 1) > 0)
+							while((e->w - 1) > 0)
 							{
 								cnt++;
 								ft_putchar(' ');
-								w--;
+								(e->w)--;
 							}
 						}
 						else
 						{
-							while((w - 1) > 0)
+							while((e->w - 1) > 0)
 							{
 								cnt++;
 								ft_putchar(' ');
-								w--;
+								(e->w)--;
 							}
 							ft_putchar(*str);
 						}
 					}
-					ind2 = 0;
-					w = 0;
-					pr = 0;
+					e->ind2 = 0;
+					e->w = 0;
+					e->pr = 0;
 					cnt++;
 					indletter = 0;
 				}
@@ -1728,7 +1670,7 @@ int	ft_printf(char *str, ...)
 		//			p = ft_check_perc(str);
 		//			p3 = p;
 		indlast = 0;
-		ind2 = 0;
+		e->ind2 = 0;
 		//			printf("p3 = %s\n",p3);
 		/*
 		   while((*str != 0) && (*str == '%' || *str == ' ') && p == NULL)
@@ -1758,9 +1700,9 @@ int	ft_printf(char *str, ...)
 				{
 					str++;
 					if (cnt1 % 2 == 0)
-						ind2 = 1;
+						e->ind2 = 1;
 					else
-						ind2 = 0;
+						e->ind2 = 0;
 
 						i = 0;
 				begi = NULL;
@@ -1794,10 +1736,10 @@ int	ft_printf(char *str, ...)
 //					}
 //				}
 //											printf("s3 = %s\n",s3);
-						if (w == 0 && begi)
-							w = ft_checkwidth(begi);
-						if (pr == 0 && begi)
-							pr = ft_checkprec(begi);
+						if (e->w == 0 && begi)
+							e->w = ft_checkwidth(begi);
+						if (e->pr == 0 && begi)
+							e->pr = ft_checkprec(begi);
 //						if (str[1] == '0')
 //							e->indzero = 1;
 				}
@@ -1833,20 +1775,20 @@ int	ft_printf(char *str, ...)
 							{
 								ft_putchar(*str);
 								cnt++;
-								while((w - 1) > 0)
+								while((e->w - 1) > 0)
 								{
 									cnt++;
 									ft_putchar(' ');
-									w--;
+									(e->w)--;
 								}
 							}
 							else
 							{
-								while((w - 1) > 0)
+								while((e->w - 1) > 0)
 								{
 									cnt++;
 									ft_putchar(' ');
-									w--;
+									(e->w)--;
 								}
 									ft_putchar(*str);
 									cnt++;
@@ -1858,27 +1800,27 @@ int	ft_printf(char *str, ...)
 							{
 								ft_putchar(*str);
 								cnt++;
-								while((w - 1) > 0)
+								while((e->w - 1) > 0)
 								{
 									cnt++;
 									ft_putchar('0');
-									w--;
+									(e->w)--;
 								}
 							}
 							else
 							{
-								while((w - 1) > 0)
+								while((e->w - 1) > 0)
 								{
 									cnt++;
 									ft_putchar('0');
-									w--;
+									(e->w)--;
 								}
 								ft_putchar(*str);
 								cnt++;
 							}
 						}
-						w = 0;
-						pr = 0;
+						e->w = 0;
+						e->pr = 0;
 						e->indzero = 0;
 					}
 			}
