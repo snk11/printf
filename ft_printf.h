@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/02 01:43:41 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/02 05:38:48 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct			s_numb
 	int					indpr;
 	int					w;
 	int					pr;
+	int					prbegi;
 	int					d;
 	char				*s;
 	int					ind2;
