@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 01:26:49 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/02 07:46:06 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/02 08:07:29 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ int		ft_checks1a(char *str,t_numb *e)
 	int	i;
 	int	g;
 
-	i = 0;
 	g = ft_strlen(e->s);
 	cnt = 0;
 	cnt = cnt + ft_checks1a1(str,&e);
@@ -153,8 +152,7 @@ int		ft_checks1a1(char *str,t_numb **e)
 		{
 			cnt++;
 			ft_putchar(' ');
-			((*e)->w)--;
-			((*e)->pr)--;
+			ft_decr(e);
 		}
 	}
 	else
@@ -163,11 +161,16 @@ int		ft_checks1a1(char *str,t_numb **e)
 		{
 			cnt++;
 			ft_putchar('0');
-			((*e)->w)--;
-			((*e)->pr)--;
+			ft_decr(e);
 		}
 	}
 	return (cnt);
+}
+
+void ft_decr(t_numb **e)
+{
+	((*e)->w)--;
+	((*e)->pr)--;
 }
 
 int		ft_checks1b(char *str,t_numb *e)
