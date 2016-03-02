@@ -6,12 +6,12 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/02 00:42:17 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/02 01:43:41 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef PRINTF_H
-# define PRINTF_H
+# ifndef FT_PRINTF_H
+#define FT_PRINTF_H
 
 # include <stdarg.h>
 # include <unistd.h>
@@ -32,6 +32,7 @@ typedef struct			s_numb
 	int					w;
 	int					pr;
 	int					d;
+	char				*s;
 	int					ind2;
 }						t_numb;
 
