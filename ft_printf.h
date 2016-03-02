@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/02 08:05:06 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/02 23:48:58 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ typedef struct			s_numb
 	int					pr;
 	int					prbegi;
 	int					d;
+	int					g;
 	char				*s;
+	wchar_t				*ss;
 	int					ind2;
 }						t_numb;
 
@@ -131,5 +133,29 @@ int		ft_checks42(char *str,t_numb *e);
 int		ft_checks42a(char *str,t_numb **e);
 int		ft_checks42b(char *str,t_numb *e);
 void ft_decr(t_numb **e);
+int		ft_checkbs(char *str,t_numb *e);
+int		ft_checkbs1(char *str,t_numb *e);
+int		ft_checkbs1a(char *str,t_numb *e);
+int		ft_checkbs1a1(char *str,t_numb *e);
+int		ft_checkbs1a1a(char *str,t_numb *e);
+int		ft_checkbs1a1b(char *str,t_numb *e);
+int		ft_checkbs1a2(char *str,t_numb *e);
+int		ft_checkbs1a2a(char *str,t_numb *e);
+int		ft_checkbs1a2b(char *str,t_numb *e);
+int		ft_checkbs1b(char *str,t_numb *e);
+int		ft_checkbs1b1(char *str,t_numb *e);
+int		ft_checkbs1b1a(char *str,t_numb *e);
+int		ft_checkbs1b1b(char *str,t_numb *e);
+int		ft_checkbs1b2(char *str,t_numb *e);
+int		ft_checkbs1b2a(char *str,t_numb *e);
+int		ft_checkbs1b2b(char *str,t_numb *e);
+int		ft_checkbs1b2b1(char *str,t_numb *e);
+int		ft_checkbs2(char *str,t_numb *e);
+int		ft_checkbs2a(char *str,t_numb *e);
+int		ft_checkbs2a1(char *str,t_numb *e);
+int		ft_checkbs2a2(char *str,t_numb *e);
+int		ft_checkbs2b(char *str,t_numb *e);
+int		ft_checkbs2b1(char *str,t_numb *e);
+int		ft_checkbs2b2(char *str,t_numb *e);
 
 #endif
