@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/03 03:18:14 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/03 03:49:04 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,59 +234,8 @@ int	ft_printf(char *str, ...)
 				}
 				else if (*str == 'o')
 				{
-					u = va_arg(ap, unsigned int);
-					if (u == 0 && e->pr == 0 && e->indpr == 1 && e->indsharp == 0)
-					{
-					}
-					else
-					{
-						s2 = ft_ltooct(u);
-						g = ft_strlen(s2);
-						if (e->indsharp == 1 && u != 0 && e->pr == 0)
-						{
-							ft_putchar('0');
-							cnt++;
-						}
-						if (e->indzero == 1 && e->pr == 0)
-						{
-							while(e->w - g > 0)
-							{
-								ft_putchar('0');
-								cnt++;
-								e->w--;
-							}
-						}
-						else
-						{
-							if (e->pr >= g)
-							{
-								while(e->w - e->pr > 0)
-								{
-									ft_putchar(' ');
-									cnt++;
-									e->w--;
-								}
-
-								while((e->pr - g) > 0)
-								{
-									ft_putchar('0');
-									cnt++;
-									(e->pr)--;
-								}
-							}
-							else
-							{
-								while(e->w - g > 0)
-								{
-									ft_putchar(' ');
-									cnt++;
-									(e->w)--;
-								}
-							}
-						}
-						ft_putstr(s2);
-						cnt = cnt + g;
-					}
+					e->u = va_arg(ap, unsigned int);
+					cnt = cnt + ft_checko(str,e);
 					e->ind2 = 0;
 					e->w = 0;
 					e->pr = 0;
@@ -297,58 +246,8 @@ int	ft_printf(char *str, ...)
 				}
 				else if (*str == 'O')
 				{
-					ul = va_arg(ap,  unsigned long);
-					if (ul == 0 && e->pr == 0 && e->indpr == 1 && e->indsharp == 0)
-					{
-					}
-					else
-					{
-						s2 = ft_ltooct2(ul);
-						g = ft_strlen(s2);
-						if (e->indsharp == 1 && ul != 0)
-						{
-							ft_putchar('0');
-							cnt++;
-						}
-						if (e->indzero == 1 && e->pr == 0)
-						{
-							while(e->w - g > 0)
-							{
-								ft_putchar('0');
-								cnt++;
-								(e->w)--;
-							}
-						}
-						else
-						{
-							if (e->pr >= g)
-							{
-								while(e->w - e->pr > 0)
-								{
-									ft_putchar(' ');
-									cnt++;
-									e->w--;
-								}
-								while((e->pr - g) > 0)
-								{
-									ft_putchar('0');
-									cnt++;
-									(e->pr)--;
-								}
-							}
-							else
-							{
-								while(e->w - g > 0)
-								{
-									ft_putchar(' ');
-									cnt++;
-									(e->w)--;
-								}
-							}
-						}
-						ft_putstr(s2);
-						cnt = cnt + g;
-					}
+					e->ul = va_arg(ap,  unsigned long);
+					cnt = cnt + ft_checkbo(str,e);
 					e->ind2 = 0;
 					e->w = 0;
 					e->pr = 0;

@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/03 03:16:18 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/03 03:44:29 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct			s_numb
 	int					g;
 	long				l;
 	unsigned int		u;
+	unsigned long		ul;
 	char				*s;
 	wchar_t				*ss;
 	int					ind2;
@@ -178,6 +179,13 @@ int		ft_checkx1a(char *str,t_numb *e);
 int		ft_checkx1a1(char *str,t_numb *e);
 int		ft_checkbx(char *str,t_numb *e);
 int		ft_checkbx1(char *str,t_numb *e);
+int		ft_checko(char *str,t_numb *e);
+int		ft_checko1(char *str,t_numb *e);
+int		ft_checko1a(char *str,t_numb *e);
+int		ft_checko1a1(char *str,t_numb *e);
+int		ft_checkbo(char *str,t_numb *e);
+int		ft_checkbo1(char *str,t_numb *e);
+
 
 
 
