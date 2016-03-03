@@ -6,14 +6,14 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/10 08:16:18 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/10 13:37:46 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/03 08:56:04 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_printf.h"
 
 
-char *ft_getfield(int indpr,char *str)
+char *ft_getfield(char *str)
 {
 	int	i;
 	char *s3;

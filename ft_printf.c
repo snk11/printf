@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/03 08:39:00 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/03 09:19:28 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -560,7 +560,7 @@ int	ft_printf(char *str, ...)
 					if (e->ind2 == 0)
 					{
 						begi = NULL;
-						begi = ft_getfield(e->indpr,str);
+						begi = ft_getfield(str);
 						if (begi)
 							ret1 = ft_checkflag(e,begi);
 						if (e->w == 0 && begi)
@@ -635,6 +635,7 @@ int	ft_printf(char *str, ...)
 
 	else if (e->ind1 % 2 == 1)
 	{
+		int ind6 = 0;
 		cnt1 = 0;
 		cnt2 = 0;
 		c2 = 0;
@@ -660,9 +661,12 @@ int	ft_printf(char *str, ...)
 
 				i = 0;
 				begi = NULL;
-				begi = ft_getfield(e->indpr,str);
+				begi = ft_getfield(str);
 				if (begi)
+				{
+					ind6++;
 					g = ft_strlen(begi);
+				}
 				while (i < g)
 				{
 					str++;
@@ -675,7 +679,7 @@ int	ft_printf(char *str, ...)
 					e->pr = ft_checkprec(begi);
 			}
 
-			if (cnt1 % 2 == 0 && *str == '%' && e->indlast == 0)
+			if (cnt1 % 2 == 0 && *str == '%' && e->indlast == 0 && ind6 != 1)
 			{
 				ft_putchar('%');
 				cnt++;
@@ -686,7 +690,7 @@ int	ft_printf(char *str, ...)
 //				{
 //					e->indlast = 1;
 //				}
-				if (cnt1 % 2 == 0)
+//				if (cnt1 % 2 == 0)
 				{
 //					if (*str == '%' && e->indlast == 1)
 //					{
@@ -747,6 +751,12 @@ int	ft_printf(char *str, ...)
 						e->pr = 0;
 						e->indzero = 0;
 					}
+//					if (ind6 == 1)
+//					{
+//						ft_putchar('%');
+//						cnt++;
+//						ind6 = 0;
+//					}
 				}
 				if (*str == '%')
 					cnt1++;

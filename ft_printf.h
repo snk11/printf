@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/03 07:17:51 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/03 08:56:24 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	ft_countul(unsigned long n);
 void	ft_putunbr(int w,int pr,int zero,unsigned int n);
 void	ft_putldnbr(long int n);
 int ft_checkflag(t_numb *e,char *str);
-char	*ft_getfield(int indpr,char *str);
+char	*ft_getfield(char *str);
 int		ft_checks(char *str,t_numb *e);
 int		ft_checks1(char *str,t_numb *e);
 int		ft_checks1a(char *str,t_numb *e);
