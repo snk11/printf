@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/03 07:16:32 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/03 08:39:00 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -642,15 +642,21 @@ int	ft_printf(char *str, ...)
 		e->ind2 = 0;
 		while (*str != 0)
 		{
+//			printf("str = %c , cnt1 = %d\n",*str,cnt1);
 			g =0;
 			ret1 = 0;
 			if (*str == '%')
 			{
-				str++;
-				if (cnt1 % 2 == 0)
-					e->ind2 = 1;
+				if (str[1])
+				{
+					str++;
+				}
 				else
-					e->ind2 = 0;
+					e->indlast = 1;
+//				if (cnt1 % 2 == 0)
+//					e->ind2 = 1;
+//				else
+//					e->ind2 = 0;
 
 				i = 0;
 				begi = NULL;
@@ -669,23 +675,23 @@ int	ft_printf(char *str, ...)
 					e->pr = ft_checkprec(begi);
 			}
 
-			if (ft_checkstrlast(str) && cnt1 % 2 == 0 && *str == '%')
+			if (cnt1 % 2 == 0 && *str == '%' && e->indlast == 0)
 			{
 				ft_putchar('%');
 				cnt++;
 			}
-			else
+			else if (e->indlast == 0)
 			{
-				if (ft_checkstrlast(str) && *str == '%')
-				{
-					e->indlast = 1;
-				}
+//				if (ft_checkstrlast(str) && *str == '%')
+//				{
+//					e->indlast = 1;
+//				}
 				if (cnt1 % 2 == 0)
 				{
-					if (*str == '%' && e->indlast == 1)
-					{
-					}
-					else
+//					if (*str == '%' && e->indlast == 1)
+//					{
+//					}
+//					else
 					{
 						if (e->indzero == 0)
 						{
@@ -744,8 +750,8 @@ int	ft_printf(char *str, ...)
 				}
 				if (*str == '%')
 					cnt1++;
-				if (cnt1 % 2 == 1 && e->indlast == 1)
-					cnt1++;
+//				if (cnt1 % 2 == 1 && e->indlast == 1)
+//					cnt1++;
 			}
 			str++;
 		}
