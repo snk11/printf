@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/02 22:14:46 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/03 01:41:52 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,12 +136,6 @@ int	ft_printf(char *str, ...)
 				}
 				else if (*str == 'S')
 				{
-					//					printf("indpr= %d\n",e->indpr);
-					//					printf("indzero= %d\n",e->indzero);
-					//					printf("indplus= %d\n",e->indplus);
-					//					printf("indspace= %d\n",e->indspace);
-					//					printf("indsharp= %d\n",e->indsharp);
-					//					printf("indminus= %d\n",e->indminus);
 					e->ss = va_arg(ap, wchar_t*);
 					cnt = cnt + ft_checkbs(str,e);
 					e->ind2 = 0;
@@ -152,173 +146,8 @@ int	ft_printf(char *str, ...)
 				}
 				else if (*str == 'p')
 				{
-					l = va_arg(ap, long);
-					g =(ft_strlen(ft_ltohex(l)));
-					//					printf("indpr= %d\n",e->indpr);
-					//					printf("indzero= %d\n",e->indzero);
-					//					printf("indplus= %d\n",e->indplus);
-					//					printf("indspace= %d\n",e->indspace);
-					//					printf("indsharp= %d\n",e->indsharp);
-					//					printf("indminus= %d\n",e->indminus);
-					if (e->indpr == 1)
-					{
-						if (e->pr == 0 && e->w == 0)
-						{
-							ft_putstr("0x");
-							cnt = cnt + 2;
-						}
-						else if(e->w == 0)
-						{
-							if (e->indzero == 1)
-							{
-								ft_putstr("0x");
-								ft_putstrad2(e->pr,ft_ltohex(l));
-								while((e->w - (g + 2)) > 0)
-								{
-									cnt++;
-									ft_putchar('0');
-									(e->w)--;
-								}
-							}
-							else
-							{
-								if (e->w < 0)
-									e->w = -(e->w);
-								g = ft_strlen(ft_ltohex(l));
-								if (e->pr > ft_strlen(ft_ltohex(l)))
-								{
-									while((e->w - (e->pr + 2)) > 0)
-									{
-										cnt++;
-										ft_putchar(' ');
-										(e->w)--;
-									}
-								}
-								else
-								{
-									while((e->w - (g + 2)) > 0)
-									{
-										cnt++;
-										ft_putchar('p');
-										(e->w)--;
-									}
-								}
-								ft_putstr("0x");
-								ft_putstrad3(e->pr,ft_ltohex(l));
-							}
-							if (e->pr > ft_strlen(ft_ltohex(l)))
-								cnt = cnt + e->pr + 2;
-							else
-								cnt = cnt + ft_strlen(ft_ltohex(l)) + 2;
-						}
-						else
-						{
-							if (e->indzero == 1)
-							{
-								ft_putstr("0x");
-								ft_putstrad2(e->pr,ft_ltohex(l));
-								while((e->w - (g + 2)) > 0)
-								{
-									cnt++;
-									ft_putchar('0');
-									(e->w)--;
-								}
-							}
-							else
-							{
-								if (e->w < 0)
-									e->w = -(e->w);
-								g = ft_strlen(ft_ltohex(l));
-								if (e->pr > ft_strlen(ft_ltohex(l)))
-								{
-									while((e->w - (e->pr + 2)) > 0)
-									{
-										cnt++;
-										ft_putchar(' ');
-										(e->w)--;
-									}
-								}
-								else
-								{
-									while((e->w - (g + 2)) > 0)
-									{
-										cnt++;
-										ft_putchar(' ');
-										(e->w)--;
-									}
-								}
-								ft_putstr("0x");
-								ft_putstrad2(e->pr,ft_ltohex(l));
-							}
-							if (e->pr > ft_strlen(ft_ltohex(l)))
-								cnt = cnt + e->pr + 2;
-							else
-								cnt = cnt + ft_strlen(ft_ltohex(l)) + 2;
-						}
-					}
-					else if (e->indpr == 0)
-					{
-						if (e->indzero == 1)
-						{
-							ft_putstr("0x");
-							ft_putstrad(ft_ltohex(l));
-							while((e->w - (g + 2)) > 0)
-							{
-								cnt++;
-								ft_putchar('0');
-								(e->w)--;
-							}
-						}
-						else
-						{
-							if (e->indminus == 1)
-							{
-								ft_putstr("0x");
-								ft_putstrad(ft_ltohex(l));
-								while((e->w - (g + 2)) > 0)
-								{
-									cnt++;
-									ft_putchar(' ');
-									(e->w)--;
-								}
-							}
-							else
-							{
-								if (e->indspace == 1 || e->indplus == 1)
-								{
-									while((e->w - (g + 2)) > 0)
-									{
-										cnt++;
-										ft_putchar(' ');
-										(e->w)--;
-									}
-									ft_putstr("0x");
-									ft_putstr(ft_ltohex(l));
-								}
-								else
-								{
-									while((e->w - (g + 2)) > 0)
-									{
-										cnt++;
-										ft_putchar(' ');
-										(e->w)--;
-									}
-									ft_putstr("0x");
-									ft_putstrad(ft_ltohex(l));
-								}
-							}
-						}
-						cnt = cnt + g + 2;
-						int o = 0;
-						if (g < 9 && g > 1 && e->indspace == 0 && e->indplus == 0)
-						{
-							while (o < 9 - g)
-							{
-								cnt++;
-								o++;
-							}
-						}
-					}
+					e->l = va_arg(ap, long);
+					cnt = cnt + ft_checkp(str,e);
 					e->ind2 = 0;
 					e->w = 0;
 					e->pr = 0;

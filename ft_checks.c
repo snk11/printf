@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 01:26:49 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/02 08:07:29 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/03 00:23:50 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,12 @@ int		ft_checks42(char *str,t_numb *e)
 int		ft_checks42a(char *str,t_numb **e)
 {
 	int	cnt;
-	int	g;
 
 	cnt = 0;
-	g = ft_strlen((*e)->s);
+	(*e)->g = ft_strlen((*e)->s);
 	if ((*e)->indzero == 0)
 	{
-		if ((*e)->w - g > 0)
+		if ((*e)->w - (*e)->g > 0)
 		{
 			cnt++;
 			ft_putchar('Y');
@@ -61,7 +60,7 @@ int		ft_checks42a(char *str,t_numb **e)
 	}
 	else
 	{
-		while((*e)->w - g > 0)
+		while((*e)->w - (*e)->g > 0)
 		{
 			cnt++;
 			ft_putchar('0');
@@ -75,15 +74,14 @@ int		ft_checks42b(char *str,t_numb *e)
 {
 	int	cnt;
 	int	i;
-	int	g;
 
 	cnt = 0;
-	g = ft_strlen(e->s);
+	e->g = ft_strlen(e->s);
 	if (e->s)
 	{
 		ft_putstr(e->s);
 		i = 0;
-		while (i < g)
+		while (i < e->g)
 		{
 			cnt++;
 			i++;
@@ -113,9 +111,8 @@ int		ft_checks1a(char *str,t_numb *e)
 {
 	int cnt;
 	int	i;
-	int	g;
 
-	g = ft_strlen(e->s);
+	e->g = ft_strlen(e->s);
 	cnt = 0;
 	cnt = cnt + ft_checks1a1(str,&e);
 	if (e->s)
@@ -123,7 +120,7 @@ int		ft_checks1a(char *str,t_numb *e)
 		ft_putstr2(e->pr,e->s);
 		i = 0;
 		e->pr =e->prbegi;
-		while (i < ft_strlen(e->s) && e->pr > 0)
+		while (i < e->g && e->pr > 0)
 		{
 			cnt++;
 			i++;
@@ -142,13 +139,12 @@ int		ft_checks1a(char *str,t_numb *e)
 int		ft_checks1a1(char *str,t_numb **e)
 {
 	int cnt;
-	int	g;
 
 	cnt = 0;
-	g = ft_strlen((*e)->s);
+	(*e)->g = ft_strlen((*e)->s);
 	if ((*e)->indzero == 0)
 	{
-		while((*e)->w - g > 0 && (*e)->pr > 0)
+		while((*e)->w - (*e)->g > 0 && (*e)->pr > 0)
 		{
 			cnt++;
 			ft_putchar(' ');
@@ -157,7 +153,7 @@ int		ft_checks1a1(char *str,t_numb **e)
 	}
 	else
 	{
-		while((*e)->w - g > 0 && (*e)->pr > 0)
+		while((*e)->w - (*e)->g > 0 && (*e)->pr > 0)
 		{
 			cnt++;
 			ft_putchar('0');
@@ -176,13 +172,12 @@ void ft_decr(t_numb **e)
 int		ft_checks1b(char *str,t_numb *e)
 {
 	int	cnt;
-	int	g;
 
 	cnt = 0;
-	g = ft_strlen(e->s);
-	if (g > e->pr)
+	e->g = ft_strlen(e->s);
+	if (e->g > e->pr)
 		cnt = cnt + ft_checks1b1(str,e);
-	else if (ft_strlen(e->s) < e->pr)
+	else if (e->g < e->pr)
 		cnt = cnt + ft_checks1b2(str,e);
 	return (cnt);
 }
@@ -244,16 +239,15 @@ int		ft_checks1b2(char *str,t_numb *e)
 {
 	int	cnt;
 	int	i;
-	int	g;
 
 	cnt = 0;
-	g = ft_strlen(e->s);
+	e->g = ft_strlen(e->s);
 	cnt = cnt + ft_checks1b2a(str,&e);
 	if (e->s)
 	{
 		ft_putstr(e->s);
 		i = 0;
-		while (i < g)
+		while (i < e->g)
 		{
 			cnt++;
 			i++;
@@ -271,13 +265,12 @@ int		ft_checks1b2(char *str,t_numb *e)
 int		ft_checks1b2a(char *str,t_numb **e)
 {
 	int	cnt;
-	int	g;
 
 	cnt = 0;
-	g = ft_strlen((*e)->s);
+	(*e)->g = ft_strlen((*e)->s);
 	if ((*e)->indzero == 0)
 	{
-		while((*e)->w - g > 0)
+		while((*e)->w - (*e)->g > 0)
 		{
 			cnt++;
 			ft_putchar(' ');
@@ -286,7 +279,7 @@ int		ft_checks1b2a(char *str,t_numb **e)
 	}
 	else
 	{
-		while((*e)->w - g > 0)
+		while((*e)->w - (*e)->g > 0)
 		{
 			cnt++;
 			ft_putchar('0');

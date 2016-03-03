@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/02 23:48:58 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/03 01:39:18 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct			s_numb
 	int					prbegi;
 	int					d;
 	int					g;
+	long				l;
 	char				*s;
 	wchar_t				*ss;
 	int					ind2;
@@ -157,5 +158,19 @@ int		ft_checkbs2a2(char *str,t_numb *e);
 int		ft_checkbs2b(char *str,t_numb *e);
 int		ft_checkbs2b1(char *str,t_numb *e);
 int		ft_checkbs2b2(char *str,t_numb *e);
+int		ft_checkp(char *str,t_numb *e);
+int		ft_checkp1(char *str,t_numb *e);
+int		ft_checkp1a(char *str,t_numb *e);
+int		ft_checkp1a1(char *str,t_numb **e);
+int		ft_checkp1a1a(char *str,t_numb *e);
+int		ft_checkp1b(char *str,t_numb *e);
+int		ft_checkp1b1(char *str,t_numb **e);
+int		ft_checkp1b1a(char *str,t_numb *e);
+int		ft_checkp2(char *str,t_numb *e);
+int		ft_checkp2a(char *str,t_numb **e);
+int		ft_checkp2a1(char *str,t_numb ***e);
+int		ft_checkp2a1a(char *str,t_numb ****e);
+int		ft_checkp2a1a1(char *str,t_numb *****e);
+
 
 #endif
