@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/03 01:51:44 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/03 03:00:43 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,61 +211,8 @@ int	ft_printf(char *str, ...)
 				}
 				else if (*str == 'x')
 				{
-					u = va_arg(ap, unsigned int);
-					if (u == 0 && e->pr == 0 & e->indpr == 1)
-					{
-					}
-					else
-					{
-						s2 = ft_ltohex(u);
-						g = ft_strlen(s2);
-						if (e->indsharp == 1 && u != 0)
-						{
-							ft_putchar('0');
-							ft_putchar('x');
-							cnt++;
-							cnt++;
-						}
-						if (e->indzero == 1 && e->pr == 0)
-						{
-							while(e->w - g > 0)
-							{
-								ft_putchar('0');
-								cnt++;
-								(e->w)--;
-							}
-						}
-						else
-						{
-							if (e->pr >= g)
-							{
-								while(e->w - e->pr > 0)
-								{
-									ft_putchar(' ');
-									cnt++;
-									(e->w)--;
-								}
-
-								while((e->pr - g) > 0)
-								{
-									ft_putchar('0');
-									cnt++;
-									(e->pr)--;
-								}
-							}
-							else
-							{
-								while(e->w - g > 0)
-								{
-									ft_putchar(' ');
-									cnt++;
-									(e->w)--;
-								}
-							}
-						}
-						ft_putstr(s2);
-						cnt = cnt + g;
-					}
+					e->u = va_arg(ap, unsigned int);
+					cnt = cnt + ft_checkx(str,e);
 					e->ind2 = 0;
 					e->w = 0;
 					e->pr = 0;
