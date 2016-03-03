@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/03 04:18:37 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/03 07:16:32 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	ft_printf(char *str, ...)
 
 
 	e = (t_numb*)malloc(sizeof(t_numb));
+	p = NULL;
+
 	cnt = 0;
 	cnt1 = 0;
 	e->ind1 = 0;
@@ -74,7 +76,9 @@ int	ft_printf(char *str, ...)
 	p = ft_check_perc0(str);
 	ret1 = 0;
 	if (p == NULL)
+	{
 		e->ind1++;
+	}
 
 
 
