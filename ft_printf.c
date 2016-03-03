@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/03 01:41:52 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/03 01:51:44 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	ft_printf(char *str, ...)
 	char	sn[]="(null)";
 	t_numb	*e;
 	int		ret1;
-	//	int		b;
 
 
 	e = (t_numb*)malloc(sizeof(t_numb));
@@ -70,7 +69,6 @@ int	ft_printf(char *str, ...)
 	prbegi = 0;
 	va_start(ap, str);
 	begi = &(str[0]);
-	//	printf("str = %s\n",str);
 	e->indsharp = 0;
 	e->indplus = 0;
 	e->indspace = 0;
@@ -79,7 +77,6 @@ int	ft_printf(char *str, ...)
 	e->indpr = 0;
 	p = ft_check_perc0(str);
 	ret1 = 0;
-	//			printf("p= %s\n",p);
 	if (p == NULL)
 		ind1++;
 
@@ -87,34 +84,18 @@ int	ft_printf(char *str, ...)
 
 	if (ind1 % 2 == 0)
 	{
-		//			while (*str)
-		//			{
-		//				p = ft_check_perc(str);
-		//				p2 = p;
-		//				printf("p2= %s\n",p);
 		while (*str != 0)
 		{
-			//			printf("ind2 = %d,str1 =%c\n",ind2,*str);
 			if ( *str == '%' || e->ind2 == 1)
 			{
-				//						cnt1++;
 				str++;
 				if (e->ind2 == 1)
 				{
 					str--;
 				}
-				//				printf("i = %d\n",i);
-
-				//			printf("ind2 = %d,str1 =%c\n",ind2,*str);
-				//						if (*str == '%')
-				//							cnt1++;
-				//			printf("p1 = %d\n", p);
 				if (*str == 0)
 				{
 				}
-				//						else if (*str == '%' && cnt1 % 2 == 1)
-				//						{
-				//						}
 				else if (*str == 'c')
 				{
 					e->d = va_arg(ap, int);
@@ -162,8 +143,6 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'u')
 				{
 					u = va_arg(ap, unsigned int);
-					//					ft_putunbr(u);
-					//					cnt = cnt + ft_countu(u);
 					if (e->pr == 0 && e->w == 0 && e->indpr == 1)
 					{
 					}
@@ -198,11 +177,6 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'd' || *str == 'i')
 				{
 					d = va_arg(ap, int);
-					//					if (e.indspace == 1 && d >= 0 && e.indplus == 0)
-					//					{
-					//						ft_putchar(' ');
-					//						cnt++;
-					//					}
 					if (e->pr == 0 && e->w == 0 && e->indpr == 1)
 					{
 					}
@@ -793,42 +767,18 @@ int	ft_printf(char *str, ...)
 					if (e->ind2 == 0)
 					{
 						begi = NULL;
-						//				printf ("getfield = %s\n",ft_getfield(indpr,ind2,begi));
 						begi = ft_getfield(e->indpr,str);
-						//				if (begi)
-						//					printf("begi = %s\n",begi);
 						if (begi)
 							ret1 = ft_checkflag(e,begi);
-						//				while(i < ret1)
-						//				{
-						//					str++;
-						//					i++;
-						//				}
-						//											printf("s3 = %s\n",s3);
 						if (e->w == 0 && begi)
 							e->w = ft_checkwidth(begi);
 						if (e->pr == 0 && begi)
 							e->pr = ft_checkprec(begi);
-						//						if (str[1] == '0')
-						//							e->indzero = 1;
 					}
-
-					//									printf("w = %d\n",w);
-					//									printf("pr = %d\n",pr);
 					e->ind2 = 1;
 				}
 				else
 				{
-					//				i = 0;
-					//				b = 0;
-					//				while(s3[i] != 0)
-					//				{
-					//					
-					//					if (s3[i] != '.' && !(s3[i] >= '0' && s3[i] <= '9'))
-					//						b++;
-					//					i++;
-					//				}
-					//				printf("S3 = %s,b= %d\n",s3,b);
 					if (indletter == 1)
 					{
 						while((e->w - 1) > 0)
@@ -884,48 +834,21 @@ int	ft_printf(char *str, ...)
 				ft_putchar(*str);
 				cnt++;
 			}
-			//				printf("str = %c\n",*str);
 			if (*str != 0)
 				str++;
 		}
-		//			}
 	}
 
 
 	else if (ind1 % 2 == 1)
 	{
-		//		bigi = &(str[0]);
 		cnt1 = 0;
 		cnt2 = 0;
 		c2 = 0;
-		//				printf("str = %c\n",*str);
-		//			p = ft_check_perc(str);
-		//			p3 = p;
 		indlast = 0;
 		e->ind2 = 0;
-		//			printf("p3 = %s\n",p3);
-		/*
-		   while((*str != 0) && (*str == '%' || *str == ' ') && p == NULL)
-		   {
-		   if (*str == '%')
-		   c2++;
-		   if ((c2 % 2 == 1) && (str[1] == ' '))
-		   {
-		   if (str != p3)
-		   p = str;
-		   else
-		   c2--;
-		   }
-		   str++;
-		   }
-		   */
-		//		str = bigi;
-		//				printf("cnt1 = %d,str = %c begi = %c \n",cnt1,*str,begi[ft_strlen(begi)-2]);
-		//			printf("str = %s\n",str);
 		while (*str != 0)
 		{
-			//				printf("cnt1 = %d,str = %c begi = %c \n",cnt1,*str,begi[ft_strlen(begi)-2]);
-			//				printf("check = %d\n",ft_checkstrlast(str));
 			g =0;
 			ret1 = 0;
 			if (*str == '%')
@@ -938,50 +861,21 @@ int	ft_printf(char *str, ...)
 
 				i = 0;
 				begi = NULL;
-				//				printf ("getfield = %s\n",ft_getfield(indpr,ind2,begi));
 				begi = ft_getfield(e->indpr,str);
-				//				if (begi)
-				//					printf("begi = %s\n",begi);
 				if (begi)
 					g = ft_strlen(begi);
-				//				printf("begilen = %d\n",g);
-
 				while (i < g)
 				{
 					str++;
 					i++;
 				}
 				ret1 = ft_checkflag(e,begi);
-				//				while(i < ret1)
-				//				{
-				//					str++;
-				//					i++;
-				//				}
-				//				if (begi)
-				//				{
-				//					printf("begi = %s\n",begi);
-				//					i = 0;
-				//					while( i < (ft_strlen(begi) - ret1))
-				//					{
-				//						str++;
-				//						i++;
-				//					}
-				//				}
-				//											printf("s3 = %s\n",s3);
 				if (e->w == 0 && begi)
 					e->w = ft_checkwidth(begi);
 				if (e->pr == 0 && begi)
 					e->pr = ft_checkprec(begi);
-				//						if (str[1] == '0')
-				//							e->indzero = 1;
 			}
 
-			//									printf("w = %d\n",w);
-			//									printf("pr = %d\n",pr);
-			//				printf("w = %d\n",w);
-			//				printf("pr = %d\n",pr);
-			//				if (w != 0 || pr != 0 || e->indzero != 0)
-			//					str = begi;
 			if (ft_checkstrlast(str) && cnt1 % 2 == 0 && *str == '%')
 			{
 				ft_putchar('%');
@@ -992,7 +886,6 @@ int	ft_printf(char *str, ...)
 				if (ft_checkstrlast(str) && *str == '%')
 				{
 					indlast = 1;
-					//					cntlast = cnt1;
 				}
 				if (cnt1 % 2 == 0)
 				{
