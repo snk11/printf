@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/03 03:49:04 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/03 04:18:37 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,11 @@ int	ft_printf(char *str, ...)
 	int		cnt1;
 	int c2;
 	char	*p3;
-	int		ind1;
 	int		d2;
-	int		ind0;
-	int		indletter;
 	int		g;
 	char	*beg1;
 	char	*p2;
 	int		cnt2;
-	int		indlast;
 	int		prbegi;
 	char	sn[]="(null)";
 	t_numb	*e;
@@ -61,11 +57,11 @@ int	ft_printf(char *str, ...)
 	e = (t_numb*)malloc(sizeof(t_numb));
 	cnt = 0;
 	cnt1 = 0;
-	ind1 = 0;
+	e->ind1 = 0;
 	e->w = 0;
 	e->pr = 0;
 	e->ind2 = 0;
-	indletter = 0;
+	e->indletter = 0;
 	prbegi = 0;
 	va_start(ap, str);
 	begi = &(str[0]);
@@ -78,11 +74,11 @@ int	ft_printf(char *str, ...)
 	p = ft_check_perc0(str);
 	ret1 = 0;
 	if (p == NULL)
-		ind1++;
+		e->ind1++;
 
 
 
-	if (ind1 % 2 == 0)
+	if (e->ind1 % 2 == 0)
 	{
 		while (*str != 0)
 		{
@@ -122,7 +118,7 @@ int	ft_printf(char *str, ...)
 					e->ind2 = 0;
 					e->w = 0;
 					e->pr = 0;
-					indletter = 1;
+					e->indletter = 1;
 					e->indpr = 0;
 				}
 				else if (*str == 'p')
@@ -132,7 +128,7 @@ int	ft_printf(char *str, ...)
 					e->ind2 = 0;
 					e->w = 0;
 					e->pr = 0;
-					indletter = 1;
+					e->indletter = 1;
 					e->indpr = 0;
 					e->indminus = 0;
 					e->indplus = 0;
@@ -162,7 +158,7 @@ int	ft_printf(char *str, ...)
 					e->ind2 = 0;
 					e->w = 0;
 					e->pr = 0;
-					indletter = 1;
+					e->indletter = 1;
 					e->indzero = 0;
 					e->indpr = 0;
 					e->indplus = 0;
@@ -196,7 +192,7 @@ int	ft_printf(char *str, ...)
 					e->ind2 = 0;
 					e->w = 0;
 					e->pr = 0;
-					indletter = 1;
+					e->indletter = 1;
 					e->indzero = 0;
 					e->indpr = 0;
 					e->indplus = 0;
@@ -216,7 +212,7 @@ int	ft_printf(char *str, ...)
 					e->ind2 = 0;
 					e->w = 0;
 					e->pr = 0;
-					indletter = 1;
+					e->indletter = 1;
 					e->indzero = 0;
 					e->indpr = 0;
 
@@ -228,7 +224,7 @@ int	ft_printf(char *str, ...)
 					e->ind2 = 0;
 					e->w = 0;
 					e->pr = 0;
-					indletter = 1;
+					e->indletter = 1;
 					e->indzero = 0;
 					e->indpr = 0;
 				}
@@ -239,7 +235,7 @@ int	ft_printf(char *str, ...)
 					e->ind2 = 0;
 					e->w = 0;
 					e->pr = 0;
-					indletter = 1;
+					e->indletter = 1;
 					e->indzero = 0;
 					e->indpr = 0;
 					e->indsharp = 0;
@@ -251,7 +247,7 @@ int	ft_printf(char *str, ...)
 					e->ind2 = 0;
 					e->w = 0;
 					e->pr = 0;
-					indletter = 1;
+					e->indletter = 1;
 					e->indzero = 0;
 					e->indpr = 0;
 					e->indsharp = 0;
@@ -572,7 +568,7 @@ int	ft_printf(char *str, ...)
 				}
 				else
 				{
-					if (indletter == 1)
+					if (e->indletter == 1)
 					{
 						while((e->w - 1) > 0)
 						{
@@ -619,7 +615,7 @@ int	ft_printf(char *str, ...)
 					e->w = 0;
 					e->pr = 0;
 					cnt++;
-					indletter = 0;
+					e->indletter = 0;
 				}
 			}
 			else
@@ -633,12 +629,12 @@ int	ft_printf(char *str, ...)
 	}
 
 
-	else if (ind1 % 2 == 1)
+	else if (e->ind1 % 2 == 1)
 	{
 		cnt1 = 0;
 		cnt2 = 0;
 		c2 = 0;
-		indlast = 0;
+		e->indlast = 0;
 		e->ind2 = 0;
 		while (*str != 0)
 		{
@@ -678,11 +674,11 @@ int	ft_printf(char *str, ...)
 			{
 				if (ft_checkstrlast(str) && *str == '%')
 				{
-					indlast = 1;
+					e->indlast = 1;
 				}
 				if (cnt1 % 2 == 0)
 				{
-					if (*str == '%' && indlast == 1)
+					if (*str == '%' && e->indlast == 1)
 					{
 					}
 					else
@@ -744,7 +740,7 @@ int	ft_printf(char *str, ...)
 				}
 				if (*str == '%')
 					cnt1++;
-				if (cnt1 % 2 == 1 && indlast == 1)
+				if (cnt1 % 2 == 1 && e->indlast == 1)
 					cnt1++;
 			}
 			str++;
