@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/08 15:27:13 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/08 16:28:46 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 
 typedef struct			s_numb
 {
+	int					cursorap;
+	char				*strini;
 	int					indplus;
 	int					indspace;
 	int					indsharp;
