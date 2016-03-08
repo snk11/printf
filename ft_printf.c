@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/08 14:12:37 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/08 15:27:28 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,47 +34,22 @@ int	ft_printf(char *str, ...)
 	int			cnt;
 	int			i;
 	char		*p;
-	int bl;
-	int			max;
 	wchar_t		*ss;
 	wchar_t		wc;
-	char		*begi;
-	char		*bigi2;
 	int		cnt1;
-	int c2;
-	char	*p3;
-	int		d2;
 	int		g;
-	char	*beg1;
-	char	*p2;
-	int		cnt2;
-	int		prbegi;
 	char	sn[]="(null)";
 	t_numb	*e;
-	int		ret1;
 
 
 	e = (t_numb*)malloc(sizeof(t_numb));
 	p = NULL;
 
 	cnt = 0;
-	cnt1 = 0;
-	e->ind1 = 0;
-	e->w = 0;
-	e->pr = 0;
-	e->ind2 = 0;
-	e->indletter = 0;
-	prbegi = 0;
+	ft_initialize(&e);
 	va_start(ap, str);
-	begi = &(str[0]);
-	e->indsharp = 0;
-	e->indplus = 0;
-	e->indspace = 0;
-	e->indminus = 0;
-	e->indzero = 0;
-	e->indpr = 0;
+//	begi = &(str[0]);
 	p = ft_check_perc0(str);
-	ret1 = 0;
 	if (p == NULL)
 	{
 		e->ind1++;
@@ -113,32 +88,18 @@ int	ft_printf(char *str, ...)
 					e->s = va_arg(ap, char*);
 					cnt = cnt + ft_checks(str,e);
 					ft_initialize(&e);
-					e->ind2 = 0;
 				}
 				else if (*str == 'S')
 				{
 					e->ss = va_arg(ap, wchar_t*);
 					cnt = cnt + ft_checkbs(str,e);
-					e->ind2 = 0;
-					e->w = 0;
-					e->pr = 0;
-					e->indletter = 1;
-					e->indpr = 0;
+					ft_initialize(&e);
 				}
 				else if (*str == 'p')
 				{
 					e->l = va_arg(ap, long);
 					cnt = cnt + ft_checkp(str,e);
-					e->ind2 = 0;
-					e->w = 0;
-					e->pr = 0;
-					e->indletter = 1;
-					e->indpr = 0;
-					e->indminus = 0;
-					e->indplus = 0;
-					e->indzero = 0;
-					e->indspace = 0;
-					e->indsharp = 0;
+					ft_initialize(&e);
 				}
 				else if (*str == 'u')
 				{
@@ -159,14 +120,7 @@ int	ft_printf(char *str, ...)
 							ft_putunbr(e->w,e->pr,e->indzero,u);
 						}
 					}
-					e->ind2 = 0;
-					e->w = 0;
-					e->pr = 0;
-					e->indletter = 1;
-					e->indzero = 0;
-					e->indpr = 0;
-					e->indplus = 0;
-					e->indspace = 0;
+					ft_initialize(&e);
 				}
 				else if (*str == 'U')
 				{
@@ -193,15 +147,7 @@ int	ft_printf(char *str, ...)
 							ft_putnbr(e->w,e->pr,e->indzero,d);
 						}
 					}
-					e->ind2 = 0;
-					e->w = 0;
-					e->pr = 0;
-					e->indletter = 1;
-					e->indzero = 0;
-					e->indpr = 0;
-					e->indplus = 0;
-					e->indspace = 0;
-					e->indminus = 0;
+					ft_initialize(&e);
 				}
 				else if (*str == 'D')
 				{
@@ -213,48 +159,25 @@ int	ft_printf(char *str, ...)
 				{
 					e->u = va_arg(ap, unsigned int);
 					cnt = cnt + ft_checkx(str,e);
-					e->ind2 = 0;
-					e->w = 0;
-					e->pr = 0;
-					e->indletter = 1;
-					e->indzero = 0;
-					e->indpr = 0;
-
+					ft_initialize(&e);
 				}
 				else if (*str == 'X')
 				{
 					e->u = va_arg(ap, unsigned int);
 					cnt = cnt + ft_checkbx(str,e);
-					e->ind2 = 0;
-					e->w = 0;
-					e->pr = 0;
-					e->indletter = 1;
-					e->indzero = 0;
-					e->indpr = 0;
+					ft_initialize(&e);
 				}
 				else if (*str == 'o')
 				{
 					e->u = va_arg(ap, unsigned int);
 					cnt = cnt + ft_checko(str,e);
-					e->ind2 = 0;
-					e->w = 0;
-					e->pr = 0;
-					e->indletter = 1;
-					e->indzero = 0;
-					e->indpr = 0;
-					e->indsharp = 0;
+					ft_initialize(&e);
 				}
 				else if (*str == 'O')
 				{
 					e->ul = va_arg(ap,  unsigned long);
 					cnt = cnt + ft_checkbo(str,e);
-					e->ind2 = 0;
-					e->w = 0;
-					e->pr = 0;
-					e->indletter = 1;
-					e->indzero = 0;
-					e->indpr = 0;
-					e->indsharp = 0;
+					ft_initialize(&e);
 				}
 				else if (*str == 'l' && (str[1] == 'd' || str[1] == 'i'))
 				{
@@ -559,25 +482,22 @@ int	ft_printf(char *str, ...)
 				{
 					if (e->ind2 == 0)
 					{
-						begi = NULL;
-						begi = ft_getfield(str);
-						if (begi)
-							ret1 = ft_checkflag(e,begi);
-						if (e->w == 0 && begi)
-							e->w = ft_checkwidth(begi);
-						if (e->pr == 0 && begi)
-							e->pr = ft_checkprec(begi);
+						e->begi = NULL;
+						e->begi = ft_getfield(str);
+						if (e->begi)
+							e->ret1 = ft_checkflag(e,e->begi);
+						if (e->w == 0 && e->begi)
+							e->w = ft_checkwidth(e->begi);
+						if (e->pr == 0 && e->begi)
+							e->pr = ft_checkprec(e->begi);
 					}
 					e->ind2 = 1;
 				}
 				else
 				{
 					cnt = cnt + ft_elseend(str,e);
-					e->ind2 = 0;
-					e->w = 0;
-					e->pr = 0;
 					cnt++;
-					e->indletter = 0;
+					ft_initialize(&e);
 				}
 			}
 			else

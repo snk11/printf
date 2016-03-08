@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/01 22:32:07 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/02 06:21:47 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/08 15:26:02 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 # include "ft_printf.h"
@@ -20,4 +20,12 @@ void	ft_initialize(t_numb **e)
 	(*e)->indplus = 0;
 	(*e)->indspace = 0;
 	(*e)->indminus = 0;
+	(*e)->indletter = 1;
+	(*e)->indsharp = 0;
+	(*e)->ind1 = 0;
+	(*e)->ind2 = 0;
+	(*e)->ret1 = 0;
+	(*e)->prbegi = 0;
+	(*e)->begi = 0;
+	(*e)->cnt1 = 0;
 }
