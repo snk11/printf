@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/03 08:56:24 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/08 12:39:13 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct			s_numb
 	int					indminus;
 	int					indpr;
 	int					w;
+	int					cnt1;
+	int					ret1;
 	int					pr;
 	int					prbegi;
 	int					d;
@@ -41,6 +43,7 @@ typedef struct			s_numb
 	wchar_t				*ss;
 	int					ind1;
 	int					ind2;
+	int					ind6;
 	int					indletter;
 	int					indlast;
 }						t_numb;
@@ -188,6 +191,14 @@ int		ft_checko1a(char *str,t_numb *e);
 int		ft_checko1a1(char *str,t_numb *e);
 int		ft_checkbo(char *str,t_numb *e);
 int		ft_checkbo1(char *str,t_numb *e);
+int		ft_altprime(char *str,t_numb *e);
+void		ft_altprime1(char **str,t_numb **e);
+int		ft_altprime2(char *str,t_numb **e);
+int		ft_altprime2a(char *str,t_numb ***e);
+int		ft_altprime2a1(char *str,t_numb ****e);
+int		ft_altprime2a1a(char *str,t_numb *****e);
+int		ft_altprime2a2(char *str,t_numb ****e);
+int		ft_altprime2a2a(char *str,t_numb *****e);
 
 
 
