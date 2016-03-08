@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/08 13:34:55 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/08 14:12:37 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -572,49 +572,7 @@ int	ft_printf(char *str, ...)
 				}
 				else
 				{
-					if (e->indletter == 1)
-					{
-						while((e->w - 1) > 0)
-						{
-							ft_putchar(' ');
-							cnt++;
-							(e->w)--;
-						}
-					}
-					if (e->indzero == 1)
-					{
-						while(((e->w) - 1) > 0)
-						{
-							cnt++;
-							ft_putchar('0');
-							(e->w)--;
-						}
-						ft_putchar(*str);
-					}
-					else
-					{
-						if (e->w < 0)
-						{
-							e->w = -(e->w);
-							ft_putchar(*str);
-							while((e->w - 1) > 0)
-							{
-								cnt++;
-								ft_putchar(' ');
-								(e->w)--;
-							}
-						}
-						else
-						{
-							while((e->w - 1) > 0)
-							{
-								cnt++;
-								ft_putchar(' ');
-								(e->w)--;
-							}
-							ft_putchar(*str);
-						}
-					}
+					cnt = cnt + ft_elseend(str,e);
 					e->ind2 = 0;
 					e->w = 0;
 					e->pr = 0;
