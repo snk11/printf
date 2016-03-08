@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/08 16:28:46 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/08 19:51:01 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 
 typedef struct			s_numb
 {
-	int					cursorap;
-	char				*strini;
 	int					indplus;
 	int					indspace;
 	int					indsharp;
@@ -42,6 +40,7 @@ typedef struct			s_numb
 	unsigned int		u;
 	unsigned long		ul;
 	char				*s;
+	wchar_t				wc;
 	wchar_t				*ss;
 	int					ind1;
 	int					ind2;
@@ -51,7 +50,27 @@ typedef struct			s_numb
 	char				*begi;
 }						t_numb;
 
+typedef struct			s_ap
+{
+	va_list				*ap1;
+}						t_ap;
 
+typedef struct			s_lst
+{
+	void				*content;
+	struct s_lst		*next;
+}						t_lst;
+
+int		ft_case1(char **str,t_numb **e,va_list ap);
+int		ft_case1b(char ***str,t_numb ***e,va_list ap);
+int		ft_case1c(char ***str,t_numb ***e,va_list ap);
+int		ft_case1a(char ***str,t_numb ***e,va_list ap);
+char	*ft_strnew(size_t size);
+char	*ft_strsub(char const *s, unsigned int start, size_t len);
+void		lst_add1(t_lst **toplist, t_lst *t_lst1);
+void	ft_push1stback(t_lst **lstmp);
+t_lst		*create_lst1(void *content);
+void	*ft_memmove(void *dest, const void *src, size_t n);
 int		ft_printf(char *str, ...);
 void	ft_initialize(t_numb **e);
 int ft_onelettercase(char *str,t_numb *e);
