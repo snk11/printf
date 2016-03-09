@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 00:41:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/09 14:11:23 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/09 14:40:04 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	ft_putwchar1(t_elem *e)
 {
 	e->c3 = e->c2;
 	e->n = 0;
+	e->ret1 = 0;
 	while(e->c2 > 0)
 		ft_putwchar1a(&e);
 	if (e->n <=7)
@@ -49,7 +50,7 @@ int	ft_putwchar1(t_elem *e)
 	ft_putwchar1h(&e);
 	ft_putwchar1i(&e);
 	ft_putwchar1j(&e);
-	return (e->ret);
+	return (e->ret1);
 }
 
 
@@ -263,7 +264,7 @@ void	ft_putwchar1j(t_elem **e)
 		write(1,&((*e)->r[(*e)->i]),1);
 		(*e)->i++;
 	}
-	(*e)->ret = (*e)->ret + ((*e)->n2 + 1) / 8;
+	(*e)->ret1 = (*e)->ret1 + ((*e)->n2 + 1) / 8;
 	free((*e)->str2);
 	(*e)->str2 = NULL;
 	(*e)->begi2 = NULL;

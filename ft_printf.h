@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/09 14:10:39 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/09 15:42:27 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,12 @@ typedef struct			s_elem
 	int c2;
 	int c3;
 	int ret;
+	int ret1;
 	int i;
 	int j;
+	int prbegi;
 	int *r;
+	int pr1;
 }						t_elem;
 
 typedef struct			s_lst
@@ -247,6 +250,18 @@ void	ft_putwchar1g(t_elem **e);
 void	ft_putwchar1h(t_elem **e);
 void	ft_putwchar1i(t_elem **e);
 void	ft_putwchar1j(t_elem **e);
-
+void	ft_putwstr1(t_elem **e);
+void	ft_putwstr1a(t_elem ***e);
+void	ft_putwstr1b(t_elem ***e);
+void	ft_putwstr1c(t_elem ***e);
+void	ft_putwstr1d(t_elem ***e);
+void	ft_putwstr1d1(t_elem ****e);
+void	ft_putwstr1e(t_elem ***e);
+void	ft_putwstr1e1(t_elem ****e);
+void	ft_putwstr1f(t_elem ***e);
+void	ft_putwstr1g(t_elem ***e);
+void	ft_putwstr1h(t_elem ***e);
+void	ft_putwstr1i(t_elem ***e);
+void	ft_putwstr1j(t_elem ***e);
 
 #endif
