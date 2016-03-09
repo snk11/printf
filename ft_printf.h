@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/09 15:42:27 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/09 16:04:05 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,5 +263,18 @@ void	ft_putwstr1g(t_elem ***e);
 void	ft_putwstr1h(t_elem ***e);
 void	ft_putwstr1i(t_elem ***e);
 void	ft_putwstr1j(t_elem ***e);
+int	ft_strlen1(t_elem *e);
+void	ft_strlen1a(t_elem **e);
+void	ft_strlen1b(t_elem **e);
+void	ft_strlen1c(t_elem **e);
+void	ft_strlen1d(t_elem **e);
+void	ft_strlen1d1(t_elem ***e);
+void	ft_strlen1e(t_elem **e);
+void	ft_strlen1e1(t_elem ***e);
+void	ft_strlen1f(t_elem **e);
+void	ft_strlen1g(t_elem **e);
+void	ft_strlen1h(t_elem **e);
+void	ft_strlen1i(t_elem **e);
+void	ft_strlen1j(t_elem **e);
 
 #endif
