@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/08 19:51:01 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/09 14:10:39 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,21 @@ typedef struct			s_numb
 	char				*begi;
 }						t_numb;
 
-typedef struct			s_ap
+typedef struct			s_elem
 {
-	va_list				*ap1;
-}						t_ap;
+	int		n;
+	int		n2;
+	char	*str;
+	char	*str2;
+	char	*begi;
+	char	*begi2;
+	int c2;
+	int c3;
+	int ret;
+	int i;
+	int j;
+	int *r;
+}						t_elem;
 
 typedef struct			s_lst
 {
@@ -223,8 +234,19 @@ int		ft_altprime2a2(char *str,t_numb ****e);
 int		ft_altprime2a2a(char *str,t_numb *****e);
 int		ft_elseend(char *str,t_numb *e);
 int		ft_elseend1(char *str,t_numb **e, char c);
-
-
+int	ft_putwchar1(t_elem *e);
+void	ft_putwchar1a(t_elem **e);
+void	ft_putwchar1b(t_elem **e);
+void	ft_putwchar1c(t_elem **e);
+void	ft_putwchar1d(t_elem **e);
+void	ft_putwchar1d1(t_elem ***e);
+void	ft_putwchar1e(t_elem **e);
+void	ft_putwchar1e1(t_elem ***e);
+void	ft_putwchar1f(t_elem **e);
+void	ft_putwchar1g(t_elem **e);
+void	ft_putwchar1h(t_elem **e);
+void	ft_putwchar1i(t_elem **e);
+void	ft_putwchar1j(t_elem **e);
 
 
 #endif

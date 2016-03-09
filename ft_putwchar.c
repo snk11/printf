@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 00:41:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/08 20:16:54 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/09 14:11:23 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,261 +14,262 @@
 
 int	ft_putwchar(wchar_t c)
 {
-	int		n;
-	int		n2;
-	char	*str;
-	char	*str2;
-	char	*bigi;
-	char	*bigi2;
-	int c2;
-	int c3;
-	int ret;
-	int i;
-	int j;
-	int *r;
+	t_elem	*e;
 
-	ret = 0;
-	c2 = (int)c;
+	e = (t_elem*)malloc(sizeof(t_elem));
+	e->ret = 0;
+	e->c2 = (int)c;
 	if (c <=127)
 	{
 		ft_putchar(c);
-		ret++;
+		e->ret++;
+		return e->ret;
 	}
 	else
+		return (ft_putwchar1(e));
+}
+
+
+int	ft_putwchar1(t_elem *e)
+{
+	e->c3 = e->c2;
+	e->n = 0;
+	while(e->c2 > 0)
+		ft_putwchar1a(&e);
+	if (e->n <=7)
+		ft_putwchar1b(&e);
+	else if (e->n > 7 && e->n <= 11)
+		ft_putwchar1c(&e);
+	else if (e->n > 11 && e->n <= 16)
+		ft_putwchar1d(&e);
+	else
+		ft_putwchar1e(&e);
+	ft_putwchar1f(&e);
+	ft_putwchar1g(&e);
+	ft_putwchar1h(&e);
+	ft_putwchar1i(&e);
+	ft_putwchar1j(&e);
+	return (e->ret);
+}
+
+
+void	ft_putwchar1a(t_elem **e)
+{
+	(*e)->c2 = (*e)->c2 / 2;
+	(*e)->n++;
+}
+
+void	ft_putwchar1b(t_elem **e)
+{
+	(*e)->str2 = (char*)malloc(sizeof(char)* 8 + 1);
+	(*e)->str2[7] = '0';
+	(*e)->str2[8] = 0;
+	(*e)->n2 = 7;
+}
+
+void	ft_putwchar1c(t_elem **e)
+{
+	(*e)->str2 = (char*)malloc(sizeof(char)* 16 + 1);
+	(*e)->str2[15] = '1';
+	(*e)->str2[14] = '1';
+	(*e)->str2[13] = '0';
+	(*e)->str2[12] = 0;
+	(*e)->str2[11] = 0;
+	(*e)->str2[10] = 0;
+	(*e)->str2[9] = 0;
+	(*e)->str2[8] = 0;
+	(*e)->str2[7] = '1';
+	(*e)->str2[6] = '0';
+	(*e)->str2[5] = 0;
+	(*e)->str2[4] = 0;
+	(*e)->str2[3] = 0;
+	(*e)->str2[2] = 0;
+	(*e)->str2[1] = 0;
+	(*e)->str2[0] = 0;
+	(*e)->str2[16] = 0;
+	(*e)->n2 = 15;
+}
+
+
+void	ft_putwchar1d(t_elem **e)
+{
+	(*e)->str2 = (char*)malloc(sizeof(char)* 24 + 1);
+	ft_putwchar1d1(&e);
+	(*e)->str2[9] = 0;
+	(*e)->str2[8] = 0;
+	(*e)->str2[7] = '1';
+	(*e)->str2[6] = '0';
+	(*e)->str2[5] = 0;
+	(*e)->str2[4] = 0;
+	(*e)->str2[3] = 0;
+	(*e)->str2[2] = 0;
+	(*e)->str2[1] = 0;
+	(*e)->str2[0] = 0;
+	(*e)->str2[24] = 0;
+	(*e)->n2 = 23;
+}
+
+void	ft_putwchar1d1(t_elem ***e)
+{
+	(**e)->str2[23] = '1';
+	(**e)->str2[22] = '1';
+	(**e)->str2[21] = '1';
+	(**e)->str2[20] = '0';
+	(**e)->str2[19] = 0;
+	(**e)->str2[18] = 0;
+	(**e)->str2[17] = 0;
+	(**e)->str2[16] = 0;
+	(**e)->str2[15] = '1';
+	(**e)->str2[14] = '0';
+	(**e)->str2[13] = 0;
+	(**e)->str2[12] = 0;
+	(**e)->str2[11] = 0;
+	(**e)->str2[10] = 0;
+}
+
+void	ft_putwchar1e(t_elem **e)
+{
+	(*e)->str2 = (char*)malloc(sizeof(char)* 32 + 1);
+	ft_putwchar1e1(&e);
+	(*e)->str2[11] = 0;
+	(*e)->str2[10] = 0;
+	(*e)->str2[9] = 0;
+	(*e)->str2[8] = 0;
+	(*e)->str2[7] = '1';
+	(*e)->str2[6] = '0';
+	(*e)->str2[5] = 0;
+	(*e)->str2[4] = 0;
+	(*e)->str2[3] = 0;
+	(*e)->str2[2] = 0;
+	(*e)->str2[1] = 0;
+	(*e)->str2[0] = 0;
+	(*e)->str2[32] = 0;
+	(*e)->n2 = 31;
+}
+
+void	ft_putwchar1e1(t_elem ***e)
+{
+	(**e)->str2[31] = '1';
+	(**e)->str2[30] = '1';
+	(**e)->str2[29] = '1';
+	(**e)->str2[28] = '1';
+	(**e)->str2[27] = '0';
+	(**e)->str2[26] = 0;
+	(**e)->str2[25] = 0;
+	(**e)->str2[24] = 0;
+	(**e)->str2[23] = '1';
+	(**e)->str2[22] = '0';
+	(**e)->str2[21] = 0;
+	(**e)->str2[20] = 0;
+	(**e)->str2[19] = 0;
+	(**e)->str2[18] = 0;
+	(**e)->str2[17] = 0;
+	(**e)->str2[16] = 0;
+	(**e)->str2[15] = '1';
+	(**e)->str2[14] = '0';
+	(**e)->str2[13] = 0;
+	(**e)->str2[12] = 0;
+}
+
+
+void	ft_putwchar1f(t_elem **e)
+{
+	(*e)->str = (char*)malloc(sizeof(char)* (*e)->n + 1);
+	(*e)->begi = (*e)->str;
+	(*e)->c2 = (*e)->c3;
+	(*e)->begi2 = (*e)->str2;
+	while((*e)->c2 > 0)
 	{
-
-
-
-		c3 = c2;
-		n = 0;
-		while(c2 > 0)
-		{
-			c2 = c2 / 2;
-			n++;
-		}
-		if (n <=7)
-		{
-			str2 = (char*)malloc(sizeof(char)* 8 + 1);
-			str2[7] = '0';
-			str2[8] = 0;
-			n2 = 7;
-
-		}
-		else if (n > 7 && n <= 11)
-		{
-			str2 = (char*)malloc(sizeof(char)* 16 + 1);
-			str2[15] = '1';
-			str2[14] = '1';
-			str2[13] = '0';
-			str2[12] = 0;
-			str2[11] = 0;
-			str2[10] = 0;
-			str2[9] = 0;
-			str2[8] = 0;
-			str2[7] = '1';
-			str2[6] = '0';
-			str2[5] = 0;
-			str2[4] = 0;
-			str2[3] = 0;
-			str2[2] = 0;
-			str2[1] = 0;
-			str2[0] = 0;
-			str2[16] = 0;
-			n2 = 15;
-		}
-		else if (n > 11 && n <= 16)
-		{
-			str2 = (char*)malloc(sizeof(char)* 24 + 1);
-			str2[23] = '1';
-			str2[22] = '1';
-			str2[21] = '1';
-			str2[20] = '0';
-			str2[19] = 0;
-			str2[18] = 0;
-			str2[17] = 0;
-			str2[16] = 0;
-			str2[15] = '1';
-			str2[14] = '0';
-			str2[13] = 0;
-			str2[12] = 0;
-			str2[11] = 0;
-			str2[10] = 0;
-			str2[9] = 0;
-			str2[8] = 0;
-			str2[7] = '1';
-			str2[6] = '0';
-			str2[5] = 0;
-			str2[4] = 0;
-			str2[3] = 0;
-			str2[2] = 0;
-			str2[1] = 0;
-			str2[0] = 0;
-			str2[24] = 0;
-			n2 = 23;
-//			printf("str2[19]= %c\n",str2[19]);
-		}
-		else
-		{
-			str2 = (char*)malloc(sizeof(char)* 32 + 1);
-			str2[31] = '1';
-			str2[30] = '1';
-			str2[29] = '1';
-			str2[28] = '1';
-			str2[27] = '0';
-			str2[26] = 0;
-			str2[25] = 0;
-			str2[24] = 0;
-			str2[23] = '1';
-			str2[22] = '0';
-			str2[21] = 0;
-			str2[20] = 0;
-			str2[19] = 0;
-			str2[18] = 0;
-			str2[17] = 0;
-			str2[16] = 0;
-			str2[15] = '1';
-			str2[14] = '0';
-			str2[13] = 0;
-			str2[12] = 0;
-			str2[11] = 0;
-			str2[10] = 0;
-			str2[9] = 0;
-			str2[8] = 0;
-			str2[7] = '1';
-			str2[6] = '0';
-			str2[5] = 0;
-			str2[4] = 0;
-			str2[3] = 0;
-			str2[2] = 0;
-			str2[1] = 0;
-			str2[0] = 0;
-			str2[32] = 0;
-			n2 = 31;
-		}
-		str = (char*)malloc(sizeof(char)* n + 1);
-		bigi = str;
-		c2 = c3;
-		bigi2 = str2;
-		while(c2 > 0)
-		{
-			*str = '0' + c2 % 2;
-			c2 = c2 / 2;
-			str++;
-		}
-		*str = 0;
-		str = bigi;
-//		printf ("str = %s\n",str);
-		
-//		printf("str2o len = %d\n",ft_strlen(str2) );
-		i = 0;
-
-//		printf("n2 = %d\n",n2);
-/*
-		while (i < (n2 + 1))
-		{
-				printf("str2[%d]=%c\n",i,*str2);
-				str2++;
-			i++;
-		}*/
-//		i = 0;
-		str2 = bigi2;
-//		printf("after------\n");
-		while (i < (n2 + 1))
-		{
-//			printf("condition: *str2 = %c et *str =%c\n",*str2,*str);
-			if (*str2 == 0 && *str)
-			{
-				*str2 = *str;
-
-//			printf("str2[%d]=%c\n",i,*str2);
-				str2++;
-				str++;
-			}
-			else if (*str2 == 0 && *str == 0)
-			{
-				*str2 = '0';
-//			printf("str2[%d]=%c\n",i,*str2);
-				str2++;
-			}
-			else if (*str2 == '1' || *str2 == '0')
-			{
-//				printf("str2[%d]=%c\n",i,*str2);
-				str2++;
-			}
-			i++;
-		}
-		str = bigi;
-		str2 = bigi2;
-//		printf("str2p len = %d\n",ft_strlen(str2) );
-//		printf("str2 = %s\n",str2);
-		i = 0;
-		while (i <= n2)
-		{
-			if (*str2 == 0)
-				*str2 = '0';
-			str2++;
-			i++;
-		}
-		i = 0;
-		str2--;
-		r = (int*)malloc(sizeof(int)*(n2+1)/8 + 1);
-		i = 0;
-		while (i <= (n2 + 1)/8)
-		{
-			r[i] = 0;
-			i++;
-		}
-		
-//		r[(n2+1)/8] = 0;
-		i = 0;
-//		printf("str2 len = %d\n",ft_strlen(str2) );
-		while (i < (n2 + 1) / 8)
-		{
-			j = 7;
-	//		r = 0;
-			while ( j >= 0 )
-			{
-				r[i] = r[i] + (*str2 - '0') * pow(2,j);
-				j--;
-				str2--;
-			}
-			i++;
-		}
-		str2 = bigi2;
-		str = bigi;
-//		printf("str2 len = %d\n",ft_strlen(str2) );
-//		printf("n2= %d,\n",n2);
-		i = 0;
-		while(i < (n2 + 1)/8)
-		{
-//			printf("r = %d\n",r[i]);
-			write(1,&r[i],1);
-			i++;
-		}
-//			printf("str2 = %s\n",bigi2);
-		//	printf("%d\n",L'米');
-		//	printf("%d\n",'a');
-
-		//	if (s <= 0x7F)
-		//		printf("UU");
-		ret = ret + (n2 + 1) / 8;
-		free(str2);
-		str2 = NULL;
-		bigi2 = NULL;
-		free(str);
-		str = NULL;
-		bigi = NULL;
-		free(r);
-		r = NULL;
+		*((*e)->str) = '0' + (*e)->c2 % 2;
+		(*e)->c2 = (*e)->c2 / 2;
+		(*e)->str++;
 	}
-/*
-	int h = 230;
-	int t = 152;
-	int u =175;
+	*((*e)->str) = 0;
+	(*e)->str = (*e)->begi;
+	(*e)->i = 0;
+	(*e)->str2 = (*e)->begi2;
+}
 
-			write(1,&h,1);
-			write(1,&t,1);
-			write(1,&u,1);
-			*/
-	return ret;
+void	ft_putwchar1g(t_elem **e)
+{
+	while ((*e)->i < ((*e)->n2 + 1))
+	{
+		if (*((*e)->str2) == 0 && *((*e)->str))
+		{
+			*((*e)->str2) = *((*e)->str);
+			(*e)->str2++;
+			(*e)->str++;
+		}
+		else if (*((*e)->str2) == 0 && *((*e)->str) == 0)
+		{
+			*((*e)->str2) = '0';
+			(*e)->str2++;
+		}
+		else if (*((*e)->str2) == '1' || *((*e)->str2) == '0')
+		{
+			(*e)->str2++;
+		}
+		(*e)->i++;
+	}
+	(*e)->str = (*e)->begi;
+	(*e)->str2 = (*e)->begi2;
+	(*e)->i = 0;
+}
+
+
+void	ft_putwchar1h(t_elem **e)
+{
+	while ((*e)->i <= (*e)->n2)
+	{
+		if (*((*e)->str2) == 0)
+			*((*e)->str2) = '0';
+		(*e)->str2++;
+		(*e)->i++;
+	}
+	(*e)->i = 0;
+	(*e)->str2--;
+	(*e)->r = (int*)malloc(sizeof(int)*((*e)->n2+1)/8 + 1);
+	(*e)->i = 0;
+	while ((*e)->i <= ((*e)->n2 + 1)/8)
+	{
+		(*e)->r[(*e)->i] = 0;
+		(*e)->i++;
+	}
+	(*e)->i = 0;
+}
+
+void	ft_putwchar1i(t_elem **e)
+{
+	while ((*e)->i < ((*e)->n2 + 1) / 8)
+	{
+		(*e)->j = 7;
+		while ( (*e)->j >= 0 )
+		{
+			(*e)->r[(*e)->i] = (*e)->r[(*e)->i] + (*((*e)->str2) - '0') * pow(2,(*e)->j);
+			(*e)->j--;
+			(*e)->str2--;
+		}
+		(*e)->i++;
+	}
+	(*e)->str2 = (*e)->begi2;
+	(*e)->str = (*e)->begi;
+	(*e)->i = 0;
+}
+
+void	ft_putwchar1j(t_elem **e)
+{
+	while((*e)->i < ((*e)->n2 + 1)/8)
+	{
+		write(1,&((*e)->r[(*e)->i]),1);
+		(*e)->i++;
+	}
+	(*e)->ret = (*e)->ret + ((*e)->n2 + 1) / 8;
+	free((*e)->str2);
+	(*e)->str2 = NULL;
+	(*e)->begi2 = NULL;
+	free((*e)->str);
+	(*e)->str = NULL;
+	(*e)->begi = NULL;
+	free((*e)->r);
+	(*e)->r = NULL;
 }
