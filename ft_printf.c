@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/08 20:30:22 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/10 11:31:26 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_printf(char *str, ...)
 	e = (t_numb*)malloc(sizeof(t_numb));
 	p = NULL;
 	cnt = 0;
-	ft_initialize(&e);
+	ft_initialize(e);
 	va_start(ap, str);
 //	begi = &(str[0]);
 	p = ft_check_perc0(str);
@@ -74,13 +74,13 @@ int	ft_printf(char *str, ...)
 				{
 					e->ss = va_arg(ap, wchar_t*);
 					cnt = cnt + ft_checkbs(str,e);
-					ft_initialize(&e);
+					ft_initialize(e);
 				}
 				else if (*str == 'p')
 				{
 					e->l = va_arg(ap, long);
 					cnt = cnt + ft_checkp(str,e);
-					ft_initialize(&e);
+					ft_initialize(e);
 				}
 				else if (*str == 'u')
 				{
@@ -101,7 +101,7 @@ int	ft_printf(char *str, ...)
 							ft_putunbr(e->w,e->pr,e->indzero,u);
 						}
 					}
-					ft_initialize(&e);
+					ft_initialize(e);
 				}
 				else if (*str == 'U')
 				{
@@ -128,7 +128,7 @@ int	ft_printf(char *str, ...)
 							ft_putnbr(e->w,e->pr,e->indzero,d);
 						}
 					}
-					ft_initialize(&e);
+					ft_initialize(e);
 				}
 				else if (*str == 'D')
 				{
@@ -140,25 +140,25 @@ int	ft_printf(char *str, ...)
 				{
 					e->u = va_arg(ap, unsigned int);
 					cnt = cnt + ft_checkx(str,e);
-					ft_initialize(&e);
+					ft_initialize(e);
 				}
 				else if (*str == 'X')
 				{
 					e->u = va_arg(ap, unsigned int);
 					cnt = cnt + ft_checkbx(str,e);
-					ft_initialize(&e);
+					ft_initialize(e);
 				}
 				else if (*str == 'o')
 				{
 					e->u = va_arg(ap, unsigned int);
 					cnt = cnt + ft_checko(str,e);
-					ft_initialize(&e);
+					ft_initialize(e);
 				}
 				else if (*str == 'O')
 				{
 					e->ul = va_arg(ap,  unsigned long);
 					cnt = cnt + ft_checkbo(str,e);
-					ft_initialize(&e);
+					ft_initialize(e);
 				}
 				else if (*str == 'l' && (str[1] == 'd' || str[1] == 'i'))
 				{
@@ -478,7 +478,7 @@ int	ft_printf(char *str, ...)
 				{
 					cnt = cnt + ft_elseend(str,e);
 					cnt++;
-					ft_initialize(&e);
+					ft_initialize(e);
 				}
 			}
 			else

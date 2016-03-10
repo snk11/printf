@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/10 11:23:43 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/10 11:31:41 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	ft_push1stback(t_lst **lstmp);
 t_lst		*create_lst1(void *content);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 int		ft_printf(char *str, ...);
-void	ft_initialize(t_numb **e);
+void	ft_initialize(t_numb *e);
 int ft_onelettercase(char *str,t_numb *e);
 int ft_checkc(char *str,t_numb *e);
 int	ft_checkc1(char *str,t_numb *e);
