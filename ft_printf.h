@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/09 16:17:03 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/10 11:05:38 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,56 +238,56 @@ int		ft_altprime2a2a(char *str,t_numb *****e);
 int		ft_elseend(char *str,t_numb *e);
 int		ft_elseend1(char *str,t_numb **e, char c);
 int	ft_putwchar1(t_elem *e);
-void	ft_putwchar1a(t_elem **e);
-void	ft_putwchar1b(t_elem **e);
-void	ft_putwchar1c(t_elem **e);
-void	ft_putwchar1d(t_elem **e);
-void	ft_putwchar1d1(t_elem ***e);
-void	ft_putwchar1e(t_elem **e);
-void	ft_putwchar1e1(t_elem ***e);
-void	ft_putwchar1f(t_elem **e);
-void	ft_putwchar1g(t_elem **e);
-void	ft_putwchar1h(t_elem **e);
-void	ft_putwchar1i(t_elem **e);
-void	ft_putwchar1j(t_elem **e);
-void	ft_putwstr1(t_elem **e);
-void	ft_putwstr1a(t_elem ***e);
-void	ft_putwstr1b(t_elem ***e);
-void	ft_putwstr1c(t_elem ***e);
-void	ft_putwstr1d(t_elem ***e);
-void	ft_putwstr1d1(t_elem ****e);
-void	ft_putwstr1e(t_elem ***e);
-void	ft_putwstr1e1(t_elem ****e);
-void	ft_putwstr1f(t_elem ***e);
-void	ft_putwstr1g(t_elem ***e);
-void	ft_putwstr1h(t_elem ***e);
-void	ft_putwstr1i(t_elem ***e);
-void	ft_putwstr1j(t_elem ***e);
+void	ft_putwchar1a(t_elem *e);
+void	ft_putwchar1b(t_elem *e);
+void	ft_putwchar1c(t_elem *e);
+void	ft_putwchar1d(t_elem *e);
+void	ft_putwchar1d1(t_elem *e);
+void	ft_putwchar1e(t_elem *e);
+void	ft_putwchar1e1(t_elem *e);
+void	ft_putwchar1f(t_elem *e);
+void	ft_putwchar1g(t_elem *e);
+void	ft_putwchar1h(t_elem *e);
+void	ft_putwchar1i(t_elem *e);
+void	ft_putwchar1j(t_elem *e);
+void	ft_putwstr1(t_elem *e);
+void	ft_putwstr1a(t_elem *e);
+void	ft_putwstr1b(t_elem *e);
+void	ft_putwstr1c(t_elem *e);
+void	ft_putwstr1d(t_elem *e);
+void	ft_putwstr1d1(t_elem *e);
+void	ft_putwstr1e(t_elem *e);
+void	ft_putwstr1e1(t_elem *e);
+void	ft_putwstr1f(t_elem *e);
+void	ft_putwstr1g(t_elem *e);
+void	ft_putwstr1h(t_elem *e);
+void	ft_putwstr1i(t_elem *e);
+void	ft_putwstr1j(t_elem *e);
 int	ft_strlen1(t_elem *e);
-void	ft_strlen1a(t_elem **e);
-void	ft_strlen1b(t_elem **e);
-void	ft_strlen1c(t_elem **e);
-void	ft_strlen1d(t_elem **e);
-void	ft_strlen1d1(t_elem ***e);
-void	ft_strlen1e(t_elem **e);
-void	ft_strlen1e1(t_elem ***e);
-void	ft_strlen1f(t_elem **e);
-void	ft_strlen1g(t_elem **e);
-void	ft_strlen1h(t_elem **e);
-void	ft_strlen1i(t_elem **e);
-void	ft_strlen1j(t_elem **e);
-void	ft_countwstr1(t_elem **e);
-void	ft_countwstr1a(t_elem ***e);
-void	ft_countwstr1b(t_elem ***e);
-void	ft_countwstr1c(t_elem ***e);
-void	ft_countwstr1d(t_elem ***e);
-void	ft_countwstr1d1(t_elem ****e);
-void	ft_countwstr1e(t_elem ***e);
-void	ft_countwstr1e1(t_elem ****e);
-void	ft_countwstr1f(t_elem ***e);
-void	ft_countwstr1g(t_elem ***e);
-void	ft_countwstr1h(t_elem ***e);
-void	ft_countwstr1i(t_elem ***e);
-void	ft_countwstr1j(t_elem ***e);
+void	ft_strlen1a(t_elem *e);
+void	ft_strlen1b(t_elem *e);
+void	ft_strlen1c(t_elem *e);
+void	ft_strlen1d(t_elem *e);
+void	ft_strlen1d1(t_elem *e);
+void	ft_strlen1e(t_elem *e);
+void	ft_strlen1e1(t_elem *e);
+void	ft_strlen1f(t_elem *e);
+void	ft_strlen1g(t_elem *e);
+void	ft_strlen1h(t_elem *e);
+void	ft_strlen1i(t_elem *e);
+void	ft_strlen1j(t_elem *e);
+void	ft_countwstr1(t_elem *e);
+void	ft_countwstr1a(t_elem *e);
+void	ft_countwstr1b(t_elem *e);
+void	ft_countwstr1c(t_elem *e);
+void	ft_countwstr1d(t_elem *e);
+void	ft_countwstr1d1(t_elem *e);
+void	ft_countwstr1e(t_elem *e);
+void	ft_countwstr1e1(t_elem *e);
+void	ft_countwstr1f(t_elem *e);
+void	ft_countwstr1g(t_elem *e);
+void	ft_countwstr1h(t_elem *e);
+void	ft_countwstr1i(t_elem *e);
+void	ft_countwstr1j(t_elem *e);
 
 #endif
