@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/10 12:43:13 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/10 13:25:02 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	ft_printf(char *str, ...)
 				}
 				else if (*str == 'd' || *str == 'i')
 				{
-					d = va_arg(ap, int);
+					e->d = va_arg(ap, int);
 					if (e->pr == 0 && e->w == 0 && e->indpr == 1)
 					{
 					}
@@ -119,13 +119,13 @@ int	ft_printf(char *str, ...)
 					{
 						if(e->indminus == 1)
 						{
-							ft_putnbr(e->w,e->pr,e->indzero,d);
-							cnt = cnt + ft_countd(e->w,e->pr,e,d);
+							ft_putnbr(e->w,e->pr,e->indzero,e->d);
+							cnt = cnt + ft_countd(e,e->d);
 						}
 						else
 						{
-							cnt = cnt + ft_countd(e->w,e->pr,e,d);
-							ft_putnbr(e->w,e->pr,e->indzero,d);
+							cnt = cnt + ft_countd(e,e->d);
+							ft_putnbr(e->w,e->pr,e->indzero,e->d);
 						}
 					}
 					ft_initialize(e);
@@ -192,7 +192,7 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'h' && str[1] == 'h' && (str[2] == 'd' || str[2] == 'i'))
 				{
 					c = va_arg(ap, char);
-					cnt = cnt + ft_countd(e->w,e->pr,e,c);
+					cnt = cnt + ft_countd(e,c);
 					ft_putnbr(e->w,e->pr,e->indzero,c);
 					str++;
 					str++;
