@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/10 12:35:43 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/10 12:37:58 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ typedef struct			s_lst
 	struct s_lst		*next;
 }						t_lst;
 
-int		ft_case1(char **str,t_numb **e,va_list ap);
-int		ft_case1b(char ***str,t_numb ***e,va_list ap);
-int		ft_case1c(char ***str,t_numb ***e,va_list ap);
-int		ft_case1a(char ***str,t_numb ***e,va_list ap);
+int		ft_case1(char **str,t_numb *e,va_list ap);
+int		ft_case1b(char ***str,t_numb *e,va_list ap);
+int		ft_case1c(char ***str,t_numb *e,va_list ap);
+int		ft_case1a(char ***str,t_numb *e,va_list ap);
 char	*ft_strnew(size_t size);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 void		lst_add1(t_lst **toplist, t_lst *t_lst1);
