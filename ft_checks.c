@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 01:26:49 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/03 00:23:50 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/10 11:26:04 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,33 +38,33 @@ int		ft_checks42(char *str,t_numb *e)
 
 	cnt = 0;
 
-	cnt = cnt + ft_checks42a(str,&e);
+	cnt = cnt + ft_checks42a(str,e);
 	cnt = cnt + ft_checks42b(str,e);
 	return (cnt);
 }
 
-int		ft_checks42a(char *str,t_numb **e)
+int		ft_checks42a(char *str,t_numb *e)
 {
 	int	cnt;
 
 	cnt = 0;
-	(*e)->g = ft_strlen((*e)->s);
-	if ((*e)->indzero == 0)
+	e->g = ft_strlen(e->s);
+	if (e->indzero == 0)
 	{
-		if ((*e)->w - (*e)->g > 0)
+		if (e->w - e->g > 0)
 		{
 			cnt++;
 			ft_putchar('Y');
-			((*e)->w)--;
+			(e->w)--;
 		}
 	}
 	else
 	{
-		while((*e)->w - (*e)->g > 0)
+		while(e->w - e->g > 0)
 		{
 			cnt++;
 			ft_putchar('0');
-			((*e)->w)--;
+			(e->w)--;
 		}
 	}
 	return (cnt);
@@ -114,7 +114,7 @@ int		ft_checks1a(char *str,t_numb *e)
 
 	e->g = ft_strlen(e->s);
 	cnt = 0;
-	cnt = cnt + ft_checks1a1(str,&e);
+	cnt = cnt + ft_checks1a1(str,e);
 	if (e->s)
 	{
 		ft_putstr2(e->pr,e->s);
@@ -136,15 +136,15 @@ int		ft_checks1a(char *str,t_numb *e)
 }
 
 
-int		ft_checks1a1(char *str,t_numb **e)
+int		ft_checks1a1(char *str,t_numb *e)
 {
 	int cnt;
 
 	cnt = 0;
-	(*e)->g = ft_strlen((*e)->s);
-	if ((*e)->indzero == 0)
+	e->g = ft_strlen(e->s);
+	if (e->indzero == 0)
 	{
-		while((*e)->w - (*e)->g > 0 && (*e)->pr > 0)
+		while(e->w - e->g > 0 && e->pr > 0)
 		{
 			cnt++;
 			ft_putchar(' ');
@@ -153,7 +153,7 @@ int		ft_checks1a1(char *str,t_numb **e)
 	}
 	else
 	{
-		while((*e)->w - (*e)->g > 0 && (*e)->pr > 0)
+		while(e->w - e->g > 0 && e->pr > 0)
 		{
 			cnt++;
 			ft_putchar('0');
@@ -163,10 +163,10 @@ int		ft_checks1a1(char *str,t_numb **e)
 	return (cnt);
 }
 
-void ft_decr(t_numb **e)
+void ft_decr(t_numb *e)
 {
-	((*e)->w)--;
-	((*e)->pr)--;
+	(e->w)--;
+	(e->pr)--;
 }
 
 int		ft_checks1b(char *str,t_numb *e)
@@ -188,7 +188,7 @@ int		ft_checks1b1(char *str,t_numb *e)
 	int	i;
 
 	cnt = 0;
-	cnt = cnt + ft_checks1b1a(str,&e);
+	cnt = cnt + ft_checks1b1a(str,e);
 	if (e->s)
 	{
 		ft_putstr2(e->pr,e->s);
@@ -208,27 +208,27 @@ int		ft_checks1b1(char *str,t_numb *e)
 
 }
 
-int		ft_checks1b1a(char *str,t_numb **e)
+int		ft_checks1b1a(char *str,t_numb *e)
 {
 	int	cnt;
 
 	cnt = 0;
-	if ((*e)->indzero == 0)
+	if (e->indzero == 0)
 	{
-		while(((*e)->w - (*e)->pr) > 0)
+		while((e->w - e->pr) > 0)
 		{
 			cnt++;
 			ft_putchar(' ');
-			((*e)->w)--;
+			(e->w)--;
 		}
 	}
 	else
 	{
-		while(((*e)->w - (*e)->pr) > 0)
+		while((e->w - e->pr) > 0)
 		{
 			cnt++;
 			ft_putchar('0');
-			((*e)->w)--;
+			(e->w)--;
 		}
 	}
 	return (cnt);
@@ -242,7 +242,7 @@ int		ft_checks1b2(char *str,t_numb *e)
 
 	cnt = 0;
 	e->g = ft_strlen(e->s);
-	cnt = cnt + ft_checks1b2a(str,&e);
+	cnt = cnt + ft_checks1b2a(str,e);
 	if (e->s)
 	{
 		ft_putstr(e->s);
@@ -262,28 +262,28 @@ int		ft_checks1b2(char *str,t_numb *e)
 }
 
 
-int		ft_checks1b2a(char *str,t_numb **e)
+int		ft_checks1b2a(char *str,t_numb *e)
 {
 	int	cnt;
 
 	cnt = 0;
-	(*e)->g = ft_strlen((*e)->s);
-	if ((*e)->indzero == 0)
+	e->g = ft_strlen(e->s);
+	if (e->indzero == 0)
 	{
-		while((*e)->w - (*e)->g > 0)
+		while(e->w - e->g > 0)
 		{
 			cnt++;
 			ft_putchar(' ');
-			((*e)->w)--;
+			(e->w)--;
 		}
 	}
 	else
 	{
-		while((*e)->w - (*e)->g > 0)
+		while(e->w - e->g > 0)
 		{
 			cnt++;
 			ft_putchar('0');
-			((*e)->w)--;
+			(e->w)--;
 		}
 	}
 	return (cnt);
@@ -493,6 +493,7 @@ int		ft_checks2c1(char *str,t_numb *e)
 	}
 	if (e->w > 6)
 		cnt = cnt + ft_checks2c1a(str,e);
+	return (cnt);
 }
 
 
