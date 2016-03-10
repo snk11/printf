@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/10 11:31:41 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/10 11:33:02 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,16 +205,16 @@ int		ft_checkbs2b2(char *str,t_numb *e);
 int		ft_checkp(char *str,t_numb *e);
 int		ft_checkp1(char *str,t_numb *e);
 int		ft_checkp1a(char *str,t_numb *e);
-int		ft_checkp1a1(char *str,t_numb **e);
+int		ft_checkp1a1(char *str,t_numb *e);
 int		ft_checkp1a1a(char *str,t_numb *e);
 int		ft_checkp1b(char *str,t_numb *e);
-int		ft_checkp1b1(char *str,t_numb **e);
+int		ft_checkp1b1(char *str,t_numb *e);
 int		ft_checkp1b1a(char *str,t_numb *e);
 int		ft_checkp2(char *str,t_numb *e);
-int		ft_checkp2a(char *str,t_numb **e);
-int		ft_checkp2a1(char *str,t_numb ***e);
-int		ft_checkp2a1a(char *str,t_numb ****e);
-int		ft_checkp2a1a1(char *str,t_numb *****e);
+int		ft_checkp2a(char *str,t_numb *e);
+int		ft_checkp2a1(char *str,t_numb *e);
+int		ft_checkp2a1a(char *str,t_numb *e);
+int		ft_checkp2a1a1(char *str,t_numb *e);
 int		ft_checkx(char *str,t_numb *e);
 int		ft_checkx1(char *str,t_numb *e);
 int		ft_checkx1a(char *str,t_numb *e);
