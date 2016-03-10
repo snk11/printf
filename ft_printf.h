@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/10 12:28:21 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/10 12:35:43 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,7 +236,7 @@ int		ft_altprime2a1a(char *str,t_numb *e);
 int		ft_altprime2a2(char *str,t_numb *e);
 int		ft_altprime2a2a(char *str,t_numb *e);
 int		ft_elseend(char *str,t_numb *e);
-int		ft_elseend1(char *str,t_numb **e, char c);
+int		ft_elseend1(char *str,t_numb *e, char c);
 int	ft_putwchar1(t_elem *e);
 void	ft_putwchar1a(t_elem *e);
 void	ft_putwchar1b(t_elem *e);
