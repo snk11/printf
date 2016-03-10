@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/10 14:20:41 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/10 15:08:26 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct			s_count
 	int neg;
 	int	w;
 	int	pr;
+	int	minus;
 }						t_count;
 
 typedef struct			s_lst
@@ -134,7 +135,7 @@ void	ft_putllnbr(long long n);
 void	ft_putulonglongnbr(unsigned long long n);
 void	ft_putsdnbr(short int n);
 int	ft_countl(long n);
-int	ft_countu(int w,int pr,int zero,t_numb *e,unsigned int n);
+int	ft_countu(t_numb *e,unsigned int n);
 int	ft_countuc(unsigned char n);
 int	ft_countul(unsigned long n);
 int	ft_countlld(long long n);
@@ -310,5 +311,15 @@ void	ft_countd4(t_numb *e,t_count *f);
 void	ft_countd4a(t_numb *e,t_count *f);
 void	ft_countd4a1(t_numb *e,t_count *f);
 int	ft_countd5(t_numb *e,t_count *f);
+void 	ft_countud1(t_count *f);
+void 	ft_countud2(t_count *f,unsigned int n);
+void	ft_countud3(t_numb *e,t_count *f);
+void	ft_countud3a(t_numb *e,t_count *f);
+void	ft_countud3a0(t_numb *e,t_count *f);
+void	ft_countud3a1(t_numb *e,t_count *f);
+void	ft_countud4(t_numb *e,t_count *f);
+void	ft_countud4a(t_numb *e,t_count *f);
+void	ft_countud4a1(t_numb *e,t_count *f);
+int	ft_countud5(t_numb *e,t_count *f);
 
 #endif

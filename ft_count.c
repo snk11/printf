@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 08:29:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/10 14:21:40 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/10 15:07:36 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -356,164 +356,177 @@ int	ft_countlld(long long n)
 	}
 	return (i);
 }
-int	ft_countu(int w,int pr, int zero,t_numb *e,unsigned int n)
+
+int	ft_countu(t_numb *e,unsigned int n)
 {
-	int i;
-	int v;
-	int u;
-	int neg;
-	int minus;
+	t_count *f;
 
-	minus = 0;
-	if (w < 0)
-	{
-		w = -w;
-		minus = 1;
-	}
-	i = 0;
-	neg = 0;
-	u = pr;
-	v = w;
-
-	i = 0;
+	f = (t_count*)malloc(sizeof(t_count));
+	f->i = 0;
+	f->minus = 0;
+	f->neg = 0;
+	f->w = e->w;
+	f->pr = e->pr;
+	f->u = f->pr;
+	f->v = f->w;
+	ft_countud1(f);
 	if (n == UINT_MAX)
-		i = 10;
+		f->i = 10;
 	else
+		ft_countud2(f,n);
+	if (e->indzero == 1 && f->pr == 0)
+		ft_countud3(e,f);
+	else
+		ft_countud4(e,f);
+	return (ft_countud5(e,f));
+}
+
+void 	ft_countud1(t_count *f)
+{
+	if (f->w < 0)
 	{
+		f->w = -(f->w);
+		f->minus = 1;
+	}
+}
+
+void 	ft_countud2(t_count *f,unsigned int n)
+{
 		if (n >= 10)
 		{
 			while (n >= 10)
 			{
 				n = n / 10;
-				i++;
+				f->i++;
 			}
 		}
-		i++;
-	}
-	if (zero == 1 && pr == 0)
-	{
-//		if (neg == 1)
-//			ft_putchar('-');
-		if (w > i)
+		f->i++;
+}
+
+void	ft_countud3(t_numb *e,t_count *f)
+{
+		if (f->w > f->i)
 		{
-			if (neg == 1)
+			if (f->neg == 1)
 			{
 				ft_putchar('-');
-				while((w - i) > 0)
+				while((f->w - f->i) > 0)
 				{
 					ft_putchar('0');
-					w--;
+					f->w--;
 				}
 			}
 			else
-			{
-				if(minus == 1)
-				{
-					if (e->indplus == 1)
-						w--;
-					if (e->indplus == 1)
-						ft_putchar('+');
-//					if (e.indspace == 1)
-//						w--;
-//					if (e.indspace == 1)
-//						ft_putchar(' ');
-					while(w - i > 0)
-					{
-						ft_putchar(' ');
-						w--;
-					}
-				}
-				else
-				{
-					if (e->indplus == 1)
-						w--;
-					if (e->indplus == 1)
-						ft_putchar('+');
-//					if (e.indspace == 1)
-//						w--;
-//					if (e.indspace == 1)
-//						ft_putchar(' ');
-					while(w - i > 0)
-					{
-						ft_putchar('0');
-						w--;
-					}
-				}
-			}
+				ft_countd3a(e,f);
 		}
 		else
 		{
 			if (e->indplus == 1)
 				ft_putchar('+');
-//			if (e.indspace == 1)
-//				ft_putchar(' ');
 		}
-	}
-	else
-	{
-//		if (neg == 1)
-//			ft_putchar('-');
-		if (pr >= i)
-		{
-			if (neg == 1)
-			{
-				while(w - pr - 1 > 0)
-				{
-					ft_putchar(' ');
-					w--;
-				}
-				ft_putchar('-');
-				while((pr - i + 1) > 0)
-				{
-					ft_putchar('0');
-					pr--;
-				}
-			}
+}
+
+void	ft_countud3a(t_numb *e,t_count *f)
+{
+			if (f->minus == 1)
+				ft_countud3a0(e,f);
 			else
-			{
-				while(w - pr > 0)
-				{
-					ft_putchar(' ');
-					w--;
+				ft_countud3a1(e,f);
+}
+
+void	ft_countud3a0(t_numb *e,t_count *f)
+{
+					if (e->indplus == 1)
+						f->w--;
+					if (e->indplus == 1)
+						ft_putchar('+');
+					while(f->w - f->i > 0)
+					{
+						ft_putchar(' ');
+						f->w--;
+					}
+}
+
+void	ft_countud3a1(t_numb *e,t_count *f)
+{
+						if (e->indplus == 1)
+						f->w--;
+					if (e->indplus == 1)
+						ft_putchar('+');
+					while(f->w - f->i > 0)
+					{
+						ft_putchar('0');
+						f->w--;
 				}
-				while((pr - i) > 0)
-				{
-					ft_putchar('0');
-					pr--;
-				}
-			}
-		}
+}
+
+void	ft_countud4(t_numb *e,t_count *f)
+{
+		if (f->pr >= f->i)
+			ft_countd4a(e,f);
 		else
 		{
-//			if(e->indplus == 1)
-//				w--;
-//			if(e.indspace == 1 && e.indplus == 0 && neg == 0)
-//				ft_putchar(' ');
-			while(w - i > 0)
+			while(f->w - f->i > 0)
 			{
 				ft_putchar(' ');
-				w--;
+				f->w--;
 			}
-//			if(e->indplus == 1 && neg == 0)
-//				ft_putchar('+');
 		}
-	}
-	if (u > i)
-	{
-		if (v > u)
-			return (v);
-		if (neg == 1)
-			return (u + 1);
-		return (u);
-	}
-	if (v > i)
-	{
-		return (v);
-	}
-//	if ((e.indplus == 1 && neg == 0) || (e.indspace == 1 && neg == 0))
-//		return (i + 1);
-	return (i);
 }
+
+void	ft_countud4a(t_numb *e,t_count *f)
+{
+			if (f->neg == 1)
+				ft_countd4a1(e,f);
+			else
+			{
+				while(f->w - f->pr > 0)
+				{
+					ft_putchar(' ');
+					f->w--;
+				}
+				while((f->pr - f->i) > 0)
+				{
+					ft_putchar('0');
+					f->pr--;
+				}
+			}
+}
+
+void	ft_countud4a1(t_numb *e,t_count *f)
+{
+				while(f->w - f->pr - 1 > 0)
+				{
+					ft_putchar(' ');
+					f->w--;
+				}
+				ft_putchar('-');
+				while((f->pr - f->i + 1) > 0)
+				{
+					ft_putchar('0');
+					f->pr--;
+				}
+}
+
+int	ft_countud5(t_numb *e,t_count *f)
+{
+	if (f->u > f->i)
+	{
+		if (f->v > f->u)
+			return (f->v);
+		if (f->neg == 1)
+			return (f->u + 1);
+		return (f->u);
+	}
+	if (f->v > f->i)
+	{
+		return (f->v);
+	}
+	e->w = f->w;
+	e->pr = f->pr;
+	return (f->i);
+}
+
 
 int	ft_countus(unsigned short n)
 {
