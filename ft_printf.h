@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/15 12:48:01 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/15 13:16:05 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,12 @@ typedef struct			s_lst
 	struct s_lst		*next;
 }						t_lst;
 
+void	ft_ltooct11(char *res,long l,int i);
+void	ft_ltooct12(char *res,unsigned long l,int i);
+void	ft_ltooct13(char *res,unsigned short l,int i);
+void	ft_ltooct14(char *res,unsigned long long l,int i);
+void	ft_ltooct15(char *res,unsigned short int l,int i);
+void	ft_ltooct16(char *res,unsigned char l,int i);
 void	ft_ltohex11(char **res,long *l);
 void	ft_ltohex12(char **res,unsigned long *l);
 void	ft_ltohex13(char **res,unsigned long *l);

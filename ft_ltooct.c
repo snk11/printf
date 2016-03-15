@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 14:11:15 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/19 07:36:13 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/15 13:14:29 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ char	*ft_ltooct(long l)
 	res[i] = 0;
 	bigi  = res;
 	l = l1;
+	ft_ltooct11(res,l,i);
+	return (bigi);
+}
+
+void	ft_ltooct11(char *res,long l,int i)
+{
 	res = res + i - 1;
 	while (l > 8)
 	{
@@ -38,8 +44,67 @@ char	*ft_ltooct(long l)
 		l = l / 8;
 		res--;
 	}
+	*res = '0' + l % 8;
+}
+
+void	ft_ltooct12(char *res,unsigned long l,int i)
+{
+	res = res + i - 1;
+	while (l > 8)
+	{
 			*res = '0' + l % 8;
-	return (bigi);
+		l = l / 8;
+		res--;
+	}
+	*res = '0' + l % 8;
+}
+
+void	ft_ltooct13(char *res,unsigned short l,int i)
+{
+	res = res + i - 1;
+	while (l > 8)
+	{
+			*res = '0' + l % 8;
+		l = l / 8;
+		res--;
+	}
+	*res = '0' + l % 8;
+}
+
+void	ft_ltooct14(char *res,unsigned long long l,int i)
+{
+	res = res + i - 1;
+	while (l > 8)
+	{
+			*res = '0' + l % 8;
+		l = l / 8;
+		res--;
+	}
+	*res = '0' + l % 8;
+}
+
+void	ft_ltooct15(char *res,unsigned short int l,int i)
+{
+	res = res + i - 1;
+	while (l > 8)
+	{
+			*res = '0' + l % 8;
+		l = l / 8;
+		res--;
+	}
+	*res = '0' + l % 8;
+}
+
+void	ft_ltooct16(char *res,unsigned char l,int i)
+{
+	res = res + i - 1;
+	while (l > 8)
+	{
+			*res = '0' + l % 8;
+		l = l / 8;
+		res--;
+	}
+	*res = '0' + l % 8;
 }
 
 
@@ -64,14 +129,7 @@ char	*ft_ltooct2(unsigned long l)
 	res[i] = 0;
 	bigi  = res;
 	l = l1;
-	res = res + i - 1;
-	while (l > 8)
-	{
-			*res = '0' + l % 8;
-		l = l / 8;
-		res--;
-	}
-			*res = '0' + l % 8;
+	ft_ltooct12(res,l,i);
 	return (bigi);
 }
 
@@ -94,14 +152,7 @@ char	*ft_ltooct3(unsigned short l)
 	res[i] = 0;
 	bigi  = res;
 	l = l1;
-	res = res + i - 1;
-	while (l > 8)
-	{
-			*res = '0' + l % 8;
-		l = l / 8;
-		res--;
-	}
-			*res = '0' + l % 8;
+	ft_ltooct13(res,l,i);
 	return (bigi);
 }
 
@@ -124,14 +175,7 @@ char	*ft_ltooct4(unsigned long long l)
 	res[i] = 0;
 	bigi  = res;
 	l = l1;
-	res = res + i - 1;
-	while (l > 8)
-	{
-			*res = '0' + l % 8;
-		l = l / 8;
-		res--;
-	}
-			*res = '0' + l % 8;
+	ft_ltooct14(res,l,i);
 	return (bigi);
 }
 
@@ -154,14 +198,7 @@ char	*ft_ltooct5(unsigned short int l)
 	res[i] = 0;
 	bigi  = res;
 	l = l1;
-	res = res + i - 1;
-	while (l > 8)
-	{
-			*res = '0' + l % 8;
-		l = l / 8;
-		res--;
-	}
-			*res = '0' + l % 8;
+	ft_ltooct15(res,l,i);
 	return (bigi);
 }
 
@@ -184,14 +221,7 @@ char	*ft_ltooct6(unsigned char l)
 	res[i] = 0;
 	bigi  = res;
 	l = l1;
-	res = res + i - 1;
-	while (l > 8)
-	{
-			*res = '0' + l % 8;
-		l = l / 8;
-		res--;
-	}
-			*res = '0' + l % 8;
+	ft_ltooct16(res,l,i);
 	return (bigi);
 }
 
