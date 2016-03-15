@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 14:55:14 by syusof            #+#    #+#             */
-/*   Updated: 2016/02/10 15:28:49 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/15 19:58:18 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int		ft_checkwidth(char *str)
 	char *s;
 	char *s2;
 
-//	printf ("str = %s\n",str);
-	
+
 	s = (char*)malloc(sizeof(char)*(ft_strlen(str)) + 1);
 	i = 0;
 	while (i < ft_strlen(str))
@@ -29,10 +28,8 @@ int		ft_checkwidth(char *str)
 		i++;
 	}
 	s[i] = 0;
-//		printf("i= %d,s = %s\n",i,s);
 	i = 0;
 	begi = s;
-//	if ((s[0] >= '0' && s[0] <= '9') || s[0] == ' ' || s[0] == '+' || s[0] == '-')
 	{
 		while((s[0] >= '0' && s[0] <= '9') || s[0] == ' ' || s[0] == '+' || s[0] == '-' || s[0] == '.')
 		{
@@ -46,7 +43,6 @@ int		ft_checkwidth(char *str)
 		while (i >= 0 && s[i] != '-' && s[i] != '+' && s[i] != ' ' && s[i] != '#')
 		{
 			s2[i] = s[i];
-//		printf("i= %d,s2 = %c\n",i,s2[i]);
 			i--;
 		}
 		if (i < 0)
@@ -54,17 +50,13 @@ int		ft_checkwidth(char *str)
 			free(begi);
 			return (ft_atoi(s2));
 		}
-//		if ((i >= 0 && s[i] == '-') || (i>= 0 && s[i] == '+') || (i>=))
 		else
 		{
-//			s2[i] = s[i];
 			i++;
 			free(begi);
-//		printf("i= %d,s2 = %s\n",i,&s2[i]);
 			return (ft_atoi(&s2[i]));
 		}
 	}
-//	if (ft_checkprec(s) == 0)
 	{
 		while(*s)
 		{
@@ -78,8 +70,7 @@ int		ft_checkwidth(char *str)
 			i--;
 		}
 		s++;
-//		if (*s == ' ' || (*s >= '0' && *s <= '9'))
-			return ft_atoi(s);
+		return ft_atoi(s);
 	}
 	return 0;
 }

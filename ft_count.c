@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 08:29:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/10 15:07:36 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/15 19:19:17 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	ft_count(int n)
 int	ft_countd(t_numb *e,int n)
 {
 	t_count *f;
+	int		ret;
 
 	f = (t_count*)malloc(sizeof(t_count));
 	f->i = 0;
@@ -61,7 +62,10 @@ int	ft_countd(t_numb *e,int n)
 		ft_countd3(e,f);
 	else
 		ft_countd4(e,f);
-	return (ft_countd5(e,f));
+	ret = (ft_countd5(e,f));
+	free(f);
+	f = NULL;
+	return (ret);
 }
 
 void 	ft_countd1(t_count *f,int n)
@@ -360,6 +364,7 @@ int	ft_countlld(long long n)
 int	ft_countu(t_numb *e,unsigned int n)
 {
 	t_count *f;
+	int ret;
 
 	f = (t_count*)malloc(sizeof(t_count));
 	f->i = 0;
@@ -378,7 +383,10 @@ int	ft_countu(t_numb *e,unsigned int n)
 		ft_countud3(e,f);
 	else
 		ft_countud4(e,f);
-	return (ft_countud5(e,f));
+	ret = (ft_countud5(e,f));
+	free(f);
+	f = NULL;
+	return (ret);
 }
 
 void 	ft_countud1(t_count *f)

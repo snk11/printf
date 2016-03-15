@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/10 08:16:18 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/15 12:04:48 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/15 19:53:30 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ char *ft_getfield(char *str)
 {
 	int	i;
 	char *s3;
+	char *s4;
 
 	s3 = NULL;
+	s4 = NULL;
 				if ((*str >= '0' && *str <= '9') || *str == '-'
 						|| *str == '+'|| *str == '.' || *str == ' '
 						|| *str == '#')
@@ -45,6 +47,9 @@ char *ft_getfield(char *str)
 //									printf("w = %d\n",w);
 //									printf("pr = %d\n",pr);
 				}
-	return (s3);
+	s4 = s3;
+	free(s3);
+	s3 = NULL;
+	return (s4);
 
 }

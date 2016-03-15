@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 00:41:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/10 10:36:53 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/15 19:10:00 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	ft_putwchar(wchar_t c)
 {
 	t_elem	*e;
+	int		ret;
 
 	e = (t_elem*)malloc(sizeof(t_elem));
 	e->ret = 0;
@@ -23,10 +24,13 @@ int	ft_putwchar(wchar_t c)
 	{
 		ft_putchar(e->c2);
 		e->ret++;
-		return e->ret;
+		ret = e->ret;
 	}
 	else
-		return (ft_putwchar1(e));
+		ret = (ft_putwchar1(e));
+	free(e);
+	e = NULL;
+	return (ret);
 }
 
 

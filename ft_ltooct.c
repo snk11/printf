@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 14:11:15 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/15 13:14:29 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/15 19:50:11 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 char	*ft_ltooct(long l)
 {
 	char	*res;
-	char	*bigi;
+	char	*res2;
 	int i;
 	long l1;
 
-	bigi = NULL;
 	l1 = l;
 	i = 1;
 	while(l > 8)
@@ -29,10 +28,12 @@ char	*ft_ltooct(long l)
 	}
 	res = (char*)malloc(sizeof(char)*(i + 1));
 	res[i] = 0;
-	bigi  = res;
 	l = l1;
 	ft_ltooct11(res,l,i);
-	return (bigi);
+	res2 = res;
+	free(res);
+	res = NULL;
+	return (res2);
 }
 
 void	ft_ltooct11(char *res,long l,int i)
