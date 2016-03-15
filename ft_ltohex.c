@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 02:47:12 by syusof            #+#    #+#             */
-/*   Updated: 2016/01/26 18:04:30 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/15 12:47:30 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ char	*ft_ltohex( long l)
 	char	*bigi;
 	int i;
 	 long l1;
-	int tab[100];
 
 	bigi = NULL;
 	l1 = l;
@@ -35,63 +34,191 @@ char	*ft_ltohex( long l)
 	l = l1;
 	res = res + i - 1;
 	while (l > 16)
-	{
-		if (l % 16 < 10)
-			*res = '0' + l % 16;
-		else if (l % 16 == 10)
-			*res = 'a';
-		else if (l % 16 == 11)
-			*res = 'b';
-		else if (l % 16 == 12)
-			*res = 'c';
-		else if (l % 16 == 13)
-			*res = 'd';
-		else if (l % 16 == 14)
-			*res = 'e';
-		else if (l % 16 == 15)
-			*res = 'f';
-		l = l / 16;
-//		printf("%s\n",res);
-		res--;
-	}
-		if (l % 16 < 10)
-			*res = '0' + l % 16;
-		else if (l % 16 == 10)
-			*res = 'a';
-		else if (l % 16 == 11)
-			*res = 'b';
-		else if (l % 16 == 12)
-			*res = 'c';
-		else if (l % 16 == 13)
-			*res = 'd';
-		else if (l % 16 == 14)
-			*res = 'e';
-		else if (l % 16 == 15)
-			*res = 'f';
-		
-//		printf("%s\n",res);
-/*
-		int j = 0;
-		tab[j] = *res;
-		while (j < i-1)
-		{
-			res--;
-			j++;
-			tab[j] = *res;
-		}
-		j = 0;
-		*res = tab[j];
-		while (j < i-1)
-		{
-			res++;
-			j++;
-			*res = tab[j];
-		}
-		j = 0;*/
-//		printf("der = %s\n",res);
+		ft_ltohex11(&res,&l);
+	ft_ltohex11(&res,&l);
 	return (bigi);
 }
 
+
+void	ft_ltohex11(char **res,long *l)
+{
+		if (*l % 16 < 10)
+			**res = '0' + *l % 16;
+		else if (*l % 16 == 10)
+			**res = 'a';
+		else if (*l % 16 == 11)
+			**res = 'b';
+		else if (*l % 16 == 12)
+			**res = 'c';
+		else if (*l % 16 == 13)
+			**res = 'd';
+		else if (*l % 16 == 14)
+			**res = 'e';
+		else if (*l % 16 == 15)
+			**res = 'f';
+		*l = *l / 16;
+		(*res)--;
+}
+
+void	ft_ltohex12(char **res,unsigned long *l)
+{
+		if (*l % 16 < 10)
+			**res = '0' + *l % 16;
+		else if (*l % 16 == 10)
+			**res = 'A';
+		else if (*l % 16 == 11)
+			**res = 'B';
+		else if (*l % 16 == 12)
+			**res = 'C';
+		else if (*l % 16 == 13)
+			**res = 'D';
+		else if (*l % 16 == 14)
+			**res = 'E';
+		else if (*l % 16 == 15)
+			**res = 'F';
+		*l = *l / 16;
+		(*res)--;
+}
+
+void	ft_ltohex13(char **res,unsigned long *l)
+{
+		if (*l % 16 < 10)
+			**res = '0' + *l % 16;
+		else if (*l % 16 == 10)
+			**res = 'a';
+		else if (*l % 16 == 11)
+			**res = 'b';
+		else if (*l % 16 == 12)
+			**res = 'c';
+		else if (*l % 16 == 13)
+			**res = 'd';
+		else if (*l % 16 == 14)
+			**res = 'e';
+		else if (*l % 16 == 15)
+			**res = 'f';
+		*l = *l / 16;
+		(*res)--;
+}
+
+void	ft_ltohex14(char **res,unsigned long long *l)
+{
+		if (*l % 16 < 10)
+			**res = '0' + *l % 16;
+		else if (*l % 16 == 10)
+			**res = 'a';
+		else if (*l % 16 == 11)
+			**res = 'b';
+		else if (*l % 16 == 12)
+			**res = 'c';
+		else if (*l % 16 == 13)
+			**res = 'd';
+		else if (*l % 16 == 14)
+			**res = 'e';
+		else if (*l % 16 == 15)
+			**res = 'f';
+		*l = *l / 16;
+		(*res)--;
+}
+
+void	ft_ltohex15(char **res,unsigned long long *l)
+{
+		if (*l % 16 < 10)
+			**res = '0' + *l % 16;
+		else if (*l % 16 == 10)
+			**res = 'A';
+		else if (*l % 16 == 11)
+			**res = 'B';
+		else if (*l % 16 == 12)
+			**res = 'C';
+		else if (*l % 16 == 13)
+			**res = 'D';
+		else if (*l % 16 == 14)
+			**res = 'E';
+		else if (*l % 16 == 15)
+			**res = 'F';
+		*l = *l / 16;
+		(*res)--;
+}
+
+void	ft_ltohex16(char **res,unsigned short *l)
+{
+		if (*l % 16 < 10)
+			**res = '0' + *l % 16;
+		else if (*l % 16 == 10)
+			**res = 'a';
+		else if (*l % 16 == 11)
+			**res = 'b';
+		else if (*l % 16 == 12)
+			**res = 'c';
+		else if (*l % 16 == 13)
+			**res = 'd';
+		else if (*l % 16 == 14)
+			**res = 'e';
+		else if (*l % 16 == 15)
+			**res = 'f';
+		*l = *l / 16;
+		(*res)--;
+}
+
+void	ft_ltohex17(char **res,unsigned short *l)
+{
+		if (*l % 16 < 10)
+			**res = '0' + *l % 16;
+		else if (*l % 16 == 10)
+			**res = 'A';
+		else if (*l % 16 == 11)
+			**res = 'B';
+		else if (*l % 16 == 12)
+			**res = 'C';
+		else if (*l % 16 == 13)
+			**res = 'D';
+		else if (*l % 16 == 14)
+			**res = 'E';
+		else if (*l % 16 == 15)
+			**res = 'F';
+		*l = *l / 16;
+		(*res)--;
+}
+
+void	ft_ltohex18(char **res,unsigned char *l)
+{
+		if (*l % 16 < 10)
+			**res = '0' + *l % 16;
+		else if (*l % 16 == 10)
+			**res = 'a';
+		else if (*l % 16 == 11)
+			**res = 'b';
+		else if (*l % 16 == 12)
+			**res = 'c';
+		else if (*l % 16 == 13)
+			**res = 'd';
+		else if (*l % 16 == 14)
+			**res = 'e';
+		else if (*l % 16 == 15)
+			**res = 'f';
+		*l = *l / 16;
+		(*res)--;
+}
+
+void	ft_ltohex19(char **res,unsigned char *l)
+{
+		if (*l % 16 < 10)
+			**res = '0' + *l % 16;
+		else if (*l % 16 == 10)
+			**res = 'A';
+		else if (*l % 16 == 11)
+			**res = 'B';
+		else if (*l % 16 == 12)
+			**res = 'C';
+		else if (*l % 16 == 13)
+			**res = 'D';
+		else if (*l % 16 == 14)
+			**res = 'E';
+		else if (*l % 16 == 15)
+			**res = 'F';
+		*l = *l / 16;
+		(*res)--;
+}
 
 char	*ft_ltohex2(unsigned long l)
 {
@@ -114,38 +241,8 @@ char	*ft_ltohex2(unsigned long l)
 	l = l1;
 	res = res + i - 1;
 	while (l > 16)
-	{
-		if (l % 16 < 10)
-			*res = '0' + l % 16;
-		else if (l % 16 == 10)
-			*res = 'A';
-		else if (l % 16 == 11)
-			*res = 'B';
-		else if (l % 16 == 12)
-			*res = 'C';
-		else if (l % 16 == 13)
-			*res = 'D';
-		else if (l % 16 == 14)
-			*res = 'E';
-		else if (l % 16 == 15)
-			*res = 'F';
-		l = l / 16;
-		res--;
-	}
-		if (l % 16 < 10)
-			*res = '0' + l % 16;
-		else if (l % 16 == 10)
-			*res = 'A';
-		else if (l % 16 == 11)
-			*res = 'B';
-		else if (l % 16 == 12)
-			*res = 'C';
-		else if (l % 16 == 13)
-			*res = 'D';
-		else if (l % 16 == 14)
-			*res = 'E';
-		else if (l % 16 == 15)
-			*res = 'F';
+		ft_ltohex12(&res,&l);
+	ft_ltohex12(&res,&l);
 	return (bigi);
 }
 
@@ -171,38 +268,8 @@ char	*ft_ltohex3( unsigned long l)
 	l = l1;
 	res = res + i - 1;
 	while (l > 16)
-	{
-		if (l % 16 < 10)
-			*res = '0' + l % 16;
-		else if (l % 16 == 10)
-			*res = 'a';
-		else if (l % 16 == 11)
-			*res = 'b';
-		else if (l % 16 == 12)
-			*res = 'c';
-		else if (l % 16 == 13)
-			*res = 'd';
-		else if (l % 16 == 14)
-			*res = 'e';
-		else if (l % 16 == 15)
-			*res = 'f';
-		l = l / 16;
-		res--;
-	}
-		if (l % 16 < 10)
-			*res = '0' + l % 16;
-		else if (l % 16 == 10)
-			*res = 'a';
-		else if (l % 16 == 11)
-			*res = 'b';
-		else if (l % 16 == 12)
-			*res = 'c';
-		else if (l % 16 == 13)
-			*res = 'd';
-		else if (l % 16 == 14)
-			*res = 'e';
-		else if (l % 16 == 15)
-			*res = 'f';
+		ft_ltohex13(&res,&l);
+	ft_ltohex13(&res,&l);
 	return (bigi);
 }
 
@@ -228,38 +295,8 @@ char	*ft_ltohex4(unsigned long long l)
 	l = l1;
 	res = res + i - 1;
 	while (l > 16)
-	{
-		if (l % 16 < 10)
-			*res = '0' + l % 16;
-		else if (l % 16 == 10)
-			*res = 'a';
-		else if (l % 16 == 11)
-			*res = 'b';
-		else if (l % 16 == 12)
-			*res = 'c';
-		else if (l % 16 == 13)
-			*res = 'd';
-		else if (l % 16 == 14)
-			*res = 'e';
-		else if (l % 16 == 15)
-			*res = 'f';
-		l = l / 16;
-		res--;
-	}
-		if (l % 16 < 10)
-			*res = '0' + l % 16;
-		else if (l % 16 == 10)
-			*res = 'a';
-		else if (l % 16 == 11)
-			*res = 'b';
-		else if (l % 16 == 12)
-			*res = 'c';
-		else if (l % 16 == 13)
-			*res = 'd';
-		else if (l % 16 == 14)
-			*res = 'e';
-		else if (l % 16 == 15)
-			*res = 'f';
+		ft_ltohex14(&res,&l);
+	ft_ltohex14(&res,&l);
 	return (bigi);
 }
 
@@ -284,38 +321,8 @@ char	*ft_ltohex5(unsigned long long l)
 	l = l1;
 	res = res + i - 1;
 	while (l > 16)
-	{
-		if (l % 16 < 10)
-			*res = '0' + l % 16;
-		else if (l % 16 == 10)
-			*res = 'A';
-		else if (l % 16 == 11)
-			*res = 'B';
-		else if (l % 16 == 12)
-			*res = 'C';
-		else if (l % 16 == 13)
-			*res = 'D';
-		else if (l % 16 == 14)
-			*res = 'E';
-		else if (l % 16 == 15)
-			*res = 'F';
-		l = l / 16;
-		res--;
-	}
-		if (l % 16 < 10)
-			*res = '0' + l % 16;
-		else if (l % 16 == 10)
-			*res = 'A';
-		else if (l % 16 == 11)
-			*res = 'B';
-		else if (l % 16 == 12)
-			*res = 'C';
-		else if (l % 16 == 13)
-			*res = 'D';
-		else if (l % 16 == 14)
-			*res = 'E';
-		else if (l % 16 == 15)
-			*res = 'F';
+		ft_ltohex15(&res,&l);
+	ft_ltohex15(&res,&l);
 	return (bigi);
 }
 
@@ -340,38 +347,8 @@ char	*ft_ltohex6(unsigned short l)
 	l = l1;
 	res = res + i - 1;
 	while (l > 16)
-	{
-		if (l % 16 < 10)
-			*res = '0' + l % 16;
-		else if (l % 16 == 10)
-			*res = 'a';
-		else if (l % 16 == 11)
-			*res = 'b';
-		else if (l % 16 == 12)
-			*res = 'c';
-		else if (l % 16 == 13)
-			*res = 'd';
-		else if (l % 16 == 14)
-			*res = 'e';
-		else if (l % 16 == 15)
-			*res = 'f';
-		l = l / 16;
-		res--;
-	}
-		if (l % 16 < 10)
-			*res = '0' + l % 16;
-		else if (l % 16 == 10)
-			*res = 'a';
-		else if (l % 16 == 11)
-			*res = 'b';
-		else if (l % 16 == 12)
-			*res = 'c';
-		else if (l % 16 == 13)
-			*res = 'd';
-		else if (l % 16 == 14)
-			*res = 'e';
-		else if (l % 16 == 15)
-			*res = 'f';
+		ft_ltohex16(&res,&l);
+	ft_ltohex16(&res,&l);
 	return (bigi);
 }
 
@@ -396,38 +373,8 @@ char	*ft_ltohex7(unsigned short l)
 	l = l1;
 	res = res + i - 1;
 	while (l > 16)
-	{
-		if (l % 16 < 10)
-			*res = '0' + l % 16;
-		else if (l % 16 == 10)
-			*res = 'A';
-		else if (l % 16 == 11)
-			*res = 'B';
-		else if (l % 16 == 12)
-			*res = 'C';
-		else if (l % 16 == 13)
-			*res = 'D';
-		else if (l % 16 == 14)
-			*res = 'E';
-		else if (l % 16 == 15)
-			*res = 'F';
-		l = l / 16;
-		res--;
-	}
-		if (l % 16 < 10)
-			*res = '0' + l % 16;
-		else if (l % 16 == 10)
-			*res = 'A';
-		else if (l % 16 == 11)
-			*res = 'B';
-		else if (l % 16 == 12)
-			*res = 'C';
-		else if (l % 16 == 13)
-			*res = 'D';
-		else if (l % 16 == 14)
-			*res = 'E';
-		else if (l % 16 == 15)
-			*res = 'F';
+		ft_ltohex17(&res,&l);
+	ft_ltohex17(&res,&l);
 	return (bigi);
 }
 
@@ -452,38 +399,8 @@ char	*ft_ltohex8( unsigned char l)
 	l = l1;
 	res = res + i - 1;
 	while (l > 16)
-	{
-		if (l % 16 < 10)
-			*res = '0' + l % 16;
-		else if (l % 16 == 10)
-			*res = 'a';
-		else if (l % 16 == 11)
-			*res = 'b';
-		else if (l % 16 == 12)
-			*res = 'c';
-		else if (l % 16 == 13)
-			*res = 'd';
-		else if (l % 16 == 14)
-			*res = 'e';
-		else if (l % 16 == 15)
-			*res = 'f';
-		l = l / 16;
-		res--;
-	}
-		if (l % 16 < 10)
-			*res = '0' + l % 16;
-		else if (l % 16 == 10)
-			*res = 'a';
-		else if (l % 16 == 11)
-			*res = 'b';
-		else if (l % 16 == 12)
-			*res = 'c';
-		else if (l % 16 == 13)
-			*res = 'd';
-		else if (l % 16 == 14)
-			*res = 'e';
-		else if (l % 16 == 15)
-			*res = 'f';
+		ft_ltohex18(&res,&l);
+	ft_ltohex18(&res,&l);
 	return (bigi);
 }
 
@@ -508,37 +425,7 @@ char	*ft_ltohex9(unsigned char l)
 	l = l1;
 	res = res + i - 1;
 	while (l > 16)
-	{
-		if (l % 16 < 10)
-			*res = '0' + l % 16;
-		else if (l % 16 == 10)
-			*res = 'A';
-		else if (l % 16 == 11)
-			*res = 'B';
-		else if (l % 16 == 12)
-			*res = 'C';
-		else if (l % 16 == 13)
-			*res = 'D';
-		else if (l % 16 == 14)
-			*res = 'E';
-		else if (l % 16 == 15)
-			*res = 'F';
-		l = l / 16;
-		res--;
-	}
-		if (l % 16 < 10)
-			*res = '0' + l % 16;
-		else if (l % 16 == 10)
-			*res = 'A';
-		else if (l % 16 == 11)
-			*res = 'B';
-		else if (l % 16 == 12)
-			*res = 'C';
-		else if (l % 16 == 13)
-			*res = 'D';
-		else if (l % 16 == 14)
-			*res = 'E';
-		else if (l % 16 == 15)
-			*res = 'F';
+		ft_ltohex19(&res,&l);
+	ft_ltohex19(&res,&l);
 	return (bigi);
 }
