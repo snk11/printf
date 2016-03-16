@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/16 14:48:14 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/16 19:39:04 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,31 @@ typedef struct			s_flag
 	int		ret;
 }						t_flag;
 
+typedef struct			s_field
+{
+	int	i;
+	char *s3;
+	char *s4;
+}						t_field;
+
+typedef struct			s_width
+{
+	int	i;
+	char *begi;
+	char *s;
+	char *s2;
+}						t_width;
+
 typedef struct			s_lst
 {
 	void				*content;
 	struct s_lst		*next;
 }						t_lst;
 
+void		*ft_getfield1(char *str,t_field *f);
+void		ft_checkwidth1(char *str,t_width *w);
+void		ft_checkwidth2(char *str,t_width *w);
+void		ft_checkwidth3(char *str,t_width *w);
 void	ft_checkflag1(t_numb *e,char *str,t_flag *f);
 void	ft_checkflag2(t_numb *e,t_flag *f);
 void	ft_checkflag3(t_numb *e,t_flag *f);

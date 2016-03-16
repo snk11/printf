@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 14:55:14 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/15 19:58:18 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/16 19:40:24 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,64 +14,72 @@
 
 int		ft_checkwidth(char *str)
 {
-	int	i;
-	char *begi;
-	char *s;
-	char *s2;
+	t_width		*w;
 
-
-	s = (char*)malloc(sizeof(char)*(ft_strlen(str)) + 1);
-	i = 0;
-	while (i < ft_strlen(str))
+	w = (t_width*)malloc(sizeof(t_width));
+	w->s = (char*)malloc(sizeof(char)*(ft_strlen(str)) + 1);
+	ft_checkwidth1(str,w);
+	w->s2 = (char*)malloc(sizeof(char) * w->i + 1);
+	ft_checkwidth2(str,w);
+	if (w->i < 0)
 	{
-		s[i] = str[i];
-		i++;
+		free(w->begi);
+		return (ft_atoi(w->s2));
 	}
-	s[i] = 0;
-	i = 0;
-	begi = s;
+	else
 	{
-		while((s[0] >= '0' && s[0] <= '9') || s[0] == ' ' || s[0] == '+' || s[0] == '-' || s[0] == '.')
-		{
-			s++;
-			i++;
-		}
-		s = begi;
-		s2 = (char*)malloc(sizeof(char) * i + 1);
-		s2[i] = 0;
-		i--;
-		while (i >= 0 && s[i] != '-' && s[i] != '+' && s[i] != ' ' && s[i] != '#')
-		{
-			s2[i] = s[i];
-			i--;
-		}
-		if (i < 0)
-		{
-			free(begi);
-			return (ft_atoi(s2));
-		}
-		else
-		{
-			i++;
-			free(begi);
-			return (ft_atoi(&s2[i]));
-		}
+		w->i++;
+		free(w->begi);
+		return (ft_atoi(&(w->s2[w->i])));
 	}
-	{
-		while(*s)
-		{
-			s++;
-			i++;
-		}
-		s--;
-		while ((*s == ' ' || *s == '-' || (*s >= '0' && *s <= '9')) && i > 0)
-		{
-			s--;
-			i--;
-		}
-		s++;
-		return ft_atoi(s);
-	}
-	return 0;
+	ft_checkwidth3(str,w);
+	return ft_atoi(w->s);
 }
 
+
+void		ft_checkwidth1(char *str,t_width *w)
+{
+	w->i = 0;
+	while (w->i < ft_strlen(str))
+	{
+		w->s[w->i] = str[w->i];
+		w->i++;
+	}
+	w->s[w->i] = 0;
+	w->i = 0;
+	w->begi = w->s;
+	while((w->s[0] >= '0' && w->s[0] <= '9') || w->s[0] == ' ' || w->s[0] == '+' || w->s[0] == '-' || w->s[0] == '.')
+	{
+		w->s++;
+		w->i++;
+	}
+	w->s = w->begi;
+}
+
+void		ft_checkwidth2(char *str,t_width *w)
+{
+	w->s2[w->i] = 0;
+	w->i--;
+	while (w->i >= 0 && w->s[w->i] != '-' && w->s[w->i] != '+' && w->s[w->i] != ' ' && w->s[w->i] != '#')
+	{
+		w->s2[w->i] = w->s[w->i];
+		w->i--;
+	}
+}
+
+
+void		ft_checkwidth3(char *str,t_width *w)
+{
+	while(*(w->s))
+	{
+		w->s++;
+		w->i++;
+	}
+	w->s--;
+	while ((*(w->s) == ' ' || *(w->s) == '-' || (*(w->s) >= '0' && *(w->s) <= '9')) && w->i > 0)
+	{
+		w->s--;
+		w->i--;
+	}
+	w->s++;
+}
