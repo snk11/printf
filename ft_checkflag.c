@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/09 20:57:54 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/15 19:57:10 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/16 14:49:01 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,128 +14,151 @@
 
 int ft_checkflag(t_numb *e,char *str)
 {
+	t_flag		*f;
 
-	int	i;
-	char *begi;
-	char *s;
-	char *s2;
-	int		indend1;
-	int		indend2;
-	int		indend3;
-	int		num;
-	int		cnt;
-	int		ret = 0;
-	indend1 = 0;
-	indend2 = 0;
-	indend3 = 0;
-	ret = 0;
-	s = (char*)malloc(sizeof(char)*(ft_strlen(str)) + 1);
-	i = 0;
-	while (i < ft_strlen(str))
+	f = (t_flag*)malloc(sizeof(t_flag));
+	f->ret = 0;
+	f->indend1 = 0;
+	f->indend2 = 0;
+	f->ret = 0;
+	f->s = (char*)malloc(sizeof(char)*(ft_strlen(str)) + 1);
+	f->i = 0;
+	ft_checkflag1(e,str,f);
+	f->s2 = (char*)malloc(sizeof(char) * f->i + 1);
+	ft_checkflag2(e,f);
+	if(f->indend1 == 1)
+		ft_checkflag3(e,f);
+	else if(f->indend2 == 1)
+		ft_checkflag4(e,f);
+	return (f->ret);
+}
+
+void	ft_checkflag1(t_numb *e,char *str,t_flag *f)
+{
+	while (f->i < ft_strlen(str))
 	{
-		s[i] = str[i];
-		i++;
+		f->s[f->i] = str[f->i];
+		f->i++;
 	}
-	s[i] = 0;
-	i = 0;
-	begi = s;
-	while((s[0] >= '0' && s[0] <= '9') || s[0] == ' ' || s[0] == '+'
-			|| s[0] == '-' || s[0] == '.' || s[0] == '#')
+	f->s[f->i] = 0;
+	f->i = 0;
+	f->begi = f->s;
+	while((f->s[0] >= '0' && f->s[0] <= '9') || f->s[0] == ' ' || f->s[0] == '+'
+			|| f->s[0] == '-' || f->s[0] == '.' || f->s[0] == '#')
 	{
-		if (s[0] == '.')
+		if (f->s[0] == '.')
 			e->indpr = 1;
-		s++;
-		i++;
+		f->s++;
+		f->i++;
 	}
-	s = begi;
+}
+
+
+void	ft_checkflag2(t_numb *e,t_flag *f)
+{
+	f->s = f->begi;
+	f->s2[f->i] = 0;
+	f->i--;
+	while (f->i >= 0 && f->s[f->i] != '-' && f->s[f->i] != '+'
+			&& f->s[f->i] != ' ' && f->s[f->i] != '#' )
 	{
-		s2 = (char*)malloc(sizeof(char) * i + 1);
-		s2[i] = 0;
-		i--;
-		while (i >= 0 && s[i] != '-' && s[i] != '+'
-				&& s[i] != ' ' && s[i] != '#' )
-		{
-			s2[i] = s[i];
-			i--;
-		}
-		if (i < 0)
-			i++;
-		if ((i >= 0 && s[i] == '-') || (i>= 0 && s[i] == '+')
-				|| (i>= 0 && s[i] == ' ') || (i>= 0 && s[i] == '#'))
-		{
-			indend1 = 1;
-			num = i;
-		}
-		indend2 = 1;
+		f->s2[f->i] = f->s[f->i];
+		f->i--;
 	}
-	if(indend1 == 1)
+	if (f->i < 0)
+		f->i++;
+	if ((f->i >= 0 && f->s[f->i] == '-') || (f->i>= 0 && f->s[f->i] == '+')
+			|| (f->i>= 0 && f->s[f->i] == ' ') || (f->i>= 0 && f->s[f->i] == '#'))
 	{
-		i = num;
-		s = begi;
-		if (s[i+1] && s[i+1] == '0')
-		{
-			e->indzero = 1;
-			ret++;
-		}
-		while (i >= 0 && (s[i] == '-' || s[i] == '+' || s[i] == ' '
-					|| s[i] == '#' || s[i] == '0' ))
-		{
-			s2[i] = s[i];
-			if (s2[i]== ' ')
-			{
-				e->indspace = 1;
-				ret++;
-			}
-			if (s2[i]== '#')
-			{
-				e->indsharp = 1;
-				ret++;
-			}
-			if (s2[i] == '+')
-			{
-				e->indplus = 1;
-				ret++;
-			}
-			if (s2[i] == '-')
-			{
-				e->indminus = 1;
-				ret++;
-			}
-			if (s2[i] == '0')
-			{
-				e->indzero = 1;
-				ret++;
-			}
-			i--;
-		}
+		f->indend1 = 1;
+		f->num = f->i;
 	}
-	else if(indend2 == 1)
+	f->indend2 = 1;
+}
+
+void	ft_checkflag3(t_numb *e,t_flag *f)
+{
+	f->i = f->num;
+	f->s = f->begi;
+	if (f->s[f->i+1] && f->s[f->i+1] == '0')
 	{
-		while (( *s2 == ' ' || *s2 == '#' || *s2 == '+' || *s2 == '-'))
-		{
-			if ( *s2== ' ' && ret == 0)
-			{
-				e->indspace = 1;
-				ret++;
-			}
-			if (*s2 == '#')
-			{
-				e->indsharp = 1;
-				ret++;
-			}
-			if (*s2 == '+')
-			{
-				e->indplus = 1;
-				ret++;
-			}
-			if (*s2 == '-')
-			{
-				e->indminus = 1;
-			}
-			s2++;
-		}
-		if (*s2 && *s2 == '0')
-			e->indzero = 1;
+		e->indzero = 1;
+		f->ret++;
 	}
-	return (ret);
+	while (f->i >= 0 && (f->s[f->i] == '-' || f->s[f->i] == '+' || f->s[f->i] == ' '
+				|| f->s[f->i] == '#' || f->s[f->i] == '0' ))
+		ft_checkflag3a(e,f);
+}
+
+void	ft_checkflag3a(t_numb *e,t_flag *f)
+{
+	ft_checkflag3a1(e,f);
+	if (f->s2[f->i] == '-')
+	{
+		e->indminus = 1;
+		f->ret++;
+	}
+	if (f->s2[f->i] == '0')
+	{
+		e->indzero = 1;
+		f->ret++;
+	}
+	f->i--;
+}
+
+
+void	ft_checkflag3a1(t_numb *e,t_flag *f)
+{
+	f->s2[f->i] = f->s[f->i];
+	if (f->s2[f->i]== ' ')
+	{
+		e->indspace = 1;
+		f->ret++;
+	}
+	if (f->s2[f->i]== '#')
+	{
+		e->indsharp = 1;
+		f->ret++;
+	}
+	if (f->s2[f->i] == '+')
+	{
+		e->indplus = 1;
+		f->ret++;
+	}
+}
+
+
+void	ft_checkflag4(t_numb *e,t_flag *f)
+{
+	while (( *(f->s2) == ' ' || *(f->s2) == '#' || *(f->s2) == '+' || *(f->s2) == '-'))
+	{
+		ft_checkflag4a(e,f);
+		if (*(f->s2) == '-')
+		{
+			e->indminus = 1;
+		}
+		f->s2++;
+	}
+	if (*(f->s2) && *(f->s2) == '0')
+		e->indzero = 1;
+}
+
+
+void	ft_checkflag4a(t_numb *e,t_flag *f)
+{
+	if ( *(f->s2) == ' ' && f->ret == 0)
+	{
+		e->indspace = 1;
+		f->ret++;
+	}
+	if (*(f->s2) == '#')
+	{
+		e->indsharp = 1;
+		f->ret++;
+	}
+	if (*(f->s2) == '+')
+	{
+		e->indplus = 1;
+		f->ret++;
+	}
 }

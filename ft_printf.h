@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/15 13:16:05 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/16 14:48:14 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,31 @@ typedef struct			s_count
 	int	minus;
 }						t_count;
 
+typedef struct			s_flag
+{
+	int	i;
+	char *begi;
+	char *s;
+	char *s2;
+	int		indend1;
+	int		indend2;
+	int		num;
+	int		ret;
+}						t_flag;
+
 typedef struct			s_lst
 {
 	void				*content;
 	struct s_lst		*next;
 }						t_lst;
 
+void	ft_checkflag1(t_numb *e,char *str,t_flag *f);
+void	ft_checkflag2(t_numb *e,t_flag *f);
+void	ft_checkflag3(t_numb *e,t_flag *f);
+void	ft_checkflag3a(t_numb *e,t_flag *f);
+void	ft_checkflag3a1(t_numb *e,t_flag *f);
+void	ft_checkflag4(t_numb *e,t_flag *f);
+void	ft_checkflag4a(t_numb *e,t_flag *f);
 void	ft_ltooct11(char *res,long l,int i);
 void	ft_ltooct12(char *res,unsigned long l,int i);
 void	ft_ltooct13(char *res,unsigned short l,int i);
