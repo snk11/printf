@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/09 14:22:50 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/10 10:49:56 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/17 18:48:09 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int			ft_putwstr2(int pr,wchar_t *s)
 {
 	t_elem	*e;
 	int		c1;
+	int		r1;
 
 	e = (t_elem*)malloc(sizeof(t_elem));
 	e->prbegi = pr;
@@ -35,7 +36,10 @@ int			ft_putwstr2(int pr,wchar_t *s)
 			ft_putwstr1(e);
 		s++;
 	}
-	return (e->ret);
+	r1 = e->ret;
+	free(e);
+	e = NULL;
+	return (r1);
 }
 
 void	ft_putwstr1(t_elem *e)
@@ -277,10 +281,8 @@ void	ft_putwstr1j(t_elem *e)
 	e->ret = e->prbegi - e->pr1;
 	free(e->str2);
 	e->str2 = NULL;
-	e->begi2 = NULL;
 	free(e->str);
 	e->str = NULL;
-	e->begi = NULL;
 	free(e->r);
 	e->r = NULL;
 }
