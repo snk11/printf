@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 16:37:22 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/17 18:14:59 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/17 18:41:35 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ size_t		ft_strlen2(wchar_t *s)
 {
 	t_elem	*e;
 	int		c1;
+	int		r1;
 
 	e = (t_elem*)malloc(sizeof(t_elem));
 	e->ret = 0;
@@ -45,7 +46,10 @@ size_t		ft_strlen2(wchar_t *s)
 			e->ret = e->ret + (ft_strlen1(e));
 		s++;
 	}
-	return (e->ret);
+	r1 = e->ret;
+	free(e);
+	e = NULL;
+	return (r1);
 }
 
 int	ft_strlen1(t_elem *e)
@@ -284,10 +288,10 @@ void	ft_strlen1j(t_elem *e)
 	e->ret1 = e->ret1 + (e->n2 + 1) / 8;
 	free(e->str2);
 	e->str2 = NULL;
-	e->begi2 = NULL;
+//	e->begi2 = NULL;
 	free(e->str);
 	e->str = NULL;
-	e->begi = NULL;
+//	e->begi = NULL;
 	free(e->r);
 	e->r = NULL;
 }
