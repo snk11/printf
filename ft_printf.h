@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/17 17:56:45 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/17 18:10:11 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,8 +170,6 @@ void	ft_putstrad(char const *s);
 void	ft_putstrad2(int pr,char const *s);
 void	ft_putstrad3(int pr,char const *s);
 void	ft_putchar(char c);
-size_t		ft_strlen(const char *str);
-size_t		ft_strlen2(wchar_t *str);
 int	ft_count(int n);
 int	ft_countd(t_numb *e,int n);
 int	ft_countld(long int n);
@@ -326,6 +324,8 @@ void	ft_putwstr1g(t_elem *e);
 void	ft_putwstr1h(t_elem *e);
 void	ft_putwstr1i(t_elem *e);
 void	ft_putwstr1j(t_elem *e);
+size_t		ft_strlen(const char *str);
+size_t		ft_strlen2(wchar_t *str);
 int	ft_strlen1(t_elem *e);
 void	ft_strlen1a(t_elem *e);
 void	ft_strlen1b(t_elem *e);
