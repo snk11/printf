@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/16 19:39:04 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/17 15:37:08 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ typedef struct			s_lst
 void		*ft_getfield1(char *str,t_field *f);
 void		ft_checkwidth1(char *str,t_width *w);
 void		ft_checkwidth2(char *str,t_width *w);
-void		ft_checkwidth3(char *str,t_width *w);
 void	ft_checkflag1(t_numb *e,char *str,t_flag *f);
 void	ft_checkflag2(t_numb *e,t_flag *f);
 void	ft_checkflag3(t_numb *e,t_flag *f);
