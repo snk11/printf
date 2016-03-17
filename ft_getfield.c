@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/10 08:16:18 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/17 16:41:21 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/17 16:51:37 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 char *ft_getfield(char *str)
 {
 	t_field		*f;
+	char		*st;
 
 	f = (t_field*)malloc(sizeof(t_field));
 	f->s3 = NULL;
@@ -22,7 +23,10 @@ char *ft_getfield(char *str)
 			|| *str == '+'|| *str == '.' || *str == ' '
 			|| *str == '#')
 		ft_getfield1(str,f);
-	return (f->s3);
+	st = f->s3;
+	free(f);
+	f = NULL;
+	return (st);
 }
 
 void		*ft_getfield1(char *str,t_field *f)
