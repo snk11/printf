@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 14:11:15 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/15 19:50:11 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/17 17:29:41 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 char	*ft_ltooct(long l)
 {
 	char	*res;
-	char	*res2;
 	int i;
 	long l1;
 
@@ -30,10 +29,7 @@ char	*ft_ltooct(long l)
 	res[i] = 0;
 	l = l1;
 	ft_ltooct11(res,l,i);
-	res2 = res;
-	free(res);
-	res = NULL;
-	return (res2);
+	return (res);
 }
 
 void	ft_ltooct11(char *res,long l,int i)

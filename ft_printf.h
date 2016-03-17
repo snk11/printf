@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/17 17:24:58 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/17 17:56:45 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ typedef struct			s_lst
 	struct s_lst		*next;
 }						t_lst;
 
+int		ft_strcmp(const char *s1, const char *s2);
 void		*ft_getfield1(char *str,t_field *f);
 void		ft_checkwidth1(char *str,t_width *w);
 void		ft_checkwidth2(char *str,t_width *w);

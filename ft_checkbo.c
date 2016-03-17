@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/03 03:41:10 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/03 03:46:18 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/17 18:00:51 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,14 @@ int		ft_checkbo(char *str,t_numb *e)
 	{
 	}
 	else
+	{
 		cnt = cnt + ft_checkbo1(str,e);
+		if (ft_strcmp(e->s,"1000000000000000000000") != 0)
+		{
+			free(e->s);
+			e->s = NULL;
+		}
+	}
 	return (cnt);
 }
 
@@ -51,8 +58,10 @@ int		ft_checkbo1(char *str,t_numb *e)
 		}
 	}
 	else
+	{
 		cnt = cnt + ft_checko1a(str,e);
-	ft_putstr(e->s);
+		ft_putstr(e->s);
+	}
 	cnt = cnt + e->g;
 	return (cnt);
 }

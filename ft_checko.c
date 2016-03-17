@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/03 03:28:36 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/03 03:37:24 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/17 17:40:45 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int		ft_checko(char *str,t_numb *e)
 	}
 	else
 		cnt = cnt + ft_checko1(str,e);
+	free(e->s);
+	e->s = NULL;
 	return (cnt);
 }
 
