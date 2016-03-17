@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/17 15:37:08 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/17 16:42:07 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ typedef struct			s_field
 {
 	int	i;
 	char *s3;
-	char *s4;
 }						t_field;
 
 typedef struct			s_width

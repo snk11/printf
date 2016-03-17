@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/09 20:57:54 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/16 14:49:01 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/17 16:46:41 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 int ft_checkflag(t_numb *e,char *str)
 {
 	t_flag		*f;
+	int			r1;
+	char		*st1;
+	char		*st2;
+
 
 	f = (t_flag*)malloc(sizeof(t_flag));
 	f->ret = 0;
@@ -22,15 +26,26 @@ int ft_checkflag(t_numb *e,char *str)
 	f->indend2 = 0;
 	f->ret = 0;
 	f->s = (char*)malloc(sizeof(char)*(ft_strlen(str)) + 1);
+	st1 = f->s;
 	f->i = 0;
 	ft_checkflag1(e,str,f);
 	f->s2 = (char*)malloc(sizeof(char) * f->i + 1);
+	st2 = f->s2;
 	ft_checkflag2(e,f);
 	if(f->indend1 == 1)
 		ft_checkflag3(e,f);
 	else if(f->indend2 == 1)
 		ft_checkflag4(e,f);
-	return (f->ret);
+	r1 = f->ret;
+	f->s = st1;
+	f->s2 = st2;
+	free(f->s);
+	f->s = NULL;
+	free(f->s2);
+	f->s2 = NULL;
+	free(f);
+	f = NULL;
+	return (r1);
 }
 
 void	ft_checkflag1(t_numb *e,char *str,t_flag *f)
