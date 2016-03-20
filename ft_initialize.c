@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/01 22:32:07 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/10 11:28:17 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/21 00:31:45 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 # include "ft_printf.h"
@@ -28,4 +28,5 @@ void	ft_initialize(t_numb *e)
 	e->prbegi = 0;
 	e->begi = 0;
 	e->cnt1 = 0;
+	e->other = 0;
 }
