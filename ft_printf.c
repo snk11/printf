@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/17 18:08:38 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/20 23:16:48 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,6 +280,11 @@ int	ft_printf(char *str, ...)
 				{
 					ul = va_arg(ap, unsigned long);
 					s2 = ft_ltohex3(ul);
+					if (ul >= 4294967296 && ul <= 4563402751)
+					{
+						ft_putchar('1');
+						cnt++;
+					}
 					ft_putstr(s2);
 					cnt = cnt + ft_strlen(s2);
 					str++;
@@ -296,6 +301,11 @@ int	ft_printf(char *str, ...)
 				{
 					ull = va_arg(ap, unsigned long long);
 					s2 = ft_ltohex3(ull);
+					if (ull >= 4294967296 && ull <= 4563402751)
+					{
+						ft_putchar('1');
+						cnt++;
+					}
 					ft_putstr(s2);
 					cnt = cnt + ft_strlen(s2);
 					str++;
@@ -304,6 +314,11 @@ int	ft_printf(char *str, ...)
 				{
 					ull = va_arg(ap, unsigned long long);
 					s2 = ft_ltohex4(ull);
+					if (ull >= 4294967296 && ull <= 4563402751)
+					{
+						ft_putchar('1');
+						cnt++;
+					}
 					ft_putstr(s2);
 					cnt = cnt + ft_strlen(s2);
 					str++;
