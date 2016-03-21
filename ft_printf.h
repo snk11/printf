@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/21 05:08:03 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/22 00:03:17 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,8 @@ int		ft_checkletter(char *str);
 int		ft_checkstrlast(char *str);
 int		ft_checkprec(char *s);
 int		ft_checkwidth(char *str);
-void	ft_putnbr(int w, int pr,int zero,int n);
+int	ft_putnbr(int w, int pr,int zero,int n,t_numb *e);
+int	ft_putnbr2(int w, int pr,int zero,int n,t_numb *e);
 void	ft_putstr(char const *s);
 void	ft_putstr2(int pr,char const *s);
 void	ft_putstrad(char const *s);
@@ -384,13 +385,13 @@ void	ft_countwstr1j(t_elem *e);
 int	ft_countd(t_numb *e,int n);
 void 	ft_countd1(t_count *f,int n);
 void 	ft_countd2(t_count *f,int n);
-void	ft_countd3(t_numb *e,t_count *f);
-void	ft_countd3a(t_numb *e,t_count *f);
-void	ft_countd3a1(t_numb *e,t_count *f);
-void	ft_countd3a1a(t_numb *e,t_count *f);
-void	ft_countd4(t_numb *e,t_count *f);
-void	ft_countd4a(t_numb *e,t_count *f);
-void	ft_countd4a1(t_numb *e,t_count *f);
+int	ft_countd3(t_numb *e,t_count *f);
+int	ft_countd3a(t_numb *e,t_count *f);
+int	ft_countd3a1(t_numb *e,t_count *f);
+int	ft_countd3a1a(t_numb *e,t_count *f);
+int	ft_countd4(t_numb *e,t_count *f);
+int	ft_countd4a(t_numb *e,t_count *f);
+int	ft_countd4a1(t_numb *e,t_count *f);
 int	ft_countd5(t_numb *e,t_count *f);
 void 	ft_countud1(t_count *f);
 void 	ft_countud2(t_count *f,unsigned int n);

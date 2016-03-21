@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/21 03:30:54 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/22 00:02:52 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,22 +113,7 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'd' || *str == 'i')
 				{
 					e->d = va_arg(ap, int);
-					if (e->pr == 0 && e->w == 0 && e->indpr == 1)
-					{
-					}
-					else
-					{
-						if(e->indminus == 1)
-						{
-							ft_putnbr(e->w,e->pr,e->indzero,e->d);
-							cnt = cnt + ft_countd(e,e->d);
-						}
-						else
-						{
-							cnt = cnt + ft_countd(e,e->d);
-							ft_putnbr(e->w,e->pr,e->indzero,e->d);
-						}
-					}
+					cnt = cnt + ft_checkd(str,e);
 					ft_initialize(e);
 				}
 				else if (*str == 'D')
@@ -193,8 +178,7 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'h' && str[1] == 'h' && (str[2] == 'd' || str[2] == 'i'))
 				{
 					c = va_arg(ap, char);
-					cnt = cnt + ft_countd(e,c);
-					ft_putnbr(e->w,e->pr,e->indzero,c);
+					cnt = cnt + ft_putnbr2(e->w,e->pr,e->indzero,c,e);
 					str++;
 					str++;
 				}
@@ -230,7 +214,7 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'h' && str[1] == 'h' && str[2] == 'u')
 				{
 					uc = va_arg(ap, unsigned char);
-					ft_putnbr(e->w,e->pr,e->indzero,uc);
+					ft_putnbr(e->w,e->pr,e->indzero,uc,e);
 					cnt = cnt + ft_countuc(uc);
 					str++;
 					str++;
