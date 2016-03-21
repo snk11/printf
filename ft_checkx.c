@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/03 02:42:08 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/20 22:16:26 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/21 03:13:21 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ int		ft_checkx(char *str,t_numb *e)
 	cnt = 0;
 	if (e->u == 0 && e->pr == 0 & e->indpr == 1)
 	{
+		while(e->w)
+		{
+			ft_putchar(' ');
+			e->w--;
+			cnt++;
+		}
 	}
 	else if(e->indminus == 1)
 		cnt = cnt + ft_checkx0(str,e);
@@ -48,14 +54,26 @@ int		ft_checkx0(char *str,t_numb *e)
 	if (e->indzero == 1 && e->pr == 0)
 	{
 		ft_putstr(e->s);
-		while(e->w - e->g > 0)
+		if (e->indsharp == 1)
 		{
-			ft_putchar('0');
-			cnt++;
-			(e->w)--;
+			while(e->w - (e->g + 2) > 0)
+			{
+				ft_putchar(' ');
+				cnt++;
+				(e->w)--;
+			}
+		}
+		else
+		{
+			while(e->w - e->g > 0)
+			{
+				ft_putchar(' ');
+				cnt++;
+				(e->w)--;
+			}
 		}
 	}
-	else
+	else if (e->indsharp == 0)
 	{
 		ft_putstr(e->s);
 		cnt = cnt + ft_checkx1a(str,e);
@@ -75,6 +93,15 @@ int		ft_checkx1(char *str,t_numb *e)
 	e->g = ft_strlen(e->s);
 	if (e->indsharp == 1 && e->u != 0)
 	{
+		if (e->indzero == 0)
+		{
+			while(e->w - (e->g + 2) > 0)
+			{
+				ft_putchar(' ');
+				cnt++;
+				(e->w)--;
+			}
+		}
 		ft_putchar('0');
 		ft_putchar('x');
 		cnt++;
@@ -82,14 +109,26 @@ int		ft_checkx1(char *str,t_numb *e)
 	}
 	if (e->indzero == 1 && e->pr == 0)
 	{
-		while(e->w - e->g > 0)
+		if (e->indsharp == 1)
 		{
-			ft_putchar('0');
-			cnt++;
-			(e->w)--;
+			while(e->w - (e->g + 2) > 0)
+			{
+				ft_putchar('0');
+				cnt++;
+				(e->w)--;
+			}
+		}
+		else
+		{
+			while(e->w - e->g > 0)
+			{
+				ft_putchar('0');
+				cnt++;
+				(e->w)--;
+			}
 		}
 	}
-	else
+	else if (e->indsharp == 0)
 		cnt = cnt + ft_checkx1a(str,e);
 	ft_putstr(e->s);
 	cnt = cnt + e->g;

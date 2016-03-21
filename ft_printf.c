@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/21 00:43:18 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/21 02:08:39 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,7 +287,7 @@ int	ft_printf(char *str, ...)
 						s3[0] = '0';
 						s3[1] = 'x';
 						i = 2;
-						while (i <= ft_strlen(s2))
+						while (i <= ft_strlen(s2) + 2)
 						{
 							s3[i] = s2[i - 2];
 							i++;
@@ -300,7 +300,7 @@ int	ft_printf(char *str, ...)
 						s4 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
 						s4[0] = '1';
 						i = 1;
-						while (i <= ft_strlen(s2))
+						while (i <= ft_strlen(s2) + 2)
 						{
 							s4[i] = s2[i - 1];
 							i++;
@@ -324,14 +324,36 @@ int	ft_printf(char *str, ...)
 				{
 					ull = va_arg(ap, unsigned long long);
 					s2 = ft_ltohex3(ull);
+					if (e->indsharp == 1 && ull != 0)
+					{
+						s3 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
+						s3[0] = '0';
+						s3[1] = 'x';
+						i = 2;
+						while (i <= ft_strlen(s2) + 2)
+						{
+							s3[i] = s2[i - 2];
+							i++;
+						}
+						free(s2);
+						s2 = s3;
+					}
 					if (ull >= 4294967296 && ull <= 4563402751)
 					{
-						ft_putchar('1');
-						cnt++;
+						s4 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
+						s4[0] = '1';
+						i = 1;
+						while (i <= ft_strlen(s2) + 2)
+						{
+							s4[i] = s2[i - 1];
+							i++;
+						}
+						free(s2);
+						s2 = s4;
 					}
-					ft_putstr(s2);
-					cnt = cnt + ft_strlen(s2);
-					str++;
+					e->s = s2;
+					cnt = cnt + ft_checks(str,e);
+						str++;
 				}
 				else if (*str == 'l' && str[1] == 'l' && str[2] == 'x')
 				{
@@ -339,16 +361,33 @@ int	ft_printf(char *str, ...)
 					s2 = ft_ltohex4(ull);
 					if (e->indsharp == 1 && ull != 0)
 					{
-						ft_putstr("0x");
-						cnt = cnt + 2;
+						s3 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
+						s3[0] = '0';
+						s3[1] = 'x';
+						i = 2;
+						while (i <= ft_strlen(s2) + 2)
+						{
+							s3[i] = s2[i - 2];
+							i++;
+						}
+						free(s2);
+						s2 = s3;
 					}
 					if (ull >= 4294967296 && ull <= 4563402751)
 					{
-						ft_putchar('1');
-						cnt++;
+						s4 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
+						s4[0] = '1';
+						i = 1;
+						while (i <= ft_strlen(s2) + 2)
+						{
+							s4[i] = s2[i - 1];
+							i++;
+						}
+						free(s2);
+						s2 = s4;
 					}
-					ft_putstr(s2);
-					cnt = cnt + ft_strlen(s2);
+					e->s = s2;
+					cnt = cnt + ft_checks(str,e);
 					str++;
 					str++;
 				}
@@ -367,16 +406,33 @@ int	ft_printf(char *str, ...)
 					s2 = ft_ltohex2(ul);
 					if (e->indsharp == 1 && ul != 0)
 					{
-						ft_putstr("0X");
-						cnt = cnt + 2;
+						s3 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
+						s3[0] = '0';
+						s3[1] = 'X';
+						i = 2;
+						while (i <= ft_strlen(s2) + 2)
+						{
+							s3[i] = s2[i - 2];
+							i++;
+						}
+						free(s2);
+						s2 = s3;
 					}
 					if (ul >= 4294967296 && ul <= 4563402751)
 					{
-						ft_putchar('1');
-						cnt++;
+						s4 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
+						s4[0] = '1';
+						i = 1;
+						while (i <= ft_strlen(s2) + 2)
+						{
+							s4[i] = s2[i - 1];
+							i++;
+						}
+						free(s2);
+						s2 = s4;
 					}
-					ft_putstr(s2);
-					cnt = cnt + ft_strlen(s2);
+					e->s = s2;
+					cnt = cnt + ft_checks(str,e);
 					str++;
 				}
 				else if (*str == 'h' && str[1] == 'X')
@@ -391,8 +447,35 @@ int	ft_printf(char *str, ...)
 				{
 					ull = va_arg(ap, unsigned long long);
 					s2 = ft_ltohex5(ull);
-					ft_putstr(s2);
-					cnt = cnt + ft_strlen(s2);
+					if (e->indsharp == 1 && ull != 0)
+					{
+						s3 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
+						s3[0] = '0';
+						s3[1] = 'X';
+						i = 2;
+						while (i <= ft_strlen(s2) + 2)
+						{
+							s3[i] = s2[i - 2];
+							i++;
+						}
+						free(s2);
+						s2 = s3;
+					}
+					if (ull >= 4294967296 && ull <= 4563402751)
+					{
+						s4 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
+						s4[0] = '1';
+						i = 1;
+						while (i <= ft_strlen(s2) + 2)
+						{
+							s4[i] = s2[i - 1];
+							i++;
+						}
+						free(s2);
+						s2 = s4;
+					}
+					e->s = s2;
+					cnt = cnt + ft_checks(str,e);
 					str++;
 				}
 				else if (*str == 'l' && str[1] == 'l' && str[2] == 'X')
@@ -401,16 +484,33 @@ int	ft_printf(char *str, ...)
 					s2 = ft_ltohex5(ull);
 					if (e->indsharp == 1 && ull != 0)
 					{
-						ft_putstr("0X");
-						cnt = cnt + 2;
+						s3 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
+						s3[0] = '0';
+						s3[1] = 'X';
+						i = 2;
+						while (i <= ft_strlen(s2) + 2)
+						{
+							s3[i] = s2[i - 2];
+							i++;
+						}
+						free(s2);
+						s2 = s3;
 					}
 					if (ull >= 4294967296 && ull <= 4563402751)
 					{
-						ft_putchar('1');
-						cnt++;
+						s4 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
+						s4[0] = '1';
+						i = 1;
+						while (i <= ft_strlen(s2) + 2)
+						{
+							s4[i] = s2[i - 1];
+							i++;
+						}
+						free(s2);
+						s2 = s4;
 					}
-					ft_putstr(s2);
-					cnt = cnt + ft_strlen(s2);
+					e->s = s2;
+					cnt = cnt + ft_checks(str,e);
 					str++;
 					str++;
 				}

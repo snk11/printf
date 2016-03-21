@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 02:47:12 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/20 23:13:49 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/21 01:28:05 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -274,7 +274,7 @@ char	*ft_ltohex3( unsigned long l)
 }
 
 
-char	*ft_ltohex4(unsigned long long l)
+char	*ft_ltohex4(unsigned long long int l)
 {
 	char	*res;
 	char	*bigi;

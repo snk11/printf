@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/21 00:30:52 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/21 00:48:47 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef struct			s_numb
 	int					indletter;
 	int					indlast;
 	char				*begi;
-	int					other;
 }						t_numb;
 
 typedef struct			s_elem
