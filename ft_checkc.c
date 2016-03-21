@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/01 21:41:15 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/08 16:08:16 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/21 05:01:24 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,25 @@
 int ft_checkc(char *str,t_numb *e)
 {
 
-	if (e->indzero == 0)
-		return (ft_checkc1(str,e));
-	else
+//	if (e->indminus == 0)
 	{
-		return (ft_checkc2(str,e));
+		if (e->indzero == 0)
+			return (ft_checkc1(str,e));
+		else
+		{
+			return (ft_checkc2(str,e));
+		}
 	}
+//	if (e->indminus == 1)
+//	{
+//		if (e->indzero == 0)
+//			return (ft_checkc21(str,e));
+//		else
+//		{
+//			return (ft_checkc22(str,e));
+//		}
+//	}
+	return (0);
 }
 
 int		ft_checkc1(char *str,t_numb *e)
@@ -28,7 +41,7 @@ int		ft_checkc1(char *str,t_numb *e)
 	int	cnt;
 
 	cnt = 0;
-	if(e->w < 0)
+	if(e->indminus == 1)
 		return (ft_checkc1a(str,e));
 	else
 		return (ft_checkc1b(str,e));
@@ -39,9 +52,8 @@ int		ft_checkc1a(char *str,t_numb *e)
 	int	cnt;
 
 	cnt = 0;
-	e->w = -(e->w);
-	ft_putchar(e->d);
 	cnt++;
+	ft_putchar(e->d);
 	while((e->w - 1) > 0)
 	{
 		cnt++;
@@ -82,7 +94,6 @@ int		ft_checkc2a(char *str,t_numb *e)
 	int	cnt;
 
 	cnt = 0;
-		e->w = -(e->w);
 		ft_putchar(e->d);
 		cnt++;
 		while((e->w - 1) > 0)
@@ -110,3 +121,5 @@ int		ft_checkc2b(char *str,t_numb *e)
 		cnt++;
 		return (cnt);
 }
+
+

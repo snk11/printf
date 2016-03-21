@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 20:30:16 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/02 23:48:25 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/21 04:46:35 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,7 +288,7 @@ int		ft_checkbs1b2b(char *str,t_numb *e)
 
 	cnt = 0;
 	if (e->w > e->g)
-		cnt = cnt + ft_checkbs1b2b1(str,&e);
+		cnt = cnt + ft_checkbs1b2b1(str,e);
 	else
 	{
 		while(e->w > 0)
