@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/21 00:48:47 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/21 03:53:09 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,6 +239,31 @@ int		ft_checks42(char *str,t_numb *e);
 int		ft_checks42a(char *str,t_numb *e);
 int		ft_checks42b(char *str,t_numb *e);
 void ft_decr(t_numb *e);
+int		ft_checks242(char *str,t_numb *e);
+int		ft_checks242a(char *str,t_numb *e);
+int		ft_checks242b(char *str,t_numb *e);
+int		ft_checks21(char *str,t_numb *e);
+int		ft_checks21a(char *str,t_numb *e);
+int		ft_checks21a1(char *str,t_numb *e);
+int		ft_checks21b(char *str,t_numb *e);
+int		ft_checks21b1(char *str,t_numb *e);
+int		ft_checks21b1a(char *str,t_numb *e);
+int		ft_checks21b2(char *str,t_numb *e);
+int		ft_checks21b2a(char *str,t_numb *e);
+int		ft_checks22(char *str,t_numb *e);
+int		ft_checks22a(char *str,t_numb *e);
+int		ft_checks22b(char *str,t_numb *e);
+int		ft_checks22b1(char *str,t_numb *e);
+int		ft_checks22b1a(char *str,t_numb *e);
+int		ft_checks22b2(char *str,t_numb *e);
+int		ft_checks22b2a(char *str,t_numb *e);
+int		ft_checks22b2b(char *str,t_numb *e);
+int		ft_checks22c(char *str,t_numb *e);
+int		ft_checks22c1(char *str,t_numb *e);
+int		ft_checks22c1a(char *str,t_numb *e);
+int		ft_checks22c2(char *str,t_numb *e);
+int		ft_checks22c2a(char *str,t_numb *e);
+int		ft_checks22c2b(char *str,t_numb *e);
 int		ft_checkbs(char *str,t_numb *e);
 int		ft_checkbs1(char *str,t_numb *e);
 int		ft_checkbs1a(char *str,t_numb *e);
