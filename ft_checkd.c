@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 20:30:57 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/22 05:54:00 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/22 06:41:19 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,25 @@ int	ft_putnbr(int n,t_numb *e)
 			}
 		}
 		else
-		{
+			r1 = r1 + ft_putnbr1(n,e);
+	}
+	else if (e->valzero == 1 && e->pr == 0 && e->w != 0)
+	{
+		ft_putchar(' ');
+		r1++;
+	}
+	return (r1);
+}
+
+int	ft_putnbr1(int n,t_numb *e)
+{
+	int		i;
+	int		j;
+	int		r1;
+
+	i = 0;
+	r1 = 0;
+	i = ft_count(n);
 			if (n < 0 )
 			{
 				if (e->indzero == 1 && e->w > i && e->pr == 0 && e->indminus == 0)
@@ -74,13 +92,6 @@ int	ft_putnbr(int n,t_numb *e)
 				ft_putchar(n + '0');
 				r1++;
 			}
-		}
-	}
-	else if (e->valzero == 1 && e->pr == 0 && e->w != 0)
-	{
-		ft_putchar(' ');
-		r1++;
-	}
 	return (r1);
 }
 
@@ -101,17 +112,22 @@ int	ft_putnbr2(int n,t_numb *e)
 		}
 	}
 	else
-	{
+		r1 = r1 + ft_putnbr2a(n,e);
+	return (r1);
+}
+
+int	ft_putnbr2a(int n,t_numb *e)
+{
+	int		i;
+	int		j;
+	int		r1;
+
+	i = 0;
+	r1 = 0;
+	i = ft_count(n);
 		if (n < 0 )
 		{
-			if (e->indzero == 1 && e->w > i && e->pr == 0 && e->indminus == 0)
-			{
-			}
-			else if (e->pr < i)
-			{
-				ft_putchar('-');
-				r1++;
-			}
+			r1 = r1 + ft_putnbr2a1(n,e);
 			n = -n;
 		}
 		if (n >= 10)
@@ -124,7 +140,26 @@ int	ft_putnbr2(int n,t_numb *e)
 			ft_putchar(n + '0');
 			r1++;
 		}
-	}
+	return (r1);
+}
+
+int	ft_putnbr2a1(int n,t_numb *e)
+{
+	int		i;
+	int		j;
+	int		r1;
+
+	i = 0;
+	r1 = 0;
+	i = ft_count(n);
+			if (e->indzero == 1 && e->w > i && e->pr == 0 && e->indminus == 0)
+			{
+			}
+			else if (e->pr < i)
+			{
+				ft_putchar('-');
+				r1++;
+			}
 	return (r1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/22 06:22:39 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/22 06:32:57 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,10 @@ int		ft_checkstrlast(char *str);
 int		ft_checkprec(char *s);
 int		ft_checkwidth(char *str);
 int	ft_putnbr(int n,t_numb *e);
+int	ft_putnbr1(int n,t_numb *e);
 int	ft_putnbr2(int n,t_numb *e);
+int	ft_putnbr2a(int n,t_numb *e);
+int	ft_putnbr2a1(int n,t_numb *e);
 void	ft_putstr(char const *s);
 void	ft_putstr2(int pr,char const *s);
 void	ft_putstrad(char const *s);
