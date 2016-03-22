@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/22 00:43:58 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/22 06:23:36 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/22 06:48:49 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		ft_checku(char *str,t_numb *e)
 	{
 		{
 			cnt = cnt + ft_countu(e,e->u);
-			cnt = cnt + ft_putunbr(e->w,e->pr,e->indzero,e->u,e);
+			cnt = cnt + ft_putunbr(e->u,e);
 		}
 	}
 	ft_initialize(e);
@@ -36,7 +36,7 @@ int		ft_checku(char *str,t_numb *e)
 }
 
 
-int	ft_putunbr(int w,int pr,int zero,unsigned int n,t_numb *e)
+int	ft_putunbr(unsigned int n,t_numb *e)
 {
 	int		i;
 	int		j;
@@ -53,20 +53,9 @@ int	ft_putunbr(int w,int pr,int zero,unsigned int n,t_numb *e)
 			r1 = 10;
 		}
 		else
-		{
-			if (n >= 10)
-			{
-				r1 = r1 + ft_putunbr(w,pr,zero,n / 10,e);
-				r1 = r1 + ft_putunbr(w,pr,zero,n % 10,e);
-			}
-			else
-			{
-				ft_putchar(n + '0');
-				r1++;
-			}
-		}
+			r1 = r1 + ft_putunbr1(n,e);
 	}
-	else if (e->valzero == 1 && pr == 0 && w != 0)
+	else if (e->valzero == 1 && e->pr == 0 && e->w != 0)
 	{
 		ft_putchar(' ');
 		r1++;
@@ -74,6 +63,27 @@ int	ft_putunbr(int w,int pr,int zero,unsigned int n,t_numb *e)
 	return (r1);
 }
 
+int	ft_putunbr1(unsigned int n,t_numb *e)
+{
+	int		i;
+	int		j;
+	int		r1;
+
+	i = 0;
+	r1 = 0;
+	i = ft_count(n);
+			if (n >= 10)
+			{
+				r1 = r1 + ft_putunbr(n / 10,e);
+				r1 = r1 + ft_putunbr(n % 10,e);
+			}
+			else
+			{
+				ft_putchar(n + '0');
+				r1++;
+			}
+	return (r1);
+}
 
 int		ft_checku1(t_numb *e)
 {
@@ -84,7 +94,7 @@ int		ft_checku1(t_numb *e)
 	cnt = 0;
 	i = ft_count2(e->u);
 		cnt = cnt + ft_checku1a(e);
-			cnt = cnt + ft_putunbr(e->w,e->pr,e->indzero,e->u,e);
+			cnt = cnt + ft_putunbr(e->u,e);
 			if (i >= e->pr)
 			{
 			j = 0;
