@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/22 07:20:08 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/22 07:35:05 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,7 +307,10 @@ int		ft_checkp2a1a(char *str,t_numb *e,char *s1);
 int		ft_checkp2a1a1(char *str,t_numb *e,char *s1);
 int		ft_checkx(char *str,t_numb *e);
 int		ft_checkx0(char *str,t_numb *e);
+int		ft_checkx0a(char *str,t_numb *e);
 int		ft_checkx1(char *str,t_numb *e);
+int		ft_checkx142a(char *str,t_numb *e);
+int		ft_checkx142b(char *str,t_numb *e);
 int		ft_checkx1a(char *str,t_numb *e);
 int		ft_checkx1a1(char *str,t_numb *e);
 int		ft_checkbx(char *str,t_numb *e);
