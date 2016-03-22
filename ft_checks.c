@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 01:26:49 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/21 04:30:14 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/22 07:20:25 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,7 @@ int		ft_checks(char *str,t_numb *e)
 	if(e->indminus == 0)
 	{
 		if (e->s)
-		{
-			if (e->indpr == 1)
-				cnt = cnt + ft_checks1(str,e);
-			else
-				cnt = cnt + ft_checks42(str,e);
-		}
+			cnt = cnt + ft_checks52a(str,e);
 		else
 			cnt = cnt + ft_checks2(str,e);
 		return (cnt);
@@ -34,12 +29,7 @@ int		ft_checks(char *str,t_numb *e)
 	else if(e->indminus == 1)
 	{
 		if (e->s)
-		{
-			if (e->indpr == 1)
-				cnt = cnt + ft_checks21(str,e);
-			else
-				cnt = cnt + ft_checks242(str,e);
-		}
+			cnt = cnt + ft_checks52b(str,e);
 		else
 			cnt = cnt + ft_checks22(str,e);
 		return (cnt);
@@ -47,6 +37,29 @@ int		ft_checks(char *str,t_numb *e)
 	return (0);
 }
 
+int		ft_checks52a(char *str,t_numb *e)
+{
+	int	cnt;
+
+	cnt = 0;
+			if (e->indpr == 1)
+				cnt = cnt + ft_checks1(str,e);
+			else
+				cnt = cnt + ft_checks42(str,e);
+	return (cnt);
+}
+
+int		ft_checks52b(char *str,t_numb *e)
+{
+	int	cnt;
+
+	cnt = 0;
+			if (e->indpr == 1)
+				cnt = cnt + ft_checks21(str,e);
+			else
+				cnt = cnt + ft_checks242(str,e);
+	return (cnt);
+}
 
 int		ft_checks42(char *str,t_numb *e)
 {
