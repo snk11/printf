@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 20:30:57 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/22 01:10:07 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/22 02:45:19 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,28 @@ int		ft_checkd(char *str,t_numb *e)
 			if (e->indpr == 1)
 			{
 				j = 0;
-				while(j < abs(i - e->pr))
+				if (i > e->pr)
 				{
-					ft_putchar('0');
-					cnt++;
-					j++;
+					while(j < abs(i- 1 - e->pr))
+					{
+						ft_putchar('0');
+						cnt++;
+						j++;
+					}
+				}
+				else if (i <= e->pr)
+				{
+					while(j < abs(i - e->pr))
+					{
+						ft_putchar('0');
+						cnt++;
+						j++;
+					}
 				}
 			}
 			cnt = cnt + ft_putnbr(e->w,e->pr,e->indzero,e->d,e);
 			j = 0;
-			if (i >= e->pr)
+			if (i > e->pr)
 			{
 				while(j < e->w - i)
 				{
@@ -438,20 +450,23 @@ int	ft_countd4(t_numb *e,t_count *f)
 				ft_putchar(' ');
 				r1++;
 			}
-			while(f->w - f->i > 0)
-			{
-				ft_putchar(' ');
-				r1++;
-				f->w--;
-			}
-			if(e->indplus == 1 && f->neg == 0)
-			{
-				ft_putchar('+');
-				r1++;
-				f->w--;
-			}
 			if (f->neg == 1 || e->indminus == 1)
-				r1 = r1 + ft_countd4a1(e,f);
+				r1 = r1 + ft_countd4a2(e,f);
+			else
+			{
+				while(f->w - f->i > 0)
+				{
+					ft_putchar(' ');
+					r1++;
+					f->w--;
+				}
+				if(e->indplus == 1 && f->neg == 0)
+				{
+					ft_putchar('+');
+					r1++;
+					f->w--;
+				}
+			}
 		}
 	return (r1);
 }
@@ -500,6 +515,34 @@ int	ft_countd4a1(t_numb *e,t_count *f)
 	int	r1;
 
 	r1 = 0;
+				while(f->w - f->pr - 1 > 0)
+				{
+					ft_putchar(' ');
+					r1++;
+					f->w--;
+				}
+				ft_putchar('-');
+				r1++;
+				while((f->pr - f->i + 1) > 0)
+				{
+					ft_putchar('0');
+					r1++;
+					f->pr--;
+				}
+	return (r1);
+}
+
+int	ft_countd4a2(t_numb *e,t_count *f)
+{
+	int	r1;
+
+	r1 = 0;
+				while(f->w - f->i > 0)
+				{
+					ft_putchar(' ');
+					r1++;
+					f->w--;
+				}
 				ft_putchar('-');
 				r1++;
 				while((f->pr - f->i + 1) > 0)

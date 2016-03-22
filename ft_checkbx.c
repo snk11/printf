@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/03 03:10:21 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/21 02:55:24 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/22 03:12:29 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		ft_checkbx(char *str,t_numb *e)
 int		ft_checkbx1(char *str,t_numb *e)
 {
 	int	cnt;
+	int	i;
 
 	cnt = 0;
 
@@ -43,19 +44,38 @@ int		ft_checkbx1(char *str,t_numb *e)
 				cnt++;
 				(e->w)--;
 			}
-			ft_putchar('0');
-			ft_putchar('X');
 		}
+		ft_putchar('0');
+		ft_putchar('X');
 		cnt++;
 		cnt++;
-	}
-	if (e->indzero == 1 && e->pr == 0)
-	{
-		while(e->w - (e->g + 2) > 0)
+		i = 0;
+		while( i < e->pr - e->g)
 		{
 			ft_putchar('0');
 			cnt++;
-			(e->w)--;
+			i++;
+		}
+	}
+	if (e->indzero == 1 && e->pr == 0)
+	{
+		if (e->indsharp == 1)
+		{
+			while(e->w - (e->g + 2) > 0)
+			{
+				ft_putchar('0');
+				cnt++;
+				(e->w)--;
+			}
+		}
+		else
+		{
+			while(e->w - e->g  > 0)
+			{
+				ft_putchar('0');
+				cnt++;
+				(e->w)--;
+			}
 		}
 	}
 	else if (e->indsharp == 0)
@@ -64,4 +84,3 @@ int		ft_checkbx1(char *str,t_numb *e)
 	cnt = cnt + e->g;
 	return (cnt);
 }
-

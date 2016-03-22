@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/03 02:42:08 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/21 03:13:21 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/22 03:06:38 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int		ft_checkx0(char *str,t_numb *e)
 int		ft_checkx1(char *str,t_numb *e)
 {
 	int	cnt;
+	int	i;
 
 	cnt = 0;
 
@@ -106,6 +107,13 @@ int		ft_checkx1(char *str,t_numb *e)
 		ft_putchar('x');
 		cnt++;
 		cnt++;
+		i = 0;
+		while( i < e->pr - e->g)
+		{
+			ft_putchar('0');
+			cnt++;
+			i++;
+		}
 	}
 	if (e->indzero == 1 && e->pr == 0)
 	{
@@ -120,7 +128,7 @@ int		ft_checkx1(char *str,t_numb *e)
 		}
 		else
 		{
-			while(e->w - e->g > 0)
+			while(e->w - e->g  > 0)
 			{
 				ft_putchar('0');
 				cnt++;
