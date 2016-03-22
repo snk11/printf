@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/22 06:47:54 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/22 23:05:37 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'S')
 				{
 					e->ss = va_arg(ap, wchar_t*);
+					if ((int)*(e->ss) <= -1 || (int)*(e->ss) >= 2097151)
+						return (-1);
 					cnt = cnt + ft_checkbs(str,e);
 					ft_initialize(e);
 				}
