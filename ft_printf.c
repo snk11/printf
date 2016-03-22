@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/22 00:02:52 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/22 02:03:40 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,22 +86,7 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'u')
 				{
 					e->u = va_arg(ap, unsigned int);
-					if (e->pr == 0 && e->w == 0 && e->indpr == 1)
-					{
-					}
-					else
-					{
-						if(e->w < 0)
-						{
-							ft_putunbr(e->w,e->pr,e->indzero,e->u);
-							cnt = cnt + ft_countu(e,e->u);
-						}
-						else
-						{
-							cnt = cnt + ft_countu(e,e->u);
-							ft_putunbr(e->w,e->pr,e->indzero,e->u);
-						}
-					}
+					cnt = cnt + ft_checku(str,e);
 					ft_initialize(e);
 				}
 				else if (*str == 'U')
@@ -194,6 +179,13 @@ int	ft_printf(char *str, ...)
 					us = va_arg(ap, unsigned short);
 					ft_putushortnbr(us);
 					cnt = cnt + ft_countus(us);
+					str++;
+				}
+				else if (*str == 'h' && str[1] == 'U')
+				{
+					ul = va_arg(ap, unsigned long);
+					ft_putulongnbr(ul);
+					cnt = cnt + ft_countul(ul);
 					str++;
 				}
 				else if ((*str == 'j' || *str == 'z') && str[1] == 'u')
