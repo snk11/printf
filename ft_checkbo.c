@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/03 03:41:10 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/17 18:00:51 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/22 04:45:04 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,7 @@ int		ft_checkbo1(char *str,t_numb *e)
 		cnt++;
 	}
 	if (e->indzero == 1 && e->pr == 0)
-	{
-		while(e->w - e->g > 0)
-		{
-			ft_putchar('0');
-			cnt++;
-			e->w--;
-		}
-	}
+		cnt = cnt + ft_checkbo1a(e);
 	else
 	{
 		cnt = cnt + ft_checko1a(str,e);
@@ -66,3 +59,17 @@ int		ft_checkbo1(char *str,t_numb *e)
 	return (cnt);
 }
 
+
+int		ft_checkbo1a(t_numb *e)
+{
+	int	cnt;
+
+	cnt = 0;
+	while(e->w - e->g > 0)
+	{
+		ft_putchar('0');
+		cnt++;
+		e->w--;
+	}
+	return (cnt);
+}

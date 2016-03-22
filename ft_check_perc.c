@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 03:43:40 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/15 12:02:11 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/22 04:39:17 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 char	*ft_check_perc0(char *str)
 {
-	char	*begi0;
 	char	*begi;
-	int		cnt;
 	int		ind;
 
 	ind = 0;
@@ -41,3 +39,5 @@ char	*ft_check_perc0(char *str)
 	}
 	return (0);
 }
+
+
