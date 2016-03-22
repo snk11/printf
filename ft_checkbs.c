@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 20:30:16 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 00:13:58 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/23 00:39:08 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,18 @@ int		ft_checkbs1(char *str,t_numb *e)
 	int	cnt;
 
 	cnt = 0;
-	if (e->pr > e->w)
+	if (e->indminus == 1 && e->pr > 0 && e->w == 0)
+		return (0);
+	else if (e->indminus == 1 && e->w > 0)
+	{
+		while(e->w)
+		{
+			ft_putchar(' ');
+			e->w--;
+			cnt++;
+		}
+	}
+	else if (e->pr > e->w)
 		cnt = cnt + ft_checkbs1a(str,e);
 	else if (e->w > e->pr)
 		cnt = cnt + ft_checkbs1b(str,e);
@@ -416,7 +427,6 @@ int		ft_checkbs2b1(char *str,t_numb *e)
 	int	cnt;
 
 	cnt = 0;
-	e->w = -(e->w);
 	if (e->ss)
 	{
 		cnt = cnt + ft_putwstr(e->ss);
@@ -429,7 +439,7 @@ int		ft_checkbs2b1(char *str,t_numb *e)
 	while((e->w - e->g) > 0)
 	{
 		cnt++;
-		ft_putchar('0');
+		ft_putchar(' ');
 		(e->w)--;
 	}
 	return (cnt);
