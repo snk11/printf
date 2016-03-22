@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/22 07:35:05 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/22 23:45:48 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -313,10 +313,6 @@ int		ft_checkx142a(char *str,t_numb *e);
 int		ft_checkx142b(char *str,t_numb *e);
 int		ft_checkx1a(char *str,t_numb *e);
 int		ft_checkx1a1(char *str,t_numb *e);
-int		ft_checkbx(char *str,t_numb *e);
-int		ft_checkbx1(char *str,t_numb *e);
-int		ft_checkbx1a(t_numb *e);
-int		ft_checkbx1b(t_numb *e);
 int		ft_checko(char *str,t_numb *e);
 int		ft_checko42(char *str,t_numb *e);
 int		ft_checko1(char *str,t_numb *e);
@@ -328,9 +324,11 @@ int		ft_checko21a42a(char *str,t_numb *e);
 int		ft_checko21a42a1(char *str,t_numb *e);
 int		ft_checko21a42b(char *str,t_numb *e);
 int		ft_checko21a1(char *str,t_numb *e);
+/*
 int		ft_checkbo(char *str,t_numb *e);
 int		ft_checkbo1(char *str,t_numb *e);
 int		ft_checkbo1a(t_numb *e);
+*/
 int		ft_altprime(char *str,t_numb *e);
 void		ft_altprime1(char **str,t_numb *e);
 int		ft_altprime2(char *str,t_numb *e);
@@ -435,5 +433,25 @@ int	ft_countu4a1(t_numb *e,t_count *f);
 int		ft_checku(char *str,t_numb *e);
 int		ft_checkd(char *str,t_numb *e);
 int	ft_count2(unsigned int n);
+int		ft_checkbx(char *str,t_numb *e);
+int		ft_checkbx0(char *str,t_numb *e);
+int		ft_checkbx0a(char *str,t_numb *e);
+int		ft_checkbx1(char *str,t_numb *e);
+int		ft_checkbx142a(char *str,t_numb *e);
+int		ft_checkbx142b(char *str,t_numb *e);
+int		ft_checkbx1a(char *str,t_numb *e);
+int		ft_checkbx1a1(char *str,t_numb *e);
+int		ft_checkbo(char *str,t_numb *e);
+int		ft_checkbo42(char *str,t_numb *e);
+int		ft_checkbo1(char *str,t_numb *e);
+int		ft_checkbo1a(char *str,t_numb *e);
+int		ft_checkbo1a1(char *str,t_numb *e);
+int		ft_checkbo21(char *str,t_numb *e);
+int		ft_checkbo21a(char *str,t_numb *e);
+int		ft_checkbo21a42a(char *str,t_numb *e);
+int		ft_checkbo21a42a1(char *str,t_numb *e);
+int		ft_checkbo21a42b(char *str,t_numb *e);
+int		ft_checkbo21a1(char *str,t_numb *e);
+
 
 #endif
