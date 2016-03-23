@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/03 03:10:21 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/22 23:29:29 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/23 01:03:37 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ int		ft_checkbx(char *str,t_numb *e)
 		cnt = cnt + ft_checkbx0(str,e);
 	else if(e->indminus == 0)
 		cnt = cnt + ft_checkbx1(str,e);
+	if (e->s)
+	{
+		free(e->s);
+		e->s = NULL;
+	}
 	return (cnt);
 }
 

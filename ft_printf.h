@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/22 23:45:48 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/23 00:47:23 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -324,11 +324,6 @@ int		ft_checko21a42a(char *str,t_numb *e);
 int		ft_checko21a42a1(char *str,t_numb *e);
 int		ft_checko21a42b(char *str,t_numb *e);
 int		ft_checko21a1(char *str,t_numb *e);
-/*
-int		ft_checkbo(char *str,t_numb *e);
-int		ft_checkbo1(char *str,t_numb *e);
-int		ft_checkbo1a(t_numb *e);
-*/
 int		ft_altprime(char *str,t_numb *e);
 void		ft_altprime1(char **str,t_numb *e);
 int		ft_altprime2(char *str,t_numb *e);
