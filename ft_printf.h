@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 00:47:23 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/23 01:29:18 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ void	ft_checkflag3a(t_numb *e,t_flag *f);
 void	ft_checkflag3a1(t_numb *e,t_flag *f);
 void	ft_checkflag4(t_numb *e,t_flag *f);
 void	ft_checkflag4a(t_numb *e,t_flag *f);
+void	ft_ltooct10(char *res,long l,int i);
 void	ft_ltooct11(char *res,long l,int i);
 void	ft_ltooct12(char *res,unsigned long l,int i);
 void	ft_ltooct13(char *res,unsigned short l,int i);

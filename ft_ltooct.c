@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 14:11:15 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/17 17:29:41 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/23 01:45:06 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,34 @@ char	*ft_ltooct(long l)
 		l = l / 8;
 		i++;
 	}
-	res = (char*)malloc(sizeof(char)*(i + 1));
+	if (l1 >= 512 && l1 <= 575)
+	{
+		i++;
+		res = (char*)malloc(sizeof(char)*(i + 1));
+	}
+	else
+		res = (char*)malloc(sizeof(char)*(i + 1));
 	res[i] = 0;
 	l = l1;
-	ft_ltooct11(res,l,i);
+	if (l1 >= 512 && l1 <= 575)
+		ft_ltooct10(res,l,i);
+	else
+		ft_ltooct11(res,l,i);
 	return (res);
+}
+
+void	ft_ltooct10(char *res,long l,int i)
+{
+	res = res + i - 1;
+	while (l > 8)
+	{
+			*res = '0' + l % 8;
+		l = l / 8;
+		res--;
+	}
+	*res = '0' + l % 8;
+	res--;
+	*res = '1';
 }
 
 void	ft_ltooct11(char *res,long l,int i)
