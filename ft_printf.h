@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 01:29:18 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/23 02:38:44 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct			s_numb
 	int					prbegi;
 	int					d;
 	int					g;
+	short int			sd;
 	long				l;
 	unsigned int		u;
 	unsigned long		ul;

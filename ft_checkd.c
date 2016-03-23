@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 20:30:57 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/22 06:41:19 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/23 03:05:42 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -512,7 +512,7 @@ int	ft_countd4(t_numb *e,t_count *f)
 	{
 		if(e->indplus == 1)
 			e->w--;
-		if(e->indspace == 1 && e->indplus == 0 && f->neg == 0)
+		if(e->indspace == 1 && e->indplus == 0 && f->neg == 0 && e->w < f->i)
 		{
 			ft_putchar(' ');
 			r1++;
