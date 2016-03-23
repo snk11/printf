@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 20:30:57 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 05:34:14 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/23 06:47:36 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int		ft_checkd(char *str,t_numb *e)
 	int		i;
 
 	cnt = 0;
+//	printf("minus = %d\n",e->indminus);
 	i = ft_count(e->d);
 	if (e->d == 0 && e->indpr == 1 && e->indzero == 0)
 		e->valzero = 1;
@@ -175,9 +176,9 @@ int		ft_checkd1(t_numb *e)
 		ft_putchar('-');
 		cnt++;
 	}
-	if (e->indplus == 1)
+	if ((e->indplus == 1 && e->indminus == 0 && e->d < 0) || (e->indplus == 1 && e->indminus == 1 && e->d > 0) )
 		e->w--;
-	if (e->indplus == 1)
+	if ((e->indplus == 1 && e->indminus == 0 && e->d < 0) || (e->indplus == 1 && e->indminus == 1 && e->d > 0) )
 	{
 		ft_putchar('+');
 		cnt++;
@@ -395,7 +396,7 @@ int		ft_countd342b(t_numb *e,t_count *f)
 			ft_putchar('-');
 			r1++;
 		}
-		if (e->indplus == 1)
+		if (e->indplus == 1 && e->indminus == 0)
 		{
 			ft_putchar('+');
 			r1++;
@@ -478,9 +479,9 @@ int	ft_countd3a1a(t_numb *e,t_count *f)
 	int	r1;
 
 	r1 = 0;
-	if (e->indplus == 1)
+	if (e->indplus == 1 && e->indminus == 0)
 		e->w--;
-	if (e->indplus == 1)
+	if (e->indplus == 1 && e->indminus == 0)
 	{
 		ft_putchar('+');
 		r1++;
@@ -536,7 +537,7 @@ int	ft_countd442(t_numb *e,t_count *f)
 				r1++;
 				e->w--;
 			}
-			if(e->indplus == 1 && f->neg == 0)
+			if(e->indplus == 1 && f->neg == 0 && e->indminus == 0)
 			{
 				ft_putchar('+');
 				r1++;
@@ -580,7 +581,7 @@ int	ft_countd4a42(t_numb *e,t_count *f)
 			r1++;
 			e->w--;
 		}
-		if (e->indplus == 1)
+		if (e->indplus == 1 && e->indminus == 0)
 		{
 			ft_putchar('+');
 			r1++;

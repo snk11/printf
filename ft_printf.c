@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 03:26:33 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/23 06:20:22 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -609,9 +609,9 @@ int	ft_printf(char *str, ...)
 						if (e->begi)
 							e->ret1 = ft_checkflag(e,e->begi);
 						if (e->w == 0 && e->begi)
-							e->w = ft_checkwidth(e->begi);
+							e->w = ft_checkwidth(e,e->begi);
 						if (e->pr == 0 && e->begi)
-							e->pr = ft_checkprec(e->begi);
+							e->pr = ft_checkprec(e,e->begi);
 						free(e->begi);
 						e->begi = NULL;
 					}

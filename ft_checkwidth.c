@@ -6,20 +6,20 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 14:55:14 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 05:18:52 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/23 06:19:04 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_printf.h"
 
-int		ft_checkwidth(char *str)
+int		ft_checkwidth(t_numb *e,char *str)
 {
 	t_width		*w;
 	int			r1;
 
 	w = (t_width*)malloc(sizeof(t_width));
 	w->s = (char*)malloc(sizeof(char)*(ft_strlen(str)) + 1);
-	ft_checkwidth1(str,w);
+	ft_checkwidth1(str,w,e);
 	w->s2 = (char*)malloc(sizeof(char) * w->j + 1);
 	ft_checkwidth2(str,w);
 //	if (w->i < 0)
@@ -48,7 +48,7 @@ int		ft_checkwidth(char *str)
 }
 
 
-void		ft_checkwidth1(char *str,t_width *w)
+void		ft_checkwidth1(char *str,t_width *w,t_numb *e)
 {
 	w->i = 0;
 	w->j = 0;
@@ -72,6 +72,14 @@ void		ft_checkwidth1(char *str,t_width *w)
 		{
 			w->j++;
 		}
+		if (w->s[0] == '-')
+			e->indminus = 1;
+		if (w->s[0] == '+')
+			e->indplus = 1;
+		if (w->s[0] == ' ')
+			e->indspace = 1;
+		if (w->s[0] == '#')
+			e->indsharp = 1;
 			w->s++;
 	}
 	w->s = w->begi;

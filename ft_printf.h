@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 04:52:14 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/23 06:10:41 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,6 @@ typedef struct			s_lst
 
 int		ft_strcmp(const char *s1, const char *s2);
 void		*ft_getfield1(char *str,t_field *f);
-void		ft_checkwidth1(char *str,t_width *w);
-void		ft_checkwidth2(char *str,t_width *w);
 void	ft_checkflag1(t_numb *e,char *str,t_flag *f);
 void	ft_checkflag2(t_numb *e,t_flag *f);
 void	ft_checkflag3(t_numb *e,t_flag *f);
@@ -161,8 +159,10 @@ int		ft_checkc2b(char *str,t_numb *e);
 int		ft_atoi(const char *nptr);
 int		ft_checkletter(char *str);
 int		ft_checkstrlast(char *str);
-int		ft_checkprec(char *s);
-int		ft_checkwidth(char *str);
+int		ft_checkprec(t_numb *e,char *s);
+int		ft_checkwidth(t_numb *e,char *str);
+void		ft_checkwidth1(char *str,t_width *w,t_numb *e);
+void		ft_checkwidth2(char *str,t_width *w);
 int	ft_putnbr(int n,t_numb *e);
 int	ft_putnbr1(int n,t_numb *e);
 int	ft_putnbr2(int n,t_numb *e);

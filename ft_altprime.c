@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 12:09:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 03:38:30 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/23 06:11:55 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ void		ft_altprime1(char **str,t_numb *e)
 	}
 	e->ret1 = ft_checkflag(e,begi);
 	if (e->w == 0 && begi)
-		e->w = ft_checkwidth(begi);
+		e->w = ft_checkwidth(e,begi);
 	if (e->pr == 0 && begi)
-		e->pr = ft_checkprec(begi);
+		e->pr = ft_checkprec(e,begi);
 	if(**str == 'h')
 		(*str)++;
 }

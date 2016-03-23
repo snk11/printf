@@ -6,13 +6,13 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 14:19:17 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/15 19:58:43 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/23 06:02:07 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_printf.h"
 
-int		ft_checkprec(char *s)
+int		ft_checkprec(t_numb *e,char *s)
 {
 	int	i;
 	char *begi;
@@ -33,6 +33,7 @@ int		ft_checkprec(char *s)
 	begi = &s[1];
 	if (*s == '.')
 	{
+		e->indpr = 1;
 		return ft_atoi(begi);
 	}
 	return 0;
