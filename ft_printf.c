@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 03:07:45 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/23 03:26:33 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,18 +127,6 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_checko(str,e);
 					ft_initialize(e);
 				}
-//				else if (*str == 'h')
-//				{
-//					e->sd= va_arg(ap, short int);
-//					if (str[1] == 'd')
-//					{
-//						e->d = e->sd;
-//						cnt = cnt + ft_checkd(str,e);
-//						printf("cnt = %d\n",cnt);
-//					}
-//					ft_initialize(e);
-//					str++;
-//				}
 				else if (*str == 'O')
 				{
 					e->ul = va_arg(ap,  unsigned long);
