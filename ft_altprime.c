@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 12:09:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 03:32:13 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/23 03:38:30 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,7 @@ int		ft_altprime2a2a(char *str,t_numb *e)
 	while((e->w - 1) > 0)
 	{
 		cnt++;
-		ft_putchar('0');
+		ft_putchar(' ');
 		(e->w)--;
 	}
 	return (cnt);
