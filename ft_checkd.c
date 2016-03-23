@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 20:30:57 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 03:05:42 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/23 04:04:11 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -400,11 +400,11 @@ int		ft_countd342b(t_numb *e,t_count *f)
 			ft_putchar('+');
 			r1++;
 		}
-		if (e->indspace == 1)
-		{
-			ft_putchar(' ');
-			r1++;
-		}
+//		if (e->indspace == 1)
+//		{
+//			ft_putchar(' ');
+//			r1++;
+//		}
 	return (r1);
 }
 
