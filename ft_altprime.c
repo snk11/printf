@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 12:09:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 00:51:03 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/23 02:25:20 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,11 @@ int		ft_altprime2a1(char *str,t_numb *e)
 			ft_putchar(' ');
 			(e->w)--;
 		}
-		ft_putchar(*str);
-		cnt++;
+		if (*str)
+		{
+			ft_putchar(*str);
+			cnt++;
+		}
 	}
 	return (cnt);
 }
@@ -126,8 +129,11 @@ int		ft_altprime2a1a(char *str,t_numb *e)
 	int	cnt;
 
 	cnt = 0;
-	ft_putchar(*str);
-	cnt++;
+	if (*str)
+	{
+		ft_putchar(*str);
+		cnt++;
+	}
 	while((e->w - 1) > 0)
 	{
 		cnt++;
@@ -153,8 +159,11 @@ int		ft_altprime2a2(char *str,t_numb *e)
 			ft_putchar('0');
 			(e->w)--;
 		}
-		ft_putchar(*str);
-		cnt++;
+		if (*str)
+		{
+			ft_putchar(*str);
+			cnt++;
+		}
 	}
 	return (cnt);
 }
@@ -165,8 +174,11 @@ int		ft_altprime2a2a(char *str,t_numb *e)
 	int	cnt;
 
 	cnt = 0;
-	ft_putchar(*str);
-	cnt++;
+	if (*str)
+	{
+		ft_putchar(*str);
+		cnt++;
+	}
 	while((e->w - 1) > 0)
 	{
 		cnt++;
