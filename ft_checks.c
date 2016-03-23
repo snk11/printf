@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 01:26:49 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/22 07:20:25 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/23 03:49:02 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,59 @@ int		ft_checks52b(char *str,t_numb *e)
 				cnt = cnt + ft_checks242(str,e);
 	return (cnt);
 }
+
+int		ft_checks242(char *str,t_numb *e)
+{
+	int	cnt;
+
+	cnt = 0;
+
+	cnt = cnt + ft_checks242a(str,e);
+	cnt = cnt + ft_checks242b(str,e);
+	return (cnt);
+}
+
+int		ft_checks242a(char *str,t_numb *e)
+{
+	int	cnt;
+	int	i;
+
+	cnt = 0;
+	e->g = ft_strlen(e->s);
+	if (e->s)
+	{
+		ft_putstr(e->s);
+		i = 0;
+		while (i < e->g)
+		{
+			cnt++;
+			i++;
+		}
+	}
+	else
+	{
+		ft_putstr("(null)");
+		cnt = cnt + 6;
+	}
+	return (cnt);
+}
+
+int		ft_checks242b(char *str,t_numb *e)
+{
+	int	cnt;
+
+	cnt = 0;
+	e->g = ft_strlen(e->s);
+		while(e->w - e->g > 0)
+		{
+			cnt++;
+			ft_putchar(' ');
+			(e->w)--;
+		}
+	return (cnt);
+}
+
+
 
 int		ft_checks42(char *str,t_numb *e)
 {
@@ -623,70 +676,6 @@ int		ft_checks2c2b(char *str,t_numb *e)
 
 
 
-
-
-int		ft_checks242(char *str,t_numb *e)
-{
-	int	cnt;
-
-	cnt = 0;
-
-	cnt = cnt + ft_checks242b(str,e);
-	cnt = cnt + ft_checks242a(str,e);
-	return (cnt);
-}
-
-int		ft_checks242a(char *str,t_numb *e)
-{
-	int	cnt;
-
-	cnt = 0;
-	e->g = ft_strlen(e->s);
-	if (e->indzero == 0)
-	{
-		while (e->w - e->g > 0)
-		{
-			cnt++;
-			ft_putchar(' ');
-			(e->w)--;
-		}
-	}
-	else
-	{
-		while(e->w - e->g > 0)
-		{
-			cnt++;
-			ft_putchar('0');
-			(e->w)--;
-		}
-	}
-	return (cnt);
-}
-
-int		ft_checks242b(char *str,t_numb *e)
-{
-	int	cnt;
-	int	i;
-
-	cnt = 0;
-	e->g = ft_strlen(e->s);
-	if (e->s)
-	{
-		ft_putstr(e->s);
-		i = 0;
-		while (i < e->g)
-		{
-			cnt++;
-			i++;
-		}
-	}
-	else
-	{
-		ft_putstr("(null)");
-		cnt = cnt + 6;
-	}
-	return (cnt);
-}
 int		ft_checks21(char *str,t_numb *e)
 {
 	int	cnt;
