@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 20:30:57 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 06:47:36 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/28 02:40:11 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,25 @@ int		ft_checkd(char *str,t_numb *e)
 	cnt = 0;
 //	printf("minus = %d\n",e->indminus);
 	i = ft_count(e->d);
-	if (e->d == 0 && e->indpr == 1 && e->indzero == 0)
+//	if (e->d == 0 && e->indpr == 1 && e->indzero == 0)
+	if (e->d == 0)
 		e->valzero = 1;
 	if(e->indminus == 1)
 		cnt = cnt + ft_checkd1(e);
 	else if (e->indminus == 0)
 	{
+		if(e->valzero == 1)
+		{
+			cnt = cnt + ft_putnbr(e->d,e);
+//			if(e->indplus == 1)
+//			{
+//				ft_putchar('+');
+//				cnt++;
+//			}
+//			ft_putchar('0');
+//			cnt++;
+		}
+		else
 		{
 			cnt = cnt + ft_countd(e,e->d);
 			cnt = cnt + ft_putnbr(e->d,e);
@@ -59,10 +72,52 @@ int	ft_putnbr(int n,t_numb *e)
 		else
 			r1 = r1 + ft_putnbr1(n,e);
 	}
-	else if (e->valzero == 1 && e->pr == 0 && e->w != 0)
+//	else if (e->valzero == 1 && e->pr == 0 && e->w != 0)
+//	{
+//		ft_putchar(' ');
+//		r1++;
+//	}
+//	else if (e->valzero == 1 && e->pr == 0 && e->w == 0)
+//	{
+//		ft_putchar('0');
+//		r1++;
+//	}
+	else if (e->valzero == 1)
 	{
-		ft_putchar(' ');
-		r1++;
+		if (e->indpr == 1)
+		{
+			if (e->indplus == 1)
+			{
+				e->w--;
+			}
+			while(e->w - e->pr > 0)
+			{
+				ft_putchar(' ');
+				r1++;
+				e->w--;
+			}
+			if (e->indplus == 1 && e->indminus == 0)
+			{
+				ft_putchar('+');
+				r1++;
+			}
+			while((e->pr) > 0)
+			{
+				ft_putchar('0');
+				r1++;
+				e->pr--;
+			}
+		}
+		else
+		{
+			if (e->indplus == 1 && e->indminus == 0)
+			{
+				ft_putchar('+');
+				r1++;
+			}
+			ft_putchar('0');
+			r1++;
+		}
 	}
 	return (r1);
 }

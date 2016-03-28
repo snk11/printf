@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 06:10:41 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/28 00:01:34 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ int	ft_checkc2(char *str,t_numb *e);
 int		ft_checkc2a(char *str,t_numb *e);
 int		ft_checkc2b(char *str,t_numb *e);
 int		ft_atoi(const char *nptr);
-int		ft_checkletter(char *str);
+int		ft_checkletter(char str);
 int		ft_checkstrlast(char *str);
 int		ft_checkprec(t_numb *e,char *s);
 int		ft_checkwidth(t_numb *e,char *str);
@@ -210,7 +210,6 @@ char	*ft_ltooct5(unsigned short int l);
 char	*ft_ltooct6(unsigned char l);
 int	ft_putwchar(wchar_t c);
 char	*ft_check_perc0(char *str);
-//char	*ft_check_perc8(char *str);
 int	ft_countul(unsigned long n);
 int	ft_putunbr(unsigned int n,t_numb *e);
 int	ft_putunbr1(unsigned int n,t_numb *e);

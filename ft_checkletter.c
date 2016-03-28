@@ -6,18 +6,18 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 18:44:55 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 03:26:56 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/27 23:09:32 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_printf.h"
 
-int		ft_checkletter(char *str)
+int		ft_checkletter(char str)
 {
-	if (*str == 'd' || *str == 'D' || *str == 'i'|| *str == 'o'
-			|| *str == 'O' || *str == 'u' || *str == 'U' || *str == 'c'
-			|| *str == 'C'|| *str == 'p' || *str == 's'  || *str == 'S'
-			|| *str == 'R' || *str == 'x' || *str == 'X')
+	if (str == 'd' || str == 'D' || str == 'i'|| str == 'o'
+			|| str == 'O' || str == 'u' || str == 'U' || str == 'c'
+			|| str == 'C'|| str == 'p' || str == 's'  || str == 'S'
+			|| str == 'R' || str == 'x' || str == 'X')
 		return (1);
 	return (0);
 }

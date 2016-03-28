@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 14:55:14 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 06:19:04 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/28 01:38:59 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		ft_checkwidth(t_numb *e,char *str)
 {
 	t_width		*w;
 	int			r1;
+
 
 	w = (t_width*)malloc(sizeof(t_width));
 	w->s = (char*)malloc(sizeof(char)*(ft_strlen(str)) + 1);
@@ -50,6 +51,7 @@ int		ft_checkwidth(t_numb *e,char *str)
 
 void		ft_checkwidth1(char *str,t_width *w,t_numb *e)
 {
+	int	k = 0;
 	w->i = 0;
 	w->j = 0;
 	while (w->i < ft_strlen(str))
@@ -68,6 +70,8 @@ void		ft_checkwidth1(char *str,t_width *w,t_numb *e)
 //	w->i--;
 	while((*w->s) && ((w->s[0] >= '0' && w->s[0] <= '9') || w->s[0] == ' ' || w->s[0] == '+' || w->s[0] == '-' || w->s[0] == '.' || w->s[0] == '#'))
 	{
+		if (w->s[0] >= '1' && w->s[0] <= '9')
+			k = 1;
 		if( w->s[0] != '-' && w->s[0] != '+' && w->s[0] != ' ' && w->s[0] != '#')
 		{
 			w->j++;
@@ -80,6 +84,11 @@ void		ft_checkwidth1(char *str,t_width *w,t_numb *e)
 			e->indspace = 1;
 		if (w->s[0] == '#')
 			e->indsharp = 1;
+		if (w->s[0] == '0' && k == 0)
+		{
+			e->indzero = 1;
+			w->j++;
+		}
 			w->s++;
 	}
 	w->s = w->begi;

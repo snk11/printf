@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 16:10:46 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/10 12:39:33 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/27 22:15:40 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int		ft_case1b(char ***str,t_numb *e,va_list ap)
 
 	cnt = 0;
 	e->wc = va_arg(ap, wchar_t);
+	if (e->wc && ((e->wc) <= -1 || (e->wc) >= 1114111))
+		return (-1);
 	cnt = cnt + ft_putwchar(e->wc);
 	return (cnt);
 }

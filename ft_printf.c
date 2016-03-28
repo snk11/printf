@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 06:20:22 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/28 01:36:46 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'S')
 				{
 					e->ss = va_arg(ap, wchar_t*);
-					if (e->ss && ((int)*(e->ss) <= -1 || (int)*(e->ss) >= 2097151))
+					if (e->ss && ((int)*(e->ss) <= -1 || (int)*(e->ss) >= 1114111))
 						return (-1);
 					cnt = cnt + ft_checkbs(str,e);
 					ft_initialize(e);
@@ -333,41 +333,70 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_checks(str,e);
 						str++;
 				}
-				else if (*str == 'l' && str[1] == 'l' && str[2] == 'x')
+				else if (*str == 'l' && str[1] == 'l')
 				{
-					ull = va_arg(ap, unsigned long long);
-					s2 = ft_ltohex4(ull);
-					if (e->indsharp == 1 && ull != 0)
+					int k = 2;
+					int k2 = 0;
+					while (ft_checkletter(str[k]) != 1 && str[k])
 					{
-						s3 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
-						s3[0] = '0';
-						s3[1] = 'x';
-						i = 2;
-						while (i <= ft_strlen(s2) + 2)
+						if (str[k] == '#')
+							e->indsharp = 1;
+						if( ((str[k] < '0' || str[k] > '9') && str[k] != ' ' && str[k] != '+' && str[k] != '-' && str[k] != '.' && str[k] != '#'))
 						{
-							s3[i] = s2[i - 2];
-							i++;
+							ft_putchar(str[k]);
+							cnt++;
+							k2++;
 						}
-						free(s2);
-						s2 = s3;
+						k++;
 					}
-					if (ull >= 4294967296 && ull <= 4563402751)
+					if (k2 == 0)
 					{
-						s4 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
-						s4[0] = '1';
-						i = 1;
-						while (i <= ft_strlen(s2) + 2)
+						ull = va_arg(ap, unsigned long long);
+						s2 = ft_ltohex4(ull);
+						if (e->indsharp == 1 && ull != 0)
 						{
-							s4[i] = s2[i - 1];
-							i++;
+							s3 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
+							s3[0] = '0';
+							s3[1] = 'x';
+							i = 2;
+							while (i <= ft_strlen(s2) + 2)
+							{
+								s3[i] = s2[i - 2];
+								i++;
+							}
+							free(s2);
+							s2 = s3;
 						}
-						free(s2);
-						s2 = s4;
+						if (ull >= 4294967296 && ull <= 4563402751)
+						{
+							s4 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
+							s4[0] = '1';
+							i = 1;
+							while (i <= ft_strlen(s2) + 2)
+							{
+								s4[i] = s2[i - 1];
+								i++;
+							}
+							free(s2);
+							s2 = s4;
+						}
+						e->s = s2;
+						cnt = cnt + ft_checks(str,e);
 					}
-					e->s = s2;
-					cnt = cnt + ft_checks(str,e);
-					str++;
-					str++;
+					else if (str[k] == 'x')
+					{
+						ft_putchar('x');
+						cnt++;
+					}
+//						k--;
+						while(k > 0)
+						{
+							str++;
+							k--;
+						}
+//						str++;
+//						str++;
+						ft_initialize(e);
 				}
 				else if (*str == 'h' && str[1] == 'h' && str[2] == 'x')
 				{
@@ -606,8 +635,8 @@ int	ft_printf(char *str, ...)
 					{
 						e->begi = NULL;
 						e->begi = ft_getfield(str);
-						if (e->begi)
-							e->ret1 = ft_checkflag(e,e->begi);
+//						if (e->begi)
+//							e->ret1 = ft_checkflag(e,e->begi);
 						if (e->w == 0 && e->begi)
 							e->w = ft_checkwidth(e,e->begi);
 						if (e->pr == 0 && e->begi)
