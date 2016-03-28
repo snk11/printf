@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/28 00:01:34 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/28 03:17:47 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,8 +213,11 @@ char	*ft_check_perc0(char *str);
 int	ft_countul(unsigned long n);
 int	ft_putunbr(unsigned int n,t_numb *e);
 int	ft_putunbr1(unsigned int n,t_numb *e);
+int	ft_putunbr2(unsigned int n,t_numb *e);
+int	ft_putunbr2a(unsigned int n,t_numb *e);
+int	ft_putunbr2a1(unsigned int n,t_numb *e);
 void	ft_putldnbr(long int n);
-int ft_checkflag(t_numb *e,char *str);
+//int ft_checkflag(t_numb *e,char *str);
 char	*ft_getfield(char *str);
 int		ft_checks52a(char *str,t_numb *e);
 int		ft_checks52b(char *str,t_numb *e);
@@ -411,7 +414,6 @@ int	ft_countd4(t_numb *e,t_count *f);
 int	ft_countd442(t_numb *e,t_count *f);
 int	ft_countd4a(t_numb *e,t_count *f);
 int	ft_countd4a42(t_numb *e,t_count *f);
-int	ft_countd4a1(t_numb *e,t_count *f);
 int	ft_countd4a2(t_numb *e,t_count *f);
 int		ft_checku1(t_numb *e);
 int		ft_checku1a(t_numb *e);
