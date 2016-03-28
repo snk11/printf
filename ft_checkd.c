@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 20:30:57 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/28 05:17:20 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/28 06:08:40 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,16 +137,16 @@ int	ft_putnbr(int n,t_numb *e)
 					ft_putchar('+');
 					r1++;
 				}
-				if (e->w == 0)
+				if (e->w < 0)
 				{
 					ft_putchar('0');
 					r1++;
 				}
-				while (e->w)
+				while (e->w > 0)
 				{
-				e->w--;
-				ft_putchar('0');
-				r1++;
+					e->w--;
+					ft_putchar('0');
+					r1++;
 				}
 			}
 			else if (e->indminus == 1)
