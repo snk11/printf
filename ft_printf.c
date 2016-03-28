@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/28 05:41:40 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/28 23:51:02 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	ft_printf(char *str, ...)
 	p = NULL;
 	cnt = 0;
 	ft_initialize(e);
+	e->indll = 0;
 	va_start(ap, str);
 	//	begi = &(str[0]);
 	p = ft_check_perc0(str);
@@ -337,6 +338,14 @@ int	ft_printf(char *str, ...)
 				{
 					int k = 2;
 					int k2 = 0;
+					e->indll = 1;
+					while (ft_checkletter(str[k]) != 1 && str[k])
+					{
+						k++;
+					}
+					if (str[k] && str[k] == 'x')
+					{
+						k = 2;
 					while (ft_checkletter(str[k]) != 1 && str[k])
 					{
 						if (str[k] == '#')
@@ -394,6 +403,8 @@ int	ft_printf(char *str, ...)
 							str++;
 							k--;
 						}
+						e->indll = 0;
+					}
 //						str++;
 //						str++;
 						ft_initialize(e);
@@ -659,7 +670,16 @@ int	ft_printf(char *str, ...)
 				cnt++;
 			}
 			if (*str != 0)
-				str++;
+			{
+				if (e->indll == 1)
+				{
+					str++;
+					str++;
+					e->indll = 0;
+				}
+				else
+					str++;
+			}
 		}
 	}
 

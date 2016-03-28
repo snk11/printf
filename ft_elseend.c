@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 13:55:41 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/15 13:16:56 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/28 22:40:15 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int		ft_elseend(char *str,t_numb *e)
 	int	cnt;
 
 	cnt = 0;
-	if (e->indletter == 1)
-		cnt = cnt + ft_elseend1(str,e,' ');
+//	if (e->indletter == 1)
+//		cnt = cnt + ft_elseend1(str,e,' ');
 	if (e->indzero == 1)
 	{
 		cnt = cnt + ft_elseend1(str,e,'0');

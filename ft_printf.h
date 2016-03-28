@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/28 03:17:47 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/28 22:13:22 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct			s_numb
 	int					indzero;
 	int					indminus;
 	int					indpr;
+	int					indll;
 	int					w;
 	int					cnt1;
 	int					ret1;
