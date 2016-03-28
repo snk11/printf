@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/22 00:43:58 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/28 03:42:51 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/28 05:22:29 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		ft_checku(char *str,t_numb *e)
 
 	cnt = 0;
 //	printf("minus = %d\n",e->indminus);
-	i = ft_count(e->u);
+	i = ft_count2(e->u);
 //	if (e->d == 0 && e->indpr == 1 && e->indzero == 0)
 	if (e->u == 0)
 		e->valzero = 1;
@@ -59,7 +59,7 @@ int	ft_putunbr(unsigned int n,t_numb *e)
 
 	i = 0;
 	r1 = 0;
-	i = ft_count(n);
+	i = ft_count2(n);
 	if (e->valzero == 0)
 	{
 		if (n == UINT_MAX)
@@ -99,14 +99,25 @@ int	ft_putunbr(unsigned int n,t_numb *e)
 		}
 		else
 		{
-			while(e->w - 1 > 0)
+			if (e->indminus == 0)
 			{
-				ft_putchar(' ');
-				r1++;
-				e->w--;
+				if (e->w == 0)
+				{
+					ft_putchar('0');
+					r1++;
+				}
+				while (e->w)
+				{
+					e->w--;
+					ft_putchar('0');
+					r1++;
+				}
 			}
-			ft_putchar('0');
-			r1++;
+			else if (e->indminus == 1)
+			{
+				ft_putchar('0');
+				r1++;
+			}
 		}
 	}
 	return (r1);
@@ -120,14 +131,7 @@ int	ft_putunbr1(unsigned int n,t_numb *e)
 
 	i = 0;
 	r1 = 0;
-	i = ft_count(n);
-			if (n < 0 )
-			{
-				if (e->indzero == 1 && e->w > i && e->pr == 0 && e->indminus == 0)
-				{
-				}
-				n = -n;
-			}
+	i = ft_count2(n);
 			if (n >= 10)
 			{
 				r1 = r1 + ft_putunbr(n / 10,e);
@@ -149,7 +153,7 @@ int	ft_putunbr2(unsigned int n,t_numb *e)
 
 	i = 0;
 	r1 = 0;
-	i = ft_count(n);
+	i = ft_count2(n);
 		r1 = r1 + ft_putunbr2a(n,e);
 	return (r1);
 }
@@ -162,7 +166,7 @@ int	ft_putunbr2a(unsigned int n,t_numb *e)
 
 	i = 0;
 	r1 = 0;
-	i = ft_count(n);
+	i = ft_count2(n);
 		if (n >= 10)
 		{
 			r1 = r1 + ft_putunbr2(n / 10,e);
@@ -184,7 +188,7 @@ int	ft_putunbr2a1(unsigned int n,t_numb *e)
 
 	i = 0;
 	r1 = 0;
-	i = ft_count(n);
+	i = ft_count2(n);
 			if (e->indzero == 1 && e->w > i && e->pr == 0 && e->indminus == 0)
 			{
 			}
@@ -202,12 +206,12 @@ int		ft_checku1(t_numb *e)
 	int	i;
 
 	cnt = 0;
-	i = ft_count(e->u);
-	if ((e->indplus == 1 && e->indminus == 0 && e->d < 0) || (e->indplus == 1 && e->indminus == 1 && e->d > 0) )
+	i = ft_count2(e->u);
+	if ((e->indplus == 1 && e->indminus == 0 && e->u < 0) || (e->indplus == 1 && e->indminus == 1 && e->u > 0) )
 		e->w--;
 	if (e->indpr == 1)
 		cnt = cnt + ft_checku1a(e);
-	cnt = cnt + ft_putunbr(e->d,e);
+	cnt = cnt + ft_putunbr(e->u,e);
 	cnt = cnt + ft_checku1b(e);
 	return (cnt);
 }
@@ -219,13 +223,13 @@ int		ft_checku1a(t_numb *e)
 	int	j;
 
 	cnt = 0;
-	i = ft_count(e->d);
+	i = ft_count2(e->u);
 		j = 0;
 		if (i > e->pr)
 			cnt = cnt + ft_checku1a1(e);
 		else if (i <= e->pr)
 		{
-			while(j < abs(i - e->pr))
+			while(j < e->pr - i)
 			{
 				ft_putchar('0');
 				cnt++;
@@ -242,10 +246,10 @@ int		ft_checku1a1(t_numb *e)
 	int	j;
 
 	cnt = 0;
-	i = ft_count(e->d);
+	i = ft_count2(e->u);
 		j = 0;
 
-			while(j < abs(i- 1 - e->pr))
+			while(j < (i- 1 - e->pr))
 			{
 				ft_putchar('0');
 				cnt++;
@@ -261,7 +265,7 @@ int		ft_checku1b(t_numb *e)
 	int	j;
 
 	cnt = 0;
-	i = ft_count(e->d);
+	i = ft_count2(e->u);
 	if (i > e->pr)
 		cnt = cnt + ft_checku1b1(e);
 	else if (i <= e->pr)
@@ -284,7 +288,7 @@ int		ft_checku1b1(t_numb *e)
 	int	j;
 
 	cnt = 0;
-	i = ft_count(e->d);
+	i = ft_count2(e->u);
 		j = 0;
 		while(j < e->w - i)
 		{

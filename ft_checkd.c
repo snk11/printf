@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 20:30:57 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/28 03:29:03 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/28 05:17:20 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,23 +110,50 @@ int	ft_putnbr(int n,t_numb *e)
 		}
 		else
 		{
-			if (e->indplus == 1)
+			if (e->indminus == 0)
 			{
+				if (e->indplus == 1)
+				{
+					e->w--;
+				}
+				if (e->indspace== 1)
+				{
+					e->w--;
+				}
+//			j = 0;
+//			while( j < e->w - 1)
+//			{
+//				ft_putchar(' ');
+//				r1++;
+//				j++;
+//			}
+				if (e->indspace == 1)
+				{
+					ft_putchar(' ');
+					r1++;
+				}
+				if (e->indplus == 1 && e->indminus == 0)
+				{
+					ft_putchar('+');
+					r1++;
+				}
+				if (e->w == 0)
+				{
+					ft_putchar('0');
+					r1++;
+				}
+				while (e->w)
+				{
 				e->w--;
-			}
-			while(e->w - 1 > 0)
-			{
-				ft_putchar(' ');
-				r1++;
-				e->w--;
-			}
-			if (e->indplus == 1 && e->indminus == 0)
-			{
-				ft_putchar('+');
-				r1++;
-			}
 				ft_putchar('0');
 				r1++;
+				}
+			}
+			else if (e->indminus == 1)
+			{
+				ft_putchar('0');
+				r1++;
+			}
 		}
 	}
 	return (r1);
@@ -268,7 +295,7 @@ int		ft_checkd1a(t_numb *e)
 			cnt = cnt + ft_checkd1a1(e);
 		else if (i <= e->pr)
 		{
-			while(j < abs(i - e->pr))
+			while(j < (e->pr - i))
 			{
 				ft_putchar('0');
 				cnt++;
@@ -288,7 +315,7 @@ int		ft_checkd1a1(t_numb *e)
 	i = ft_count(e->d);
 		j = 0;
 
-			while(j < abs(i- 1 - e->pr))
+			while(j < (i- 1 - e->pr))
 			{
 				ft_putchar('0');
 				cnt++;
