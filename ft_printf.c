@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/29 01:54:22 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/29 03:06:50 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,30 @@ int	ft_printf(char *str, ...)
 					str++;
 				}
 
+				else if (*str == 'l' && (str[1] == 'h' ) && (str[2] == 'l' || str[2] == 'h'))
+				{
+					str++;
+					str++;
+				}
+				else if (*str == 'l' && (str[1] == 'h' ) && str[2] == 'l' && str[3] == 'z')
+				{
+					str++;
+					str++;
+					str++;
+				}
+				else if (*str == 'z' && str[1] == 'j')
+				{
+					str++;
+				}
+				else if (*str == 'h' && (str[1] == 'h' ) && str[2] == 'l' && str[3] == 'd')
+				{
+					ld = va_arg(ap,long);
+					ft_putldnbr(ld);
+					cnt = cnt + ft_countld(ld);
+					str++;
+					str++;
+					str++;
+				}
 				else if (*str == 'l' && (str[1] == 'd' || str[1] == 'i'))
 				{
 					ld = va_arg(ap,long);

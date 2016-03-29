@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 12:09:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/28 01:16:30 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/29 03:02:55 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,24 @@ void		ft_altprime1(char **str,t_numb *e)
 	int	i;
 	char	*begi;
 
+	
 	if (**str && (*str)[1])
 		(*str)++;
 	else
 		e->indlast = 1;
+	if ((**str == 'l' || **str == 'h') && ((*str)[1] == 'l' || (*str)[1] == 'h' ) && ((*str)[2] == 'l' || (*str)[2] == 'h'))
+	{
+		(*str)++;
+		(*str)++;
+		(*str)++;
+		if (**str == 'z')
+			(*str)++;
+	}
+	else if (**str == 'z' && (*str)[1] == 'j')
+	{
+		(*str)++;
+		(*str)++;
+	}
 	i = 0;
 	begi = NULL;
 	begi = ft_getfield(*str);
