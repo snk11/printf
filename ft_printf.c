@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/28 23:51:02 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/29 01:54:22 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ int	ft_printf(char *str, ...)
 	{
 		while (*str != 0)
 		{
-			if ( *str == '%' || e->ind2 == 1)
+			if ( *str == '%' || e->indperc == 1)
 			{
 				if (*str)
 					str++;
-				if (e->ind2 == 1)
+				if (e->indperc == 1)
 				{
 					str--;
 				}
@@ -134,6 +134,25 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_checkbo(str,e);
 					ft_initialize(e);
 				}
+
+				else if (*str == 'z' && (str[1] == 'h' || str[1] == 'i') && str[2] == 'd')
+				{
+					e->z = va_arg(ap, size_t);
+					ft_putznbr(e->z,e);
+//					cnt = cnt + ft_countz(e,e->z);
+					str++;
+					str++;
+				}
+
+				else if (*str == 'j' && (str[1] == 'z' || str[1] == 'h') && str[2] == 'd')
+				{
+					e->j = va_arg(ap, intmax_t);
+					ft_putjnbr(e->j,e);
+//					cnt = cnt + ft_countz(e,e->z);
+					str++;
+					str++;
+				}
+
 				else if (*str == 'l' && (str[1] == 'd' || str[1] == 'i'))
 				{
 					ld = va_arg(ap,long);
@@ -642,7 +661,7 @@ int	ft_printf(char *str, ...)
 				}
 				else if ((*str >= '0' && *str <= '9') || *str == '-' ||*str == '+' || *str == '.' || *str == ' ' || *str == '#')
 				{
-					if (e->ind2 == 0)
+					if (e->indperc == 0)
 					{
 						e->begi = NULL;
 						e->begi = ft_getfield(str);
@@ -655,7 +674,7 @@ int	ft_printf(char *str, ...)
 						free(e->begi);
 						e->begi = NULL;
 					}
-					e->ind2 = 1;
+					e->indperc = 1;
 				}
 				else
 				{

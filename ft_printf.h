@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/28 22:13:22 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/29 01:53:59 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct			s_numb
 	int					indminus;
 	int					indpr;
 	int					indll;
+	int					indperc;
 	int					w;
 	int					cnt1;
 	int					ret1;
@@ -37,6 +38,8 @@ typedef struct			s_numb
 	int					prbegi;
 	int					d;
 	int					g;
+	size_t				z;
+	intmax_t			j;
 	short int			sd;
 	long				l;
 	unsigned int		u;
@@ -452,6 +455,18 @@ int		ft_checkbo21a42a(char *str,t_numb *e);
 int		ft_checkbo21a42a1(char *str,t_numb *e);
 int		ft_checkbo21a42b(char *str,t_numb *e);
 int		ft_checkbo21a1(char *str,t_numb *e);
+int	ft_putznbr(size_t n,t_numb *e);
+int	ft_putznbr1(size_t n,t_numb *e);
+int	ft_putznbr2(size_t n,t_numb *e);
+int	ft_putznbr2a(size_t n,t_numb *e);
+int	ft_putznbr2a1(size_t n,t_numb *e);
+int	ft_count3(size_t n);
+int	ft_putjnbr(intmax_t n,t_numb *e);
+int	ft_putjnbr1(intmax_t n,t_numb *e);
+int	ft_putjnbr2(intmax_t n,t_numb *e);
+int	ft_putjnbr2a(intmax_t n,t_numb *e);
+int	ft_count4(intmax_t n);
+
 
 
 #endif
