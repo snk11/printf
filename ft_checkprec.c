@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 14:19:17 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 06:02:07 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/29 04:37:08 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int		ft_checkprec(t_numb *e,char *s)
 	begi = &s[1];
 	if (*s == '.')
 	{
-		e->indpr = 1;
 		return ft_atoi(begi);
 	}
 	return 0;

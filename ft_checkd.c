@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 20:30:57 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/29 04:14:27 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/29 04:48:18 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -315,12 +315,12 @@ int		ft_checkd1a1(t_numb *e)
 	i = ft_count(e->d);
 		j = 0;
 
-			while(j < (i- 1 - e->pr))
-			{
-				ft_putchar('0');
-				cnt++;
-				j++;
-			}
+//			while(j < (i- 1 - e->pr))
+//			{
+//				ft_putchar('0');
+//				cnt++;
+//				j++;
+//			}
 	return (cnt);
 }
 
@@ -413,7 +413,6 @@ int		ft_countd3(t_numb *e,t_count *f)
 {
 	int		j;
 	int		r1;
-
 	r1 = 0;
 	if (e->w > f->i)
 		r1 = r1 + ft_countd342a(e,f);
@@ -557,7 +556,6 @@ int	ft_countd3a1(t_numb *e,t_count *f)
 int	ft_countd3a142(t_numb *e,t_count *f)
 {
 	int	r1;
-
 	r1 = 0;
 		if (e->indspace == 1)
 			e->w--;
