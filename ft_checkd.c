@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 20:30:57 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/28 06:08:40 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/29 04:14:27 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -442,6 +442,16 @@ int		ft_countd342a1(t_numb *e,t_count *f)
 	int		r1;
 
 	r1 = 0;
+	j = 0;
+	if (e->indpr == 1)
+	{
+		while (j < e->w - f->i)
+		{
+			ft_putchar(' ');
+			r1++;
+			j++;
+		}
+	}
 			r1 = r1 +ft_countd342a1a(e,f);
 			if (e->indzero == 1 && e->indpr == 0)
 			{
@@ -464,16 +474,16 @@ int		ft_countd342a1a(t_numb *e,t_count *f)
 	r1 = 0;
 			ft_putchar('-');
 			r1++;
-			if (e->indpr == 1)
-			{
-				j = 0;
-				while(j < f->i - e->pr)
-				{
-					ft_putchar('0');
-					r1++;
-					j++;
-				}
-			}
+//			if (e->indpr == 1)
+//			{
+//				j = 0;
+//				while(j < f->i - e->pr)
+//				{
+//					ft_putchar('0');
+//					r1++;
+//					j++;
+//				}
+//			}
 	return (r1);
 }
 
@@ -556,11 +566,23 @@ int	ft_countd3a142(t_numb *e,t_count *f)
 			ft_putchar(' ');
 			r1++;
 		}
-		while(e->w - f->i > 0)
+		if(e->indpr == 1)
 		{
-			ft_putchar('0');
-			r1++;
-			e->w--;
+			while(e->w - f->i > 0)
+			{
+				ft_putchar(' ');
+				r1++;
+				e->w--;
+			}
+		}
+		else if(e->indpr == 0)
+		{
+			while(e->w - f->i > 0)
+			{
+				ft_putchar('0');
+				r1++;
+				e->w--;
+			}
 		}
 	return (r1);
 }
