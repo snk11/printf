@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/29 03:06:50 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/04 22:11:38 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -389,64 +389,200 @@ int	ft_printf(char *str, ...)
 					if (str[k] && str[k] == 'x')
 					{
 						k = 2;
-					while (ft_checkletter(str[k]) != 1 && str[k])
-					{
-						if (str[k] == '#')
-							e->indsharp = 1;
-						if( ((str[k] < '0' || str[k] > '9') && str[k] != ' ' && str[k] != '+' && str[k] != '-' && str[k] != '.' && str[k] != '#'))
+						while (ft_checkletter(str[k]) != 1 && str[k])
 						{
-							ft_putchar(str[k]);
+							if (str[k] == '#')
+								e->indsharp = 1;
+							if( ((str[k] < '0' || str[k] > '9') && str[k] != ' ' && str[k] != '+' && str[k] != '-' && str[k] != '.' && str[k] != '#'))
+							{
+								ft_putchar(str[k]);
+								cnt++;
+								k2++;
+							}
+							k++;
+						}
+						if (k2 == 0)
+						{
+							ull = va_arg(ap, unsigned long long);
+							s2 = ft_ltohex4(ull);
+							if (e->indsharp == 1 && ull != 0)
+							{
+								s3 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
+								s3[0] = '0';
+								s3[1] = 'x';
+								i = 2;
+								while (i <= ft_strlen(s2) + 2)
+								{
+									s3[i] = s2[i - 2];
+									i++;
+								}
+								free(s2);
+								s2 = s3;
+							}
+							if (ull >= 4294967296 && ull <= 4563402751)
+							{
+								s4 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
+								s4[0] = '1';
+								i = 1;
+								while (i <= ft_strlen(s2) + 2)
+								{
+									s4[i] = s2[i - 1];
+									i++;
+								}
+								free(s2);
+								s2 = s4;
+							}
+							e->s = s2;
+							cnt = cnt + ft_checks(str,e);
+						}
+						else if (str[k] == 'x')
+						{
+							ft_putchar('x');
 							cnt++;
-							k2++;
 						}
-						k++;
-					}
-					if (k2 == 0)
-					{
-						ull = va_arg(ap, unsigned long long);
-						s2 = ft_ltohex4(ull);
-						if (e->indsharp == 1 && ull != 0)
-						{
-							s3 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
-							s3[0] = '0';
-							s3[1] = 'x';
-							i = 2;
-							while (i <= ft_strlen(s2) + 2)
-							{
-								s3[i] = s2[i - 2];
-								i++;
-							}
-							free(s2);
-							s2 = s3;
-						}
-						if (ull >= 4294967296 && ull <= 4563402751)
-						{
-							s4 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
-							s4[0] = '1';
-							i = 1;
-							while (i <= ft_strlen(s2) + 2)
-							{
-								s4[i] = s2[i - 1];
-								i++;
-							}
-							free(s2);
-							s2 = s4;
-						}
-						e->s = s2;
-						cnt = cnt + ft_checks(str,e);
-					}
-					else if (str[k] == 'x')
-					{
-						ft_putchar('x');
-						cnt++;
-					}
 //						k--;
-						while(k > 0)
+							while(k > 0)
+							{
+								str++;
+								k--;
+							}
+							e->indll = 0;
+					}
+					else if (str[k] && str[k] == 'X')
+					{
+						k = 2;
+						while (ft_checkletter(str[k]) != 1 && str[k])
 						{
-							str++;
-							k--;
+							if (str[k] == '#')
+								e->indsharp = 1;
+							if( ((str[k] < '0' || str[k] > '9') && str[k] != ' ' && str[k] != '+' && str[k] != '-' && str[k] != '.' && str[k] != '#'))
+							{
+								ft_putchar(str[k]);
+								cnt++;
+								k2++;
+							}
+							k++;
 						}
-						e->indll = 0;
+						if (k2 == 0)
+						{
+							ull = va_arg(ap, unsigned long long);
+							s2 = ft_ltohex5(ull);
+							if (e->indsharp == 1 && ull != 0)
+							{
+								s3 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
+								s3[0] = '0';
+								s3[1] = 'X';
+								i = 2;
+								while (i <= ft_strlen(s2) + 2)
+								{
+									s3[i] = s2[i - 2];
+									i++;
+								}
+								free(s2);
+								s2 = s3;
+							}
+							if (ull >= 4294967296 && ull <= 4563402751)
+							{
+								s4 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
+								s4[0] = '1';
+								i = 1;
+								while (i <= ft_strlen(s2) + 2)
+								{
+									s4[i] = s2[i - 1];
+									i++;
+								}
+								free(s2);
+								s2 = s4;
+							}
+							e->s = s2;
+							cnt = cnt + ft_checks(str,e);
+						}
+						else if (str[k] == 'X')
+						{
+							ft_putchar('X');
+							cnt++;
+						}
+//						k--;
+							while(k > 0)
+							{
+								str++;
+								k--;
+							}
+							e->indll = 0;
+					}
+					else if (str[k] && str[k] == 'O')
+					{
+						k = 2;
+						while (ft_checkletter(str[k]) != 1 && str[k])
+						{
+							if (str[k] == '#')
+								e->indsharp = 1;
+							if( ((str[k] < '0' || str[k] > '9') && str[k] != ' ' && str[k] != '+' && str[k] != '-' && str[k] != '.' && str[k] != '#'))
+							{
+								ft_putchar(str[k]);
+								cnt++;
+								k2++;
+							}
+							k++;
+						}
+						if (k2 == 0)
+						{
+							us = va_arg(ap, unsigned short);
+							s2 = ft_ltooct3(us);
+							ft_putstr(s2);
+							cnt = cnt + ft_strlen(s2);
+						}
+						else if (str[k] == 'O')
+						{
+							ft_putchar('O');
+							cnt++;
+						}
+//						k--;
+							while(k > 0)
+							{
+								str++;
+								k--;
+							}
+							e->indll = 0;
+					}
+					else if ((str[k] && str[k] == 'U') || (str[k] && str[k] == 'D'))
+					{
+						k = 2;
+						while (ft_checkletter(str[k]) != 1 && str[k])
+						{
+							if (str[k] == '#')
+								e->indsharp = 1;
+							if( ((str[k] < '0' || str[k] > '9') && str[k] != ' ' && str[k] != '+' && str[k] != '-' && str[k] != '.' && str[k] != '#'))
+							{
+								ft_putchar(str[k]);
+								cnt++;
+								k2++;
+							}
+							k++;
+						}
+						if (k2 == 0)
+						{
+							us = va_arg(ap, unsigned short);
+							ft_putushortnbr(us);
+							cnt = cnt + ft_countus(us);
+						}
+						else if (str[k] == 'U')
+						{
+							ft_putchar('U');
+							cnt++;
+						}
+						else if (str[k] == 'D')
+						{
+							ft_putchar('D');
+							cnt++;
+						}
+//						k--;
+							while(k > 0)
+							{
+								str++;
+								k--;
+							}
+							e->indll = 0;
 					}
 //						str++;
 //						str++;
@@ -539,6 +675,7 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_checks(str,e);
 					str++;
 				}
+				/*
 				else if (*str == 'l' && str[1] == 'l' && str[2] == 'X')
 				{
 					ull = va_arg(ap, unsigned long long);
@@ -575,6 +712,7 @@ int	ft_printf(char *str, ...)
 					str++;
 					str++;
 				}
+				*/
 				else if (*str == 'h' && str[1] == 'h' && str[2] == 'X')
 				{
 					uc = va_arg(ap, unsigned char);
@@ -634,6 +772,7 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_strlen(s2);
 					str++;
 				}
+				/*
 				else if (*str == 'l' && str[1] == 'l' && str[2] == 'O')
 				{
 					us = va_arg(ap, unsigned short);
@@ -643,6 +782,7 @@ int	ft_printf(char *str, ...)
 					str++;
 					str++;
 				}
+				*/
 				else if (*str == 'h' && str[1] == 'h' && str[2] == 'O')
 				{
 					us = va_arg(ap, unsigned short);
@@ -659,6 +799,7 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_countus(us);
 					str++;
 				}
+				/*
 				else if (*str == 'l' && str[1] == 'l' && (str[2] == 'U' || str[2] == 'D'))
 				{
 					us = va_arg(ap, unsigned short);
@@ -667,6 +808,7 @@ int	ft_printf(char *str, ...)
 					str++;
 					str++;
 				}
+				*/
 				else if (*str == 'h' && str[1] == 'h' && (str[2] == 'U' || str[2] == 'D'))
 				{
 					us = va_arg(ap, unsigned short);
