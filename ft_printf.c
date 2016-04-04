@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/04 22:11:38 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/04 22:24:01 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'z' && (str[1] == 'h' || str[1] == 'i') && str[2] == 'd')
 				{
 					e->z = va_arg(ap, size_t);
-					ft_putznbr(e->z,e);
+					cnt = cnt + ft_putznbr(e->z,e);
 //					cnt = cnt + ft_countz(e,e->z);
 					str++;
 					str++;
@@ -147,7 +147,7 @@ int	ft_printf(char *str, ...)
 				else if (*str == 'j' && (str[1] == 'z' || str[1] == 'h') && str[2] == 'd')
 				{
 					e->j = va_arg(ap, intmax_t);
-					ft_putjnbr(e->j,e);
+					cnt = cnt + ft_putjnbr(e->j,e);
 //					cnt = cnt + ft_countz(e,e->z);
 					str++;
 					str++;
