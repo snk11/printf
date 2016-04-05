@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/04 22:24:01 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/05 02:34:36 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ int	ft_printf(char *str, ...)
 //					cnt = cnt + ft_countz(e,e->z);
 					str++;
 					str++;
+					ft_initialize(e);
 				}
 
 				else if (*str == 'j' && (str[1] == 'z' || str[1] == 'h') && str[2] == 'd')
@@ -151,12 +152,15 @@ int	ft_printf(char *str, ...)
 //					cnt = cnt + ft_countz(e,e->z);
 					str++;
 					str++;
+					ft_initialize(e);
 				}
-
-				else if (*str == 'l' && (str[1] == 'h' ) && (str[2] == 'l' || str[2] == 'h'))
+/*
+				else if ((*str == 'l' || *str == 'h' || *str == 'z' || *str == 'j') && (str[1] == 'h' || str[1] == 'l' || str[1] == 'z' || str[1] == 'j' ) && (str[2] == 'l' || str[2] == 'h' || str[2] == 'z' || str[2] == 'j') && str[3] != 'd')
 				{
 					str++;
 					str++;
+					while(((*str == 'l' || *str == 'h') && str[1] != 'd' )|| *str == 'z'|| *str == 'j' )
+						str++;
 				}
 				else if (*str == 'l' && (str[1] == 'h' ) && str[2] == 'l' && str[3] == 'z')
 				{
@@ -177,12 +181,14 @@ int	ft_printf(char *str, ...)
 					str++;
 					str++;
 				}
+				*/
 				else if (*str == 'l' && (str[1] == 'd' || str[1] == 'i'))
 				{
 					ld = va_arg(ap,long);
 					ft_putldnbr(ld);
 					cnt = cnt + ft_countld(ld);
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'h' && (str[1] == 'd' || str[1] == 'i'))
 				{
@@ -190,6 +196,7 @@ int	ft_printf(char *str, ...)
 					ft_putsdnbr(sd);
 					cnt = cnt + ft_countsd(sd);
 					str++;
+					ft_initialize(e);
 				}
 				else if ((*str == 'j' || *str == 'z') && (str[1] == 'd' || str[1] == 'i'))
 				{
@@ -197,6 +204,7 @@ int	ft_printf(char *str, ...)
 					ft_putllnbr(ll);
 					cnt = cnt + ft_countlld(ll);
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'l' && str[1] == 'l' && (str[2] == 'd' || str[2] == 'i'))
 				{
@@ -205,6 +213,7 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_countlld(ll);
 					str++;
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'h' && str[1] == 'h' && (str[2] == 'd' || str[2] == 'i'))
 				{
@@ -212,6 +221,17 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_putnbr2(c,e);
 					str++;
 					str++;
+					ft_initialize(e);
+				}
+				else if (*str == 'h' && str[1] == 'h' && str[2] == 'l' && (str[3] == 'd' || str[3] == 'i'))
+				{
+					ll  = va_arg(ap, long long);
+					ft_putllnbr(ll);
+					cnt = cnt + ft_countlld(ll);
+					str++;
+					str++;
+					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'l' && str[1] == 'u')
 				{
@@ -219,6 +239,7 @@ int	ft_printf(char *str, ...)
 					ft_putulongnbr(ul);
 					cnt = cnt + ft_countul(ul);
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'h' && str[1] == 'u')
 				{
@@ -226,6 +247,7 @@ int	ft_printf(char *str, ...)
 					ft_putushortnbr(us);
 					cnt = cnt + ft_countus(us);
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'h' && str[1] == 'U')
 				{
@@ -233,6 +255,7 @@ int	ft_printf(char *str, ...)
 					ft_putulongnbr(ul);
 					cnt = cnt + ft_countul(ul);
 					str++;
+					ft_initialize(e);
 				}
 				else if ((*str == 'j' || *str == 'z') && str[1] == 'u')
 				{
@@ -240,6 +263,7 @@ int	ft_printf(char *str, ...)
 					ft_putulonglongnbr(ull);
 					cnt = cnt + ft_countull(ull);
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'l' && str[1] == 'l' && str[2] == 'u')
 				{
@@ -248,6 +272,7 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_countul(ull);
 					str++;
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'h' && str[1] == 'h' && str[2] == 'u')
 				{
@@ -256,6 +281,7 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_countuc(uc);
 					str++;
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'l' && str[1] == 'o')
 				{
@@ -264,6 +290,7 @@ int	ft_printf(char *str, ...)
 					ft_putstr(s2);
 					cnt = cnt + ft_strlen(s2);
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'h' && str[1] == 'o')
 				{
@@ -272,6 +299,7 @@ int	ft_printf(char *str, ...)
 					ft_putstr(s2);
 					cnt = cnt + ft_strlen(s2);
 					str++;
+					ft_initialize(e);
 				}
 				else if ((*str == 'j' || *str == 'z') && str[1] == 'o')
 				{
@@ -280,6 +308,7 @@ int	ft_printf(char *str, ...)
 					ft_putstr(s2);
 					cnt = cnt + ft_strlen(s2);
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'l' && str[1] == 'l' && str[2] == 'o')
 				{
@@ -289,6 +318,7 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_strlen(s2);
 					str++;
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'h' && str[1] == 'h' && str[2] == 'o')
 				{
@@ -298,6 +328,7 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_strlen(s2);
 					str++;
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'l' && str[1] == 'x')
 				{
@@ -333,6 +364,7 @@ int	ft_printf(char *str, ...)
 					e->s = s2;
 					cnt = cnt + ft_checks(str,e);
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'h' && str[1] == 'x')
 				{
@@ -341,6 +373,7 @@ int	ft_printf(char *str, ...)
 					ft_putstr(s2);
 					cnt = cnt + ft_strlen(s2);
 					str++;
+					ft_initialize(e);
 				}
 				else if ((*str == 'j' || *str == 'z') && str[1] == 'x')
 				{
@@ -376,6 +409,7 @@ int	ft_printf(char *str, ...)
 					e->s = s2;
 					cnt = cnt + ft_checks(str,e);
 						str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'l' && str[1] == 'l')
 				{
@@ -596,6 +630,7 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_strlen(s2);
 					str++;
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'l' && str[1] == 'X')
 				{
@@ -631,6 +666,7 @@ int	ft_printf(char *str, ...)
 					e->s = s2;
 					cnt = cnt + ft_checks(str,e);
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'h' && str[1] == 'X')
 				{
@@ -639,6 +675,7 @@ int	ft_printf(char *str, ...)
 					ft_putstr(s2);
 					cnt = cnt + ft_strlen(s2);
 					str++;
+					ft_initialize(e);
 				}
 				else if ((*str == 'j' || *str == 'z') && str[1] == 'X')
 				{
@@ -674,6 +711,7 @@ int	ft_printf(char *str, ...)
 					e->s = s2;
 					cnt = cnt + ft_checks(str,e);
 					str++;
+					ft_initialize(e);
 				}
 				/*
 				else if (*str == 'l' && str[1] == 'l' && str[2] == 'X')
@@ -721,12 +759,14 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_strlen(s2);
 					str++;
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'l' && str[1] == 'c')
 				{
 					wc = va_arg(ap, wchar_t);
 					cnt = cnt + ft_putwchar(wc);
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'h' && str[1] == 'h' && str[2] == 'C')
 				{
@@ -734,6 +774,7 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_putwchar(wc);
 					str++;
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'l' && str[1] == 's')
 				{
@@ -748,6 +789,7 @@ int	ft_printf(char *str, ...)
 						cnt = cnt + 6;
 					}
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'h' && str[1] == 'h' && str[2] == 'S')
 				{
@@ -763,6 +805,7 @@ int	ft_printf(char *str, ...)
 					}
 					str++;
 					str++;
+					ft_initialize(e);
 				}
 				else if ((*str == 'l' || *str == 'h' || *str == 'j' || *str == 'z') && str[1] == 'O')
 				{
@@ -771,6 +814,7 @@ int	ft_printf(char *str, ...)
 					ft_putstr(s2);
 					cnt = cnt + ft_strlen(s2);
 					str++;
+					ft_initialize(e);
 				}
 				/*
 				else if (*str == 'l' && str[1] == 'l' && str[2] == 'O')
@@ -791,6 +835,7 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_strlen(s2);
 					str++;
 					str++;
+					ft_initialize(e);
 				}
 				else if ((*str == 'l' || *str == 'h' || *str == 'j' || *str == 'z') && (str[1] == 'U' || str[1] == 'D'))
 				{
@@ -798,6 +843,7 @@ int	ft_printf(char *str, ...)
 					ft_putushortnbr(us);
 					cnt = cnt + ft_countus(us);
 					str++;
+					ft_initialize(e);
 				}
 				/*
 				else if (*str == 'l' && str[1] == 'l' && (str[2] == 'U' || str[2] == 'D'))
@@ -816,6 +862,7 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_countus(us);
 					str++;
 					str++;
+					ft_initialize(e);
 				}
 				else if (*str == 'l' && str[1] == 'p')
 				{
@@ -824,6 +871,22 @@ int	ft_printf(char *str, ...)
 					ft_putstr(ft_ltohex(l));
 					cnt = cnt + ft_strlen(ft_ltohex(l)) + 2;
 					str++;
+					ft_initialize(e);
+				}
+				else if ((*str == 'z' || *str == 'j') && (str[1] != 'd' && str[1] != 'i') )
+				{
+//					str++;
+					e->indperc = 1;
+				}
+				else if ((*str == 'h') && (str[1] != 'd' && str[1] != 'i' && str[1] != 'h' && (str[2] != 'd' && str[2] != 'i')) )
+				{
+					e->indperc = 1;
+//					ft_putchar('h');
+				}
+				else if ((*str == 'l') && (str[1] != 'd' && str[1] != 'i' && str[1] != 'l' && (str[2] != 'd' && str[2] != 'i')) )
+				{
+					e->indperc = 1;
+//					ft_putchar('l');
 				}
 				else if ((*str >= '0' && *str <= '9') || *str == '-' ||*str == '+' || *str == '.' || *str == ' ' || *str == '#')
 				{
