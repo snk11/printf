@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/29 01:53:59 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/05 03:43:30 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ typedef struct			s_lst
 	struct s_lst		*next;
 }						t_lst;
 
+int	ft_pow(int n, int p);
 int		ft_strcmp(const char *s1, const char *s2);
 void		*ft_getfield1(char *str,t_field *f);
 void	ft_checkflag1(t_numb *e,char *str,t_flag *f);
@@ -466,6 +467,15 @@ int	ft_putjnbr1(intmax_t n,t_numb *e);
 int	ft_putjnbr2(intmax_t n,t_numb *e);
 int	ft_putjnbr2a(intmax_t n,t_numb *e);
 int	ft_count4(intmax_t n);
+int		ft_case2(char **str,t_numb *e,va_list ap);
+int		ft_case2a(char ***str,t_numb *e,va_list ap);
+int		ft_case2b(char ***str,t_numb *e,va_list ap);
+int		ft_case2c(char ***str,t_numb *e,va_list ap);
+int		ft_case3(char **str,t_numb *e,va_list ap);
+int		ft_case3a(char ***str,t_numb *e,va_list ap);
+int		ft_case3b(char ***str,t_numb *e,va_list ap);
+int		ft_case3c(char ***str,t_numb *e,va_list ap);
+
 
 
 

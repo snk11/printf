@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 01:26:49 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/23 03:49:02 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/05 03:22:46 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,9 +181,9 @@ int		ft_checks1(char *str,t_numb *e)
 	int	cnt;
 
 	cnt = 0;
-	if (e->pr > abs(e->w))
+	if (e->pr > e->w)
 		cnt = cnt + ft_checks1a(str,e);
-	else if(abs(e->w) > e->pr)
+	else if(e->w > e->pr)
 		cnt = cnt + ft_checks1b(str,e);
 	return (cnt);
 }
