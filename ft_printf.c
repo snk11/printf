@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/05 04:02:50 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/05 04:08:44 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,8 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_case2(&str,e,ap);
 				else if (*str == 'U' || *str == 'd' || *str == 'i' || *str == 'D')
 					cnt = cnt + ft_case3(&str,e,ap);
-				else if (*str == 'x' || *str == 'X' || *str == 'o')
+				else if (*str == 'x' || *str == 'X' || *str == 'o' || *str == 'O')
 					cnt = cnt + ft_case4(&str,e,ap);
-				else if (*str == 'O')
-				{
-					e->ul = va_arg(ap,  unsigned long);
-					cnt = cnt + ft_checkbo(str,e);
-					ft_initialize(e);
-				}
 
 				else if (*str == 'z' && (str[1] == 'h' || str[1] == 'i') && str[2] == 'd')
 				{
