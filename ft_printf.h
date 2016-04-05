@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/05 04:07:49 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/05 04:55:01 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ typedef struct			s_numb
 	short int			sd;
 	long				l;
 	unsigned int		u;
+	unsigned short		us;
 	unsigned long		ul;
+	unsigned long long		ull;
 	char				*s;
 	wchar_t				wc;
 	wchar_t				*ss;
@@ -100,6 +102,12 @@ typedef struct			s_field
 	char *s3;
 }						t_field;
 
+typedef struct			s_ll
+{
+	int k;
+	int k2;
+}						t_ll;
+
 typedef struct			s_width
 {
 	int	i;
@@ -115,6 +123,7 @@ typedef struct			s_lst
 	struct s_lst		*next;
 }						t_lst;
 
+int	ft_checkll(char *str, t_numb *e,va_list ap, t_ll *w);
 int	ft_pow(int n, int p);
 int		ft_strcmp(const char *s1, const char *s2);
 void		*ft_getfield1(char *str,t_field *f);
