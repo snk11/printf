@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/05 05:37:11 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/06 08:38:18 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,59 +79,10 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_case3(&str,e,ap);
 				else if (*str == 'x' || *str == 'X' || *str == 'o' || *str == 'O')
 					cnt = cnt + ft_case4(&str,e,ap);
-
-				else if (*str == 'z' && (str[1] == 'h' || str[1] == 'i') && str[2] == 'd')
-				{
-					e->z = va_arg(ap, size_t);
-					cnt = cnt + ft_putznbr(e->z,e);
-//					cnt = cnt + ft_countz(e,e->z);
-					str++;
-					str++;
-					ft_initialize(e);
-				}
-
-				else if (*str == 'j' && (str[1] == 'z' || str[1] == 'h') && str[2] == 'd')
-				{
-					e->j = va_arg(ap, intmax_t);
-					cnt = cnt + ft_putjnbr(e->j,e);
-//					cnt = cnt + ft_countz(e,e->z);
-					str++;
-					str++;
-					ft_initialize(e);
-				}
-				else if (*str == 'l' && (str[1] == 'd' || str[1] == 'i'))
-				{
-					ld = va_arg(ap,long);
-					ft_putldnbr(ld);
-					cnt = cnt + ft_countld(ld);
-					str++;
-					ft_initialize(e);
-				}
-				else if (*str == 'h' && (str[1] == 'd' || str[1] == 'i'))
-				{
-					sd = va_arg(ap,short int);
-					ft_putsdnbr(sd);
-					cnt = cnt + ft_countsd(sd);
-					str++;
-					ft_initialize(e);
-				}
-				else if ((*str == 'j' || *str == 'z') && (str[1] == 'd' || str[1] == 'i'))
-				{
-					ll = va_arg(ap,long long);
-					ft_putllnbr(ll);
-					cnt = cnt + ft_countlld(ll);
-					str++;
-					ft_initialize(e);
-				}
-				else if (*str == 'l' && str[1] == 'l' && (str[2] == 'd' || str[2] == 'i'))
-				{
-					ll = va_arg(ap, long long);
-					ft_putllnbr(ll);
-					cnt = cnt + ft_countlld(ll);
-					str++;
-					str++;
-					ft_initialize(e);
-				}
+				else if ((*str == 'z' && (str[1] == 'h' || str[1] == 'i') && str[2] == 'd') || (*str == 'j' && (str[1] == 'z' || str[1] == 'h') && str[2] == 'd') || (*str == 'l' && (str[1] == 'd' || str[1] == 'i')) )
+					cnt = cnt + ft_case5(&str,e,ap);
+				else if ((*str == 'h' && (str[1] == 'd' || str[1] == 'i')) || ((*str == 'j' || *str == 'z') && (str[1] == 'd' || str[1] == 'i')) || (*str == 'l' && str[1] == 'l' && (str[2] == 'd' || str[2] == 'i')) )
+					cnt = cnt + ft_case6(&str,e,ap);
 				else if (*str == 'h' && str[1] == 'h' && (str[2] == 'd' || str[2] == 'i'))
 				{
 					c = va_arg(ap, char);
