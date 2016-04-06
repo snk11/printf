@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/06 11:58:16 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/06 13:23:42 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,7 +234,6 @@ int	ft_putunbr2(unsigned int n,t_numb *e);
 int	ft_putunbr2a(unsigned int n,t_numb *e);
 int	ft_putunbr2a1(unsigned int n,t_numb *e);
 void	ft_putldnbr(long int n);
-//int ft_checkflag(t_numb *e,char *str);
 char	*ft_getfield(char *str);
 int		ft_checks52a(char *str,t_numb *e);
 int		ft_checks52b(char *str,t_numb *e);
@@ -528,8 +527,27 @@ int		ft_case13(char **str,t_numb *e,va_list ap);
 int		ft_case13a(char ***str,t_numb *e,va_list ap);
 int		ft_case13b(char ***str,t_numb *e,va_list ap);
 int		ft_case13c(char ***str,t_numb *e,va_list ap);
-
-
+int		ft_case14(char **str,t_numb *e,va_list ap);
+int		ft_case14a(char ***str,t_numb *e,va_list ap);
+int		ft_case14b(char ***str,t_numb *e,va_list ap);
+int		ft_case14c(char ***str,t_numb *e,va_list ap);
+int		ft_case15(char **str,t_numb *e,va_list ap);
+int		ft_case15a(char ***str,t_numb *e,va_list ap);
+int		ft_case15b(char ***str,t_numb *e,va_list ap);
+int		ft_case15c(char ***str,t_numb *e,va_list ap);
+int		ft_case16(char **str,t_numb *e,va_list ap);
+int		ft_case16a(char ***str,t_numb *e,va_list ap);
+int		ft_case16b(char ***str,t_numb *e,va_list ap);
+int		ft_case16c(char ***str,t_numb *e,va_list ap);
+int		ft_case17(char **str,t_numb *e,va_list ap);
+int		ft_case17a(char ***str,t_numb *e,va_list ap);
+int		ft_case17b(char ***str,t_numb *e,va_list ap);
+int		ft_case17c(char ***str,t_numb *e,va_list ap);
+int		ft_case17d(char ***str,t_numb *e,va_list ap);
+int		ft_case18(char **str,t_numb *e,va_list ap);
+int		ft_case18a(char ***str,t_numb *e,va_list ap);
+int		ft_case18b(char ***str,t_numb *e,va_list ap);
+int		ft_case18c(char ***str,t_numb *e,va_list ap);
 
 
 
