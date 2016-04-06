@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/06 10:03:39 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/06 11:58:16 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -508,6 +508,26 @@ int		ft_case8(char **str,t_numb *e,va_list ap);
 int		ft_case8a(char ***str,t_numb *e,va_list ap);
 int		ft_case8b(char ***str,t_numb *e,va_list ap);
 int		ft_case8c(char ***str,t_numb *e,va_list ap);
+int		ft_case9(char **str,t_numb *e,va_list ap);
+int		ft_case9a(char ***str,t_numb *e,va_list ap);
+int		ft_case9b(char ***str,t_numb *e,va_list ap);
+int		ft_case9c(char ***str,t_numb *e,va_list ap);
+int		ft_case10(char **str,t_numb *e,va_list ap);
+int		ft_case10a(char ***str,t_numb *e,va_list ap);
+int		ft_case10b(char ***str,t_numb *e,va_list ap);
+int		ft_case10c(char ***str,t_numb *e,va_list ap);
+int		ft_case11(char **str,t_numb *e,va_list ap);
+int		ft_case11a(char ***str,t_numb *e,va_list ap);
+int		ft_case11b(char ***str,t_numb *e,va_list ap);
+int		ft_case11c(char ***str,t_numb *e,va_list ap);
+int		ft_case12(char **str,t_numb *e,va_list ap);
+int		ft_case12a(char ***str,t_numb *e,va_list ap);
+int		ft_case12b(char ***str,t_numb *e,va_list ap);
+int		ft_case12c(char ***str,t_numb *e,va_list ap);
+int		ft_case13(char **str,t_numb *e,va_list ap);
+int		ft_case13a(char ***str,t_numb *e,va_list ap);
+int		ft_case13b(char ***str,t_numb *e,va_list ap);
+int		ft_case13c(char ***str,t_numb *e,va_list ap);
 
 
 
