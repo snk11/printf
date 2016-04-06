@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/06 08:37:26 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/06 10:03:39 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,14 @@ typedef struct			s_numb
 	int					prbegi;
 	int					d;
 	int					g;
+	char				c;
 	size_t				z;
 	intmax_t			j;
 	short int			sd;
 	long				l;
 	long long				ll;
 	unsigned int		u;
+	unsigned char 		uc;
 	unsigned short		us;
 	unsigned long		ul;
 	unsigned long long		ull;
@@ -498,6 +500,14 @@ int		ft_case6(char **str,t_numb *e,va_list ap);
 int		ft_case6a(char ***str,t_numb *e,va_list ap);
 int		ft_case6b(char ***str,t_numb *e,va_list ap);
 int		ft_case6c(char ***str,t_numb *e,va_list ap);
+int		ft_case7(char **str,t_numb *e,va_list ap);
+int		ft_case7a(char ***str,t_numb *e,va_list ap);
+int		ft_case7b(char ***str,t_numb *e,va_list ap);
+int		ft_case7c(char ***str,t_numb *e,va_list ap);
+int		ft_case8(char **str,t_numb *e,va_list ap);
+int		ft_case8a(char ***str,t_numb *e,va_list ap);
+int		ft_case8b(char ***str,t_numb *e,va_list ap);
+int		ft_case8c(char ***str,t_numb *e,va_list ap);
 
 
 

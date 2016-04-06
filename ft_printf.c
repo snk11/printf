@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/06 08:38:18 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/06 10:12:32 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,83 +83,12 @@ int	ft_printf(char *str, ...)
 					cnt = cnt + ft_case5(&str,e,ap);
 				else if ((*str == 'h' && (str[1] == 'd' || str[1] == 'i')) || ((*str == 'j' || *str == 'z') && (str[1] == 'd' || str[1] == 'i')) || (*str == 'l' && str[1] == 'l' && (str[2] == 'd' || str[2] == 'i')) )
 					cnt = cnt + ft_case6(&str,e,ap);
-				else if (*str == 'h' && str[1] == 'h' && (str[2] == 'd' || str[2] == 'i'))
-				{
-					c = va_arg(ap, char);
-					cnt = cnt + ft_putnbr2(c,e);
-					str++;
-					str++;
-					ft_initialize(e);
-				}
-				else if (*str == 'h' && str[1] == 'h' && str[2] == 'l' && (str[3] == 'd' || str[3] == 'i'))
-				{
-					ll  = va_arg(ap, long long);
-					ft_putllnbr(ll);
-					cnt = cnt + ft_countlld(ll);
-					str++;
-					str++;
-					str++;
-					ft_initialize(e);
-				}
-				else if (*str == 'l' && str[1] == 'u')
-				{
-					ul = va_arg(ap, unsigned long);
-					ft_putulongnbr(ul);
-					cnt = cnt + ft_countul(ul);
-					str++;
-					ft_initialize(e);
-				}
-				else if (*str == 'h' && str[1] == 'u')
-				{
-					us = va_arg(ap, unsigned short);
-					ft_putushortnbr(us);
-					cnt = cnt + ft_countus(us);
-					str++;
-					ft_initialize(e);
-				}
-				else if (*str == 'h' && str[1] == 'U')
-				{
-					ul = va_arg(ap, unsigned long);
-					ft_putulongnbr(ul);
-					cnt = cnt + ft_countul(ul);
-					str++;
-					ft_initialize(e);
-				}
-				else if ((*str == 'j' || *str == 'z') && str[1] == 'u')
-				{
-					ull = va_arg(ap, unsigned long long);
-					ft_putulonglongnbr(ull);
-					cnt = cnt + ft_countull(ull);
-					str++;
-					ft_initialize(e);
-				}
-				else if (*str == 'l' && str[1] == 'l' && str[2] == 'u')
-				{
-					ull = va_arg(ap, unsigned long long);
-					ft_putulonglongnbr(ull);
-					cnt = cnt + ft_countul(ull);
-					str++;
-					str++;
-					ft_initialize(e);
-				}
-				else if (*str == 'h' && str[1] == 'h' && str[2] == 'u')
-				{
-					uc = va_arg(ap, unsigned char);
-					ft_putnbr(uc,e);
-					cnt = cnt + ft_countuc(uc);
-					str++;
-					str++;
-					ft_initialize(e);
-				}
-				else if (*str == 'l' && str[1] == 'o')
-				{
-					ul = va_arg(ap, unsigned long);
-					s2 = ft_ltooct2(ul);
-					ft_putstr(s2);
-					cnt = cnt + ft_strlen(s2);
-					str++;
-					ft_initialize(e);
-				}
+				else if ((*str == 'h' && str[1] == 'h' && (str[2] == 'd' || str[2] == 'i')) || (*str == 'h' && str[1] == 'h' && str[2] == 'l' && (str[3] == 'd' || str[3] == 'i')) || (*str == 'l' && str[1] == 'u') )
+					cnt = cnt + ft_case7(&str,e,ap);
+				else if ((*str == 'h' && str[1] == 'u') || (*str == 'h' && str[1] == 'U') || ((*str == 'j' || *str == 'z') && str[1] == 'u'))
+					cnt = cnt + ft_case8(&str,e,ap);
+				else if ((*str == 'l' && str[1] == 'l' && str[2] == 'u') || (*str == 'h' && str[1] == 'h' && str[2] == 'u') || (*str == 'l' && str[1] == 'o'))
+					cnt = cnt + ft_case9(&str,e,ap);
 				else if (*str == 'h' && str[1] == 'o')
 				{
 					us = va_arg(ap, unsigned short);
