@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:53:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/06 15:15:57 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/18 11:40:09 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,32 +38,7 @@ int	ft_printf(char *str, ...)
 	{
 		while (*str != 0)
 		{
-			if ( *str == '%' || e->indperc == 1)
-			{
-				if (*str)
-					str++;
-				if (e->indperc == 1)
-				{
-					str--;
-				}
-				if (*str == 0)
-					e->indelsif = 1;
-				cnt = cnt + ft_elsif1(&str,e,ap);
-				cnt = cnt + ft_elsif2(&str,e,ap);
-				cnt = cnt + ft_elsif3(&str,e,ap);
-				if (e->indelsif == 0)
-				{
-					cnt = cnt + ft_elseend(str,e);
-					cnt++;
-					ft_initialize(e);
-				}
-				e->indelsif = 0;
-			}
-			else
-			{
-				ft_putchar(*str);
-				cnt++;
-			}
+			cnt = cnt + ft_p1(&str,e,ap);
 			if (*str != 0)
 			{
 				if (e->indll == 1)

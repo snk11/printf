@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 13:41:57 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/06 15:14:27 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/18 11:56:16 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 # include "ft_printf.h"
 
 
-int		ft_case18(char ***str,t_numb *e,va_list ap)
+int		ft_case18(char ****str,t_numb *e,va_list ap)
 {
 	int		cnt;
 
 	cnt = 0;
-	if ((***str >= '0' && ***str <= '9') || ***str == '-' ||***str == '+' || ***str == '.' || ***str == ' ' || ***str == '#')
+	if ((****str >= '0' && ****str <= '9') || ****str == '-' ||****str == '+' || ****str == '.' || ****str == ' ' || ****str == '#')
 	{
 		cnt = 0;
 		if (e->indperc == 0)
 		{
 			e->begi = NULL;
-			e->begi = ft_getfield(**str);
+			e->begi = ft_getfield(***str);
 			if (e->w == 0 && e->begi)
 				e->w = ft_checkwidth(e,e->begi);
 			if (e->pr == 0 && e->begi)
