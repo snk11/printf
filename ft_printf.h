@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/26 16:47:39 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/26 17:19:01 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,9 @@ void		ft_checkwidth1(char *str,t_width *w,t_numb *e);
 void		ft_checkwidth2(char *str,t_width *w);
 int	ft_putnbr(int n,t_numb *e);
 int	ft_putnbr1(int n,t_numb *e);
+int	ft_putnbr42(t_numb *e);
+int	ft_putnbr42a(t_numb *e);
+int	ft_putnbr42b(t_numb *e);
 int	ft_putnbr2(int n,t_numb *e);
 int	ft_putnbr2a(int n,t_numb *e);
 int	ft_putnbr2a1(int n,t_numb *e);
