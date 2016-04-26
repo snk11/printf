@@ -6,29 +6,28 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 10:20:04 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/18 11:33:38 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/26 13:08:12 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 
-# include "ft_printf.h"
-
-
-int		ft_case15(char ****str,t_numb *e,va_list ap)
+int		ft_case15(char ****str, t_numb *e, va_list ap)
 {
 	int		cnt;
 
 	cnt = 0;
 	if (****str == 'l' && (***str)[1] == 's')
-		cnt = cnt + ft_case15a(&str,e,ap);
+		cnt = cnt + ft_case15a(&str, e, ap);
 	else if (****str == 'h' && (***str)[1] == 'h' && (***str)[2] == 'S')
-		cnt = cnt + ft_case15b(&str,e,ap);
-	else if ((****str == 'l' || ****str == 'h' || ****str == 'j' || ****str == 'z') && (***str)[1] == 'O')
-		cnt = cnt + ft_case15c(&str,e,ap);
+		cnt = cnt + ft_case15b(&str, e, ap);
+	else if ((****str == 'l' || ****str == 'h' || ****str == 'j'
+				|| ****str == 'z') && (***str)[1] == 'O')
+		cnt = cnt + ft_case15c(&str, e, ap);
 	return (cnt);
 }
 
-int		ft_case15a(char *****str,t_numb *e,va_list ap)
+int		ft_case15a(char *****str, t_numb *e, va_list ap)
 {
 	int	cnt;
 
@@ -49,7 +48,7 @@ int		ft_case15a(char *****str,t_numb *e,va_list ap)
 	return (cnt);
 }
 
-int		ft_case15b(char *****str,t_numb *e,va_list ap)
+int		ft_case15b(char *****str, t_numb *e, va_list ap)
 {
 	int	cnt;
 
@@ -71,13 +70,13 @@ int		ft_case15b(char *****str,t_numb *e,va_list ap)
 	return (cnt);
 }
 
-int		ft_case15c(char *****str,t_numb *e,va_list ap)
+int		ft_case15c(char *****str, t_numb *e, va_list ap)
 {
-	int	cnt;
+	int		cnt;
 	char	*s2;
 
 	cnt = 0;
-	e->us = va_arg(ap, unsigned short);
+	e->us = va_arg(ap, unsigned int);
 	s2 = ft_ltooct3(e->us);
 	ft_putstr(s2);
 	cnt = cnt + ft_strlen(s2);
@@ -88,4 +87,3 @@ int		ft_case15c(char *****str,t_numb *e,va_list ap)
 	e->indelsif = 1;
 	return (cnt);
 }
-
