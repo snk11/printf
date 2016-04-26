@@ -6,12 +6,11 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 20:30:57 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/29 04:48:18 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/26 16:52:30 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
-
+#include "ft_printf.h"
 
 int		ft_checkd(char *str,t_numb *e)
 {
@@ -20,9 +19,7 @@ int		ft_checkd(char *str,t_numb *e)
 	int		i;
 
 	cnt = 0;
-//	printf("minus = %d\n",e->indminus);
 	i = ft_count(e->d);
-//	if (e->d == 0 && e->indpr == 1 && e->indzero == 0)
 	if (e->d == 0)
 		e->valzero = 1;
 	if(e->indminus == 1)
@@ -32,13 +29,6 @@ int		ft_checkd(char *str,t_numb *e)
 		if(e->valzero == 1)
 		{
 			cnt = cnt + ft_putnbr(e->d,e);
-//			if(e->indplus == 1)
-//			{
-//				ft_putchar('+');
-//				cnt++;
-//			}
-//			ft_putchar('0');
-//			cnt++;
 		}
 		else
 		{
@@ -49,7 +39,6 @@ int		ft_checkd(char *str,t_numb *e)
 	ft_initialize(e);
 	return (cnt);
 }
-
 
 int	ft_putnbr(int n,t_numb *e)
 {
@@ -72,16 +61,6 @@ int	ft_putnbr(int n,t_numb *e)
 		else
 			r1 = r1 + ft_putnbr1(n,e);
 	}
-//	else if (e->valzero == 1 && e->pr == 0 && e->w != 0)
-//	{
-//		ft_putchar(' ');
-//		r1++;
-//	}
-//	else if (e->valzero == 1 && e->pr == 0 && e->w == 0)
-//	{
-//		ft_putchar('0');
-//		r1++;
-//	}
 	else if (e->valzero == 1)
 	{
 		if (e->indpr == 1)
@@ -120,13 +99,6 @@ int	ft_putnbr(int n,t_numb *e)
 				{
 					e->w--;
 				}
-//			j = 0;
-//			while( j < e->w - 1)
-//			{
-//				ft_putchar(' ');
-//				r1++;
-//				j++;
-//			}
 				if (e->indspace == 1)
 				{
 					ft_putchar(' ');
@@ -314,13 +286,6 @@ int		ft_checkd1a1(t_numb *e)
 	cnt = 0;
 	i = ft_count(e->d);
 		j = 0;
-
-//			while(j < (i- 1 - e->pr))
-//			{
-//				ft_putchar('0');
-//				cnt++;
-//				j++;
-//			}
 	return (cnt);
 }
 
@@ -473,16 +438,6 @@ int		ft_countd342a1a(t_numb *e,t_count *f)
 	r1 = 0;
 			ft_putchar('-');
 			r1++;
-//			if (e->indpr == 1)
-//			{
-//				j = 0;
-//				while(j < f->i - e->pr)
-//				{
-//					ft_putchar('0');
-//					r1++;
-//					j++;
-//				}
-//			}
 	return (r1);
 }
 

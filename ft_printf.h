@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/26 13:57:02 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/26 16:47:39 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -430,6 +430,7 @@ int	ft_countd3a1a(t_numb *e,t_count *f);
 int	ft_countd4(t_numb *e,t_count *f);
 int	ft_countd442(t_numb *e,t_count *f);
 int	ft_countd4a(t_numb *e,t_count *f);
+int	ft_countd4a1(t_numb *e,t_count *f);
 int	ft_countd4a42(t_numb *e,t_count *f);
 int	ft_countd4a2(t_numb *e,t_count *f);
 int		ft_checku1(t_numb *e);
