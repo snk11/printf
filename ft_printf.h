@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/26 12:40:08 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/26 12:56:06 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -533,6 +533,7 @@ int		ft_case12c(char *****str,t_numb *e,va_list ap);
 int		ft_case13(char ****str,t_numb *e,va_list ap);
 int		ft_case13a(char *****str,t_numb *e,va_list ap);
 int		ft_case13b(char *****str,t_numb *e,va_list ap);
+char	*ft_case13b1(char *s2);
 int		ft_case13c(char *****str,t_numb *e,va_list ap);
 int		ft_case14(char ****str,t_numb *e,va_list ap);
 int		ft_case14a(char *****str,t_numb *e,va_list ap);
