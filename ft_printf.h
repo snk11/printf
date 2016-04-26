@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/26 12:05:18 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/26 12:40:08 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct			s_numb
 	long				l;
 	long long				ll;
 	unsigned int		u;
-	unsigned char 		uc;
+	unsigned int 		uc;
 	unsigned int		us;
 	unsigned long		ul;
 	unsigned long long		ull;
@@ -523,6 +523,8 @@ int		ft_case10c(char *****str,t_numb *e,va_list ap);
 int		ft_case11(char ****str,t_numb *e,va_list ap);
 int		ft_case11a(char *****str,t_numb *e,va_list ap);
 int		ft_case11b(char *****str,t_numb *e,va_list ap);
+char	*ft_case11b1(char *s2);
+char	*ft_case11b2(char *s2);
 int		ft_case11c(char *****str,t_numb *e,va_list ap);
 int		ft_case12(char ****str,t_numb *e,va_list ap);
 int		ft_case12a(char *****str,t_numb *e,va_list ap);

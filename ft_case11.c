@@ -6,34 +6,33 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 10:19:07 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/18 11:30:09 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/26 12:44:20 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
-
-int		ft_case11(char ****str,t_numb *e,va_list ap)
+int		ft_case11(char ****str, t_numb *e, va_list ap)
 {
 	int		cnt;
 
 	cnt = 0;
 	if (****str == 'h' && (***str)[1] == 'h' && (***str)[2] == 'o')
-		cnt = cnt + ft_case11a(&str,e,ap);
+		cnt = cnt + ft_case11a(&str, e, ap);
 	else if (****str == 'l' && (***str)[1] == 'x')
-		cnt = cnt + ft_case11b(&str,e,ap);
+		cnt = cnt + ft_case11b(&str, e, ap);
 	else if (****str == 'h' && (***str)[1] == 'x')
-		cnt = cnt + ft_case11c(&str,e,ap);
+		cnt = cnt + ft_case11c(&str, e, ap);
 	return (cnt);
 }
 
-int		ft_case11a(char *****str,t_numb *e,va_list ap)
+int		ft_case11a(char *****str, t_numb *e, va_list ap)
 {
-	int	cnt;
+	int		cnt;
 	char	*s2;
 
 	cnt = 0;
-	e->uc = va_arg(ap, unsigned char);
+	e->uc = va_arg(ap, unsigned int);
 	s2 = ft_ltooct6(e->uc);
 	ft_putstr(s2);
 	cnt = cnt + ft_strlen(s2);
@@ -46,46 +45,20 @@ int		ft_case11a(char *****str,t_numb *e,va_list ap)
 	return (cnt);
 }
 
-int		ft_case11b(char *****str,t_numb *e,va_list ap)
+int		ft_case11b(char *****str, t_numb *e, va_list ap)
 {
-	int	cnt;
-	int	i;
+	int		cnt;
 	char	*s2;
-	char	*s3;
-	char	*s4;
 
 	cnt = 0;
 	e->ul = va_arg(ap, unsigned long);
 	s2 = ft_ltohex3(e->ul);
 	if (e->indsharp == 1 && e->ul != 0)
-	{
-		s3 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
-		s3[0] = '0';
-		s3[1] = 'x';
-		i = 2;
-		while (i <= ft_strlen(s2) + 2)
-		{
-			s3[i] = s2[i - 2];
-			i++;
-		}
-		free(s2);
-		s2 = s3;
-	}
+		s2 = ft_case11b1(s2);
 	if (e->ul >= 4294967296 && e->ul <= 4563402751)
-	{
-		s4 = (char*)malloc(sizeof(char)*ft_strlen(s2) + 1);
-		s4[0] = '1';
-		i = 1;
-		while (i <= ft_strlen(s2) + 2)
-		{
-			s4[i] = s2[i - 1];
-			i++;
-		}
-		free(s2);
-		s2 = s4;
-	}
+		s2 = ft_case11b2(s2);
 	e->s = s2;
-	cnt = cnt + ft_checks(****str,e);
+	cnt = cnt + ft_checks(****str, e);
 	(****str)++;
 	free(s2);
 	s2 = NULL;
@@ -94,13 +67,48 @@ int		ft_case11b(char *****str,t_numb *e,va_list ap)
 	return (cnt);
 }
 
-int		ft_case11c(char *****str,t_numb *e,va_list ap)
+char	*ft_case11b1(char *s2)
 {
-	int	cnt;
+	char	*s3;
+	int		i;
+
+	s3 = (char*)malloc(sizeof(char) * (ft_strlen(s2) + 1));
+	s3[0] = '0';
+	s3[1] = 'x';
+	i = 2;
+	while (i <= ft_strlen(s2) + 2)
+	{
+		s3[i] = s2[i - 2];
+		i++;
+	}
+	free(s2);
+	return (s3);
+}
+
+char	*ft_case11b2(char *s2)
+{
+	char	*s4;
+	int		i;
+
+	s4 = (char*)malloc(sizeof(char) * (ft_strlen(s2) + 1));
+	s4[0] = '1';
+	i = 1;
+	while (i <= ft_strlen(s2) + 2)
+	{
+		s4[i] = s2[i - 1];
+		i++;
+	}
+	free(s2);
+	return (s4);
+}
+
+int		ft_case11c(char *****str, t_numb *e, va_list ap)
+{
+	int		cnt;
 	char	*s2;
 
 	cnt = 0;
-	e->us = va_arg(ap, unsigned short);
+	e->us = va_arg(ap, unsigned int);
 	s2 = ft_ltohex6(e->us);
 	ft_putstr(s2);
 	cnt = cnt + ft_strlen(s2);
@@ -111,4 +119,3 @@ int		ft_case11c(char *****str,t_numb *e,va_list ap)
 	e->indelsif = 1;
 	return (cnt);
 }
-
