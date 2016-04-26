@@ -6,28 +6,27 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 09:56:56 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/18 11:28:27 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/26 13:55:15 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
-
-int		ft_case9(char ****str,t_numb *e,va_list ap)
+int		ft_case9(char ****str, t_numb *e, va_list ap)
 {
 	int		cnt;
 
 	cnt = 0;
 	if (****str == 'l' && (***str)[1] == 'l' && (***str)[2] == 'u')
-		cnt = cnt + ft_case9a(&str,e,ap);
+		cnt = cnt + ft_case9a(&str, e, ap);
 	else if (****str == 'h' && (***str)[1] == 'h' && (***str)[2] == 'u')
-		cnt = cnt + ft_case9b(&str,e,ap);
+		cnt = cnt + ft_case9b(&str, e, ap);
 	else if (****str == 'l' && (***str)[1] == 'o')
-		cnt = cnt + ft_case9c(&str,e,ap);
+		cnt = cnt + ft_case9c(&str, e, ap);
 	return (cnt);
 }
 
-int		ft_case9a(char *****str,t_numb *e,va_list ap)
+int		ft_case9a(char *****str, t_numb *e, va_list ap)
 {
 	int	cnt;
 
@@ -42,13 +41,13 @@ int		ft_case9a(char *****str,t_numb *e,va_list ap)
 	return (cnt);
 }
 
-int		ft_case9b(char *****str,t_numb *e,va_list ap)
+int		ft_case9b(char *****str, t_numb *e, va_list ap)
 {
 	int	cnt;
 
 	cnt = 0;
-	e->uc = va_arg(ap, unsigned char);
-	ft_putnbr(e->uc,e);
+	e->uc = va_arg(ap, unsigned int);
+	ft_putnbr(e->uc, e);
 	cnt = cnt + ft_countuc(e->uc);
 	(****str)++;
 	(****str)++;
@@ -57,9 +56,9 @@ int		ft_case9b(char *****str,t_numb *e,va_list ap)
 	return (cnt);
 }
 
-int		ft_case9c(char *****str,t_numb *e,va_list ap)
+int		ft_case9c(char *****str, t_numb *e, va_list ap)
 {
-	int	cnt;
+	int		cnt;
 	char	*s2;
 
 	cnt = 0;
@@ -74,4 +73,3 @@ int		ft_case9c(char *****str,t_numb *e,va_list ap)
 	e->indelsif = 1;
 	return (cnt);
 }
-

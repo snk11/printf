@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/26 12:56:06 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/26 13:57:02 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ typedef struct			s_numb
 	long				l;
 	long long				ll;
 	unsigned int		u;
-	unsigned int 		uc;
-	unsigned int		us;
+	unsigned char 		uc;
+	unsigned short		us;
 	unsigned long		ul;
 	unsigned long long		ull;
 	char				*s;
