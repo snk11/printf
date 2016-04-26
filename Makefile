@@ -6,7 +6,7 @@
 #    By: syusof <syusof@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 02:50:22 by syusof            #+#    #+#              #
-#    Updated: 2015/11/26 06:28:04 by syusof           ###   ########.fr        #
+#    Updated: 2016/04/26 12:03:48 by syusof           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRCS = *.c
 
 OFILES = $(SRCS:.c=.o)
 
-FLAGS =  -c
+//FLAGS =  -Wall -Werror -Wextra -c
+FLAGS = -c
 
 
 

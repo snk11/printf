@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/18 12:53:07 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/26 12:05:18 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct			s_numb
 	long long				ll;
 	unsigned int		u;
 	unsigned char 		uc;
-	unsigned short		us;
+	unsigned int		us;
 	unsigned long		ul;
 	unsigned long long		ull;
 	char				*s;
@@ -347,6 +347,7 @@ int		ft_checko21a42b(char *str,t_numb *e);
 int		ft_checko21a1(char *str,t_numb *e);
 int		ft_altprime(char *str,t_numb *e);
 void		ft_altprime1(char **str,t_numb *e);
+void		ft_altprime1a(char ***str,t_numb *e);
 int		ft_altprime2(char *str,t_numb *e);
 int		ft_altprime2a(char *str,t_numb *e);
 int		ft_altprime2a1(char *str,t_numb *e);
