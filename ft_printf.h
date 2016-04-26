@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/26 17:19:01 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/26 17:55:51 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -424,11 +424,13 @@ void 	ft_countd2(t_count *f,int n);
 int		ft_countd3(t_numb *e,t_count *f);
 int		ft_countd342a(t_numb *e,t_count *f);
 int		ft_countd342a1(t_numb *e,t_count *f);
+int		ft_countd342a1z(t_numb *e,t_count *f);
 int		ft_countd342a1a(t_numb *e,t_count *f);
 int		ft_countd342b(t_numb *e,t_count *f);
 int	ft_countd3a(t_numb *e,t_count *f);
 int	ft_countd3a1(t_numb *e,t_count *f);
 int	ft_countd3a142(t_numb *e,t_count *f);
+int	ft_countd3a142z(t_numb *e,t_count *f);
 int	ft_countd3a1a(t_numb *e,t_count *f);
 int	ft_countd4(t_numb *e,t_count *f);
 int	ft_countd442(t_numb *e,t_count *f);
@@ -436,6 +438,7 @@ int	ft_countd4a(t_numb *e,t_count *f);
 int	ft_countd4a1(t_numb *e,t_count *f);
 int	ft_countd4a42(t_numb *e,t_count *f);
 int	ft_countd4a2(t_numb *e,t_count *f);
+int	ft_countd4a2z(t_numb *e,t_count *f);
 int		ft_checku1(t_numb *e);
 int		ft_checku1a(t_numb *e);
 int		ft_checku1b(t_numb *e);
