@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/27 14:49:29 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/27 16:12:49 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,6 +256,7 @@ int		ft_checks1b2(char *str,t_numb *e);
 int		ft_checks1b2a(char *str,t_numb *e);
 int		ft_checks2(char *str,t_numb *e);
 int		ft_checks2a(char *str,t_numb *e);
+void	ft_fullsn(char *sn);
 int		ft_checks2b(char *str,t_numb *e);
 int		ft_checks2b1(char *str,t_numb *e);
 int		ft_checks2b1a(char *str,t_numb *e);
