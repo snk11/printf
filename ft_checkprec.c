@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checkprec.c                                :+:      :+:    :+:   */
+/*   ft_checkprec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 14:19:17 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/29 04:37:08 by syusof           ###   ########.fr       */
+/*   Updated: 2016/04/27 15:26:39 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
-int		ft_checkprec(t_numb *e,char *s)
+int		ft_checkprec(t_numb *e, char *s)
 {
-	int	i;
-	char *begi;
-	
+	int		i;
+	char	*begi;
 
 	i = 0;
-	while(*s)
+	while (*s)
 	{
 		s++;
 		i++;
 	}
 	s--;
-	while((*s == ' ' || (*s >= '0' && *s <= '9')) && i > 0)
+	while ((*s == ' ' || (*s >= '0' && *s <= '9')) && i > 0)
 	{
 		i--;
 		s--;
@@ -33,7 +32,7 @@ int		ft_checkprec(t_numb *e,char *s)
 	begi = &s[1];
 	if (*s == '.')
 	{
-		return ft_atoi(begi);
+		return (ft_atoi(begi));
 	}
-	return 0;
+	return (0);
 }
