@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/27 16:59:23 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/03 20:36:50 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ typedef struct			s_ll
 
 typedef struct			s_width
 {
+	int	k;
 	int	i;
 	int	j;
 	char *begi;
@@ -184,6 +185,7 @@ int		ft_checkstrlast(char *str);
 int		ft_checkprec(t_numb *e,char *s);
 int		ft_checkwidth(t_numb *e,char *str);
 void		ft_checkwidth1(char *str,t_width *w,t_numb *e);
+void		ft_checkwidth1a(t_width *w,t_numb *e);
 void		ft_checkwidth2(char *str,t_width *w);
 int	ft_putnbr(int n,t_numb *e);
 int	ft_putnbr1(int n,t_numb *e);
