@@ -6,11 +6,10 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/01 22:32:07 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/03 22:30:38 by syusof           ###   ########.fr       */
+/*   Updated: 2016/03/29 00:52:31 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "ft_printf.h"
+# include "ft_printf.h"
 
 void	ft_initialize(t_numb *e)
 {
