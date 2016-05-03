@@ -6,13 +6,13 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/09 15:13:21 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/05 03:35:33 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/03 22:15:38 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_countwstr(int pr,wchar_t *s)
+int		ft_countwstr(int pr, wchar_t *s)
 {
 	t_elem	*e;
 	int		c1;
@@ -45,9 +45,9 @@ void	ft_countwstr1(t_elem *e)
 {
 	e->c3 = e->c2;
 	e->n = 0;
-	while(e->c2 > 0)
+	while (e->c2 > 0)
 		ft_countwstr1a(e);
-	if (e->n <=7)
+	if (e->n <= 7)
 		ft_countwstr1b(e);
 	else if (e->n > 7 && e->n <= 11)
 		ft_countwstr1c(e);
@@ -62,7 +62,6 @@ void	ft_countwstr1(t_elem *e)
 	ft_countwstr1j(e);
 }
 
-
 void	ft_countwstr1a(t_elem *e)
 {
 	e->c2 = e->c2 / 2;
@@ -71,7 +70,7 @@ void	ft_countwstr1a(t_elem *e)
 
 void	ft_countwstr1b(t_elem *e)
 {
-	e->str2 = (char*)malloc(sizeof(char)* 8 + 1);
+	e->str2 = (char*)malloc(sizeof(char) * 8 + 1);
 	e->str2[7] = '0';
 	e->str2[8] = 0;
 	e->n2 = 7;
@@ -79,7 +78,7 @@ void	ft_countwstr1b(t_elem *e)
 
 void	ft_countwstr1c(t_elem *e)
 {
-	e->str2 = (char*)malloc(sizeof(char)* 16 + 1);
+	e->str2 = (char*)malloc(sizeof(char) * 16 + 1);
 	e->str2[15] = '1';
 	e->str2[14] = '1';
 	e->str2[13] = '0';
@@ -100,10 +99,9 @@ void	ft_countwstr1c(t_elem *e)
 	e->n2 = 15;
 }
 
-
 void	ft_countwstr1d(t_elem *e)
 {
-	e->str2 = (char*)malloc(sizeof(char)* 24 + 1);
+	e->str2 = (char*)malloc(sizeof(char) * 24 + 1);
 	ft_putwstr1d1(e);
 	e->str2[9] = 0;
 	e->str2[8] = 0;
@@ -139,7 +137,7 @@ void	ft_countwstr1d1(t_elem *e)
 
 void	ft_countwstr1e(t_elem *e)
 {
-	e->str2 = (char*)malloc(sizeof(char)* 32 + 1);
+	e->str2 = (char*)malloc(sizeof(char) * 32 + 1);
 	ft_putwstr1e1(e);
 	e->str2[11] = 0;
 	e->str2[10] = 0;
@@ -181,14 +179,13 @@ void	ft_countwstr1e1(t_elem *e)
 	e->str2[12] = 0;
 }
 
-
 void	ft_countwstr1f(t_elem *e)
 {
-	e->str = (char*)malloc(sizeof(char)* e->n + 1);
+	e->str = (char*)malloc(sizeof(char) * e->n + 1);
 	e->begi = e->str;
 	e->c2 = e->c3;
 	e->begi2 = e->str2;
-	while(e->c2 > 0)
+	while (e->c2 > 0)
 	{
 		*(e->str) = '0' + e->c2 % 2;
 		e->c2 = e->c2 / 2;
@@ -226,7 +223,6 @@ void	ft_countwstr1g(t_elem *e)
 	e->i = 0;
 }
 
-
 void	ft_countwstr1h(t_elem *e)
 {
 	while (e->i <= e->n2)
@@ -238,9 +234,9 @@ void	ft_countwstr1h(t_elem *e)
 	}
 	e->i = 0;
 	e->str2--;
-	e->r = (int*)malloc(sizeof(int)*(e->n2+1)/8 + 1);
+	e->r = (int*)malloc(sizeof(int) * (e->n2 + 1) / 8 + 1);
 	e->i = 0;
-	while (e->i <= (e->n2 + 1)/8)
+	while (e->i <= (e->n2 + 1) / 8)
 	{
 		e->r[e->i] = 0;
 		e->i++;
@@ -253,9 +249,9 @@ void	ft_countwstr1i(t_elem *e)
 	while (e->i < (e->n2 + 1) / 8)
 	{
 		e->j = 7;
-		while ( e->j >= 0 )
+		while (e->j >= 0)
 		{
-			e->r[e->i] = e->r[e->i] + (*(e->str2) - '0') * ft_pow(2,e->j);
+			e->r[e->i] = e->r[e->i] + (*(e->str2) - '0') * ft_pow(2, e->j);
 			e->j--;
 			e->str2--;
 		}
@@ -270,7 +266,7 @@ void	ft_countwstr1j(t_elem *e)
 {
 	if ((e->n2 + 1) / 8 <= e->pr1)
 	{
-		while(e->i < (e->n2 + 1)/8)
+		while (e->i < (e->n2 + 1) / 8)
 		{
 			e->i++;
 		}
@@ -284,4 +280,3 @@ void	ft_countwstr1j(t_elem *e)
 	free(e->r);
 	e->r = NULL;
 }
-

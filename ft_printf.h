@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/03 20:36:50 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/03 22:25:20 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int		ft_checkllbd(char *str, t_numb *e, t_ll *w, va_list ap);
 int		ft_checkllbd1(char *str, t_numb *e, t_ll *w);
 int	ft_pow(int n, int p);
 int		ft_strcmp(const char *s1, const char *s2);
-void		*ft_getfield1(char *str,t_field *f);
+void		ft_getfield1(char *str,t_field *f);
 void	ft_checkflag1(t_numb *e,char *str,t_flag *f);
 void	ft_checkflag2(t_numb *e,t_flag *f);
 void	ft_checkflag3(t_numb *e,t_flag *f);

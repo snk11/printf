@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count.c                                        :+:      :+:    :+:   */
+/*   ft_count.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 08:29:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/29 01:52:41 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/03 22:08:47 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_count(int n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (n == -2147483648)
-	{
 		i = 11;
-	}
 	else
 	{
 		if (n < 0)
@@ -43,7 +41,7 @@ int	ft_count(int n)
 
 int	ft_count2(unsigned int n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (n == UINT_MAX)
@@ -67,7 +65,7 @@ int	ft_count2(unsigned int n)
 
 int	ft_count3(size_t n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (n == UINT_MAX)
@@ -91,7 +89,7 @@ int	ft_count3(size_t n)
 
 int	ft_count4(intmax_t n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (n == -2147483648)
@@ -118,10 +116,9 @@ int	ft_count4(intmax_t n)
 	return (i);
 }
 
-
 int	ft_countsd(short int n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (n == -32768)
@@ -145,9 +142,10 @@ int	ft_countsd(short int n)
 	}
 	return (i);
 }
+
 int	ft_countl(long n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (n == LONG_MIN)
@@ -174,7 +172,7 @@ int	ft_countl(long n)
 
 int	ft_countld(long int n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (n == LONG_MIN)
@@ -201,7 +199,7 @@ int	ft_countld(long int n)
 
 int	ft_countlld(long long n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (n == LLONG_MIN)
@@ -226,12 +224,10 @@ int	ft_countlld(long long n)
 	return (i);
 }
 
-
-
 int	ft_countus(unsigned short n)
 {
-	int i;
-	unsigned short c;
+	int				i;
+	unsigned short	c;
 
 	c = 0;
 	i = 0;
@@ -254,8 +250,8 @@ int	ft_countus(unsigned short n)
 
 int	ft_countul(unsigned long n)
 {
-	int i;
-	unsigned long c;
+	int				i;
+	unsigned long	c;
 
 	c = 0;
 	i = 0;
@@ -278,8 +274,8 @@ int	ft_countul(unsigned long n)
 
 int	ft_countull(unsigned long long n)
 {
-	int i;
-	unsigned long long c;
+	int					i;
+	unsigned long long	c;
 
 	c = 0;
 	i = 0;
@@ -302,24 +298,19 @@ int	ft_countull(unsigned long long n)
 
 int	ft_countuc(unsigned char n)
 {
-	int i;
-	unsigned char c;
+	int				i;
+	unsigned char	c;
 
 	c = 0;
 	i = 0;
-	if (n == ULONG_MAX)
-		return (20);
-	else
+	if (n >= 10)
 	{
-		if (n >= 10)
+		while (n >= 10)
 		{
-			while (n >= 10)
-			{
-				n = n / 10;
-				i++;
-			}
+			n = n / 10;
+			i++;
 		}
-		i++;
 	}
+	i++;
 	return (i);
 }
