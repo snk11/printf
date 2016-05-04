@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 12:50:22 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/20 22:23:55 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 14:04:47 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_putstr(char const *s)
 	}
 }
 
-void	ft_putstr2(int pr,char const *s)
+void	ft_putstr2(int pr, char const *s)
 {
 	int		i;
 
@@ -40,7 +40,7 @@ void	ft_putstr2(int pr,char const *s)
 void	ft_putstrad(char const *s)
 {
 	int		i;
-	int n;
+	int		n;
 
 	i = 0;
 	n = 0;
@@ -50,7 +50,7 @@ void	ft_putstrad(char const *s)
 	}
 	if (i < 9 && i > 1)
 	{
-		while(n < 9 - i)
+		while (n < 9 - i)
 		{
 			ft_putchar('1');
 			n++;
@@ -64,10 +64,10 @@ void	ft_putstrad(char const *s)
 	}
 }
 
-void	ft_putstrad2(int pr,char const *s)
+void	ft_putstrad2(int pr, char const *s)
 {
 	int		i;
-	int n;
+	int		n;
 
 	i = 0;
 	n = 0;
@@ -76,22 +76,7 @@ void	ft_putstrad2(int pr,char const *s)
 		i++;
 	}
 	if (pr > i)
-	{
-		if (i < pr && i > 1)
-		{
-			while(n < pr - i)
-			{
-				ft_putchar('0');
-				n++;
-			}
-		}
-		i = 0;
-		while (s[i])
-		{
-			ft_putchar(s[i]);
-			i++;
-		}
-	}
+		ft_putstrad3a(pr, s, i);
 	else
 	{
 		i = 0;
@@ -103,34 +88,15 @@ void	ft_putstrad2(int pr,char const *s)
 	}
 }
 
-void	ft_putstrad3(int pr,char const *s)
+void	ft_putstrad3(int pr, char const *s)
 {
 	int		i;
-	int n;
 
 	i = 0;
-	n = 0;
 	while (s[i])
-	{
 		i++;
-	}
 	if (pr > i)
-	{
-		if (i < pr && i >= 1)
-		{
-			while(n < pr - i)
-			{
-				ft_putchar('0');
-				n++;
-			}
-		}
-		i = 0;
-		while (s[i])
-		{
-			ft_putchar(s[i]);
-			i++;
-		}
-	}
+		ft_putstrad3a(pr, s, i);
 	else
 	{
 		i = 0;
@@ -139,5 +105,26 @@ void	ft_putstrad3(int pr,char const *s)
 			ft_putchar(s[i]);
 			i++;
 		}
+	}
+}
+
+void	ft_putstrad3a(int pr, char const *s, int i)
+{
+	int		n;
+
+	n = 0;
+	if (i < pr && i >= 1)
+	{
+		while (n < pr - i)
+		{
+			ft_putchar('0');
+			n++;
+		}
+	}
+	i = 0;
+	while (s[i])
+	{
+		ft_putchar(s[i]);
+		i++;
 	}
 }
