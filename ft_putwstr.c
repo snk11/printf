@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 14:55:06 by syusof            #+#    #+#             */
-/*   Updated: 2016/03/17 18:44:32 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 14:23:05 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			ft_putwstr(wchar_t *s)
 		e->c2 = (int)c1;
 		if (e->c2 <= 127)
 		{
-			write(1,&(e->c2),1);
+			write(1, &(e->c2), 1);
 			e->ret++;
 		}
 		else
@@ -38,4 +38,3 @@ int			ft_putwstr(wchar_t *s)
 	e = NULL;
 	return (r1);
 }
-
