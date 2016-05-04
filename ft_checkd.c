@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 20:30:57 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 16:25:06 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 18:03:04 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,7 +249,7 @@ int		ft_countd342a1z(t_numb *e, t_count *f)
 	return (r1);
 }
 
-int		ft_countd342a1a()
+int		ft_countd342a1a(void)
 {
 	int		r1;
 

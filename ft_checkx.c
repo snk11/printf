@@ -6,13 +6,13 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/03 02:42:08 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 17:44:28 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 18:01:33 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_checkx( t_numb *e)
+int		ft_checkx(t_numb *e)
 {
 	int	cnt;
 

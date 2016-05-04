@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/01 21:41:15 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 16:53:05 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 18:01:16 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int		ft_checkc2(t_numb *e)
 		return (ft_checkc2b(e));
 }
 
-int		ft_checkc2a( t_numb *e)
+int		ft_checkc2a(t_numb *e)
 {
 	int	cnt;
 

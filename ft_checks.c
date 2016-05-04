@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 01:26:49 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 17:30:50 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 18:05:01 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,7 +265,7 @@ int		ft_checks1b1(t_numb *e)
 	int	i;
 
 	cnt = 0;
-	cnt = cnt + ft_checks1b1a( e);
+	cnt = cnt + ft_checks1b1a(e);
 	if (e->s)
 	{
 		ft_putstr2(e->pr, e->s);
@@ -379,7 +379,7 @@ int		ft_checks2(t_numb *e)
 	return (cnt);
 }
 
-int		ft_checks2a()
+int		ft_checks2a(void)
 {
 	int		cnt;
 	int		i;
@@ -856,7 +856,7 @@ int		ft_checks22(t_numb *e)
 	return (cnt);
 }
 
-int		ft_checks22a()
+int		ft_checks22a(void)
 {
 	int		cnt;
 	int		i;
