@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 12:22:37 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/27 15:00:43 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 17:26:14 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		ft_checkllx(char *str, t_numb *e, t_ll *w, va_list ap)
 		if (e->ull >= 4294967296 && e->ull <= 4563402751)
 			s2 = ft_case11b2(s2);
 		e->s = s2;
-		cnt = cnt + ft_checks(str, e);
+		cnt = cnt + ft_checks(e);
 	}
 	else if (str[w->k] == 'x')
 	{

@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 10:19:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 15:32:01 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 17:25:00 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_case13a(char *****str, t_numb *e, va_list ap)
 	if (e->ul >= 4294967296 && e->ul <= 4563402751)
 		s2 = ft_case11b2(s2);
 	e->s = s2;
-	cnt = cnt + ft_checks(****str, e);
+	cnt = cnt + ft_checks(e);
 	(****str)++;
 	free(s2);
 	s2 = NULL;
@@ -97,7 +97,7 @@ int		ft_case13c(char *****str, t_numb *e, va_list ap)
 	if (e->ull >= 4294967296 && e->ull <= 4563402751)
 		s2 = ft_case11b2(s2);
 	e->s = s2;
-	cnt = cnt + ft_checks(****str, e);
+	cnt = cnt + ft_checks(e);
 	(****str)++;
 	free(s2);
 	s2 = NULL;

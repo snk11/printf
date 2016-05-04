@@ -6,13 +6,13 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 14:19:17 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/27 15:26:39 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 17:07:10 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_checkprec(t_numb *e, char *s)
+int		ft_checkprec(char *s)
 {
 	int		i;
 	char	*begi;

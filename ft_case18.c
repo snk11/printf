@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 13:41:57 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 15:35:57 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 17:25:24 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		ft_case18(char ****str, t_numb *e)
 			if (e->w == 0 && e->begi)
 				e->w = ft_checkwidth(e, e->begi);
 			if (e->pr == 0 && e->begi)
-				e->pr = ft_checkprec(e, e->begi);
+				e->pr = ft_checkprec(e->begi);
 			free(e->begi);
 			e->begi = NULL;
 		}
