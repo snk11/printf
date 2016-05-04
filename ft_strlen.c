@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 16:37:22 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/05 03:33:06 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 14:56:42 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ size_t		ft_strlen2(wchar_t *s)
 	return (r1);
 }
 
-int	ft_strlen1(t_elem *e)
+int			ft_strlen1(t_elem *e)
 {
 	e->c3 = e->c2;
 	e->n = 0;
 	e->ret1 = 0;
-	while(e->c2 > 0)
+	while (e->c2 > 0)
 		ft_strlen1a(e);
-	if (e->n <=7)
+	if (e->n <= 7)
 		ft_strlen1b(e);
 	else if (e->n > 7 && e->n <= 11)
 		ft_strlen1c(e);
@@ -75,24 +75,23 @@ int	ft_strlen1(t_elem *e)
 	return (e->ret1);
 }
 
-
-void	ft_strlen1a(t_elem *e)
+void		ft_strlen1a(t_elem *e)
 {
 	e->c2 = e->c2 / 2;
 	e->n++;
 }
 
-void	ft_strlen1b(t_elem *e)
+void		ft_strlen1b(t_elem *e)
 {
-	e->str2 = (char*)malloc(sizeof(char)* 8 + 1);
+	e->str2 = (char*)malloc(sizeof(char) * 8 + 1);
 	e->str2[7] = '0';
 	e->str2[8] = 0;
 	e->n2 = 7;
 }
 
-void	ft_strlen1c(t_elem*e)
+void		ft_strlen1c(t_elem *e)
 {
-	e->str2 = (char*)malloc(sizeof(char)* 16 + 1);
+	e->str2 = (char*)malloc(sizeof(char) * 16 + 1);
 	e->str2[15] = '1';
 	e->str2[14] = '1';
 	e->str2[13] = '0';
@@ -113,10 +112,9 @@ void	ft_strlen1c(t_elem*e)
 	e->n2 = 15;
 }
 
-
-void	ft_strlen1d(t_elem *e)
+void		ft_strlen1d(t_elem *e)
 {
-	e->str2 = (char*)malloc(sizeof(char)* 24 + 1);
+	e->str2 = (char*)malloc(sizeof(char) * 24 + 1);
 	ft_putwchar1d1(e);
 	e->str2[9] = 0;
 	e->str2[8] = 0;
@@ -132,7 +130,7 @@ void	ft_strlen1d(t_elem *e)
 	e->n2 = 23;
 }
 
-void	ft_strlen1d1(t_elem *e)
+void		ft_strlen1d1(t_elem *e)
 {
 	e->str2[23] = '1';
 	e->str2[22] = '1';
@@ -150,9 +148,9 @@ void	ft_strlen1d1(t_elem *e)
 	e->str2[10] = 0;
 }
 
-void	ft_strlen1e(t_elem *e)
+void		ft_strlen1e(t_elem *e)
 {
-	e->str2 = (char*)malloc(sizeof(char)* 32 + 1);
+	e->str2 = (char*)malloc(sizeof(char) * 32 + 1);
 	ft_putwchar1e1(e);
 	e->str2[11] = 0;
 	e->str2[10] = 0;
@@ -170,7 +168,7 @@ void	ft_strlen1e(t_elem *e)
 	e->n2 = 31;
 }
 
-void	ft_strlen1e1(t_elem *e)
+void		ft_strlen1e1(t_elem *e)
 {
 	e->str2[31] = '1';
 	e->str2[30] = '1';
@@ -194,14 +192,13 @@ void	ft_strlen1e1(t_elem *e)
 	e->str2[12] = 0;
 }
 
-
-void	ft_strlen1f(t_elem *e)
+void		ft_strlen1f(t_elem *e)
 {
-	e->str = (char*)malloc(sizeof(char)* e->n + 1);
+	e->str = (char*)malloc(sizeof(char) * e->n + 1);
 	e->begi = e->str;
 	e->c2 = e->c3;
 	e->begi2 = e->str2;
-	while(e->c2 > 0)
+	while (e->c2 > 0)
 	{
 		*(e->str) = '0' + e->c2 % 2;
 		e->c2 = e->c2 / 2;
@@ -213,7 +210,7 @@ void	ft_strlen1f(t_elem *e)
 	e->str2 = e->begi2;
 }
 
-void	ft_strlen1g(t_elem *e)
+void		ft_strlen1g(t_elem *e)
 {
 	while (e->i < (e->n2 + 1))
 	{
@@ -239,8 +236,7 @@ void	ft_strlen1g(t_elem *e)
 	e->i = 0;
 }
 
-
-void	ft_strlen1h(t_elem *e)
+void		ft_strlen1h(t_elem *e)
 {
 	while (e->i <= e->n2)
 	{
@@ -251,9 +247,9 @@ void	ft_strlen1h(t_elem *e)
 	}
 	e->i = 0;
 	e->str2--;
-	e->r = (int*)malloc(sizeof(int)*(e->n2+1)/8 + 1);
+	e->r = (int*)malloc(sizeof(int) * (e->n2 + 1) / 8 + 1);
 	e->i = 0;
-	while (e->i <= (e->n2 + 1)/8)
+	while (e->i <= (e->n2 + 1) / 8)
 	{
 		e->r[e->i] = 0;
 		e->i++;
@@ -261,14 +257,14 @@ void	ft_strlen1h(t_elem *e)
 	e->i = 0;
 }
 
-void	ft_strlen1i(t_elem *e)
+void		ft_strlen1i(t_elem *e)
 {
 	while (e->i < (e->n2 + 1) / 8)
 	{
 		e->j = 7;
-		while ( e->j >= 0 )
+		while (e->j >= 0)
 		{
-			e->r[e->i] = e->r[e->i] + (*(e->str2) - '0') * ft_pow(2,e->j);
+			e->r[e->i] = e->r[e->i] + (*(e->str2) - '0') * ft_pow(2, e->j);
 			e->j--;
 			e->str2--;
 		}
@@ -279,20 +275,17 @@ void	ft_strlen1i(t_elem *e)
 	e->i = 0;
 }
 
-void	ft_strlen1j(t_elem *e)
+void		ft_strlen1j(t_elem *e)
 {
-	while(e->i < (e->n2 + 1)/8)
+	while (e->i < (e->n2 + 1) / 8)
 	{
 		e->i++;
 	}
 	e->ret1 = e->ret1 + (e->n2 + 1) / 8;
 	free(e->str2);
 	e->str2 = NULL;
-//	e->begi2 = NULL;
 	free(e->str);
 	e->str = NULL;
-//	e->begi = NULL;
 	free(e->r);
 	e->r = NULL;
 }
-
