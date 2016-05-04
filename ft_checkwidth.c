@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 14:55:14 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/03 20:42:38 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 17:42:05 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		ft_checkwidth(t_numb *e, char *str)
 	w->s = (char*)malloc(sizeof(char) * (ft_strlen(str)) + 1);
 	ft_checkwidth1(str, w, e);
 	w->s2 = (char*)malloc(sizeof(char) * w->j + 1);
-	ft_checkwidth2(str, w);
+	ft_checkwidth2(w);
 	{
 		r1 = ft_atoi(w->s2);
 		free(w->s);
@@ -39,7 +39,7 @@ void	ft_checkwidth1(char *str, t_width *w, t_numb *e)
 	w->k = 0;
 	w->i = 0;
 	w->j = 0;
-	while (w->i < ft_strlen(str))
+	while (w->i < (int)ft_strlen(str))
 	{
 		w->s[w->i] = str[w->i];
 		w->i++;
@@ -81,7 +81,7 @@ void	ft_checkwidth1a(t_width *w, t_numb *e)
 	}
 }
 
-void	ft_checkwidth2(char *str, t_width *w)
+void	ft_checkwidth2(t_width *w)
 {
 	w->s2[w->j] = 0;
 	w->j = 0;

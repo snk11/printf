@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 03:57:38 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 16:35:02 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 17:45:47 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_case4(char ****str, t_numb *e, va_list ap)
 
 	cnt = 0;
 	if (****str == 'x')
-		cnt = cnt + ft_case4a(&str, e, ap);
+		cnt = cnt + ft_case4a(e, ap);
 	else if (****str == 'X')
 		cnt = cnt + ft_case4b(e, ap);
 	else if (****str == 'o')
@@ -28,13 +28,13 @@ int		ft_case4(char ****str, t_numb *e, va_list ap)
 	return (cnt);
 }
 
-int		ft_case4a(char *****str, t_numb *e, va_list ap)
+int		ft_case4a(t_numb *e, va_list ap)
 {
 	int	cnt;
 
 	cnt = 0;
 	e->u = va_arg(ap, unsigned int);
-	cnt = cnt + ft_checkx(****str, e);
+	cnt = cnt + ft_checkx(e);
 	ft_initialize(e);
 	e->indelsif = 1;
 	return (cnt);

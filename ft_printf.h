@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 17:36:31 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 17:46:02 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,7 @@ int		ft_checkprec(char *s);
 int		ft_checkwidth(t_numb *e,char *str);
 void		ft_checkwidth1(char *str,t_width *w,t_numb *e);
 void	ft_checkwidth1a(t_width *w, t_numb *e);
-void		ft_checkwidth2(char *str,t_width *w);
+void		ft_checkwidth2(t_width *w);
 int	ft_putnbr(int n,t_numb *e);
 int	ft_putnbr1(int n,t_numb *e);
 int	ft_putnbr42(t_numb *e);
@@ -341,14 +341,14 @@ int		ft_checkp2a(t_numb *e, char *s1);
 int		ft_checkp2a1(t_numb *e, char *s1);
 int		ft_checkp2a1a(t_numb *e, char *s1);
 int		ft_checkp2a1a1(t_numb *e, char *s1);
-int		ft_checkx(char *str,t_numb *e);
-int		ft_checkx0(char *str,t_numb *e);
-int		ft_checkx0a(char *str,t_numb *e);
-int		ft_checkx1(char *str,t_numb *e);
-int		ft_checkx142a(char *str,t_numb *e);
-int		ft_checkx142b(char *str,t_numb *e);
-int		ft_checkx1a(char *str,t_numb *e);
-int		ft_checkx1a1(char *str,t_numb *e);
+int		ft_checkx(t_numb *e);
+int		ft_checkx0(t_numb *e);
+int		ft_checkx0a(t_numb *e);
+int		ft_checkx1(t_numb *e);
+int		ft_checkx142a(t_numb *e);
+int		ft_checkx142b(t_numb *e);
+int		ft_checkx1a(t_numb *e);
+int		ft_checkx1a1(t_numb *e);
 int		ft_checko(t_numb *e);
 int		ft_checko42(t_numb *e);
 int		ft_checko1(t_numb *e);
@@ -527,7 +527,7 @@ int		ft_case3a(t_numb *e,va_list ap);
 int		ft_case3b(t_numb *e,va_list ap);
 int		ft_case3c(t_numb *e,va_list ap);
 int		ft_case4(char ****str,t_numb *e,va_list ap);
-int		ft_case4a(char *****str,t_numb *e,va_list ap);
+int		ft_case4a(t_numb *e,va_list ap);
 int		ft_case4b(t_numb *e,va_list ap);
 int		ft_case4c(t_numb *e,va_list ap);
 int		ft_case4d(t_numb *e,va_list ap);
