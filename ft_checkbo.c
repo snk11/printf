@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/03 03:41:10 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 15:51:09 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 15:56:41 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,6 @@ int		ft_checkbo21(t_numb *e)
 int		ft_checkbo21a(t_numb *e)
 {
 	int	cnt;
-	int	i;
 
 	cnt = 0;
 	if (e->w >= e->g && e->indsharp == 0)
