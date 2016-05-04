@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 14:35:51 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 14:44:09 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -498,6 +498,8 @@ int		ft_checkbo21a42a1(char *str,t_numb *e);
 int		ft_checkbo21a42b(char *str,t_numb *e);
 int		ft_checkbo21a1(char *str,t_numb *e);
 int	ft_putznbr(size_t n,t_numb *e);
+int	ft_putznbr42a(t_numb *e);
+int	ft_putznbr42b(t_numb *e);
 int	ft_putznbr1(size_t n,t_numb *e);
 int	ft_putznbr2(size_t n,t_numb *e);
 int	ft_putznbr2a(size_t n,t_numb *e);
