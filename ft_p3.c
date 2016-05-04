@@ -6,16 +6,16 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 12:32:13 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/18 12:34:54 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 13:25:48 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
-void	ft_p3(char *str,t_numb *e)
+void	ft_p3(char *str, t_numb *e)
 {
 	char		*p;
-	
+
 	p = NULL;
 	ft_initialize(e);
 	e->indll = 0;

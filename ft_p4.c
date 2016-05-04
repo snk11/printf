@@ -6,13 +6,13 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 12:36:25 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/18 12:39:42 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 13:26:12 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
-int		ft_p4(char *str,t_numb *e)
+int		ft_p4(char *str, t_numb *e)
 {
 	int		cnt;
 
@@ -21,6 +21,6 @@ int		ft_p4(char *str,t_numb *e)
 	e->cnt1 = 0;
 	e->indlast = 0;
 	e->ind2 = 0;
-	cnt = cnt + ft_altprime(str,e);
+	cnt = cnt + ft_altprime(str, e);
 	return (cnt);
 }

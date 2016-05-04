@@ -6,13 +6,13 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 12:25:37 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/18 12:46:40 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 13:25:31 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
-void		ft_p2(char **str,t_numb *e)
+void		ft_p2(char **str, t_numb *e)
 {
 	if (**str != 0)
 	{

@@ -6,11 +6,11 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 03:28:11 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/05 03:32:11 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 13:26:29 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_pow(int n, int p)
 {
