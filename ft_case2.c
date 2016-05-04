@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 03:09:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 17:01:09 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 17:36:12 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_case2(char ****str, t_numb *e, va_list ap)
 	else if (****str == 'p')
 		cnt = cnt + ft_case2b(e, ap);
 	else if (****str == 'u')
-		cnt = cnt + ft_case2c(&str, e, ap);
+		cnt = cnt + ft_case2c(e, ap);
 	return (cnt);
 }
 
@@ -52,13 +52,13 @@ int		ft_case2b(t_numb *e, va_list ap)
 	return (cnt);
 }
 
-int		ft_case2c(char *****str, t_numb *e, va_list ap)
+int		ft_case2c(t_numb *e, va_list ap)
 {
 	int	cnt;
 
 	cnt = 0;
 	e->u = va_arg(ap, unsigned int);
-	cnt = cnt + ft_checku(****str, e);
+	cnt = cnt + ft_checku(e);
 	ft_initialize(e);
 	e->indelsif = 1;
 	return (cnt);
