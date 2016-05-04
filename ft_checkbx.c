@@ -6,13 +6,13 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/03 03:10:21 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/26 16:12:16 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 16:12:38 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_checkbx(char *str, t_numb *e)
+int		ft_checkbx(t_numb *e)
 {
 	int	cnt;
 
@@ -29,9 +29,9 @@ int		ft_checkbx(char *str, t_numb *e)
 		}
 	}
 	else if (e->indminus == 1)
-		cnt = cnt + ft_checkbx0(str, e);
+		cnt = cnt + ft_checkbx0(e);
 	else if (e->indminus == 0)
-		cnt = cnt + ft_checkbx1(str, e);
+		cnt = cnt + ft_checkbx1(e);
 	if (e->s)
 	{
 		free(e->s);
@@ -40,7 +40,7 @@ int		ft_checkbx(char *str, t_numb *e)
 	return (cnt);
 }
 
-int		ft_checkbx0(char *str, t_numb *e)
+int		ft_checkbx0(t_numb *e)
 {
 	int	cnt;
 
@@ -53,17 +53,17 @@ int		ft_checkbx0(char *str, t_numb *e)
 		cnt++;
 	}
 	if (e->indzero == 1 && e->pr == 0)
-		cnt = cnt + ft_checkbx0a(str, e);
+		cnt = cnt + ft_checkbx0a(e);
 	else if (e->indsharp == 0)
 	{
 		ft_putstr(e->s);
-		cnt = cnt + ft_checkbx1a(str, e);
+		cnt = cnt + ft_checkbx1a(e);
 	}
 	cnt = cnt + e->g;
 	return (cnt);
 }
 
-int		ft_checkbx0a(char *str, t_numb *e)
+int		ft_checkbx0a(t_numb *e)
 {
 	int	cnt;
 
@@ -90,24 +90,23 @@ int		ft_checkbx0a(char *str, t_numb *e)
 	return (cnt);
 }
 
-int		ft_checkbx1(char *str, t_numb *e)
+int		ft_checkbx1(t_numb *e)
 {
 	int	cnt;
-	int	i;
 
 	cnt = 0;
 	if (e->indsharp == 1 && e->u != 0)
-		cnt = cnt + ft_checkbx142a(str, e);
+		cnt = cnt + ft_checkbx142a(e);
 	if (e->indzero == 1 && e->pr == 0)
-		cnt = cnt + ft_checkbx142b(str, e);
+		cnt = cnt + ft_checkbx142b(e);
 	else if (e->indsharp == 0)
-		cnt = cnt + ft_checkbx1a(str, e);
+		cnt = cnt + ft_checkbx1a(e);
 	ft_putstr(e->s);
 	cnt = cnt + e->g;
 	return (cnt);
 }
 
-int		ft_checkbx142a(char *str, t_numb *e)
+int		ft_checkbx142a(t_numb *e)
 {
 	int	cnt;
 	int	i;
@@ -136,10 +135,9 @@ int		ft_checkbx142a(char *str, t_numb *e)
 	return (cnt);
 }
 
-int		ft_checkbx142b(char *str, t_numb *e)
+int		ft_checkbx142b(t_numb *e)
 {
 	int	cnt;
-	int	i;
 
 	cnt = 0;
 	if (e->indsharp == 1)
@@ -163,7 +161,7 @@ int		ft_checkbx142b(char *str, t_numb *e)
 	return (cnt);
 }
 
-int		ft_checkbx1a(char *str, t_numb *e)
+int		ft_checkbx1a(t_numb *e)
 {
 	int	cnt;
 
@@ -184,11 +182,11 @@ int		ft_checkbx1a(char *str, t_numb *e)
 		}
 	}
 	else
-		cnt = cnt + ft_checkbx1a1(str, e);
+		cnt = cnt + ft_checkbx1a1(e);
 	return (cnt);
 }
 
-int		ft_checkbx1a1(char *str, t_numb *e)
+int		ft_checkbx1a1(t_numb *e)
 {
 	int	cnt;
 
