@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 16:18:22 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 16:26:43 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -426,7 +426,7 @@ void	ft_countwstr1h(t_elem *e);
 void	ft_countwstr1i(t_elem *e);
 void	ft_countwstr1j(t_elem *e);
 int	ft_countd(t_numb *e,int n);
-int		ft_checkd(char *str,t_numb *e);
+int		ft_checkd(t_numb *e);
 int		ft_checkd1(t_numb *e);
 int		ft_checkd1a(t_numb *e);
 int		ft_checkd1a1(t_numb *e);
@@ -438,7 +438,7 @@ int		ft_countd3(t_numb *e,t_count *f);
 int		ft_countd342a(t_numb *e,t_count *f);
 int		ft_countd342a1(t_numb *e,t_count *f);
 int		ft_countd342a1z(t_numb *e,t_count *f);
-int		ft_countd342a1a(t_numb *e,t_count *f);
+int		ft_countd342a1a();
 int		ft_countd342b(t_numb *e,t_count *f);
 int	ft_countd3a(t_numb *e,t_count *f);
 int	ft_countd3a1(t_numb *e,t_count *f);
@@ -524,7 +524,7 @@ int		ft_case2b(char *****str,t_numb *e,va_list ap);
 int		ft_case2c(char *****str,t_numb *e,va_list ap);
 int		ft_case3(char ****str,t_numb *e,va_list ap);
 int		ft_case3a(t_numb *e,va_list ap);
-int		ft_case3b(char *****str,t_numb *e,va_list ap);
+int		ft_case3b(t_numb *e,va_list ap);
 int		ft_case3c(t_numb *e,va_list ap);
 int		ft_case4(char ****str,t_numb *e,va_list ap);
 int		ft_case4a(char *****str,t_numb *e,va_list ap);

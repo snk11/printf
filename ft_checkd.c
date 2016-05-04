@@ -6,16 +6,15 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 20:30:57 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/26 18:08:29 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 16:25:06 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_checkd(char *str, t_numb *e)
+int		ft_checkd(t_numb *e)
 {
 	int		cnt;
-	int		j;
 	int		i;
 
 	cnt = 0;
@@ -190,7 +189,6 @@ void	ft_countd2(t_count *f, int n)
 
 int		ft_countd3(t_numb *e, t_count *f)
 {
-	int		j;
 	int		r1;
 
 	r1 = 0;
@@ -203,7 +201,6 @@ int		ft_countd3(t_numb *e, t_count *f)
 
 int		ft_countd342a(t_numb *e, t_count *f)
 {
-	int		j;
 	int		r1;
 
 	r1 = 0;
@@ -252,9 +249,8 @@ int		ft_countd342a1z(t_numb *e, t_count *f)
 	return (r1);
 }
 
-int		ft_countd342a1a(t_numb *e, t_count *f)
+int		ft_countd342a1a()
 {
-	int		j;
 	int		r1;
 
 	r1 = 0;
@@ -265,7 +261,6 @@ int		ft_countd342a1a(t_numb *e, t_count *f)
 
 int		ft_countd342b(t_numb *e, t_count *f)
 {
-	int		j;
 	int		r1;
 
 	r1 = 0;
