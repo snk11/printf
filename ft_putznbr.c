@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 01:09:06 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 14:46:28 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 17:57:37 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ int	ft_putznbr42b(t_numb *e)
 int	ft_putznbr1(size_t n, t_numb *e)
 {
 	int		i;
-	int		j;
 	int		r1;
 
 	i = 0;

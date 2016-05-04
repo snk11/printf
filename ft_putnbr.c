@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/26 16:55:06 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 13:51:03 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 17:57:51 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,6 @@ int	ft_putnbr1(int n, t_numb *e)
 int	ft_putnbr2(int n, t_numb *e)
 {
 	int		i;
-	int		j;
 	int		r1;
 
 	i = 0;

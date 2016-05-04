@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 14:11:15 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 13:23:48 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 17:56:21 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ char	*ft_ltooct2(unsigned long l)
 
 	bigi = NULL;
 	l1 = l;
-	if (l == LONG_MIN)
+	if ((long)l == LONG_MIN)
 		return ("1000000000000000000000");
 	i = 1;
 	while (l > 8)

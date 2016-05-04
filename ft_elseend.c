@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 13:55:41 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 12:59:59 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 17:49:06 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_elseend(char *str, t_numb *e)
 	cnt = 0;
 	if (e->indzero == 1)
 	{
-		cnt = cnt + ft_elseend1(str, e, '0');
+		cnt = cnt + ft_elseend1(e, '0');
 		ft_putchar(*str);
 	}
 	else
@@ -28,18 +28,18 @@ int		ft_elseend(char *str, t_numb *e)
 		{
 			e->w = -(e->w);
 			ft_putchar(*str);
-			cnt = cnt + ft_elseend1(str, e, ' ');
+			cnt = cnt + ft_elseend1(e, ' ');
 		}
 		else
 		{
-			cnt = cnt + ft_elseend1(str, e, ' ');
+			cnt = cnt + ft_elseend1(e, ' ');
 			ft_putchar(*str);
 		}
 	}
 	return (cnt);
 }
 
-int		ft_elseend1(char *str, t_numb *e, char c)
+int		ft_elseend1(t_numb *e, char c)
 {
 	int	cnt;
 
