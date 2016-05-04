@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 16:26:43 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 16:33:54 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -349,17 +349,17 @@ int		ft_checkx142a(char *str,t_numb *e);
 int		ft_checkx142b(char *str,t_numb *e);
 int		ft_checkx1a(char *str,t_numb *e);
 int		ft_checkx1a1(char *str,t_numb *e);
-int		ft_checko(char *str,t_numb *e);
-int		ft_checko42(char *str,t_numb *e);
-int		ft_checko1(char *str,t_numb *e);
-int		ft_checko1a(char *str,t_numb *e);
-int		ft_checko1a1(char *str,t_numb *e);
-int		ft_checko21(char *str,t_numb *e);
-int		ft_checko21a(char *str,t_numb *e);
-int		ft_checko21a42a(char *str,t_numb *e);
-int		ft_checko21a42a1(char *str,t_numb *e);
-int		ft_checko21a42b(char *str,t_numb *e);
-int		ft_checko21a1(char *str,t_numb *e);
+int		ft_checko(t_numb *e);
+int		ft_checko42(t_numb *e);
+int		ft_checko1(t_numb *e);
+int		ft_checko1a(t_numb *e);
+int		ft_checko1a1(t_numb *e);
+int		ft_checko21(t_numb *e);
+int		ft_checko21a(t_numb *e);
+int		ft_checko21a42a(t_numb *e);
+int		ft_checko21a42a1(t_numb *e);
+int		ft_checko21a42b(t_numb *e);
+int		ft_checko21a1(t_numb *e);
 int		ft_altprime(char *str,t_numb *e);
 void		ft_altprime1(char **str,t_numb *e);
 void		ft_altprime1a(char ***str,t_numb *e);
@@ -529,7 +529,7 @@ int		ft_case3c(t_numb *e,va_list ap);
 int		ft_case4(char ****str,t_numb *e,va_list ap);
 int		ft_case4a(char *****str,t_numb *e,va_list ap);
 int		ft_case4b(t_numb *e,va_list ap);
-int		ft_case4c(char *****str,t_numb *e,va_list ap);
+int		ft_case4c(t_numb *e,va_list ap);
 int		ft_case4d(t_numb *e,va_list ap);
 int		ft_case5(char ****str,t_numb *e,va_list ap);
 int		ft_case5a(char *****str,t_numb *e,va_list ap);
