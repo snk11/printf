@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 16:11:15 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 16:18:22 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,13 +172,13 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
 int		ft_printf(char *str, ...);
 void	ft_initialize(t_numb *e);
 int ft_onelettercase(char *str,t_numb *e);
-int ft_checkc(char *str,t_numb *e);
-int	ft_checkc1(char *str,t_numb *e);
-int		ft_checkc1a(char *str,t_numb *e);
-int		ft_checkc1b(char *str,t_numb *e);
-int	ft_checkc2(char *str,t_numb *e);
-int		ft_checkc2a(char *str,t_numb *e);
-int		ft_checkc2b(char *str,t_numb *e);
+int ft_checkc(t_numb *e);
+int	ft_checkc1(t_numb *e);
+int		ft_checkc1a(t_numb *e);
+int		ft_checkc1b(t_numb *e);
+int	ft_checkc2(t_numb *e);
+int		ft_checkc2a(t_numb *e);
+int		ft_checkc2b(t_numb *e);
 int		ft_atoi(const char *nptr);
 int		ft_checkletter(char str);
 int		ft_checkstrlast(char *str);
@@ -517,7 +517,7 @@ int	ft_count4(intmax_t n);
 int		ft_case1(char ****str,t_numb *e,va_list ap);
 int		ft_case1b(t_numb *e,va_list ap);
 int		ft_case1c(char *****str,t_numb *e,va_list ap);
-int		ft_case1a(char *****str,t_numb *e,va_list ap);
+int		ft_case1a(t_numb *e,va_list ap);
 int		ft_case2(char ****str,t_numb *e,va_list ap);
 int		ft_case2a(t_numb *e,va_list ap);
 int		ft_case2b(char *****str,t_numb *e,va_list ap);
