@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 08:29:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 12:45:23 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 12:47:06 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -303,23 +303,16 @@ int	ft_countull(unsigned long long n)
 int	ft_countuc(unsigned char n)
 {
 	int i;
-	unsigned char c;
 
-	c = 0;
 	i = 0;
-	if (n == ULONG_MAX)
-		return (20);
-	else
+	if (n >= 10)
 	{
-		if (n >= 10)
+		while (n >= 10)
 		{
-			while (n >= 10)
-			{
-				n = n / 10;
-				i++;
-			}
+			n = n / 10;
+			i++;
 		}
-		i++;
 	}
+	i++;
 	return (i);
 }
