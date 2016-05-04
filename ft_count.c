@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count.c                                        :+:      :+:    :+:   */
+/*   ft_count.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 08:29:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 12:47:06 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 12:53:37 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_count(int n)
 {
@@ -95,9 +95,7 @@ int	ft_count4(intmax_t n)
 
 	i = 0;
 	if (n == -2147483648)
-	{
 		i = 11;
-	}
 	else
 	{
 		if (n < 0)
@@ -117,7 +115,6 @@ int	ft_count4(intmax_t n)
 	}
 	return (i);
 }
-
 
 int	ft_countsd(short int n)
 {
@@ -145,6 +142,7 @@ int	ft_countsd(short int n)
 	}
 	return (i);
 }
+
 int	ft_countl(long n)
 {
 	int i;
@@ -226,12 +224,10 @@ int	ft_countlld(long long n)
 	return (i);
 }
 
-
-
 int	ft_countus(unsigned short n)
 {
-	int i;
-	unsigned short c;
+	int				i;
+	unsigned short	c;
 
 	c = 0;
 	i = 0;
@@ -254,8 +250,8 @@ int	ft_countus(unsigned short n)
 
 int	ft_countul(unsigned long n)
 {
-	int i;
-	unsigned long c;
+	int				i;
+	unsigned long	c;
 
 	c = 0;
 	i = 0;
@@ -278,8 +274,8 @@ int	ft_countul(unsigned long n)
 
 int	ft_countull(unsigned long long n)
 {
-	int i;
-	unsigned long long c;
+	int					i;
+	unsigned long long	c;
 
 	c = 0;
 	i = 0;
