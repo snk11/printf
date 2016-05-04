@@ -6,13 +6,13 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 13:41:57 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/26 13:17:30 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 15:35:57 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_case18(char ****str, t_numb *e, va_list ap)
+int		ft_case18(char ****str, t_numb *e)
 {
 	int		cnt;
 

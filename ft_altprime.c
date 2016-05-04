@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 12:09:43 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/26 11:48:44 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 15:27:12 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 int		ft_altprime(char *str, t_numb *e)
 {
 	int		cnt;
-	char	*begi;
-	int		i;
 
 	cnt = 0;
 	while (*str != 0)

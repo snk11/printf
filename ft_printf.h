@@ -6,7 +6,7 @@
 /*   By: syusof <syusof@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 01:54:33 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/04 14:44:09 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 15:54:02 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -486,17 +486,17 @@ int		ft_checkbx142a(char *str,t_numb *e);
 int		ft_checkbx142b(char *str,t_numb *e);
 int		ft_checkbx1a(char *str,t_numb *e);
 int		ft_checkbx1a1(char *str,t_numb *e);
-int		ft_checkbo(char *str,t_numb *e);
-int		ft_checkbo42(char *str,t_numb *e);
-int		ft_checkbo1(char *str,t_numb *e);
-int		ft_checkbo1a(char *str,t_numb *e);
-int		ft_checkbo1a1(char *str,t_numb *e);
-int		ft_checkbo21(char *str,t_numb *e);
-int		ft_checkbo21a(char *str,t_numb *e);
-int		ft_checkbo21a42a(char *str,t_numb *e);
-int		ft_checkbo21a42a1(char *str,t_numb *e);
-int		ft_checkbo21a42b(char *str,t_numb *e);
-int		ft_checkbo21a1(char *str,t_numb *e);
+int		ft_checkbo(t_numb *e);
+int		ft_checkbo42(t_numb *e);
+int		ft_checkbo1(t_numb *e);
+int		ft_checkbo1a(t_numb *e);
+int		ft_checkbo1a1(t_numb *e);
+int		ft_checkbo21(t_numb *e);
+int		ft_checkbo21a(t_numb *e);
+int		ft_checkbo21a42a(t_numb *e);
+int		ft_checkbo21a42a1(t_numb *e);
+int		ft_checkbo21a42b(t_numb *e);
+int		ft_checkbo21a1(t_numb *e);
 int	ft_putznbr(size_t n,t_numb *e);
 int	ft_putznbr42a(t_numb *e);
 int	ft_putznbr42b(t_numb *e);
@@ -515,7 +515,7 @@ int	ft_putjnbr2(intmax_t n,t_numb *e);
 int	ft_putjnbr2a(intmax_t n,t_numb *e);
 int	ft_count4(intmax_t n);
 int		ft_case1(char ****str,t_numb *e,va_list ap);
-int		ft_case1b(char *****str,t_numb *e,va_list ap);
+int		ft_case1b(t_numb *e,va_list ap);
 int		ft_case1c(char *****str,t_numb *e,va_list ap);
 int		ft_case1a(char *****str,t_numb *e,va_list ap);
 int		ft_case2(char ****str,t_numb *e,va_list ap);
@@ -523,14 +523,14 @@ int		ft_case2a(char *****str,t_numb *e,va_list ap);
 int		ft_case2b(char *****str,t_numb *e,va_list ap);
 int		ft_case2c(char *****str,t_numb *e,va_list ap);
 int		ft_case3(char ****str,t_numb *e,va_list ap);
-int		ft_case3a(char *****str,t_numb *e,va_list ap);
+int		ft_case3a(t_numb *e,va_list ap);
 int		ft_case3b(char *****str,t_numb *e,va_list ap);
-int		ft_case3c(char *****str,t_numb *e,va_list ap);
+int		ft_case3c(t_numb *e,va_list ap);
 int		ft_case4(char ****str,t_numb *e,va_list ap);
 int		ft_case4a(char *****str,t_numb *e,va_list ap);
 int		ft_case4b(char *****str,t_numb *e,va_list ap);
 int		ft_case4c(char *****str,t_numb *e,va_list ap);
-int		ft_case4d(char *****str,t_numb *e,va_list ap);
+int		ft_case4d(t_numb *e,va_list ap);
 int		ft_case5(char ****str,t_numb *e,va_list ap);
 int		ft_case5a(char *****str,t_numb *e,va_list ap);
 int		ft_case5b(char *****str,t_numb *e,va_list ap);
@@ -584,10 +584,10 @@ int		ft_case16b(char *****str,t_numb *e,va_list ap);
 int		ft_case16c(char *****str,t_numb *e,va_list ap);
 int		ft_case17(char ****str,t_numb *e,va_list ap);
 int		ft_case17a(char *****str,t_numb *e,va_list ap);
-int		ft_case17b(char *****str,t_numb *e,va_list ap);
-int		ft_case17c(char *****str,t_numb *e,va_list ap);
-int		ft_case17d(char *****str,t_numb *e,va_list ap);
-int		ft_case18(char ****str,t_numb *e,va_list ap);
+int		ft_case17b(t_numb *e);
+int		ft_case17c(t_numb *e);
+int		ft_case17d(t_numb *e);
+int		ft_case18(char ****str,t_numb *e);
 int	ft_p1(char **str,t_numb *e,va_list ap);
 void		ft_p2(char **str,t_numb *e);
 void	ft_p3(char *str,t_numb *e);

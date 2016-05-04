@@ -6,26 +6,26 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/03 03:41:10 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/26 15:52:39 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 15:51:09 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_checkbo(char *str, t_numb *e)
+int		ft_checkbo(t_numb *e)
 {
 	int	cnt;
 
 	cnt = 0;
 	if (e->indminus == 0)
-		cnt = cnt + ft_checkbo42(str, e);
+		cnt = cnt + ft_checkbo42(e);
 	else if (e->indminus == 1)
 	{
 		if (e->ul == 0 && e->pr == 0 && e->indpr == 1 && e->indsharp == 0)
 		{
 		}
 		else
-			cnt = cnt + ft_checkbo21(str, e);
+			cnt = cnt + ft_checkbo21(e);
 	}
 	if (e->s)
 	{
@@ -38,7 +38,7 @@ int		ft_checkbo(char *str, t_numb *e)
 	return (cnt);
 }
 
-int		ft_checkbo42(char *str, t_numb *e)
+int		ft_checkbo42(t_numb *e)
 {
 	int	cnt;
 
@@ -53,11 +53,11 @@ int		ft_checkbo42(char *str, t_numb *e)
 		}
 	}
 	else
-		cnt = cnt + ft_checkbo1(str, e);
+		cnt = cnt + ft_checkbo1(e);
 	return (cnt);
 }
 
-int		ft_checkbo1(char *str, t_numb *e)
+int		ft_checkbo1(t_numb *e)
 {
 	int	cnt;
 
@@ -74,7 +74,7 @@ int		ft_checkbo1(char *str, t_numb *e)
 		}
 	}
 	else
-		cnt = cnt + ft_checkbo1a(str, e);
+		cnt = cnt + ft_checkbo1a(e);
 	if (e->indsharp == 1 && e->ul != 0 && e->pr == 0)
 	{
 		ft_putchar('0');
@@ -85,7 +85,7 @@ int		ft_checkbo1(char *str, t_numb *e)
 	return (cnt);
 }
 
-int		ft_checkbo1a(char *str, t_numb *e)
+int		ft_checkbo1a(t_numb *e)
 {
 	int	cnt;
 
@@ -106,11 +106,11 @@ int		ft_checkbo1a(char *str, t_numb *e)
 		}
 	}
 	else
-		cnt = cnt + ft_checkbo1a1(str, e);
+		cnt = cnt + ft_checkbo1a1(e);
 	return (cnt);
 }
 
-int		ft_checkbo1a1(char *str, t_numb *e)
+int		ft_checkbo1a1(t_numb *e)
 {
 	int	cnt;
 
@@ -136,7 +136,7 @@ int		ft_checkbo1a1(char *str, t_numb *e)
 	return (cnt);
 }
 
-int		ft_checkbo21(char *str, t_numb *e)
+int		ft_checkbo21(t_numb *e)
 {
 	int	cnt;
 
@@ -151,44 +151,44 @@ int		ft_checkbo21(char *str, t_numb *e)
 	if (e->indsharp == 1)
 	{
 		ft_putstr(e->s);
-		cnt = cnt + ft_checkbo21a(str, e);
+		cnt = cnt + ft_checkbo21a(e);
 	}
 	if (e->indsharp == 0)
 	{
-		cnt = cnt + ft_checkbo21a(str, e);
+		cnt = cnt + ft_checkbo21a(e);
 	}
 	cnt = cnt + e->g;
 	return (cnt);
 }
 
-int		ft_checkbo21a(char *str, t_numb *e)
+int		ft_checkbo21a(t_numb *e)
 {
 	int	cnt;
 	int	i;
 
 	cnt = 0;
 	if (e->w >= e->g && e->indsharp == 0)
-		cnt = cnt + ft_checkbo21a42a(str, e);
+		cnt = cnt + ft_checkbo21a42a(e);
 	else if (e->pr >= e->g && e->indsharp == 0)
-		cnt = cnt + ft_checkbo21a42b(str, e);
+		cnt = cnt + ft_checkbo21a42b(e);
 	else if (e->indsharp == 0)
 	{
 		ft_putstr(e->s);
-		cnt = cnt + ft_checkbo21a1(str, e);
+		cnt = cnt + ft_checkbo21a1(e);
 	}
 	else if (e->indsharp == 1)
-		cnt = cnt + ft_checkbo21a1(str, e);
+		cnt = cnt + ft_checkbo21a1(e);
 	return (cnt);
 }
 
-int		ft_checkbo21a42a(char *str, t_numb *e)
+int		ft_checkbo21a42a(t_numb *e)
 {
 	int	cnt;
 	int	i;
 
 	cnt = 0;
 	i = 0;
-	cnt = cnt + ft_checkbo21a42a1(str, e);
+	cnt = cnt + ft_checkbo21a42a1(e);
 	if (e->pr >= e->g)
 	{
 		while (e->w - e->pr > 0)
@@ -210,7 +210,7 @@ int		ft_checkbo21a42a(char *str, t_numb *e)
 	return (cnt);
 }
 
-int		ft_checkbo21a42a1(char *str, t_numb *e)
+int		ft_checkbo21a42a1(t_numb *e)
 {
 	int	cnt;
 	int	i;
@@ -227,7 +227,7 @@ int		ft_checkbo21a42a1(char *str, t_numb *e)
 	return (cnt);
 }
 
-int		ft_checkbo21a42b(char *str, t_numb *e)
+int		ft_checkbo21a42b(t_numb *e)
 {
 	int	cnt;
 	int	i;
@@ -250,7 +250,7 @@ int		ft_checkbo21a42b(char *str, t_numb *e)
 	return (cnt);
 }
 
-int		ft_checkbo21a1(char *str, t_numb *e)
+int		ft_checkbo21a1(t_numb *e)
 {
 	int	cnt;
 

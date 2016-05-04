@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 16:10:46 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/26 11:51:46 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 15:28:59 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		ft_case1(char ****str, t_numb *e, va_list ap)
 	if (****str == 'c')
 		cnt = cnt + ft_case1a(&str, e, ap);
 	else if (****str == 'C')
-		cnt = cnt + ft_case1b(&str, e, ap);
+		cnt = cnt + ft_case1b(e, ap);
 	else if (****str == 's')
 		cnt = cnt + ft_case1c(&str, e, ap);
 	return (cnt);
@@ -38,7 +38,7 @@ int		ft_case1a(char *****str, t_numb *e, va_list ap)
 	return (cnt);
 }
 
-int		ft_case1b(char *****str, t_numb *e, va_list ap)
+int		ft_case1b(t_numb *e, va_list ap)
 {
 	int		cnt;
 

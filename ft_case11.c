@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 10:19:07 by syusof            #+#    #+#             */
-/*   Updated: 2016/04/26 12:44:20 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/04 15:31:16 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int		ft_case11b(char *****str, t_numb *e, va_list ap)
 
 char	*ft_case11b1(char *s2)
 {
-	char	*s3;
-	int		i;
+	char			*s3;
+	unsigned long	i;
 
 	s3 = (char*)malloc(sizeof(char) * (ft_strlen(s2) + 1));
 	s3[0] = '0';
@@ -87,8 +87,8 @@ char	*ft_case11b1(char *s2)
 
 char	*ft_case11b2(char *s2)
 {
-	char	*s4;
-	int		i;
+	char			*s4;
+	unsigned long	i;
 
 	s4 = (char*)malloc(sizeof(char) * (ft_strlen(s2) + 1));
 	s4[0] = '1';
