@@ -6,7 +6,7 @@
 #    By: syusof <syusof@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 02:50:22 by syusof            #+#    #+#              #
-#    Updated: 2016/05/04 17:58:43 by syusof           ###   ########.fr        #
+#    Updated: 2016/05/05 12:32:26 by syusof           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,15 +26,14 @@ $(NAME):
 	gcc $(FLAGS) $(SRCS)
 	ar rc $(NAME) $(OFILES)
 	ranlib $(NAME)
-	gcc -c ../main.c
-	gcc -o main main.o -L . -lftprintf
+
+
 
 clean:
 	rm -f $(OFILES)
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f main
 
 re: fclean all
 
