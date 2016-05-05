@@ -6,7 +6,7 @@
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/03 03:41:10 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/05 13:43:55 by syusof           ###   ########.fr       */
+/*   Updated: 2016/05/05 16:03:43 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,31 @@ int		ft_checkbo1a(t_numb *e)
 	}
 	else
 		cnt = cnt + ft_checkbo1a1(e);
+	return (cnt);
+}
+
+int		ft_checkbo1a1(t_numb *e)
+{
+	int	cnt;
+
+	cnt = 0;
+	if (e->indsharp == 0)
+	{
+		while (e->w - e->g > 0)
+		{
+			ft_putchar(' ');
+			cnt++;
+			(e->w)--;
+		}
+	}
+	else if (e->indsharp == 1)
+	{
+		while (e->w - e->g - 1 > 0)
+		{
+			ft_putchar(' ');
+			cnt++;
+			(e->w)--;
+		}
+	}
 	return (cnt);
 }
