@@ -1,78 +1,71 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checkc.c                                        :+:      :+:    :+:   */
+/*   ft_checkp_p3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/01 21:41:15 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/05 14:01:05 by syusof           ###   ########.fr       */
+/*   Created: 2016/05/05 14:13:30 by syusof            #+#    #+#             */
+/*   Updated: 2016/05/05 14:14:37 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_checkc(t_numb *e)
-{
-	if (e->indzero == 0)
-		return (ft_checkc1(e));
-	else
-	{
-		return (ft_checkc2(e));
-	}
-	return (0);
-}
-
-int		ft_checkc1(t_numb *e)
+int		ft_checkp2a1(t_numb *e, char *s1)
 {
 	int	cnt;
 
 	cnt = 0;
 	if (e->indminus == 1)
-		return (ft_checkc1a(e));
+	{
+		ft_putstr("0x");
+		ft_putstrad(s1);
+		while ((e->w - (e->g + 2)) > 0)
+		{
+			cnt++;
+			ft_putchar(' ');
+			(e->w)--;
+		}
+	}
 	else
-		return (ft_checkc1b(e));
+		cnt = cnt + ft_checkp2a1a(e, s1);
+	return (cnt);
 }
 
-int		ft_checkc1a(t_numb *e)
+int		ft_checkp2a1a(t_numb *e, char *s1)
 {
 	int	cnt;
 
 	cnt = 0;
-	cnt++;
-	ft_putchar(e->d);
-	while ((e->w - 1) > 0)
+	if (e->indspace == 1 || e->indplus == 1)
+	{
+		while ((e->w - (e->g + 2)) > 0)
+		{
+			cnt++;
+			ft_putchar(' ');
+			(e->w)--;
+		}
+		ft_putstr("0x");
+		ft_putstr(s1);
+	}
+	else
+		cnt = cnt + ft_checkp2a1a1(e, s1);
+	return (cnt);
+}
+
+int		ft_checkp2a1a1(t_numb *e, char *s1)
+{
+	int	cnt;
+
+	cnt = 0;
+	while ((e->w - (e->g + 2)) > 0)
 	{
 		cnt++;
 		ft_putchar(' ');
 		(e->w)--;
 	}
+	ft_putstr("0x");
+	ft_putstrad(s1);
 	return (cnt);
-}
-
-int		ft_checkc1b(t_numb *e)
-{
-	int	cnt;
-
-	cnt = 0;
-	while ((e->w - 1) > 0)
-	{
-		cnt++;
-		ft_putchar(' ');
-		(e->w)--;
-	}
-	ft_putchar(e->d);
-	cnt++;
-	return (cnt);
-}
-
-int		ft_checkc2(t_numb *e)
-{
-	int		cnt;
-
-	cnt = 0;
-	if (e->w < 0)
-		return (ft_checkc2a(e));
-	else
-		return (ft_checkc2b(e));
 }

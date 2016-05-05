@@ -1,77 +1,70 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checks.c                                        :+:      :+:    :+:   */
+/*   ft_checks_p2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syusof <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/02 01:26:49 by syusof            #+#    #+#             */
-/*   Updated: 2016/05/05 14:36:38 by syusof           ###   ########.fr       */
+/*   Created: 2016/05/05 14:27:14 by syusof            #+#    #+#             */
+/*   Updated: 2016/05/05 14:36:26 by syusof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_checks(t_numb *e)
+int		ft_checks242b(t_numb *e)
 {
 	int	cnt;
 
 	cnt = 0;
-	e->prbegi = e->pr;
-	if (e->indminus == 0)
+	e->g = ft_strlen(e->s);
+	while (e->w - e->g > 0)
 	{
-		if (e->s)
-			cnt = cnt + ft_checks52a(e);
-		else
-			cnt = cnt + ft_checks2(e);
-		return (cnt);
+		cnt++;
+		ft_putchar(' ');
+		(e->w)--;
 	}
-	else if (e->indminus == 1)
+	return (cnt);
+}
+
+int		ft_checks42(t_numb *e)
+{
+	int	cnt;
+
+	cnt = 0;
+	cnt = cnt + ft_checks42a(e);
+	cnt = cnt + ft_checks42b(e);
+	return (cnt);
+}
+
+int		ft_checks42a(t_numb *e)
+{
+	int	cnt;
+
+	cnt = 0;
+	e->g = ft_strlen(e->s);
+	if (e->indzero == 0)
 	{
-		if (e->s)
-			cnt = cnt + ft_checks52b(e);
-		else
-			cnt = cnt + ft_checks22(e);
-		return (cnt);
+		while (e->w - e->g > 0)
+		{
+			cnt++;
+			ft_putchar(' ');
+			(e->w)--;
+		}
 	}
-	return (0);
-}
-
-int		ft_checks52a(t_numb *e)
-{
-	int	cnt;
-
-	cnt = 0;
-	if (e->indpr == 1)
-		cnt = cnt + ft_checks1(e);
 	else
-		cnt = cnt + ft_checks42(e);
+	{
+		while (e->w - e->g > 0)
+		{
+			cnt++;
+			ft_putchar('0');
+			(e->w)--;
+		}
+	}
 	return (cnt);
 }
 
-int		ft_checks52b(t_numb *e)
-{
-	int	cnt;
-
-	cnt = 0;
-	if (e->indpr == 1)
-		cnt = cnt + ft_checks21(e);
-	else
-		cnt = cnt + ft_checks242(e);
-	return (cnt);
-}
-
-int		ft_checks242(t_numb *e)
-{
-	int	cnt;
-
-	cnt = 0;
-	cnt = cnt + ft_checks242a(e);
-	cnt = cnt + ft_checks242b(e);
-	return (cnt);
-}
-
-int		ft_checks242a(t_numb *e)
+int		ft_checks42b(t_numb *e)
 {
 	int	cnt;
 	int	i;
@@ -93,5 +86,17 @@ int		ft_checks242a(t_numb *e)
 		ft_putstr("(null)");
 		cnt = cnt + 6;
 	}
+	return (cnt);
+}
+
+int		ft_checks1(t_numb *e)
+{
+	int	cnt;
+
+	cnt = 0;
+	if (e->pr > e->w)
+		cnt = cnt + ft_checks1a(e);
+	else if (e->w > e->pr)
+		cnt = cnt + ft_checks1b(e);
 	return (cnt);
 }
