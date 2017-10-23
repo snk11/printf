@@ -1,6 +1,6 @@
 # INTRODUCTION
 ```
-It's a the printf c function recoded.
+This is the printf c function recoded.
 ```
 
 # MAKEFILE
